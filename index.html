@@ -545,7 +545,7 @@
       <div class="contact-form-wrap fade-in">
         <h3 style="text-align:center; margin-bottom: var(--space-2); color: var(--color-text);">Or tell us what you need</h3>
         <p style="text-align:center; margin-bottom: var(--space-6); color: var(--color-text-muted); font-size: var(--text-sm);">We'll only use this to understand your business and suggest automations. No spam, ever.</p>
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contact-form">
           <input type="hidden" name="form-name" value="contact">
           <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="form-row">
@@ -566,8 +566,25 @@
             <label for="message">What would you like to automate?</label>
             <textarea id="message" name="message" rows="4" required placeholder="Describe a task that feels repetitive, manual, or time-consuming..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Show Me What's Possible</button>
+          <button type="submit" class="btn btn-primary btn-lg" id="form-submit-btn" style="width:100%;">
+            <span class="btn-text">Show Me What's Possible</span>
+            <span class="btn-loading" style="display:none;">Sending...</span>
+          </button>
         </form>
+        <!-- Success state (hidden by default) -->
+        <div id="form-success" style="display:none; text-align:center; padding: var(--space-10) var(--space-6);">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-4);">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <h3 style="color: var(--color-text); margin-bottom: var(--space-2); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;">We got your message</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--text-base); margin-bottom: var(--space-6);">We'll review what you shared and get back to you within 24 hours with automation ideas tailored to your business.</p>
+          <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Skip the Wait — Book a Call Now</a>
+        </div>
+        <!-- Error state (hidden by default) -->
+        <div id="form-error" style="display:none; text-align:center; padding: var(--space-6); background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); border-radius: var(--radius-lg); margin-top: var(--space-4);">
+          <p style="color: var(--color-error); font-size: var(--text-sm);">Something went wrong. Please try again or email us directly at <a href="mailto:hello@a3lab.ca" style="color: var(--color-primary);">hello@a3lab.ca</a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -617,6 +634,33 @@
   </div>
 </footer>
 
+<!-- ==================== CHATBOT WIDGET ==================== -->
+<div id="a3-chatbot">
+  <!-- Toggle button -->
+  <button id="chat-toggle" aria-label="Open automation assistant">
+    <svg class="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+
+  <!-- Chat window -->
+  <div id="chat-window" style="display:none;">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">A3</div>
+        <div>
+          <strong>Automation Copilot</strong>
+          <span class="chat-status">Online</span>
+        </div>
+      </div>
+      <button id="chat-close" aria-label="Close chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chat-input-area" id="chat-input-area"></div>
+  </div>
+</div>
+
 <!-- ==================== SCRIPTS ==================== -->
 <script>
 // Dark/Light mode toggle
@@ -649,12 +693,10 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
-    // Close all
     document.querySelectorAll('.faq-item.open').forEach(el => {
       el.classList.remove('open');
       el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
     });
-    // Toggle clicked
     if (!wasOpen) {
       item.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
@@ -672,6 +714,258 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// ==================== CONTACT FORM AJAX ====================
+(function(){
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('form-submit-btn');
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btnText = btn.querySelector('.btn-text');
+    const btnLoad = btn.querySelector('.btn-loading');
+    btnText.style.display = 'none';
+    btnLoad.style.display = 'inline';
+    btn.disabled = true;
+    errorEl.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        form.closest('.contact-form-wrap').querySelector('h3').style.display = 'none';
+        form.closest('.contact-form-wrap').querySelector('p').style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        throw new Error('Submit failed');
+      }
+    } catch (err) {
+      errorEl.style.display = 'block';
+      btnText.style.display = 'inline';
+      btnLoad.style.display = 'none';
+      btn.disabled = false;
+    }
+  });
+})();
+
+// ==================== AUTOMATION COPILOT CHATBOT ====================
+(function(){
+  const toggle = document.getElementById('chat-toggle');
+  const win = document.getElementById('chat-window');
+  const closeBtn = document.getElementById('chat-close');
+  const body = document.getElementById('chat-body');
+  const inputArea = document.getElementById('chat-input-area');
+  const iconOpen = toggle.querySelector('.chat-icon-open');
+  const iconClose = toggle.querySelector('.chat-icon-close');
+  let isOpen = false;
+  let step = 'start';
+  let userData = {};
+
+  function toggleChat() {
+    isOpen = !isOpen;
+    win.style.display = isOpen ? 'flex' : 'none';
+    iconOpen.style.display = isOpen ? 'none' : 'block';
+    iconClose.style.display = isOpen ? 'block' : 'none';
+    toggle.classList.toggle('active', isOpen);
+    if (isOpen && body.children.length === 0) startConvo();
+  }
+  toggle.addEventListener('click', toggleChat);
+  closeBtn.addEventListener('click', toggleChat);
+
+  function addMsg(text, sender) {
+    const d = document.createElement('div');
+    d.className = 'chat-msg chat-msg-' + sender;
+    d.innerHTML = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function typing(cb) {
+    const d = document.createElement('div');
+    d.className = 'chat-msg chat-msg-bot chat-typing';
+    d.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+    setTimeout(() => { d.remove(); cb(); }, 800 + Math.random() * 600);
+  }
+
+  function showOptions(options) {
+    inputArea.innerHTML = '';
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-options';
+    options.forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'chat-opt-btn';
+      b.textContent = opt.label;
+      b.addEventListener('click', () => {
+        addMsg(opt.label, 'user');
+        inputArea.innerHTML = '';
+        opt.action();
+      });
+      wrap.appendChild(b);
+    });
+    inputArea.appendChild(wrap);
+  }
+
+  function showInput(placeholder, onSubmit) {
+    inputArea.innerHTML = '';
+    const wrap = document.createElement('form');
+    wrap.className = 'chat-text-input';
+    const inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = placeholder;
+    inp.required = true;
+    const btn = document.createElement('button');
+    btn.type = 'submit';
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+    wrap.appendChild(inp);
+    wrap.appendChild(btn);
+    wrap.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = inp.value.trim();
+      if (val) {
+        addMsg(val, 'user');
+        inputArea.innerHTML = '';
+        onSubmit(val);
+      }
+    });
+    inputArea.appendChild(wrap);
+    inp.focus();
+  }
+
+  // Conversation flows
+  function startConvo() {
+    typing(() => {
+      addMsg("Hey there! I'm the <strong>A3 Lab Automation Copilot</strong>. I can help you figure out what to automate in your business.", 'bot');
+      typing(() => {
+        addMsg("What brings you here today?", 'bot');
+        showOptions([
+          { label: '\u2699\uFE0F What can you automate?', action: flowWhatWeAutomate },
+          { label: '\uD83D\uDCB0 Show me pricing', action: flowPricing },
+          { label: '\uD83D\uDCA1 See an example', action: flowExample },
+          { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall }
+        ]);
+      });
+    });
+  }
+
+  function flowWhatWeAutomate() {
+    typing(() => {
+      addMsg("We automate repetitive tasks across five areas:", 'bot');
+      typing(() => {
+        addMsg("<strong>\u2022 Sales</strong> \u2014 Lead research, outreach, CRM updates<br><strong>\u2022 Operations</strong> \u2014 Client onboarding, document processing<br><strong>\u2022 Content</strong> \u2014 Research, writing, scheduling<br><strong>\u2022 Finance</strong> \u2014 Invoicing, reporting, KPI dashboards<br><strong>\u2022 Support</strong> \u2014 Ticket triage, auto-responses, sentiment tracking", 'bot');
+        typing(() => {
+          addMsg("What type of business do you run? I can suggest specific automations for you.", 'bot');
+          showOptions([
+            { label: 'Agency / Consulting', action: () => flowBizType('agency') },
+            { label: 'E-commerce', action: () => flowBizType('ecommerce') },
+            { label: 'SaaS / Tech', action: () => flowBizType('saas') },
+            { label: 'Something else', action: () => flowBizTypeOther() }
+          ]);
+        });
+      });
+    });
+  }
+
+  function flowBizType(type) {
+    const suggestions = {
+      agency: "For agencies, our most popular builds are:<br><br><strong>1. Prospect Research Pipeline</strong><br>Perplexity researches each prospect, Claude drafts personalized outreach, Zapier sends and logs everything in your CRM. Saves 15+ hrs/week.<br><br><strong>2. Content Engine</strong><br>Auto-research trends, draft posts in your brand voice, schedule across channels.<br><br><strong>3. Client Reporting</strong><br>Weekly reports compiled and delivered automatically.",
+      ecommerce: "For e-commerce brands, our top builds are:<br><br><strong>1. Customer Support Automation</strong><br>Claude triages tickets, auto-responds to common questions, routes complex issues to humans. Cuts response time from 48hrs to under 2.<br><br><strong>2. Competitor Price Monitoring</strong><br>Track competitor pricing daily, get alerts when they change.<br><br><strong>3. Review &amp; Feedback Analysis</strong><br>Aggregate reviews, analyze sentiment, surface actionable insights.",
+      saas: "For SaaS companies, we commonly build:<br><br><strong>1. User Onboarding Sequences</strong><br>Personalized onboarding flows triggered by user behavior.<br><br><strong>2. Churn Prediction Alerts</strong><br>Monitor usage patterns, flag at-risk accounts, auto-trigger retention workflows.<br><br><strong>3. Feature Request Aggregation</strong><br>Collect and categorize feedback from support, social, and surveys automatically."
+    };
+    typing(() => {
+      addMsg(suggestions[type], 'bot');
+      typing(() => {
+        addMsg("Want to explore how this would work for your specific situation?", 'bot');
+        showOptions([
+          { label: '\uD83D\uDCC5 Book a free strategy call', action: flowBookCall },
+          { label: '\uD83D\uDCB0 See pricing', action: flowPricing },
+          { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
+        ]);
+      });
+    });
+  }
+
+  function flowBizTypeOther() {
+    typing(() => {
+      addMsg("No problem! Tell me what kind of business you run and I'll suggest automations.", 'bot');
+      showInput('e.g., Real estate, fitness, law firm...', (val) => {
+        userData.business = val;
+        typing(() => {
+          addMsg("Got it! For <strong>" + val + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
+          showOptions([
+            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
+            { label: '\uD83D\uDCB0 See pricing first', action: flowPricing },
+            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
+          ]);
+        });
+      });
+    });
+  }
+
+  function flowPricing() {
+    typing(() => {
+      addMsg("Our pricing is straightforward:", 'bot');
+      typing(() => {
+        addMsg("<strong>Starter Build</strong> \u2014 $1,500\u20132,000 (one-time)<br>1\u20132 workflows, delivered in 1\u20132 days, 14 days support<br><br><strong>Pro System</strong> \u2014 $3,000\u20135,000 (one-time)<br>3\u20135 workflows, multi-agent architecture, 30 days support<br><br><strong>Retainer</strong> \u2014 $750\u20132,000/month<br>Ongoing optimization, new builds, dedicated support", 'bot');
+        typing(() => {
+          addMsg("Most clients start with a Starter Build to see results, then upgrade. The strategy call is free \u2014 no commitment.", 'bot');
+          showOptions([
+            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
+            { label: '\uD83D\uDCA1 See an example', action: flowExample },
+            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
+          ]);
+        });
+      });
+    });
+  }
+
+  function flowExample() {
+    typing(() => {
+      addMsg("Here's a real workflow we build:", 'bot');
+      typing(() => {
+        addMsg("<strong>\uD83C\uDFAF Prospect Research Pipeline</strong><br><br><strong>Problem:</strong> A marketing agency spent 15+ hrs/week manually researching prospects.<br><br><strong>What we built:</strong><br>1\uFE0F\u20E3 New lead enters CRM \u2192 triggers Zapier<br>2\uFE0F\u20E3 Perplexity researches the prospect's company<br>3\uFE0F\u20E3 Claude drafts a personalized email<br>4\uFE0F\u20E3 Email sent + logged in CRM automatically<br><br><strong>Result:</strong> Outreach volume tripled. Response rates up 40%. 15 hrs/week reclaimed.", 'bot');
+        typing(() => {
+          addMsg("Want to see how something like this could work for you?", 'bot');
+          showOptions([
+            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
+            { label: '\u2699\uFE0F What else can you automate?', action: flowWhatWeAutomate },
+            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
+          ]);
+        });
+      });
+    });
+  }
+
+  function flowBookCall() {
+    typing(() => {
+      addMsg("Great choice! Our strategy calls are free, 30 minutes, and zero pressure. We'll map your workflows and show you where automation delivers the biggest ROI.", 'bot');
+      typing(() => {
+        addMsg('<a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="chat-cta-btn">\uD83D\uDCC5 Schedule Your Free Call</a>', 'bot');
+        typing(() => {
+          addMsg("Or if you prefer, drop your email and we'll reach out:", 'bot');
+          showInput('Your email address', (val) => {
+            userData.email = val;
+            typing(() => {
+              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + val + "</strong>. Talk soon!", 'bot');
+              showOptions([
+                { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
+              ]);
+            });
+          });
+        });
+      });
+    });
+  }
+})();
 </script>
 
 </body>
