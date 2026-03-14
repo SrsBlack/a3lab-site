@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A3 Lab — Agentic Automation Architects Lab</title>
+<meta name="description" content="A3 Lab builds custom AI automation workflows using Perplexity, Claude, and Zapier. We architect agentic systems that save your team hundreds of hours monthly.">
+<meta property="og:title" content="A3 Lab — Agentic Automation Architects Lab">
+<meta property="og:description" content="Custom AI automation builds and monthly retainers. We architect agentic workflows that run your business on autopilot.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca">
+<link rel="canonical" href="https://a3lab.ca">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "A3 Lab — Agentic Automation Architects Lab",
+  "description": "Custom AI automation workflows using Perplexity, Claude, and Zapier.",
+  "url": "https://a3lab.ca",
+  "areaServed": "Worldwide",
+  "priceRange": "$$",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Perplexity Computer",
+    "url": "https://www.perplexity.ai/computer"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+
+<!-- Favicon (inline SVG as data URI) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3 <span>Lab</span></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#stack">Stack</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="btn btn-primary">Book a Call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="#process" onclick="this.closest('.nav-mobile').classList.remove('open')">Process</a>
+  <a href="#stack" onclick="this.closest('.nav-mobile').classList.remove('open')">Stack</a>
+  <a href="#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
+  <a href="#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="./assets/a3labs-hero.png" alt="" loading="eager" width="1792" height="1024" decoding="async">
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+        Agentic Automation Architects Lab
+      </div>
+      <h1>We build <em>AI agents</em> that run your business</h1>
+      <p class="hero-sub">A3 Lab designs and deploys custom automation workflows using Perplexity, Claude, and Zapier. We handle the build. You keep the results.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">Book a Free Strategy Call</a>
+        <a href="#services" class="btn btn-outline btn-lg">See What We Build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar fade-in" aria-label="Key metrics">
+    <div class="stat">
+      <div class="stat-value">24-72h</div>
+      <div class="stat-label">Average delivery time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">80%</div>
+      <div class="stat-label">Tasks automated for clients</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">3 Tools</div>
+      <div class="stat-label">Perplexity + Claude + Zapier</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">$0</div>
+      <div class="stat-label">Initial strategy consultation</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="section-inner">
+      <div class="section-label fade-in">What We Build</div>
+      <h2 class="section-title fade-in">Automation that actually works</h2>
+      <p class="section-desc fade-in">From lead enrichment pipelines to AI-powered reporting, we build workflows that save your team hundreds of hours every month.</p>
+
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          <h3>Lead Enrichment Pipelines</h3>
+          <p>Automatically research prospects, enrich CRM data with AI-gathered insights, and deliver qualified lead profiles straight to your inbox or Sheets.</p>
+          <span class="service-tag">Perplexity + Zapier</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <h3>AI Content Engines</h3>
+          <p>Multi-step content pipelines that research topics, draft posts, format for your brand voice, and schedule across channels, all on autopilot.</p>
+          <span class="service-tag">Claude + Zapier</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <h3>Automated Reporting</h3>
+          <p>Weekly and monthly reports compiled, analyzed, and delivered by AI. From financial summaries to competitive intelligence, your data works for you.</p>
+          <span class="service-tag">Perplexity + Claude</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3>Customer Support Bots</h3>
+          <p>Intelligent AI agents that handle customer inquiries, route tickets, generate responses, and escalate only when a human touch is needed.</p>
+          <span class="service-tag">Claude + Zapier</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+            <line x1="14" y1="4" x2="10" y2="20"/>
+          </svg>
+          <h3>Custom Agentic Workflows</h3>
+          <p>Complex multi-agent systems tailored to your business. From trading signal analysis to supply chain monitoring, if it can be automated, we build it.</p>
+          <span class="service-tag">Full Stack</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <h3>Ongoing Retainers</h3>
+          <p>Monthly optimization, monitoring, and expansion of your automation stack. We keep your agents sharp and your workflows evolving with your business.</p>
+          <span class="service-tag">Managed Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED BREAK -->
+  <div class="featured-break">
+    <img src="./assets/a3labs-workflow.png" alt="" loading="lazy" width="1792" height="1024" decoding="async">
+    <div class="featured-break-content">
+      <blockquote>
+        Stop hiring for tasks that <em>agents can handle</em>. Start building systems that scale.
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="section-inner">
+      <div class="section-label fade-in">How We Work</div>
+      <h2 class="section-title fade-in">From chaos to clarity in 4 steps</h2>
+      <p class="section-desc fade-in">Every engagement follows a proven framework. You tell us the problem, we architect the solution.</p>
+
+      <div class="process-list">
+        <div class="process-step fade-in">
+          <div class="process-number">1</div>
+          <div>
+            <h3>Discovery Call</h3>
+            <p>Free 30-minute strategy session. We map your current workflows, identify bottlenecks, and pinpoint where AI automation delivers the highest ROI for your team.</p>
+          </div>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-number">2</div>
+          <div>
+            <h3>Solution Architecture</h3>
+            <p>We design your custom automation blueprint. Which agents handle what, how data flows between Perplexity, Claude, and Zapier, and the expected time savings.</p>
+          </div>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-number">3</div>
+          <div>
+            <h3>Build and Test</h3>
+            <p>We build, test, and iterate. Most builds ship in 24-72 hours. You get a live demo, documentation, and a 1-hour handover session to walk you through everything.</p>
+          </div>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-number">4</div>
+          <div>
+            <h3>Launch and Optimize</h3>
+            <p>Go live with confidence. On retainer plans, we monitor performance, fix edge cases, and continuously optimize your agents to handle new scenarios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack" class="section" style="background: var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label fade-in">Our Stack</div>
+      <h2 class="section-title fade-in">Built on the best AI tools available</h2>
+      <p class="section-desc fade-in">We use leading-edge AI platforms so your automations are fast, reliable, and future-proof.</p>
+
+      <div class="stack-grid fade-in">
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span>Perplexity</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <span>Claude</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Zapier</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>Make</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          <span>APIs</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+          <span>Databases</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span>Slack / Teams</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          <span>Notion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Pricing</div>
+      <h2 class="section-title fade-in">Transparent pricing, real results</h2>
+      <p class="section-desc fade-in">No hidden fees. Choose the engagement model that fits your stage.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card fade-in">
+          <div class="pricing-tier">Starter</div>
+          <h3>Agentic Starter Build</h3>
+          <div class="pricing-price">$1,500-2,000 <span>one-time</span></div>
+          <p class="pricing-desc">A single focused automation workflow. Perfect for testing the waters with AI.</p>
+          <ul class="pricing-features" role="list">
+            <li>1-2 connected workflows</li>
+            <li>Perplexity or Claude powered</li>
+            <li>Zapier integration</li>
+            <li>Delivered in 1-2 business days</li>
+            <li>Documentation + handover call</li>
+            <li>14 days of post-launch support</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured fade-in">
+          <div class="pricing-tier">Pro</div>
+          <h3>Agentic Pro System</h3>
+          <div class="pricing-price">$3,000-5,000 <span>one-time</span></div>
+          <p class="pricing-desc">Multi-agent system with complex logic. Built for teams ready to scale.</p>
+          <ul class="pricing-features" role="list">
+            <li>3-5 interconnected workflows</li>
+            <li>Multi-agent architecture</li>
+            <li>Custom Claude logic + prompts</li>
+            <li>Full Perplexity research pipelines</li>
+            <li>Delivered in 3-5 business days</li>
+            <li>Notion dashboard + full docs</li>
+            <li>30 days of post-launch support</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Book a Call</a>
+        </div>
+
+        <div class="pricing-card fade-in">
+          <div class="pricing-tier">Retainer</div>
+          <h3>Ongoing Automation</h3>
+          <div class="pricing-price">$750-2,000 <span>/month</span></div>
+          <p class="pricing-desc">Continuous optimization, monitoring, and expansion of your automation stack.</p>
+          <ul class="pricing-features" role="list">
+            <li>Monthly workflow audits</li>
+            <li>Priority agent updates</li>
+            <li>New automation builds each month</li>
+            <li>Performance monitoring</li>
+            <li>Dedicated Slack channel</li>
+            <li>Quarterly strategy reviews</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section" style="background: var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label fade-in">FAQ</div>
+      <h2 class="section-title fade-in">Common questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            What types of automation can you build?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Virtually any workflow that can be broken into structured steps. Common builds include lead research and enrichment, content generation pipelines, customer support automation, reporting dashboards, meeting prep systems, data entry workflows, and competitive intelligence monitoring. If it involves repetitive knowledge work, we can likely automate it.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            How long does a typical build take?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Starter builds ship in 1-2 business days. Pro systems with complex multi-agent logic take 3-5 business days. Every build includes testing, documentation, and a handover call so you understand exactly how your system works.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            Do I need technical skills to use the automations?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            No. We build everything on no-code and low-code platforms like Zapier and Make. You get clear documentation, a walkthrough call, and ongoing support. Our systems are designed to run on autopilot with minimal oversight.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            What tools do you use?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Our core stack includes Perplexity (for AI-powered research and data gathering), Claude (for complex reasoning, content generation, and custom logic), and Zapier/Make (for connecting tools and orchestrating workflows). We also integrate with your existing tools: Notion, Slack, Google Workspace, CRMs, databases, and APIs.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            What's included in the retainer?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Monthly retainers include workflow monitoring and optimization, new automation builds (scope depends on tier), priority support via a dedicated Slack channel, performance reporting, and quarterly strategy reviews to identify new automation opportunities as your business evolves.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            Can I start with one build and add a retainer later?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            Absolutely. Most clients start with a Starter or Pro build, see the results, and then move to a retainer for ongoing optimization and expansion. There's no pressure to commit to a monthly plan upfront.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section">
+    <div class="section-inner">
+      <div class="section-label fade-in">What People Say</div>
+      <h2 class="section-title fade-in">Built for results</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p>"They automated our entire lead research pipeline in under 48 hours. What used to take our team 20 hours a week now runs on autopilot. The ROI was immediate."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <strong>Marketing Agency</strong>
+              <span>Lead Enrichment Pipeline</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p>"Our weekly reporting used to be a full-day task. A3 Lab built a system that compiles, analyzes, and delivers everything to Slack by Monday morning. Game changer."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <strong>SaaS Startup</strong>
+              <span>Automated Reporting System</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+          <p>"The handover was seamless. Clear documentation, a walkthrough call, and everything just works. We've since moved to a retainer because the value keeps compounding."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">E</div>
+            <div>
+              <strong>E-commerce Brand</strong>
+              <span>Customer Support Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + CONTACT FORM -->
+  <section id="contact" class="cta-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Ready to Automate?</div>
+      <h2 class="section-title fade-in">Book your free Agentic Automation Audit</h2>
+      <p class="section-desc fade-in">30 minutes. No cost. We'll map your workflows and show you exactly where AI agents can save you time and money.</p>
+      <div class="hero-actions fade-in" style="justify-content: center; margin-bottom: var(--space-xl);">
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule a Free Call
+        </a>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap fade-in">
+        <h3 style="text-align:center; margin-bottom: var(--space-md); color: var(--color-text-muted);">Or send us a message</h3>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company">Company (optional)</label>
+            <input type="text" id="company" name="company" placeholder="Your company name">
+          </div>
+          <div class="form-group">
+            <label for="message">What would you like to automate?</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell us about your workflows, pain points, or what you'd like to achieve with AI automation..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="A3 Lab home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+            <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+            <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+          </svg>
+          <span class="logo-text">A3 <span>Lab</span></span>
+        </a>
+        <p>Agentic Automation Architects Lab. We build custom AI workflows using Perplexity, Claude, and Zapier so your business runs smarter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#stack">Stack</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 A3 Lab. All rights reserved. Based in British Columbia, Canada.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// Dark/Light mode toggle
+(function(){
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+
+  if (t) {
+    updateIcon();
+    t.addEventListener('click', () => {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+      updateIcon();
+    });
+  }
+
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    // Toggle clicked
+    if (!wasOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
