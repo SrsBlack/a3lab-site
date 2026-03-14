@@ -545,9 +545,11 @@
       <div class="contact-form-wrap fade-in">
         <h3 style="text-align:center; margin-bottom: var(--space-2); color: var(--color-text);">Or tell us what you need</h3>
         <p style="text-align:center; margin-bottom: var(--space-6); color: var(--color-text-muted); font-size: var(--text-sm);">We'll only use this to understand your business and suggest automations. No spam, ever.</p>
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contact-form">
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <form name="contact" method="POST" action="https://formsubmit.co/hello@a3lab.ca" class="contact-form" id="contact-form">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_subject" value="New A3 Lab Inquiry — Show Me What's Possible">
+          <input type="hidden" name="_next" value="https://a3lab.ca#form-thankyou">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
@@ -577,8 +579,9 @@
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
-          <h3 style="color: var(--color-text); margin-bottom: var(--space-2); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;">We got your message</h3>
-          <p style="color: var(--color-text-muted); font-size: var(--text-base); margin-bottom: var(--space-6);">We'll review what you shared and get back to you within 24 hours with automation ideas tailored to your business.</p>
+          <h3 style="color: var(--color-text); margin-bottom: var(--space-2); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;">You're all set</h3>
+          <p style="color: var(--color-text-muted); font-size: var(--text-base); margin-bottom: var(--space-4);">Please check your email shortly for all the automation possibilities tailored to your business.</p>
+          <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6);">Our team will review your needs and send you a personalized automation roadmap within 24 hours.</p>
           <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Skip the Wait — Book a Call Now</a>
         </div>
         <!-- Error state (hidden by default) -->
@@ -734,12 +737,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
     try {
       const data = new FormData(form);
-      const res = await fetch('/', {
+      const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(data))
       });
-      if (res.ok) {
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true || res.ok) {
         form.style.display = 'none';
         form.closest('.contact-form-wrap').querySelector('h3').style.display = 'none';
         form.closest('.contact-form-wrap').querySelector('p').style.display = 'none';
