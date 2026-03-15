@@ -2403,7 +2403,7 @@ body::after {
   text-align: center;
   padding: var(--space-8);
   background: var(--color-surface);
-  border: 1px solid rgba(34,211,238,0.2);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
 }
 .autobox-bottom-cta p {
