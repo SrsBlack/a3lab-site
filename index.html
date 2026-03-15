@@ -183,7 +183,7 @@
     </div>
     <div class="stat">
       <div class="stat-value">$0</div>
- <div class="stat-label">Strategy consultation, always free</div>
+      <div class="stat-label">Strategy consultation, always free</div>
     </div>
   </div>
 
@@ -1419,8 +1419,8 @@
         <div class="audit-email-step" id="audit-email-step" style="display:none;">
           <p class="audit-q-text">Almost there — where should we send your personalized audit report?</p>
           <form class="audit-email-form" id="audit-email-form">
-            <input type="text" placeholder="Your name" id="audit-name" required>
-            <input type="email" placeholder="your@email.com" id="audit-email" required>
+            <input type="text" placeholder="Your name" id="audit-name" required autocomplete="name">
+            <input type="email" placeholder="your@email.com" id="audit-email" required autocomplete="email">
             <button type="submit" class="btn btn-primary btn-lg">Send My Free Audit Report →</button>
           </form>
         </div>
@@ -1485,16 +1485,16 @@
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name">
+              <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com">
+              <input type="email" id="email" name="email" required placeholder="you@company.com" autocomplete="email">
             </div>
           </div>
           <div class="form-group">
             <label for="business">Business type</label>
-            <input type="text" id="business" name="business" placeholder="e.g., Marketing agency, E-commerce, Consulting...">
+            <input type="text" id="business" name="business" placeholder="e.g., Marketing agency, E-commerce, Consulting..." autocomplete="organization">
           </div>
           <div class="form-group">
             <label>What matters most right now?</label>
@@ -1734,6 +1734,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   toggle.addEventListener('click', toggleChat);
   closeBtn.addEventListener('click', toggleChat);
 
+  function escapeHtml(str) {
+    const el = document.createElement('span');
+    el.textContent = str;
+    return el.innerHTML;
+  }
+
   function addMsg(text, sender) {
     const d = document.createElement('div');
     d.className = 'chat-msg chat-msg-' + sender;
@@ -1854,7 +1860,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       showInput('e.g., Real estate, fitness, law firm...', (val) => {
         userData.business = val;
         typing(() => {
-          addMsg("Got it! For <strong>" + val + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
+          addMsg("Got it! For <strong>" + escapeHtml(val) + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
           showOptions([
             { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
             { label: '\uD83D\uDCB0 See pricing first', action: flowPricing },
@@ -1907,9 +1913,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         typing(() => {
           addMsg("Or if you prefer, drop your email and we'll reach out:", 'bot');
           showInput('Your email address', (val) => {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+              addMsg("Hmm, that doesn't look like a valid email. Could you double-check?", 'bot');
+              return;
+            }
             userData.email = val;
             typing(() => {
-              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + val + "</strong>. Talk soon!", 'bot');
+              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + escapeHtml(val) + "</strong>. Talk soon!", 'bot');
               showOptions([
                 { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
               ]);
