@@ -1358,6 +1358,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }
 })();
+
+// Card tap-to-expand on touch devices
+(function() {
+  if (window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.service-card, .automate-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') return;
+        card.classList.toggle('expanded');
+      });
+    });
+  }
+})();
 </script>
 
 <!-- GSAP CDN -->
