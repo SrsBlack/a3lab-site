@@ -2187,7 +2187,7 @@ body::after {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--color-success);
   display: inline-block;
   animation: pulse-dot 2s infinite;
 }
