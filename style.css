@@ -172,6 +172,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-4);
   min-height: 72px;
 }
 
@@ -205,7 +206,12 @@
 
 .nav-desktop { display: none; }
 @media (min-width: 1180px) {
-  .nav-desktop { display: flex; gap: var(--space-6); align-items: center; }
+  .nav-desktop {
+    display: flex;
+    gap: var(--space-5);
+    align-items: center;
+    margin-left: auto;
+  }
   .nav-mobile-toggle { display: none; }
 }
 .nav-desktop a {
@@ -222,6 +228,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
   width: 44px;
   height: 44px;
   color: var(--color-text);
@@ -2595,8 +2602,9 @@ input[type="range"] {
 .autobox-packages {
   padding: var(--space-8);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 2px solid oklch(from var(--color-primary) l c h / 0.22);
   border-radius: var(--radius-xl);
+  box-shadow: inset 0 0 0 1px oklch(from var(--color-bg) l c h / 0.6);
   margin-bottom: var(--space-14);
 }
 .autobox-packages-sub {
@@ -2614,22 +2622,22 @@ input[type="range"] {
   .autobox-packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
 .autobox-pkg-card {
-  background: var(--color-surface);
-  border: 1px solid oklch(from var(--color-border) l c h / 0.9);
+  background: var(--color-surface-2);
+  border: 1.5px solid oklch(from var(--color-border) l c h / 0.95);
   border-radius: var(--radius-xl);
   padding: var(--space-7);
   position: relative;
-  box-shadow: inset 0 0 0 1px oklch(from var(--color-bg) l c h / 0.5);
+  box-shadow: inset 0 0 0 1px oklch(from var(--color-bg) l c h / 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .autobox-pkg-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg), inset 0 0 0 1px oklch(from var(--color-primary) l c h / 0.25);
+  box-shadow: var(--shadow-lg), inset 0 0 0 1.5px oklch(from var(--color-primary) l c h / 0.35);
 }
 .autobox-pkg-card.featured {
-  border-color: oklch(from var(--color-primary) l c h / 0.55);
+  border-color: oklch(from var(--color-primary) l c h / 0.75);
   background: oklch(from var(--color-primary) l c h / 0.04);
-  box-shadow: inset 0 0 0 1px oklch(from var(--color-primary) l c h / 0.2);
+  box-shadow: inset 0 0 0 1.5px oklch(from var(--color-primary) l c h / 0.35);
 }
 .autobox-pkg-tier {
   font-size: 0.72rem;
