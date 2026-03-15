@@ -2066,9 +2066,9 @@ body::after {
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .webapp-card:hover {
-  border-color: rgba(34,211,238,0.3);
+  border-color: oklch(from var(--color-primary) l c h / 0.3);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-lg);
 }
 .webapp-card-icon {
   width: 44px;
