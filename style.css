@@ -1538,6 +1538,54 @@ body::after {
   }
 }
 
+/* ============================================
+   POLISH — buttons, nav, cards
+   ============================================ */
+
+/* Button shimmer sweep */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.14), transparent);
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  left: 150%;
+  transition: left 0.55s ease;
+}
+
+/* Frosted glass nav */
+.site-header {
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  background: rgba(10, 11, 15, 0.72) !important;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.07);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.scrolled {
+  background: rgba(10, 11, 15, 0.94) !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Pricing card featured glow border */
+.pricing-card.featured {
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.1),
+    0 20px 60px rgba(34, 211, 238, 0.07);
+}
+
+/* FAQ active state left indicator */
+.faq-item.active .faq-question {
+  border-left: 3px solid #22d3ee;
+  padding-left: 12px;
+  color: #22d3ee;
+  transition: all 0.2s ease;
+}
+
 /* ==================== OPENCLAW SECTION ==================== */
 .openclaw-section {
   background: var(--color-surface);
