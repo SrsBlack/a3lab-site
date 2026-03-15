@@ -71,6 +71,8 @@
 
     <nav class="nav-desktop" aria-label="Main navigation">
       <a href="#services">Services</a>
+      <a href="#roi-calc">ROI Calc</a>
+      <a href="#audit">Free Audit</a>
       <a href="#process">Process</a>
       <a href="#stack">Stack</a>
       <a href="#pricing">Pricing</a>
@@ -96,6 +98,8 @@
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
   <a href="#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="#roi-calc" onclick="this.closest('.nav-mobile').classList.remove('open')">ROI Calc</a>
+  <a href="#audit" onclick="this.closest('.nav-mobile').classList.remove('open')">Free Audit</a>
   <a href="#process" onclick="this.closest('.nav-mobile').classList.remove('open')">Process</a>
   <a href="#stack" onclick="this.closest('.nav-mobile').classList.remove('open')">Stack</a>
   <a href="#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
@@ -162,22 +166,98 @@
   <!-- STATS BAR -->
   <div class="stats-bar fade-in" aria-label="Key metrics">
     <div class="stat">
-      <div class="stat-value">24-72h</div>
-      <div class="stat-label">Average delivery time</div>
+      <div class="stat-value">3.7×</div>
+      <div class="stat-label">Average ROI per dollar invested in AI</div>
     </div>
     <div class="stat">
-      <div class="stat-value">80%</div>
-      <div class="stat-label">Tasks automated for clients</div>
+      <div class="stat-value">65%</div>
+      <div class="stat-label">Of support tickets handled automatically</div>
     </div>
     <div class="stat">
-      <div class="stat-value">3 Tools</div>
-      <div class="stat-label">Perplexity + Claude + Zapier</div>
+      <div class="stat-value">15 hrs</div>
+      <div class="stat-label">Saved per team member per week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">24–72h</div>
+      <div class="stat-label">From call to live automation</div>
     </div>
     <div class="stat">
       <div class="stat-value">$0</div>
-      <div class="stat-label">Initial strategy consultation</div>
+      <div class="stat-label">Strategy consultation, always free</div>
     </div>
   </div>
+
+  <!-- ==================== ROI CALCULATOR ==================== -->
+  <section id="roi-calc" class="section roi-calc-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Free ROI Calculator</div>
+      <h2 class="section-title fade-in">See exactly what manual work is costing you</h2>
+      <p class="section-desc fade-in">Adjust the sliders below. We'll show you your monthly loss and how fast automation pays for itself.</p>
+
+      <div class="roi-calc-wrap fade-in">
+        <div class="roi-inputs">
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-team">Team members doing manual tasks</label>
+              <span class="roi-val" id="roi-team-val">3</span>
+            </div>
+            <input type="range" id="roi-team" min="1" max="20" value="3" step="1">
+            <div class="roi-range-labels"><span>1</span><span>20</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-hours">Hours per person spent on repetitive tasks/week</label>
+              <span class="roi-val" id="roi-hours-val">10</span>
+            </div>
+            <input type="range" id="roi-hours" min="2" max="40" value="10" step="1">
+            <div class="roi-range-labels"><span>2 hrs</span><span>40 hrs</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-rate">Average hourly cost per team member (CAD $)</label>
+              <span class="roi-val" id="roi-rate-val">$45</span>
+            </div>
+            <input type="range" id="roi-rate" min="20" max="200" value="45" step="5">
+            <div class="roi-range-labels"><span>$20</span><span>$200</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-automatable">% of those tasks that can be automated</label>
+              <span class="roi-val" id="roi-automatable-val">70%</span>
+            </div>
+            <input type="range" id="roi-automatable" min="10" max="90" value="70" step="5">
+            <div class="roi-range-labels"><span>10%</span><span>90%</span></div>
+          </div>
+
+        </div>
+
+        <div class="roi-results">
+          <div class="roi-result-card roi-loss">
+            <div class="roi-result-label">You're losing every month</div>
+            <div class="roi-result-value" id="roi-monthly-loss">$0</div>
+            <div class="roi-result-sub">in recoverable labour costs</div>
+          </div>
+          <div class="roi-result-card roi-save">
+            <div class="roi-result-label">Monthly savings with automation</div>
+            <div class="roi-result-value" id="roi-monthly-save">$0</div>
+            <div class="roi-result-sub">hours freed up per month</div>
+            <div class="roi-result-hours" id="roi-hours-freed"></div>
+          </div>
+          <div class="roi-result-card roi-payback">
+            <div class="roi-result-label">Starter Build pays for itself in</div>
+            <div class="roi-result-value" id="roi-payback">0 weeks</div>
+            <div class="roi-result-sub">at $1,500 one-time cost</div>
+          </div>
+          <a href="#contact" class="btn btn-primary roi-cta">Get This Built For You →</a>
+          <p class="roi-disclaimer">Based on 80% automation efficiency. Actual results vary by workflow complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- SERVICES -->
   <section id="services" class="section">
@@ -341,6 +421,79 @@
             </div>
           </div>
           <span class="service-tag">Managed Service</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+          <h3>Voice-to-Action Workflows</h3>
+          <p>Leave a voice memo or Loom → AI transcribes, extracts action items, creates Notion tasks, and sends follow-up emails. Built for busy founders who think out loud.</p>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <p class="card-detail-how"><strong>How it works:</strong> Record a voice note via WhatsApp or any app → transcription runs automatically → Claude extracts decisions and tasks → Notion updated + follow-up emails drafted and sent.</p>
+              <ul class="card-detail-bullets">
+                <li>Works with WhatsApp, Loom, any audio file</li>
+                <li>Connects to: Notion, Gmail, Slack, Asana</li>
+                <li>Typical time saved: <strong>3–5 hrs/week</strong></li>
+              </ul>
+              <a href="#contact" class="card-detail-cta">Get this built →</a>
+            </div>
+          </div>
+          <span class="service-tag">Claude + Zapier</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+          <h3>Competitor Intelligence Monitor</h3>
+          <p>Weekly automated brief tracking competitor website changes, pricing shifts, new job postings, and social sentiment — delivered to your inbox every Monday before 7am.</p>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <p class="card-detail-how"><strong>How it works:</strong> Every Sunday night → Perplexity scans competitor sites, job boards, and social → Claude summarizes key changes and strategic signals → report lands in your inbox before you start your week.</p>
+              <ul class="card-detail-bullets">
+                <li>Track up to 5 competitors simultaneously</li>
+                <li>Connects to: Gmail, Slack, Notion</li>
+                <li>Delivery: <strong>1–2 business days</strong></li>
+              </ul>
+              <a href="#contact" class="card-detail-cta">Get this built →</a>
+            </div>
+          </div>
+          <span class="service-tag">Perplexity + Claude + Zapier</span>
+        </div>
+
+        <div class="service-card fade-in">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="9" y2="9"/>
+            <circle cx="18" cy="18" r="5" fill="var(--color-bg)" stroke="var(--color-primary)"/>
+            <line x1="18" y1="15" x2="18" y2="21"/>
+            <line x1="15" y1="18" x2="21" y2="18"/>
+          </svg>
+          <h3>AI Proposal Generator</h3>
+          <p>Client fills a short intake form → Claude drafts a full scoped proposal in your brand voice, with pricing and timeline — ready to send in under 5 minutes. Eliminates 3–4 hours per deal.</p>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <p class="card-detail-how"><strong>How it works:</strong> Prospect fills your intake form → Claude reads their inputs and your service templates → generates a fully formatted proposal → lands in your inbox (or sends directly to client) in minutes.</p>
+              <ul class="card-detail-bullets">
+                <li>Fully branded in your voice and format</li>
+                <li>Connects to: Typeform, Notion, Gmail, DocuSign</li>
+                <li>Typical time saved: <strong>3–4 hrs per proposal</strong></li>
+              </ul>
+              <a href="#contact" class="card-detail-cta">Get this built →</a>
+            </div>
+          </div>
+          <span class="service-tag">Claude + Zapier</span>
         </div>
       </div>
     </div>
@@ -1183,6 +1336,130 @@
     </div>
   </section>
 
+  <!-- ==================== AUTOMATION AUDIT ==================== -->
+  <section id="audit" class="section audit-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Free Automation Audit</div>
+      <h2 class="section-title fade-in">Find out exactly what to automate first</h2>
+      <p class="section-desc fade-in">Answer 5 quick questions. We'll instantly score your business on automation readiness and surface your top 3 highest-ROI opportunities — no call required.</p>
+
+      <div class="audit-wrap fade-in">
+
+        <!-- Step indicators -->
+        <div class="audit-steps" id="audit-steps">
+          <div class="audit-step active" data-step="1">1</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="2">2</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="3">3</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="4">4</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="5">5</div>
+        </div>
+
+        <!-- Questions -->
+        <div class="audit-questions" id="audit-questions">
+
+          <div class="audit-q active" data-q="1">
+            <p class="audit-q-text">What type of business do you run?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="agency">Agency / Consulting</button>
+              <button class="audit-opt" data-val="ecommerce">E-commerce / Retail</button>
+              <button class="audit-opt" data-val="saas">SaaS / Tech</button>
+              <button class="audit-opt" data-val="service">Local / Service Business</button>
+              <button class="audit-opt" data-val="other">Other</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="2">
+            <p class="audit-q-text">How many hours per week does your team spend on repetitive manual tasks?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="low">Under 5 hours</button>
+              <button class="audit-opt" data-val="med">5–15 hours</button>
+              <button class="audit-opt" data-val="high">15–30 hours</button>
+              <button class="audit-opt" data-val="very-high">30+ hours</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="3">
+            <p class="audit-q-text">Which area hurts most right now?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="sales">Sales & lead follow-up</button>
+              <button class="audit-opt" data-val="content">Content & marketing</button>
+              <button class="audit-opt" data-val="support">Customer support</button>
+              <button class="audit-opt" data-val="ops">Operations & admin</button>
+              <button class="audit-opt" data-val="reporting">Reporting & analytics</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="4">
+            <p class="audit-q-text">Have you tried any automation tools before?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="none">Never — starting from scratch</button>
+              <button class="audit-opt" data-val="basic">Basic tools (Zapier, IFTTT)</button>
+              <button class="audit-opt" data-val="some">Some AI tools (ChatGPT, etc.)</button>
+              <button class="audit-opt" data-val="advanced">Advanced stack already in place</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="5">
+            <p class="audit-q-text">What's your biggest blocker right now?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="time">No time to set it up</button>
+              <button class="audit-opt" data-val="know">Don't know where to start</button>
+              <button class="audit-opt" data-val="cost">Not sure it's worth the cost</button>
+              <button class="audit-opt" data-val="trust">Not sure AI can handle my workflows</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Email capture + result -->
+        <div class="audit-email-step" id="audit-email-step" style="display:none;">
+          <p class="audit-q-text">Almost there — where should we send your personalized audit report?</p>
+          <form class="audit-email-form" id="audit-email-form">
+            <input type="text" placeholder="Your name" id="audit-name" required>
+            <input type="email" placeholder="your@email.com" id="audit-email" required>
+            <button type="submit" class="btn btn-primary btn-lg">Send My Free Audit Report →</button>
+          </form>
+        </div>
+
+        <!-- Result panel -->
+        <div class="audit-result" id="audit-result" style="display:none;">
+          <div class="audit-score-wrap">
+            <div class="audit-score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(34,211,238,0.1)" stroke-width="10"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-primary)" stroke-width="10"
+                  stroke-dasharray="327" stroke-dashoffset="327" id="audit-score-circle"
+                  stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="audit-score-num" id="audit-score-num">0</div>
+              <div class="audit-score-label">/ 100</div>
+            </div>
+            <div class="audit-score-text">
+              <h3 id="audit-score-title">Your Automation Readiness Score</h3>
+              <p id="audit-score-desc">Calculating...</p>
+            </div>
+          </div>
+
+          <div class="audit-recs" id="audit-recs">
+            <h4>Your Top 3 Automation Opportunities</h4>
+            <div class="audit-rec-list" id="audit-rec-list"></div>
+          </div>
+
+          <div class="audit-result-cta">
+            <p>Want us to build these for you?</p>
+            <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
+            <a href="#contact" class="btn btn-outline">Or drop us a message</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA + CONTACT FORM -->
   <section id="contact" class="cta-section">
     <div class="section-inner">
@@ -1653,6 +1930,158 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         card.classList.toggle('expanded');
       });
     });
+  }
+})();
+
+// ==================== ROI CALCULATOR ====================
+(function() {
+  const fields = {
+    team: { el: document.getElementById('roi-team'), out: document.getElementById('roi-team-val'), fmt: v => v },
+    hours: { el: document.getElementById('roi-hours'), out: document.getElementById('roi-hours-val'), fmt: v => v },
+    rate: { el: document.getElementById('roi-rate'), out: document.getElementById('roi-rate-val'), fmt: v => '$' + v },
+    auto: { el: document.getElementById('roi-automatable'), out: document.getElementById('roi-automatable-val'), fmt: v => v + '%' }
+  };
+  if (!fields.team.el) return;
+
+  function calc() {
+    const team = +fields.team.el.value;
+    const hours = +fields.hours.el.value;
+    const rate = +fields.rate.el.value;
+    const autoPct = +fields.auto.el.value / 100;
+
+    const monthlyWaste = team * hours * 4.33 * rate;
+    const monthlySave = monthlyWaste * autoPct * 0.8;
+    const hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
+    const weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : '—';
+
+    document.getElementById('roi-monthly-loss').textContent = '$' + Math.round(monthlyWaste).toLocaleString();
+    document.getElementById('roi-monthly-save').textContent = '$' + Math.round(monthlySave).toLocaleString();
+    document.getElementById('roi-hours-freed').textContent = hoursFree + ' hrs/month freed';
+    document.getElementById('roi-payback').textContent = typeof weeksPayback === 'number' ? weeksPayback + ' weeks' : '—';
+
+    fields.team.out.textContent = fields.team.fmt(team);
+    fields.hours.out.textContent = fields.hours.fmt(hours);
+    fields.rate.out.textContent = fields.rate.fmt(rate);
+    fields.auto.out.textContent = fields.auto.fmt(+fields.auto.el.value);
+  }
+
+  Object.values(fields).forEach(f => f.el && f.el.addEventListener('input', calc));
+  calc();
+})();
+
+// ==================== AUTOMATION AUDIT ====================
+(function() {
+  const answers = {};
+  let currentQ = 1;
+  const totalQ = 5;
+
+  document.querySelectorAll('.audit-opt').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const qEl = this.closest('.audit-q');
+      const qNum = parseInt(qEl.dataset.q);
+      answers[qNum] = this.dataset.val;
+
+      // Mark step done
+      const stepEl = document.querySelector('.audit-step[data-step="' + qNum + '"]');
+      if (stepEl) { stepEl.classList.add('done'); stepEl.classList.remove('active'); }
+
+      // Move to next or show email step
+      qEl.classList.remove('active');
+      if (qNum < totalQ) {
+        currentQ = qNum + 1;
+        const nextQ = document.querySelector('.audit-q[data-q="' + currentQ + '"]');
+        if (nextQ) nextQ.classList.add('active');
+        const nextStep = document.querySelector('.audit-step[data-step="' + currentQ + '"]');
+        if (nextStep) nextStep.classList.add('active');
+      } else {
+        document.getElementById('audit-questions').style.display = 'none';
+        document.getElementById('audit-steps').style.display = 'none';
+        document.getElementById('audit-email-step').style.display = 'block';
+      }
+    });
+  });
+
+  const emailForm = document.getElementById('audit-email-form');
+  if (emailForm) {
+    emailForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('audit-email-step').style.display = 'none';
+      showAuditResult();
+    });
+  }
+
+  function showAuditResult() {
+    document.getElementById('audit-result').style.display = 'block';
+
+    // Score logic
+    let score = 50;
+    if (answers[2] === 'high') score += 15;
+    if (answers[2] === 'very-high') score += 25;
+    if (answers[2] === 'med') score += 8;
+    if (answers[4] === 'none' || answers[4] === 'basic') score += 10;
+    if (answers[3]) score += 5;
+
+    score = Math.min(score, 98);
+
+    // Animate score ring
+    const circle = document.getElementById('audit-score-circle');
+    const numEl = document.getElementById('audit-score-num');
+    const circumference = 327;
+    let current = 0;
+    const target = score;
+    const interval = setInterval(() => {
+      current = Math.min(current + 2, target);
+      const offset = circumference - (current / 100) * circumference;
+      if (circle) circle.style.strokeDashoffset = offset;
+      if (numEl) numEl.textContent = current;
+      if (current >= target) clearInterval(interval);
+    }, 18);
+
+    // Score label
+    const titleEl = document.getElementById('audit-score-title');
+    const descEl = document.getElementById('audit-score-desc');
+    if (score >= 75) {
+      titleEl.textContent = 'High Automation Potential 🚀';
+      descEl.textContent = 'Your business is losing significant time and money on tasks that AI can handle today. The ROI on automation would be immediate.';
+    } else if (score >= 50) {
+      titleEl.textContent = 'Strong Automation Opportunity 💡';
+      descEl.textContent = 'You have clear, actionable workflows to automate. A focused build would save your team hours every week within days.';
+    } else {
+      titleEl.textContent = 'Good Starting Point ✅';
+      descEl.textContent = 'Even with lighter manual work, automation can free up time for higher-value tasks and prepare your business to scale.';
+    }
+
+    // Recommendations based on answers
+    const recMap = {
+      sales: { icon: '🎯', title: 'Lead Research & Outreach Pipeline', desc: 'Auto-research every prospect and draft personalized outreach before they go cold.' },
+      content: { icon: '✍️', title: 'AI Content Engine', desc: 'Research, draft, and schedule content across all channels on autopilot.' },
+      support: { icon: '🤖', title: 'Customer Support Automation', desc: 'Handle 65%+ of tickets automatically, respond in under 2 hours 24/7.' },
+      ops: { icon: '⚙️', title: 'Operations & Onboarding Automation', desc: 'Auto-generate onboarding docs, extract data from files, and create tasks from meetings.' },
+      reporting: { icon: '📊', title: 'Automated Reporting System', desc: 'Weekly KPI reports compiled and delivered to your inbox every Monday at 7am.' },
+      agency: { icon: '📋', title: 'Client Proposal Generator', desc: 'Turn a short brief into a full scoped proposal in minutes using Claude.' },
+      ecommerce: { icon: '💬', title: 'Review & Sentiment Monitoring', desc: 'Aggregate reviews, surface product issues, and track sentiment across channels daily.' },
+      saas: { icon: '🔔', title: 'Churn Prevention Workflow', desc: 'Monitor usage signals, flag at-risk accounts, and trigger retention sequences automatically.' }
+    };
+
+    const recs = [];
+    if (answers[3] && recMap[answers[3]]) recs.push(recMap[answers[3]]);
+    if (answers[1] && recMap[answers[1]] && recs.length < 3) recs.push(recMap[answers[1]]);
+    const fallbacks = ['sales','content','support'].filter(k => !recs.find(r => r.title === recMap[k]?.title));
+    while (recs.length < 3 && fallbacks.length) recs.push(recMap[fallbacks.shift()]);
+
+    const listEl = document.getElementById('audit-rec-list');
+    if (listEl) {
+      listEl.innerHTML = recs.slice(0, 3).map((r, i) => `
+        <div class="audit-rec-item">
+          <div class="audit-rec-num">${i + 1}</div>
+          <div class="audit-rec-icon">${r.icon}</div>
+          <div>
+            <strong>${r.title}</strong>
+            <p>${r.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
   }
 })();
 </script>
