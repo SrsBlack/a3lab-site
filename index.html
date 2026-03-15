@@ -1228,5 +1228,104 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })();
 </script>
 
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<script>
+// === A3 LAB GSAP ANIMATIONS ===
+window.addEventListener('load', function () {
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance: text slides in from left, robot from right
+  gsap.from('.hero-text', {
+    opacity: 0, x: -50, duration: 1, ease: 'power3.out', delay: 0.2
+  });
+  gsap.from('.hero-robot', {
+    opacity: 0, x: 50, duration: 1, ease: 'power3.out', delay: 0.4
+  });
+
+  // Stats count-up on scroll
+  document.querySelectorAll('.stat-value').forEach(function(el) {
+    var raw = el.textContent.trim();
+    var match = raw.match(/[\d.]+/);
+    if (!match) return;
+    var num = parseFloat(match[0]);
+    var pre = raw.split(match[0])[0];
+    var suf = raw.split(match[0])[1] || '';
+    var obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%', once: true,
+      onEnter: function() {
+        gsap.to(obj, {
+          v: num, duration: 1.8, ease: 'power2.out',
+          onUpdate: function() {
+            el.textContent = pre + (Number.isInteger(num) ? Math.round(obj.v) : obj.v.toFixed(1)) + suf;
+          }
+        });
+      }
+    });
+  });
+
+  // Service cards stagger in
+  gsap.from('.service-card', {
+    scrollTrigger: { trigger: '.services-grid', start: 'top 82%' },
+    opacity: 0, y: 40, duration: 0.65, stagger: 0.1, ease: 'power2.out'
+  });
+
+  // Pricing cards stagger in
+  gsap.from('.pricing-card', {
+    scrollTrigger: { trigger: '.pricing-grid', start: 'top 82%' },
+    opacity: 0, y: 40, duration: 0.65, stagger: 0.12, ease: 'power2.out'
+  });
+
+  // Stack items pop in
+  gsap.from('.stack-item', {
+    scrollTrigger: { trigger: '.stack-grid', start: 'top 85%' },
+    opacity: 0, scale: 0.85, duration: 0.4, stagger: 0.07, ease: 'back.out(1.5)'
+  });
+
+  // Process steps slide in from left
+  gsap.from('.process-step', {
+    scrollTrigger: { trigger: '.process-list', start: 'top 82%' },
+    opacity: 0, x: -35, duration: 0.6, stagger: 0.13, ease: 'power2.out'
+  });
+
+  // Story + automate cards
+  gsap.from('.story-card, .automate-card', {
+    scrollTrigger: { trigger: '.stories-grid', start: 'top 85%' },
+    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out'
+  });
+
+  // Section labels, titles, descriptions
+  gsap.utils.toArray('.section-label, .section-title, .section-desc').forEach(function(el) {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+      opacity: 0, y: 22, duration: 0.6, ease: 'power2.out'
+    });
+  });
+
+  // Service card hover scale
+  document.querySelectorAll('.service-card').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      gsap.to(card, { scale: 1.03, duration: 0.22, ease: 'power1.out' });
+    });
+    card.addEventListener('mouseleave', function() {
+      gsap.to(card, { scale: 1, duration: 0.22, ease: 'power1.out' });
+    });
+  });
+
+  // Frosted nav on scroll
+  var header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  }
+
+});
+</script>
+
 </body>
 </html>
