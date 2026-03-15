@@ -44,20 +44,6 @@
 }
 </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWE167KNL7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HWE167KNL7');
-</script>
-
-<!-- Calendly Popup Widget -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -88,6 +74,7 @@
       <a href="#process">Process</a>
       <a href="#stack">Stack</a>
       <a href="#pricing">Pricing</a>
+      <a href="#openclaw">OpenClaw</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="btn btn-primary">Book a Call</a>
       <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
@@ -110,6 +97,7 @@
   <a href="#process" onclick="this.closest('.nav-mobile').classList.remove('open')">Process</a>
   <a href="#stack" onclick="this.closest('.nav-mobile').classList.remove('open')">Stack</a>
   <a href="#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="#openclaw" onclick="this.closest('.nav-mobile').classList.remove('open')">OpenClaw</a>
   <a href="#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
   <a href="#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
 </nav>
@@ -350,6 +338,13 @@
         </div>
         <div class="stack-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+          <span>OpenClaw</span>
+        </div>
+        <div class="stack-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
             <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
@@ -496,6 +491,16 @@
 
         <div class="faq-item fade-in">
           <button class="faq-question" aria-expanded="false">
+            What is OpenClaw and why would I want it?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            OpenClaw is a self-hosted AI assistant that connects to your messaging apps (WhatsApp, Telegram, Slack, Discord) and can actually take action on your behalf — sending emails, managing files, browsing websites, running scheduled routines, and more. Unlike cloud-based AI assistants, it runs on your own machine or server, so your data stays private. We handle the entire setup and customization so you don't need technical skills to use it.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
             Can I start with one build and add a retainer later?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -542,6 +547,160 @@
     </div>
   </section>
 
+  <!-- ==================== OPENCLAW INTEGRATION ==================== -->
+  <section id="openclaw" class="section openclaw-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">OpenClaw Integration</div>
+      <h2 class="section-title fade-in">Your AI agent, running 24/7 from your own machine</h2>
+      <p class="section-desc fade-in">We deploy and customize OpenClaw — a self-hosted AI assistant that lives inside your chat apps and actually gets work done. Not just answers. Actions.</p>
+
+      <!-- OpenClaw Intro -->
+      <div class="oc-intro fade-in">
+        <p>OpenClaw is an open-source AI assistant that runs on your own computer or server — not on someone else's cloud. You message it from WhatsApp, Telegram, Slack, or any chat app you already use, and it doesn't just answer questions — it takes action. It sends emails, manages files, browses websites, runs scripts, and handles scheduled routines like morning briefings and inbox sweeps. A3 Lab handles the entire setup: we install it, connect your channels, configure custom workflows, and make the whole thing usable for non-technical people.</p>
+      </div>
+
+      <!-- 3 Feature Cards -->
+      <div class="oc-features-grid">
+        <div class="oc-feature-card fade-in">
+          <div class="oc-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3>Lives in Your Chat Apps</h3>
+          <p>Control everything from WhatsApp, Telegram, Slack, Discord, or any messaging app you already use. No new dashboards to learn — just text your AI like you'd text a colleague.</p>
+          <span class="oc-tagline">Your entire operation, one chat thread away.</span>
+        </div>
+        <div class="oc-feature-card fade-in">
+          <div class="oc-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3>Does Things, Not Just Says Things</h3>
+          <p>This isn't a chatbot that gives you answers and waits. OpenClaw opens browser tabs, sends emails, organizes files, fills out forms, and runs shell commands on your behalf.</p>
+          <span class="oc-tagline">An AI with hands, not just a mouth.</span>
+        </div>
+        <div class="oc-feature-card fade-in">
+          <div class="oc-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Private by Default</h3>
+          <p>OpenClaw runs on your machine or your server. Your data, conversations, and business logic never touch a third-party platform you don't control. For industries where privacy matters, this is the only way.</p>
+          <span class="oc-tagline">Your data stays exactly where you put it.</span>
+        </div>
+      </div>
+
+      <!-- 3 Packages -->
+      <div class="oc-packages-label fade-in">
+        <h3>OpenClaw Packages</h3>
+        <p>Three clear options depending on where you are and what you need.</p>
+      </div>
+
+      <div class="oc-packages-grid">
+        <div class="oc-package-card fade-in">
+          <div class="oc-package-tier">Personal</div>
+          <h4>Chat-Based AI Assistant</h4>
+          <p class="oc-package-pitch">Your own AI assistant in WhatsApp or Telegram that handles tasks like a reliable virtual employee — running 24/7 on your own machine.</p>
+          <div class="oc-package-for">Best for: Solo founders, freelancers, power users</div>
+          <ul class="oc-package-list">
+            <li>OpenClaw installed on your machine or cloud server</li>
+            <li>1 messaging channel connected (WhatsApp, Telegram, or Slack)</li>
+            <li>AI model configured (Claude, GPT, Gemini — your choice)</li>
+            <li>3 custom skills (email drafting, calendar, file organization)</li>
+            <li>Persistent memory across sessions</li>
+            <li>2 scheduled routines (morning briefing, inbox summary)</li>
+            <li>Training call + written quickstart guide</li>
+          </ul>
+          <div class="oc-package-price">$1,500–2,000 <span>one-time</span></div>
+          <a href="#contact" class="btn btn-outline">Get Started</a>
+        </div>
+
+        <div class="oc-package-card featured fade-in">
+          <div class="oc-package-tier">Team</div>
+          <h4>Multi-Channel Team Agent</h4>
+          <p class="oc-package-pitch">One AI brain connected to every channel your team uses — with shared memory, routing, and workflows that keep your operation running.</p>
+          <div class="oc-package-for">Best for: Small agencies, service businesses (2–10 people)</div>
+          <ul class="oc-package-list">
+            <li>Deployed on a VPS for 24/7 uptime (we handle provisioning + SSL)</li>
+            <li>3–5 messaging channels connected simultaneously</li>
+            <li>Multi-agent routing (sales agent on WhatsApp, ops agent on Slack)</li>
+            <li>5–8 custom skills and MCP integrations</li>
+            <li>5+ scheduled routines (reports, follow-ups, inbox sweeps)</li>
+            <li>Browser automation for web tasks</li>
+            <li>30-day post-setup support</li>
+          </ul>
+          <div class="oc-package-price">$3,000–5,000 <span>one-time</span></div>
+          <a href="#contact" class="btn btn-primary">Book a Call</a>
+        </div>
+
+        <div class="oc-package-card fade-in">
+          <div class="oc-package-tier">Retainer</div>
+          <h4>Always-On Automation</h4>
+          <p class="oc-package-pitch">We manage, maintain, and continuously improve your OpenClaw deployment — adding new skills and building automations month after month.</p>
+          <div class="oc-package-for">Best for: Businesses wanting ongoing optimization + new workflows</div>
+          <ul class="oc-package-list">
+            <li>Dedicated monthly support hours</li>
+            <li>Server monitoring, updates, and security patches</li>
+            <li>2–4 new automation builds each month</li>
+            <li>Prompt and skill tuning based on real usage</li>
+            <li>Monthly performance review</li>
+            <li>Priority same-day response</li>
+            <li>Model and cost optimization</li>
+          </ul>
+          <div class="oc-package-price">$750–2,000 <span>/month</span></div>
+          <a href="#contact" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Stack Explainer -->
+      <div class="oc-stack-explainer fade-in">
+        <h3>How OpenClaw fits our stack</h3>
+        <p class="oc-stack-paragraph">Think of our stack like a person. Perplexity is the researcher — it finds real-time information from the web. Claude is the thinker — it reasons, writes, and builds logic. OpenClaw is the doer — the hands and legs that click buttons, send messages, organize files, and run daily routines across your apps. Zapier and Make are the plumbing that connects everything to your existing tools.</p>
+        <div class="oc-stack-list">
+          <div class="oc-stack-item">
+            <strong>Perplexity</strong>
+            <span>The research brain. Finds real-time information with sources.</span>
+          </div>
+          <div class="oc-stack-item">
+            <strong>Claude</strong>
+            <span>The reasoning brain. Writes, thinks, drafts, builds logic.</span>
+          </div>
+          <div class="oc-stack-item">
+            <strong>OpenClaw</strong>
+            <span>The hands and legs. Clicks, types, sends, files, runs routines 24/7.</span>
+          </div>
+          <div class="oc-stack-item">
+            <strong>Zapier / Make</strong>
+            <span>The plumbing. Connects CRM, Notion, Google Workspace, and 5,000+ tools.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Collapsible -->
+      <div class="oc-advanced fade-in">
+        <button class="oc-advanced-toggle" aria-expanded="false">
+          Technical details for advanced buyers
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="oc-advanced-content">
+          <p>Under the hood, we deploy OpenClaw as a containerized Gateway service — typically Docker on a VPS (DigitalOcean, Hetzner, or Contabo) with Nginx reverse proxy, SSL via Let's Encrypt, and systemd for process management. Model routing goes through OpenRouter or direct provider APIs (Anthropic, OpenAI, Google), and we configure per-agent model overrides so cost-sensitive tasks use lighter models while complex reasoning hits Claude or GPT-class models. Multi-channel routing is handled at the Gateway layer, with session isolation per channel and persistent memory stored as plaintext Markdown files you can inspect and edit. We configure MCP integrations for browser automation, file operations, and external service connections, and set up cron jobs for scheduled tasks with proper retry policies and session management. Skills are vetted before installation, and we harden every deployment with non-root users, firewall rules, and scoped API permissions. Everything is documented, reproducible, and yours to own.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="oc-cta fade-in">
+        <p>Not sure which OpenClaw setup fits your business? Book a free 30-minute call and we'll map out your workflows, identify the highest-ROI automations, and show you what an always-on AI agent looks like for your team.</p>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+          Book Your Free OpenClaw Strategy Call
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA + CONTACT FORM -->
   <section id="contact" class="cta-section">
     <div class="section-inner">
@@ -549,7 +708,7 @@
       <h2 class="section-title fade-in">Let's find your first automation</h2>
       <p class="section-desc fade-in">Tell us what's eating your time. We'll show you how to get it back.</p>
       <div class="hero-actions fade-in" style="justify-content: center; margin-bottom: var(--space-10);">
-        <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/goyalpriyanshu1996/30min'});return false;" class="btn btn-primary btn-lg">
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Schedule a Free Call
         </a>
@@ -636,7 +795,7 @@
       <div class="footer-links">
         <h4>Contact</h4>
         <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
-        <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/goyalpriyanshu1996/30min'});return false;">Book a Call</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
       </div>
       <div class="footer-links">
         <h4>Connect</h4>
@@ -718,6 +877,16 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       item.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
     }
+  });
+});
+
+// OpenClaw advanced toggle
+document.querySelectorAll('.oc-advanced-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const parent = btn.closest('.oc-advanced');
+    const wasOpen = parent.classList.contains('open');
+    parent.classList.toggle('open');
+    btn.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
   });
 });
 
@@ -984,14 +1153,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }
 })();
-</script>
-
-<!-- Crisp Chat Widget -->
-<!-- TODO: Replace YOUR_CRISP_WEBSITE_ID with your actual Crisp Website ID -->
-<!-- Sign up free at https://crisp.chat → Settings → Website → copy Website ID -->
-<script type="text/javascript">
-  window.$crisp=[];window.CRISP_WEBSITE_ID="YOUR_CRISP_WEBSITE_ID";
-  (function(){var d=document;var s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
 </script>
 
 </body>
