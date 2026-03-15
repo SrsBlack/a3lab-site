@@ -175,6 +175,78 @@
     </div>
   </div>
 
+  <!-- ==================== ROI CALCULATOR ==================== -->
+  <section id="roi-calc" class="section roi-calc-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Free ROI Calculator</div>
+      <h2 class="section-title fade-in">See exactly what manual work is costing you</h2>
+      <p class="section-desc fade-in">Adjust the sliders below. We'll show you your monthly loss and how fast automation pays for itself.</p>
+
+      <div class="roi-calc-wrap fade-in">
+        <div class="roi-inputs">
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-team">Team members doing manual tasks</label>
+              <span class="roi-val" id="roi-team-val">3</span>
+            </div>
+            <input type="range" id="roi-team" min="1" max="20" value="3" step="1">
+            <div class="roi-range-labels"><span>1</span><span>20</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-hours">Hours per person spent on repetitive tasks/week</label>
+              <span class="roi-val" id="roi-hours-val">10</span>
+            </div>
+            <input type="range" id="roi-hours" min="2" max="40" value="10" step="1">
+            <div class="roi-range-labels"><span>2 hrs</span><span>40 hrs</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-rate">Average hourly cost per team member (CAD $)</label>
+              <span class="roi-val" id="roi-rate-val">$45</span>
+            </div>
+            <input type="range" id="roi-rate" min="20" max="200" value="45" step="5">
+            <div class="roi-range-labels"><span>$20</span><span>$200</span></div>
+          </div>
+
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-automatable">% of those tasks that can be automated</label>
+              <span class="roi-val" id="roi-automatable-val">70%</span>
+            </div>
+            <input type="range" id="roi-automatable" min="10" max="90" value="70" step="5">
+            <div class="roi-range-labels"><span>10%</span><span>90%</span></div>
+          </div>
+
+        </div>
+
+        <div class="roi-results">
+          <div class="roi-result-card roi-loss">
+            <div class="roi-result-label">You're losing every month</div>
+            <div class="roi-result-value" id="roi-monthly-loss">$0</div>
+            <div class="roi-result-sub">in recoverable labour costs</div>
+          </div>
+          <div class="roi-result-card roi-save">
+            <div class="roi-result-label">Monthly savings with automation</div>
+            <div class="roi-result-value" id="roi-monthly-save">$0</div>
+            <div class="roi-result-sub">hours freed up per month</div>
+            <div class="roi-result-hours" id="roi-hours-freed"></div>
+          </div>
+          <div class="roi-result-card roi-payback">
+            <div class="roi-result-label">Starter Build pays for itself in</div>
+            <div class="roi-result-value" id="roi-payback">0 weeks</div>
+            <div class="roi-result-sub">at $1,500 one-time cost</div>
+          </div>
+          <a href="#contact" class="btn btn-primary roi-cta">Get This Built For You →</a>
+          <p class="roi-disclaimer">Based on 80% automation efficiency. Actual results vary by workflow complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services" class="section">
     <div class="section-inner">
