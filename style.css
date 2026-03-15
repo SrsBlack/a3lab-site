@@ -2302,8 +2302,8 @@ body::after {
   box-shadow: var(--shadow-lg);
 }
 .autobox-pkg-card.featured {
-  border-color: rgba(34,211,238,0.4);
-  background: rgba(34,211,238,0.04);
+  border-color: oklch(from var(--color-primary) l c h / 0.4);
+  background: oklch(from var(--color-primary) l c h / 0.04);
 }
 .autobox-pkg-tier {
   font-size: 0.72rem;
