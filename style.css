@@ -2377,9 +2377,9 @@ input[type="range"] {
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .webapp-card:hover {
-  border-color: rgba(34,211,238,0.3);
+  border-color: oklch(from var(--color-primary) l c h / 0.3);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-lg);
 }
 .webapp-card-icon {
   width: 44px;
@@ -2417,8 +2417,8 @@ input[type="range"] {
 .webapp-tag {
   font-size: 0.7rem;
   font-weight: 600;
-  background: rgba(34,211,238,0.08);
-  border: 1px solid rgba(34,211,238,0.2);
+  background: oklch(from var(--color-primary) l c h / 0.08);
+  border: 1px solid oklch(from var(--color-primary) l c h / 0.2);
   color: var(--color-primary);
   padding: 2px 8px;
   border-radius: 20px;
@@ -2468,7 +2468,7 @@ input[type="range"] {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(34,211,238,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, oklch(from var(--color-primary) l c h / 0.15) 0%, transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -2476,7 +2476,7 @@ input[type="range"] {
 }
 .autobox-device {
   background: var(--color-surface);
-  border: 1px solid rgba(34,211,238,0.2);
+  border: 1px solid oklch(from var(--color-primary) l c h / 0.2);
   border-radius: 16px;
   padding: var(--space-6);
   width: 100%;
@@ -2498,7 +2498,7 @@ input[type="range"] {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--color-success);
   display: inline-block;
   animation: pulse-dot 2s infinite;
 }
@@ -2610,11 +2610,11 @@ input[type="range"] {
 }
 .autobox-pkg-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-lg);
 }
 .autobox-pkg-card.featured {
-  border-color: rgba(34,211,238,0.4);
-  background: rgba(34,211,238,0.04);
+  border-color: oklch(from var(--color-primary) l c h / 0.4);
+  background: oklch(from var(--color-primary) l c h / 0.04);
 }
 .autobox-pkg-tier {
   font-size: 0.72rem;
@@ -2714,7 +2714,7 @@ input[type="range"] {
   text-align: center;
   padding: var(--space-8);
   background: var(--color-surface);
-  border: 1px solid rgba(34,211,238,0.2);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
 }
 .autobox-bottom-cta p {
