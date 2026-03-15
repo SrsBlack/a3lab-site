@@ -1442,6 +1442,42 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }
 })();
+
+// ==================== ROI CALCULATOR ====================
+(function() {
+  const fields = {
+    team: { el: document.getElementById('roi-team'), out: document.getElementById('roi-team-val'), fmt: v => v },
+    hours: { el: document.getElementById('roi-hours'), out: document.getElementById('roi-hours-val'), fmt: v => v },
+    rate: { el: document.getElementById('roi-rate'), out: document.getElementById('roi-rate-val'), fmt: v => '$' + v },
+    auto: { el: document.getElementById('roi-automatable'), out: document.getElementById('roi-automatable-val'), fmt: v => v + '%' }
+  };
+  if (!fields.team.el) return;
+
+  function calc() {
+    const team = +fields.team.el.value;
+    const hours = +fields.hours.el.value;
+    const rate = +fields.rate.el.value;
+    const autoPct = +fields.auto.el.value / 100;
+
+    const monthlyWaste = team * hours * 4.33 * rate;
+    const monthlySave = monthlyWaste * autoPct * 0.8;
+    const hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
+    const weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : '—';
+
+    document.getElementById('roi-monthly-loss').textContent = '$' + Math.round(monthlyWaste).toLocaleString();
+    document.getElementById('roi-monthly-save').textContent = '$' + Math.round(monthlySave).toLocaleString();
+    document.getElementById('roi-hours-freed').textContent = hoursFree + ' hrs/month freed';
+    document.getElementById('roi-payback').textContent = typeof weeksPayback === 'number' ? weeksPayback + ' weeks' : '—';
+
+    fields.team.out.textContent = fields.team.fmt(team);
+    fields.hours.out.textContent = fields.hours.fmt(hours);
+    fields.rate.out.textContent = fields.rate.fmt(rate);
+    fields.auto.out.textContent = fields.auto.fmt(+fields.auto.el.value);
+  }
+
+  Object.values(fields).forEach(f => f.el && f.el.addEventListener('input', calc));
+  calc();
+})();
 </script>
 
 <!-- GSAP CDN -->
