@@ -2106,8 +2106,8 @@ body::after {
 .webapp-tag {
   font-size: 0.7rem;
   font-weight: 600;
-  background: rgba(34,211,238,0.08);
-  border: 1px solid rgba(34,211,238,0.2);
+  background: oklch(from var(--color-primary) l c h / 0.08);
+  border: 1px solid oklch(from var(--color-primary) l c h / 0.2);
   color: var(--color-primary);
   padding: 2px 8px;
   border-radius: 20px;
