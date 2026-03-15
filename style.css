@@ -1906,3 +1906,137 @@ body::after {
 .oc-cta .btn {
   display: inline-flex;
 }
+
+/* ============================================
+   CARD EXPAND — hover/focus detail panels
+   ============================================ */
+
+/* Both service-card and automate-card get position relative */
+.service-card,
+.automate-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* The detail panel: hidden by default, slides up on hover */
+.card-detail {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 11, 15, 0.98) 0%,
+    rgba(17, 19, 24, 0.96) 100%
+  );
+  border-top: 1px solid rgba(34, 211, 238, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  padding: 0;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.card-detail-inner {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+/* Show on hover */
+.service-card:hover .card-detail,
+.automate-card:hover .card-detail {
+  transform: translateY(0);
+}
+
+/* Slight card lift on hover */
+.service-card:hover,
+.automate-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(34, 211, 238, 0.15);
+}
+
+/* How it works text */
+.card-detail-how {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.card-detail-how strong {
+  color: var(--color-text);
+}
+
+/* Bullet list */
+.card-detail-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-detail-bullets li {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.45;
+}
+
+.card-detail-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+}
+
+.card-detail-bullets li strong {
+  color: var(--color-primary);
+}
+
+/* CTA link at bottom of card detail */
+.card-detail-cta {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.card-detail-cta:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Touch/mobile: tap to reveal instead of hover */
+@media (hover: none) {
+  .service-card,
+  .automate-card {
+    overflow: visible;
+  }
+
+  .card-detail {
+    position: static;
+    transform: none !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    border-top: none;
+    background: rgba(17, 19, 24, 0.5);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .service-card.expanded .card-detail,
+  .automate-card.expanded .card-detail {
+    max-height: 400px;
+    border-top: 1px solid rgba(34, 211, 238, 0.2);
+  }
+}
