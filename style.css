@@ -2299,7 +2299,7 @@ body::after {
 }
 .autobox-pkg-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-lg);
 }
 .autobox-pkg-card.featured {
   border-color: rgba(34,211,238,0.4);
