@@ -970,6 +970,130 @@
     </div>
   </section>
 
+  <!-- ==================== AUTOMATION AUDIT ==================== -->
+  <section id="audit" class="section audit-section">
+    <div class="section-inner">
+      <div class="section-label fade-in">Free Automation Audit</div>
+      <h2 class="section-title fade-in">Find out exactly what to automate first</h2>
+      <p class="section-desc fade-in">Answer 5 quick questions. We'll instantly score your business on automation readiness and surface your top 3 highest-ROI opportunities — no call required.</p>
+
+      <div class="audit-wrap fade-in">
+
+        <!-- Step indicators -->
+        <div class="audit-steps" id="audit-steps">
+          <div class="audit-step active" data-step="1">1</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="2">2</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="3">3</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="4">4</div>
+          <div class="audit-step-line"></div>
+          <div class="audit-step" data-step="5">5</div>
+        </div>
+
+        <!-- Questions -->
+        <div class="audit-questions" id="audit-questions">
+
+          <div class="audit-q active" data-q="1">
+            <p class="audit-q-text">What type of business do you run?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="agency">Agency / Consulting</button>
+              <button class="audit-opt" data-val="ecommerce">E-commerce / Retail</button>
+              <button class="audit-opt" data-val="saas">SaaS / Tech</button>
+              <button class="audit-opt" data-val="service">Local / Service Business</button>
+              <button class="audit-opt" data-val="other">Other</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="2">
+            <p class="audit-q-text">How many hours per week does your team spend on repetitive manual tasks?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="low">Under 5 hours</button>
+              <button class="audit-opt" data-val="med">5–15 hours</button>
+              <button class="audit-opt" data-val="high">15–30 hours</button>
+              <button class="audit-opt" data-val="very-high">30+ hours</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="3">
+            <p class="audit-q-text">Which area hurts most right now?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="sales">Sales & lead follow-up</button>
+              <button class="audit-opt" data-val="content">Content & marketing</button>
+              <button class="audit-opt" data-val="support">Customer support</button>
+              <button class="audit-opt" data-val="ops">Operations & admin</button>
+              <button class="audit-opt" data-val="reporting">Reporting & analytics</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="4">
+            <p class="audit-q-text">Have you tried any automation tools before?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="none">Never — starting from scratch</button>
+              <button class="audit-opt" data-val="basic">Basic tools (Zapier, IFTTT)</button>
+              <button class="audit-opt" data-val="some">Some AI tools (ChatGPT, etc.)</button>
+              <button class="audit-opt" data-val="advanced">Advanced stack already in place</button>
+            </div>
+          </div>
+
+          <div class="audit-q" data-q="5">
+            <p class="audit-q-text">What's your biggest blocker right now?</p>
+            <div class="audit-options">
+              <button class="audit-opt" data-val="time">No time to set it up</button>
+              <button class="audit-opt" data-val="know">Don't know where to start</button>
+              <button class="audit-opt" data-val="cost">Not sure it's worth the cost</button>
+              <button class="audit-opt" data-val="trust">Not sure AI can handle my workflows</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Email capture + result -->
+        <div class="audit-email-step" id="audit-email-step" style="display:none;">
+          <p class="audit-q-text">Almost there — where should we send your personalized audit report?</p>
+          <form class="audit-email-form" id="audit-email-form">
+            <input type="text" placeholder="Your name" id="audit-name" required>
+            <input type="email" placeholder="your@email.com" id="audit-email" required>
+            <button type="submit" class="btn btn-primary btn-lg">Send My Free Audit Report →</button>
+          </form>
+        </div>
+
+        <!-- Result panel -->
+        <div class="audit-result" id="audit-result" style="display:none;">
+          <div class="audit-score-wrap">
+            <div class="audit-score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(34,211,238,0.1)" stroke-width="10"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-primary)" stroke-width="10"
+                  stroke-dasharray="327" stroke-dashoffset="327" id="audit-score-circle"
+                  stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="audit-score-num" id="audit-score-num">0</div>
+              <div class="audit-score-label">/ 100</div>
+            </div>
+            <div class="audit-score-text">
+              <h3 id="audit-score-title">Your Automation Readiness Score</h3>
+              <p id="audit-score-desc">Calculating...</p>
+            </div>
+          </div>
+
+          <div class="audit-recs" id="audit-recs">
+            <h4>Your Top 3 Automation Opportunities</h4>
+            <div class="audit-rec-list" id="audit-rec-list"></div>
+          </div>
+
+          <div class="audit-result-cta">
+            <p>Want us to build these for you?</p>
+            <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
+            <a href="#contact" class="btn btn-outline">Or drop us a message</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA + CONTACT FORM -->
   <section id="contact" class="cta-section">
     <div class="section-inner">
