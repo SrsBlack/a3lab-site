@@ -1411,6 +1411,133 @@ body::after {
   #a3-chatbot { right: var(--space-4); bottom: var(--space-4); }
 }
 
+/* ============================================
+   HERO SPLIT LAYOUT — feat/hero-robot
+   ============================================ */
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  position: relative;
+}
+
+/* LEFT: text column */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* RIGHT: robot column */
+.hero-robot {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  border-radius: 28px;
+  overflow: hidden;
+  z-index: 2;
+  /* Subtle cyan border glow */
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.12),
+    0 0 40px rgba(34, 211, 238, 0.06),
+    0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.hero-robot iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+/* Glow ring decoration behind the robot box */
+.hero-robot-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  background: transparent;
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  z-index: 4;
+  pointer-events: none;
+  /* Animated pulse border */
+  animation: robotGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes robotGlowPulse {
+  0%, 100% { border-color: rgba(34, 211, 238, 0.18); box-shadow: 0 0 20px rgba(34, 211, 238, 0.05); }
+  50%       { border-color: rgba(34, 211, 238, 0.35); box-shadow: 0 0 40px rgba(34, 211, 238, 0.12); }
+}
+
+/* Left fade so robot blends into page background */
+.hero-robot::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 30%; height: 100%;
+  background: linear-gradient(to right, rgba(10,11,15,0.7) 0%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 28px 0 0 28px;
+}
+
+/* Fallback styling if iframe fails */
+.hero-robot-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 211, 238, 0.03);
+  border-radius: 28px;
+}
+
+/* ---- Tablet (medium screens) ---- */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+  }
+
+  .hero-robot {
+    height: 460px;
+  }
+}
+
+/* ---- Mobile: stack vertically ---- */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-text {
+    order: 1;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-robot {
+    order: 2;
+    height: 300px;
+    margin-top: 2rem;
+    border-radius: 20px;
+  }
+
+  .hero-robot::after {
+    /* On mobile fade from top instead of left */
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to bottom, rgba(10,11,15,0.6) 0%, transparent 100%);
+    border-radius: 20px 20px 0 0;
+  }
+}
+
 /* ==================== OPENCLAW SECTION ==================== */
 .openclaw-section {
   background: var(--color-surface);
