@@ -196,7 +196,7 @@
 }
 
 .nav-desktop { display: none; }
-@media (min-width: 768px) {
+@media (min-width: 1180px) {
   .nav-desktop { display: flex; gap: var(--space-6); align-items: center; }
   .nav-mobile-toggle { display: none; }
 }
@@ -205,6 +205,7 @@
   font-weight: 500;
   color: var(--color-text-muted);
   text-decoration: none;
+  white-space: nowrap;
   transition: color var(--transition-interactive);
 }
 .nav-desktop a:hover { color: var(--color-primary); }
@@ -217,7 +218,7 @@
   height: 44px;
   color: var(--color-text);
 }
-@media (min-width: 768px) {
+@media (min-width: 1180px) {
   .nav-mobile-toggle { display: none; }
 }
 
