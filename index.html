@@ -1602,6 +1602,122 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   Object.values(fields).forEach(f => f.el && f.el.addEventListener('input', calc));
   calc();
 })();
+
+// ==================== AUTOMATION AUDIT ====================
+(function() {
+  const answers = {};
+  let currentQ = 1;
+  const totalQ = 5;
+
+  document.querySelectorAll('.audit-opt').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const qEl = this.closest('.audit-q');
+      const qNum = parseInt(qEl.dataset.q);
+      answers[qNum] = this.dataset.val;
+
+      // Mark step done
+      const stepEl = document.querySelector('.audit-step[data-step="' + qNum + '"]');
+      if (stepEl) { stepEl.classList.add('done'); stepEl.classList.remove('active'); }
+
+      // Move to next or show email step
+      qEl.classList.remove('active');
+      if (qNum < totalQ) {
+        currentQ = qNum + 1;
+        const nextQ = document.querySelector('.audit-q[data-q="' + currentQ + '"]');
+        if (nextQ) nextQ.classList.add('active');
+        const nextStep = document.querySelector('.audit-step[data-step="' + currentQ + '"]');
+        if (nextStep) nextStep.classList.add('active');
+      } else {
+        document.getElementById('audit-questions').style.display = 'none';
+        document.getElementById('audit-steps').style.display = 'none';
+        document.getElementById('audit-email-step').style.display = 'block';
+      }
+    });
+  });
+
+  const emailForm = document.getElementById('audit-email-form');
+  if (emailForm) {
+    emailForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('audit-email-step').style.display = 'none';
+      showAuditResult();
+    });
+  }
+
+  function showAuditResult() {
+    document.getElementById('audit-result').style.display = 'block';
+
+    // Score logic
+    let score = 50;
+    if (answers[2] === 'high') score += 15;
+    if (answers[2] === 'very-high') score += 25;
+    if (answers[2] === 'med') score += 8;
+    if (answers[4] === 'none' || answers[4] === 'basic') score += 10;
+    if (answers[3]) score += 5;
+
+    score = Math.min(score, 98);
+
+    // Animate score ring
+    const circle = document.getElementById('audit-score-circle');
+    const numEl = document.getElementById('audit-score-num');
+    const circumference = 327;
+    let current = 0;
+    const target = score;
+    const interval = setInterval(() => {
+      current = Math.min(current + 2, target);
+      const offset = circumference - (current / 100) * circumference;
+      if (circle) circle.style.strokeDashoffset = offset;
+      if (numEl) numEl.textContent = current;
+      if (current >= target) clearInterval(interval);
+    }, 18);
+
+    // Score label
+    const titleEl = document.getElementById('audit-score-title');
+    const descEl = document.getElementById('audit-score-desc');
+    if (score >= 75) {
+      titleEl.textContent = 'High Automation Potential 🚀';
+      descEl.textContent = 'Your business is losing significant time and money on tasks that AI can handle today. The ROI on automation would be immediate.';
+    } else if (score >= 50) {
+      titleEl.textContent = 'Strong Automation Opportunity 💡';
+      descEl.textContent = 'You have clear, actionable workflows to automate. A focused build would save your team hours every week within days.';
+    } else {
+      titleEl.textContent = 'Good Starting Point ✅';
+      descEl.textContent = 'Even with lighter manual work, automation can free up time for higher-value tasks and prepare your business to scale.';
+    }
+
+    // Recommendations based on answers
+    const recMap = {
+      sales: { icon: '🎯', title: 'Lead Research & Outreach Pipeline', desc: 'Auto-research every prospect and draft personalized outreach before they go cold.' },
+      content: { icon: '✍️', title: 'AI Content Engine', desc: 'Research, draft, and schedule content across all channels on autopilot.' },
+      support: { icon: '🤖', title: 'Customer Support Automation', desc: 'Handle 65%+ of tickets automatically, respond in under 2 hours 24/7.' },
+      ops: { icon: '⚙️', title: 'Operations & Onboarding Automation', desc: 'Auto-generate onboarding docs, extract data from files, and create tasks from meetings.' },
+      reporting: { icon: '📊', title: 'Automated Reporting System', desc: 'Weekly KPI reports compiled and delivered to your inbox every Monday at 7am.' },
+      agency: { icon: '📋', title: 'Client Proposal Generator', desc: 'Turn a short brief into a full scoped proposal in minutes using Claude.' },
+      ecommerce: { icon: '💬', title: 'Review & Sentiment Monitoring', desc: 'Aggregate reviews, surface product issues, and track sentiment across channels daily.' },
+      saas: { icon: '🔔', title: 'Churn Prevention Workflow', desc: 'Monitor usage signals, flag at-risk accounts, and trigger retention sequences automatically.' }
+    };
+
+    const recs = [];
+    if (answers[3] && recMap[answers[3]]) recs.push(recMap[answers[3]]);
+    if (answers[1] && recMap[answers[1]] && recs.length < 3) recs.push(recMap[answers[1]]);
+    const fallbacks = ['sales','content','support'].filter(k => !recs.find(r => r.title === recMap[k]?.title));
+    while (recs.length < 3 && fallbacks.length) recs.push(recMap[fallbacks.shift()]);
+
+    const listEl = document.getElementById('audit-rec-list');
+    if (listEl) {
+      listEl.innerHTML = recs.slice(0, 3).map((r, i) => `
+        <div class="audit-rec-item">
+          <div class="audit-rec-num">${i + 1}</div>
+          <div class="audit-rec-icon">${r.icon}</div>
+          <div>
+            <strong>${r.title}</strong>
+            <p>${r.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+})();
 </script>
 
 <!-- GSAP CDN -->
