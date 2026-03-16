@@ -48,7 +48,13 @@
     </a>
 
     <nav class="nav-desktop" aria-label="Main navigation">
-      <a href="/#services" class="active">Services</a>
+      <div class="nav-dropdown">
+        <a href="/#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/#services">All Services</a>
+          <a href="/services/lead-enrichment.html" class="active">Lead Enrichment</a>
+        </div>
+      </div>
       <a href="/#roi-calc">ROI Calc</a>
       <a href="/#audit">Free Audit</a>
       <a href="/#process">Process</a>
@@ -56,7 +62,7 @@
       <a href="/#pricing">Pricing</a>
       <a href="/#openclaw">OpenClaw</a>
       <a href="/#web-automation">Web Automation</a>
-      <a href="/automation-box">Automation Box</a>
+      <a href="/automation-box.html">Automation Box</a>
       <a href="/#faq">FAQ</a>
       <a href="/#contact" class="btn btn-primary">Book a Call</a>
       <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
@@ -75,7 +81,13 @@
   <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
-  <a href="/#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <div class="nav-dropdown">
+    <a href="/#services" class="nav-dropdown-trigger" onclick="this.closest('.nav-mobile').classList.remove('open')">Services <span class="dropdown-arrow">&#9662;</span></a>
+    <div class="nav-dropdown-menu">
+      <a href="/#services" onclick="this.closest('.nav-mobile').classList.remove('open')">All Services</a>
+      <a href="/services/lead-enrichment.html" class="active">Lead Enrichment</a>
+    </div>
+  </div>
   <a href="/#roi-calc" onclick="this.closest('.nav-mobile').classList.remove('open')">ROI Calc</a>
   <a href="/#audit" onclick="this.closest('.nav-mobile').classList.remove('open')">Free Audit</a>
   <a href="/#process" onclick="this.closest('.nav-mobile').classList.remove('open')">Process</a>
@@ -83,7 +95,7 @@
   <a href="/#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
   <a href="/#openclaw" onclick="this.closest('.nav-mobile').classList.remove('open')">OpenClaw</a>
   <a href="/#web-automation" onclick="this.closest('.nav-mobile').classList.remove('open')">Web Automation</a>
-  <a href="/automation-box" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
+  <a href="/automation-box.html" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
   <a href="/#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
   <a href="/#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
 </nav>
@@ -339,7 +351,13 @@
       </div>
       <div class="footer-links">
         <h4>Navigation</h4>
-        <a href="/#services">Services</a>
+        <div class="nav-dropdown">
+        <a href="/#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/#services">All Services</a>
+            <a href="/services/lead-enrichment.html" class="active">Lead Enrichment</a>
+          </div>
+        </div>
         <a href="/#process">Process</a>
         <a href="/#stack">Stack</a>
         <a href="/#pricing">Pricing</a>
