@@ -439,5 +439,30 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 })();
 </script>
 
+
+<!-- Nav Dropdown Mobile Fallback -->
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(function(trigger){
+    trigger.addEventListener('click', function(e){
+      var menu = this.parentElement.querySelector('.nav-dropdown-menu');
+      if (!menu) return;
+      // Only intercept on mobile (below desktop breakpoint)
+      if (window.innerWidth >= 1180) return;
+      e.preventDefault();
+      var isOpen = menu.style.display === 'block';
+      // Close all other open dropdowns
+      document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = ''; });
+      menu.style.display = isOpen ? '' : 'block';
+    });
+  });
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = ''; });
+    }
+  });
+})();
+</script>
 </body>
 </html>
