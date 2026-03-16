@@ -2794,3 +2794,316 @@ input[type="range"] {
   color: var(--color-text-muted);
   margin-bottom: var(--space-5);
 }
+
+/* ========================================
+   NAV DROPDOWN
+   ======================================== */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: pointer;
+}
+.dropdown-arrow {
+  font-size: 0.65em;
+  transition: transform var(--transition-interactive);
+}
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) 0;
+  box-shadow: 0 8px 24px oklch(0 0 0 / 0.15);
+  z-index: 50;
+  margin-top: var(--space-2);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs) !important;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition-interactive), color var(--transition-interactive);
+}
+.nav-dropdown-menu a:hover {
+  background: var(--color-surface-2);
+  color: var(--color-primary);
+}
+.nav-dropdown-menu a.active {
+  color: var(--color-primary);
+}
+/* Desktop hover interaction */
+@media (min-width: 1180px) {
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: block;
+  }
+  .nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+}
+/* Mobile nav overrides */
+.nav-mobile .nav-dropdown {
+  position: static;
+}
+.nav-mobile .nav-dropdown-menu {
+  position: static;
+  transform: none;
+  display: block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 0 0 var(--space-4);
+  min-width: 0;
+  margin-top: 0;
+}
+.nav-mobile .nav-dropdown-menu a {
+  font-family: var(--font-display);
+  font-size: var(--text-base) !important;
+  font-weight: 600;
+  padding: var(--space-1) 0;
+}
+.nav-mobile .nav-dropdown-trigger {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+/* Footer dropdown overrides */
+.footer-links .nav-dropdown {
+  position: static;
+}
+.footer-links .nav-dropdown-menu {
+  position: static;
+  transform: none;
+  display: block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-width: 0;
+  margin-top: 0;
+}
+.footer-links .nav-dropdown-trigger {
+  display: none;
+}
+
+/* ========================================
+   SERVICE LEARN MORE (Homepage cards)
+   ======================================== */
+.service-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: var(--space-4);
+  transition: gap var(--transition-interactive), color var(--transition-interactive);
+}
+.service-learn-more::after {
+  content: '\2192';
+  transition: transform var(--transition-interactive);
+}
+.service-learn-more:hover {
+  color: var(--color-primary-hover, var(--color-primary));
+}
+.service-learn-more:hover::after {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   HERO MODIFIERS (Product & Service pages)
+   ======================================== */
+.hero-product {
+  min-height: 70vh;
+  text-align: center;
+}
+.hero-product .hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-product h1 {
+  max-width: 20ch;
+}
+.hero-service {
+  min-height: 60vh;
+}
+.hero-service .hero-content {
+  max-width: var(--content-wide);
+}
+
+/* ========================================
+   STATS BAR (Lead Enrichment)
+   ======================================== */
+.stat {
+  text-align: center;
+}
+.stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   PERSONA GRID (Lead Enrichment)
+   ======================================== */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+.persona-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  transition: border-color var(--transition-interactive), box-shadow var(--transition-interactive);
+}
+.persona-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px oklch(from var(--color-primary) l c h / 0.08);
+}
+.persona-icon {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-3);
+}
+.persona-card h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.persona-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ========================================
+   DELIVERABLES LIST (Lead Enrichment)
+   ======================================== */
+.deliverables-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+.deliverable-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.deliverable-item span:first-child {
+  flex-shrink: 0;
+  font-size: var(--text-lg);
+}
+.deliverable-item span:last-child {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* ========================================
+   SERVICE PRICING CARD (Lead Enrichment)
+   ======================================== */
+.service-pricing-card {
+  max-width: 480px;
+  margin-inline: auto;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+}
+.pricing-tier {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+.pricing-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+.service-pricing-card .pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0;
+  text-align: left;
+}
+.service-pricing-card .pricing-features li {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.service-pricing-card .pricing-features li::before {
+  content: '\2713';
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   WHY GRID (Automation Box)
+   ======================================== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+.why-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--transition-interactive), transform var(--transition-interactive);
+}
+.why-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.why-card-icon {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-3);
+}
+.why-card h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.why-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
