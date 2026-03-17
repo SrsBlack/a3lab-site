@@ -3241,3 +3241,51 @@ input[type="range"] {
   color: var(--color-primary);
   font-size: 0.9rem;
 }
+
+/* ============================================
+   LIFE AFTER AUTOMATION
+   ============================================ */
+.lifeafter-section {
+  background: var(--color-bg);
+}
+
+.lifeafter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 960px) {
+  .lifeafter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .lifeafter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lifeafter-day {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-5);
+}
+
+.lifeafter-day h3 {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+.lifeafter-day p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
