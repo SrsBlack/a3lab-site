@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Automation — Turn Your Site into a Workflow Hub | A3 Lab</title>
+<meta name="description" content="Connect forms, bookings, and e-commerce events to real workflows. Make your website actually do the work — not just collect forms.">
+<meta property="og:title" content="Website Automation — A3 Lab">
+<meta property="og:description" content="Turn your website into a workflow hub. Connect forms, bookings, and e-commerce events to automated follow-ups, CRM updates, and reporting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/services/website-automation">
+<link rel="canonical" href="https://a3lab.ca/services/website-automation">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Website Automation",
+  "description": "Connect forms, bookings, and e-commerce events to real workflows. Automated follow-ups, CRM updates, and reporting.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "A3 Lab",
+    "url": "https://a3lab.ca"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <a href="/index.html#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
+          <a href="/services/ai-content-engines.html">AI Content Engines</a>
+          <a href="/services/customer-support-bots.html">Customer Support Bots</a>
+          <a href="/services/website-automation.html" class="active">Website &amp; App Automation</a>
+          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+          <a href="/index.html#services" class="nav-dropdown-all">All Services &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/for-agencies.html">For Agencies</a>
+          <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+          <a href="/for-consultants.html">For Consultants</a>
+        </div>
+      </div>
+      <a href="/index.html#roi-calc">ROI Calc</a>
+      <a href="/index.html#audit">Free Audit</a>
+      <a href="/automation-box.html">Automation Box</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#contact" class="btn btn-primary">Book a Call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="/index.html#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="/services/lead-enrichment.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Lead Enrichment</a>
+  <a href="/services/ai-content-engines.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; AI Content Engines</a>
+  <a href="/services/customer-support-bots.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Support Bots</a>
+  <a href="/services/website-automation.html" class="active">&rarr; Website Automation</a>
+  <a href="/services/openclaw-setup.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; OpenClaw Setup</a>
+  <a href="/for-agencies.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Agencies</a>
+  <a href="/for-ecommerce.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For E&#8209;commerce</a>
+  <a href="/for-consultants.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Consultants</a>
+  <a href="/automation-box.html" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
+  <a href="/index.html#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="/index.html#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
+  <a href="/index.html#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main id="main">
+
+  <!-- SERVICE HERO -->
+  <section class="hero hero-service">
+    <div class="section-inner" style="position:relative; z-index:2;">
+      <div class="section-label">Service</div>
+      <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">Make your website actually do the work, <em>not just collect forms.</em></h1>
+      <p class="hero-sub">Connect forms, bookings, and e&#8209;commerce events to real workflows. Automated follow-ups, CRM updates, Slack pings, and reporting &mdash; triggered the moment something happens on your site.</p>
+      <div class="hero-actions">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Get This Built</a>
+        <a href="/index.html#audit" class="btn btn-outline btn-lg">Free Automation Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">5+</div>
+      <div class="stat-label">Hours saved on manual follow-ups</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2&ndash;5&times;</div>
+      <div class="stat-label">Faster lead response</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">Works with</div>
+      <div class="stat-label">Webflow, WordPress, Shopify &amp; more</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2&ndash;4</div>
+      <div class="stat-label">Days to deliver</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From site event to action &mdash; automatically</h2>
+      <p class="section-desc">Every form submission, booking, or purchase triggers a workflow. Data gets enriched, routed, and acted on &mdash; no manual steps.</p>
+
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <div>
+            <h3>Form / order / event triggers</h3>
+            <p>A visitor submits a contact form, books a call, places an order, or triggers any event on your site &mdash; the pipeline kicks off instantly.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <div>
+            <h3>Data enriched &amp; routed</h3>
+            <p>Incoming data is validated, enriched with AI context (company info, intent signals), and routed to the right destination.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <div>
+            <h3>CRM / Slack / email updated</h3>
+            <p>Your CRM gets a new record, your team gets a Slack notification, and a personalised follow-up email goes out &mdash; all within minutes.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <div>
+            <h3>Reports &amp; follow-up flows</h3>
+            <p>Weekly summaries of form activity, conversion rates, and follow-up performance &mdash; plus automated nurture sequences for leads that don't convert immediately.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Who It's For</div>
+      <h2 class="section-title">Built for businesses whose website should work harder</h2>
+      <p class="section-desc">If you're still manually copying form submissions into a spreadsheet or letting leads sit for hours before follow-up, this is for you.</p>
+
+      <div class="persona-grid">
+        <div class="persona-card">
+          <span class="persona-icon">&#127919;</span>
+          <h3>Agencies</h3>
+          <p>Connect client websites to CRMs, reporting dashboards, and follow-up sequences. Deliver more value without more retainer hours.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon">&#128188;</span>
+          <h3>Service Businesses</h3>
+          <p>Turn contact forms and booking widgets into instant lead response flows. Follow up in minutes, not days.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon">&#128722;</span>
+          <h3>E&#8209;commerce</h3>
+          <p>Trigger post-purchase flows, review requests, upsell sequences, and abandoned cart recovery &mdash; all automated from your store events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">What You Get</div>
+      <h2 class="section-title">Everything included in your build</h2>
+
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Site platform integration</strong>
+            <span>Webflow, WordPress, Shopify, Squarespace, or custom &mdash; connected to your automation stack</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Zapier / Make flows</strong>
+            <span>Full automation pipelines from site events to CRM, email, Slack, and reporting tools</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Follow-up sequences</strong>
+            <span>Automated email or SMS sequences triggered by form submissions, bookings, or purchases</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Documentation</strong>
+            <span>Full docs covering every workflow, trigger, and integration &mdash; so your team can maintain it</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Test plan</strong>
+            <span>Every trigger tested end-to-end before handoff &mdash; with documented test results</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Walkthrough session</strong>
+            <span>1-hour guided walkthrough of every workflow plus Q&amp;A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, one-time build pricing</h2>
+
+      <div class="service-pricing-card">
+        <div class="pricing-tier">Website Automation</div>
+        <div class="pricing-price">$1,500 &ndash; $3,000 <span>one-time build</span></div>
+        <p class="pricing-desc">Fully configured and delivered in 2&ndash;4 business days. Price depends on number of forms/events, integrations, and follow-up complexity.</p>
+        <ul class="pricing-features">
+          <li>Webflow / WordPress / Shopify integration</li>
+          <li>Zapier / Make automation pipelines</li>
+          <li>CRM + Slack + email notifications</li>
+          <li>Automated follow-up sequences</li>
+          <li>Full documentation + test plan</li>
+          <li>1-hour walkthrough session</li>
+          <li>14 days of bug-fix support</li>
+        </ul>
+        <a href="/index.html#contact" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">Get This Built &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What website platforms do you support?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Webflow, WordPress, Shopify, Squarespace, Wix, and any custom site that supports webhooks or form integrations. If your platform works with Zapier, we can connect it.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will this slow down my website?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">No. All automation runs server-side via webhooks and Zapier/Make. There's zero impact on your page load speed or frontend performance.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What happens if tools or platforms change?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">We build with standard integrations and document everything. If a platform updates its API, the docs make it straightforward to update. We also offer ongoing retainer support if you'd prefer us to handle maintenance.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How fast can you deliver this?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Most website automation builds are delivered in 2&ndash;4 business days. Complex setups with multiple forms, e-commerce events, and CRM integrations may take up to a week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="section-title" style="margin-inline:auto;">Ready to make your website work for you?</h2>
+      <p class="section-desc" style="margin-inline:auto;">Let us wire up your site to real workflows. Most builds are delivered in under a week.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-4); justify-content:center;">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Get This Built &rarr;</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="A3 Lab home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+            <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+            <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+          </svg>
+          <span class="logo-text">A3 <span>Lab</span></span>
+        </a>
+        <p>Agentic Automation Architects Lab. We build custom AI workflows using Perplexity, Claude, and Zapier so your business runs smarter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="/services/lead-enrichment.html">Lead Enrichment</a>
+        <a href="/services/ai-content-engines.html">AI Content Engines</a>
+        <a href="/services/customer-support-bots.html">Support Bots</a>
+        <a href="/services/website-automation.html">Website Automation</a>
+        <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 A3 Lab. All rights reserved. Based in British Columbia, Canada.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// Dark/Light mode toggle
+(function(){
+  var t = document.querySelector('[data-theme-toggle]');
+  var r = document.documentElement;
+  var d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  if (t) {
+    updateIcon();
+    t.addEventListener('click', function() {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+      updateIcon();
+    });
+  }
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Frosted nav on scroll
+(function(){
+  var header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  }
+})();
+</script>
+</body>
+</html>
