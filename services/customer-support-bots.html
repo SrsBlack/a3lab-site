@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Support Bots — AI Agents for Support Teams | A3 Lab</title>
+<meta name="description" content="Let AI handle 60-70% of support tickets automatically. Triage, auto-responses, escalation, and sentiment analysis powered by Claude.">
+<meta property="og:title" content="Customer Support Bots — A3 Lab">
+<meta property="og:description" content="AI-powered support bots that triage tickets, auto-respond to common questions, and escalate complex issues to your team.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/services/customer-support-bots">
+<link rel="canonical" href="https://a3lab.ca/services/customer-support-bots">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Customer Support Bots",
+  "description": "AI-powered support bots that triage, auto-respond, and escalate tickets. Handles 60-70% of volume automatically.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "A3 Lab",
+    "url": "https://a3lab.ca"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <a href="/index.html#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
+          <a href="/services/ai-content-engines.html">AI Content Engines</a>
+          <a href="/services/customer-support-bots.html" class="active">Customer Support Bots</a>
+          <a href="/services/website-automation.html">Website &amp; App Automation</a>
+          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+          <a href="/index.html#services" class="nav-dropdown-all">All Services &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/for-agencies.html">For Agencies</a>
+          <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+          <a href="/for-consultants.html">For Consultants</a>
+        </div>
+      </div>
+      <a href="/index.html#roi-calc">ROI Calc</a>
+      <a href="/index.html#audit">Free Audit</a>
+      <a href="/automation-box.html">Automation Box</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#contact" class="btn btn-primary">Book a Call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="/index.html#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="/services/lead-enrichment.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Lead Enrichment</a>
+  <a href="/services/ai-content-engines.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; AI Content Engines</a>
+  <a href="/services/customer-support-bots.html" class="active">&rarr; Support Bots</a>
+  <a href="/services/website-automation.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Website Automation</a>
+  <a href="/services/openclaw-setup.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; OpenClaw Setup</a>
+  <a href="/for-agencies.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Agencies</a>
+  <a href="/for-ecommerce.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For E&#8209;commerce</a>
+  <a href="/for-consultants.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Consultants</a>
+  <a href="/automation-box.html" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
+  <a href="/index.html#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="/index.html#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
+  <a href="/index.html#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main id="main">
+
+  <!-- SERVICE HERO -->
+  <section class="hero hero-service">
+    <div class="section-inner" style="position:relative; z-index:2;">
+      <div class="section-label">Service</div>
+      <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">Let AI handle 60&ndash;70% of support tickets <em>automatically.</em></h1>
+      <p class="hero-sub">Triage incoming tickets, auto-respond to common questions, escalate complex issues with context, and generate weekly support insights &mdash; all powered by Claude.</p>
+      <div class="hero-actions">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Get This Built</a>
+        <a href="/index.html#audit" class="btn btn-outline btn-lg">Free Automation Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">65%</div>
+      <div class="stat-label">Tickets auto-handled</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">&lt; 2h</div>
+      <div class="stat-label">First response time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">48h &rarr; 2h</div>
+      <div class="stat-label">Response-time improvement</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2&ndash;4</div>
+      <div class="stat-label">Days to deliver</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From ticket to resolution &mdash; without the wait</h2>
+      <p class="section-desc">Claude reads, classifies, and responds to common tickets instantly. Complex issues get summarized and escalated with full context &mdash; so your team picks up where the bot left off.</p>
+
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <div>
+            <h3>Ticket comes in</h3>
+            <p>A customer reaches out via email, helpdesk, or live chat. The bot picks it up immediately &mdash; no queue, no delay.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <div>
+            <h3>Claude classifies &amp; answers</h3>
+            <p>The AI reads the ticket, classifies the issue type, checks your knowledge base, and drafts a response for common questions.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <div>
+            <h3>Complex tickets escalated with context</h3>
+            <p>When the bot can't resolve it, it summarises the issue, attaches relevant history, and routes it to the right team member.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <div>
+            <h3>Weekly support insights</h3>
+            <p>Get automated summaries of ticket volume, common topics, resolution rates, and sentiment trends &mdash; delivered to Slack or email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Who It's For</div>
+      <h2 class="section-title">Built for teams drowning in tickets</h2>
+      <p class="section-desc">Whether you're an e-commerce brand handling returns, a SaaS startup scaling support, or an agency running helpdesks for clients.</p>
+
+      <div class="persona-grid">
+        <div class="persona-card">
+          <span class="persona-icon">&#128722;</span>
+          <h3>E&#8209;commerce Brands</h3>
+          <p>Auto-handle order status, return requests, and shipping questions &mdash; the tickets that eat 60% of your support team's day.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon">&#128187;</span>
+          <h3>SaaS Companies</h3>
+          <p>Resolve common how-to questions, onboarding issues, and billing inquiries without pulling engineers off product work.</p>
+        </div>
+        <div class="persona-card">
+          <span class="persona-icon">&#127919;</span>
+          <h3>Agencies with Support Retainers</h3>
+          <p>Offer AI-powered support as a service to your clients. Scale helpdesk coverage without scaling headcount.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">What You Get</div>
+      <h2 class="section-title">Everything included in your build</h2>
+
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Helpdesk integration</strong>
+            <span>Connected to Zendesk, Intercom, Help Scout, Freshdesk, or your existing helpdesk platform</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Escalation rules</strong>
+            <span>Define when the bot hands off, who it routes to, and what context gets attached to the escalation</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Response templates</strong>
+            <span>AI-generated response library trained on your tone, FAQs, and knowledge base</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Metrics dashboard hook</strong>
+            <span>Track resolution rates, response times, ticket volume, and sentiment in real time</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Sentiment analysis</strong>
+            <span>Detect frustrated or high-priority customers and fast-track their tickets to a human</span>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Documentation &amp; walkthrough</strong>
+            <span>Full docs for your support bot plus a 1-hour guided session</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, one-time build pricing</h2>
+
+      <div class="service-pricing-card">
+        <div class="pricing-tier">Customer Support Bot</div>
+        <div class="pricing-price">$2,000 &ndash; $4,000 <span>one-time build</span></div>
+        <p class="pricing-desc">Fully configured and delivered in 2&ndash;4 business days. Includes helpdesk integration, escalation logic, response templates, metrics dashboard, and a 1-hour walkthrough.</p>
+        <ul class="pricing-features">
+          <li>Claude-powered ticket classification &amp; response</li>
+          <li>Zendesk / Intercom / Help Scout integration</li>
+          <li>Escalation rules &amp; routing logic</li>
+          <li>Response template library</li>
+          <li>Metrics &amp; sentiment dashboard</li>
+          <li>Full documentation + walkthrough</li>
+          <li>14 days of bug-fix support</li>
+        </ul>
+        <a href="/index.html#contact" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">Get This Built &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What languages does the bot support?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Claude supports 100+ languages natively. The bot can detect the customer's language and respond accordingly &mdash; no extra setup required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I control the bot's tone?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Absolutely. We configure the bot to match your brand voice &mdash; professional, friendly, casual, whatever fits. You can adjust the tone prompts anytime.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            When does it hand off to a human?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">You define the rules. Typical triggers: negative sentiment, billing disputes, technical issues beyond the knowledge base, or when the customer explicitly asks for a human. The bot summarises the conversation and routes it with full context.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How do you handle customer data and privacy?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">All data stays within your existing helpdesk platform. We don't store customer data externally. API calls to Claude use Anthropic's enterprise-grade data policies with no training on your data.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="section-title" style="margin-inline:auto;">Ready to stop drowning in tickets?</h2>
+      <p class="section-desc" style="margin-inline:auto;">Let us build your AI support bot. Most setups are delivered in 2&ndash;4 days.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-4); justify-content:center;">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Get This Built &rarr;</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="A3 Lab home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+            <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+            <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+          </svg>
+          <span class="logo-text">A3 <span>Lab</span></span>
+        </a>
+        <p>Agentic Automation Architects Lab. We build custom AI workflows using Perplexity, Claude, and Zapier so your business runs smarter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="/services/lead-enrichment.html">Lead Enrichment</a>
+        <a href="/services/ai-content-engines.html">AI Content Engines</a>
+        <a href="/services/customer-support-bots.html">Support Bots</a>
+        <a href="/services/website-automation.html">Website Automation</a>
+        <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 A3 Lab. All rights reserved. Based in British Columbia, Canada.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// Dark/Light mode toggle
+(function(){
+  var t = document.querySelector('[data-theme-toggle]');
+  var r = document.documentElement;
+  var d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  if (t) {
+    updateIcon();
+    t.addEventListener('click', function() {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+      updateIcon();
+    });
+  }
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Frosted nav on scroll
+(function(){
+  var header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  }
+})();
+</script>
+</body>
+</html>
