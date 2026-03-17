@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automations for E-commerce — Reduce Cart Abandonment &amp; Scale Support | A3 Lab</title>
+<meta name="description" content="AI automations for Shopify, WooCommerce, and DTC brands. Automate support tickets, abandoned cart recovery, product content, and order workflows.">
+<meta property="og:title" content="Automations for E-commerce — A3 Lab">
+<meta property="og:description" content="Reduce cart abandonment and scale support with AI automations built for e-commerce stores.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/for-ecommerce">
+<link rel="canonical" href="https://a3lab.ca/for-ecommerce">
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <a href="/index.html#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
+          <a href="/services/ai-content-engines.html">AI Content Engines</a>
+          <a href="/services/customer-support-bots.html">Customer Support Bots</a>
+          <a href="/services/website-automation.html">Website &amp; App Automation</a>
+          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+          <a href="/index.html#services" class="nav-dropdown-all">All Services &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/for-agencies.html">For Agencies</a>
+          <a href="/for-ecommerce.html" class="active">For E&#8209;commerce</a>
+          <a href="/for-consultants.html">For Consultants</a>
+        </div>
+      </div>
+      <a href="/index.html#roi-calc">ROI Calc</a>
+      <a href="/index.html#audit">Free Audit</a>
+      <a href="/automation-box.html">Automation Box</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/index.html#faq">FAQ</a>
+      <a href="/index.html#contact" class="btn btn-primary">Book a Call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="/index.html#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="/services/lead-enrichment.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Lead Enrichment</a>
+  <a href="/services/ai-content-engines.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; AI Content Engines</a>
+  <a href="/services/customer-support-bots.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Support Bots</a>
+  <a href="/services/website-automation.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Website Automation</a>
+  <a href="/services/openclaw-setup.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; OpenClaw Setup</a>
+  <a href="/for-agencies.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Agencies</a>
+  <a href="/for-ecommerce.html" class="active">For E&#8209;commerce</a>
+  <a href="/for-consultants.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Consultants</a>
+  <a href="/automation-box.html" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
+  <a href="/index.html#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="/index.html#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
+  <a href="/index.html#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main id="main">
+
+  <!-- INDUSTRY HERO -->
+  <section class="hero hero-service">
+    <div class="section-inner" style="position:relative; z-index:2;">
+      <div class="section-label">E&#8209;commerce</div>
+      <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">Reduce cart abandonment &amp; <em>scale support without hiring.</em></h1>
+      <p class="hero-sub">Shopify, WooCommerce, and DTC brands use A3 Lab to automate support tickets, recover abandoned carts, generate product content, and streamline order workflows.</p>
+      <div class="hero-actions">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Talk to Us</a>
+        <a href="/index.html#audit" class="btn btn-outline btn-lg">Free Automation Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">65%</div>
+      <div class="stat-label">Support tickets auto-resolved</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">15&ndash;25%</div>
+      <div class="stat-label">Cart recovery improvement</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">5&times;</div>
+      <div class="stat-label">Faster product descriptions</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2&ndash;4</div>
+      <div class="stat-label">Days to first automation</div>
+    </div>
+  </div>
+
+  <!-- WHAT WE AUTOMATE -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">What We Automate</div>
+      <h2 class="section-title">Automations that move the revenue needle</h2>
+      <p class="section-desc">Every automation is focused on either increasing revenue (cart recovery, content) or reducing cost (support, order ops).</p>
+
+      <div class="persona-grid">
+        <a href="/services/customer-support-bots.html" class="persona-card" style="text-decoration:none; color:inherit;">
+          <span class="persona-icon">&#129302;</span>
+          <h3>Customer Support Bots</h3>
+          <p>&ldquo;Where&rsquo;s my order?&rdquo;, returns, sizing questions &mdash; AI handles 60&ndash;70% of tickets automatically. Human agents only see the hard stuff.</p>
+          <span class="btn btn-outline" style="margin-top:var(--space-3);">Learn more &rarr;</span>
+        </a>
+        <a href="/services/website-automation.html" class="persona-card" style="text-decoration:none; color:inherit;">
+          <span class="persona-icon">&#128722;</span>
+          <h3>Cart Recovery &amp; Site Workflows</h3>
+          <p>Abandoned cart emails, exit-intent popups, and post-purchase flows &mdash; triggered automatically from your Shopify or WooCommerce store.</p>
+          <span class="btn btn-outline" style="margin-top:var(--space-3);">Learn more &rarr;</span>
+        </a>
+        <a href="/services/ai-content-engines.html" class="persona-card" style="text-decoration:none; color:inherit;">
+          <span class="persona-icon">&#9997;</span>
+          <h3>Product Content at Scale</h3>
+          <p>Generate SEO-optimized product descriptions, collection pages, blog posts, and social media content from your product data.</p>
+          <span class="btn btn-outline" style="margin-top:var(--space-3);">Learn more &rarr;</span>
+        </a>
+        <a href="/services/lead-enrichment.html" class="persona-card" style="text-decoration:none; color:inherit;">
+          <span class="persona-icon">&#128269;</span>
+          <h3>Customer Intelligence</h3>
+          <p>Enrich your customer data with purchase signals, lifetime value scoring, and segmentation for targeted campaigns.</p>
+          <span class="btn btn-outline" style="margin-top:var(--space-3);">Learn more &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-COMMERCE CASE STORY -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Case Story</div>
+      <h2 class="section-title">How a DTC brand cut support costs by 40%</h2>
+      <p class="section-desc">A Shopify-based skincare brand with 500+ orders/month was drowning in repetitive support tickets and spending $3,000/month on a part-time VA.</p>
+
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <div>
+            <h3>Support bot deployed</h3>
+            <p>AI bot trained on their FAQ, return policy, and Shopify order data. Handles &ldquo;where&rsquo;s my order&rdquo;, sizing, and ingredient questions automatically via live chat and email.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <div>
+            <h3>Cart recovery automated</h3>
+            <p>Abandoned cart emails now fire within 30 minutes with personalized product recommendations. Recovery rate jumped from 8% to 22%.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <div>
+            <h3>Product descriptions generated</h3>
+            <p>New product launches now get SEO descriptions, social posts, and email copy generated in minutes &mdash; not days. The team just reviews and publishes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING OVERVIEW -->
+  <section class="section" style="background:var(--color-surface);">
+    <div class="section-inner">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">One-time builds, no monthly lock-in</h2>
+      <p class="section-desc">Each automation is a flat-rate build. You own the system. Most stores start with support + cart recovery and expand from there.</p>
+
+      <div class="service-pricing-card">
+        <div class="pricing-tier">E&#8209;commerce Starter Bundle</div>
+        <div class="pricing-price">$2,000 &ndash; $4,000 <span>per automation</span></div>
+        <p class="pricing-desc">Support bots and cart recovery are the highest-ROI starting point. Add content engines and enrichment as you scale.</p>
+        <ul class="pricing-features">
+          <li>Customer Support Bot &mdash; $2,000&ndash;$4,000</li>
+          <li>Cart Recovery &amp; Site Workflows &mdash; $1,500&ndash;$3,000</li>
+          <li>Product Content Engine &mdash; $1,500&ndash;$2,500</li>
+          <li>Customer Intelligence &mdash; $1,500&ndash;$3,500</li>
+        </ul>
+        <a href="/index.html#contact" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">Get a Quote &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="section-title" style="margin-inline:auto;">Ready to automate your store?</h2>
+      <p class="section-desc" style="margin-inline:auto;">Let&rsquo;s identify the automations that will save you the most time and money. Start with a free audit.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-4); justify-content:center;">
+        <a href="/index.html#contact" class="btn btn-primary btn-lg">Talk to Us &rarr;</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="A3 Lab home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+            <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+            <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+          </svg>
+          <span class="logo-text">A3 <span>Lab</span></span>
+        </a>
+        <p>Agentic Automation Architects Lab. We build custom AI workflows using Perplexity, Claude, and Zapier so your business runs smarter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="/services/lead-enrichment.html">Lead Enrichment</a>
+        <a href="/services/ai-content-engines.html">AI Content Engines</a>
+        <a href="/services/customer-support-bots.html">Support Bots</a>
+        <a href="/services/website-automation.html">Website Automation</a>
+        <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 A3 Lab. All rights reserved. Based in British Columbia, Canada.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+(function(){
+  var t = document.querySelector('[data-theme-toggle]');
+  var r = document.documentElement;
+  var d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  if (t) {
+    updateIcon();
+    t.addEventListener('click', function() {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+      updateIcon();
+    });
+  }
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+(function(){
+  var header = document.querySelector('.site-header');
+  if (header) { window.addEventListener('scroll', function() { header.classList.toggle('scrolled', window.scrollY > 40); }); }
+})();
+</script>
+</body>
+</html>
