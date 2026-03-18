@@ -1168,7 +1168,18 @@
 
   <!-- ==================== OPENCLAW INTEGRATION ==================== -->
   <section id="openclaw" class="section openclaw-section">
-    <div class="section-inner">
+    <!-- Spline background -->
+    <div class="openclaw-spline-bg">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+      <spline-viewer
+        url="https://my.spline.design/retrofuturismbganimation-OumDXFtQTHaPQlRu8FZ6NzKh/"
+        class="openclaw-spline-canvas"
+      ></spline-viewer>
+      <div class="openclaw-spline-overlay"></div>
+    </div>
+
+    <!-- Foreground content -->
+    <div class="section-inner openclaw-inner">
       <div class="section-label fade-in">OpenClaw Integration</div>
       <h2 class="section-title fade-in">Every company needs an OpenClaw strategy. We design and install it for you.</h2>
       <p class="section-desc fade-in">NVIDIA’s Jensen Huang says every company now needs an agentic AI and OpenClaw strategy — a workforce of AI agents that can actually take actions, not just answer questions. We deploy and customize OpenClaw so those agents quietly run your ops in the background while your team focuses on the work humans are best at.</p>
