@@ -3618,6 +3618,22 @@ input[type="range"] {
   margin: 0;
 }
 
+/* ---------- SECTION CTA BLOCK ----------
+   Centred CTA row used at the end of content-heavy sections
+   to give visitors a consistent "next step" without cluttering
+   the main section layout.
+   ----------------------------------------- */
+.section-cta {
+  margin-top: var(--space-10);
+  text-align: center;
+}
+
+.section-cta-note {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
 /* ============================================
    OPENCLAW USE CASE GRID
    ============================================ */
