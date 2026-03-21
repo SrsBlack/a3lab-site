@@ -26,16 +26,19 @@ export default function TrustScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [vouchPhone, setVouchPhone] = useState('');
 
+  const [error, setError] = useState(false);
+
   const loadBreakdown = useCallback(async () => {
     try {
       setIsLoading(true);
+      setError(false);
       const res = await trustAPI.getBreakdown();
       setChecks(res.data.checks ?? []);
       if (res.data.score !== undefined) {
         updateTrustScore(res.data.score);
       }
     } catch {
-      // Use empty state
+      setError(true);
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +82,18 @@ export default function TrustScreen() {
     return (
       <View style={[styles.container, styles.centered]}>
         <ActivityIndicator color={colors.textMuted} />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={[styles.container, styles.centered]}>
+        <Text style={styles.errorTitle}>couldn't load trust data</Text>
+        <Text style={styles.errorBody}>check your connection</Text>
+        <Pressable style={styles.retryButton} onPress={loadBreakdown}>
+          <Text style={styles.retryText}>TRY AGAIN</Text>
+        </Pressable>
       </View>
     );
   }
@@ -404,5 +419,29 @@ const styles = StyleSheet.create({
     fontSize: typography.fontSize.xs,
     textTransform: 'lowercase',
     letterSpacing: 0.3,
+  },
+  errorTitle: {
+    color: colors.textSecondary,
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.medium,
+    marginBottom: spacing.sm,
+    textTransform: 'lowercase',
+  },
+  errorBody: {
+    color: colors.textMuted,
+    fontSize: typography.fontSize.sm,
+    marginBottom: spacing.lg,
+  },
+  retryButton: {
+    backgroundColor: colors.white,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.sm,
+  },
+  retryText: {
+    color: colors.black,
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
   },
 });

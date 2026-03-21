@@ -27,25 +27,30 @@ export default function App() {
   const [authFlow, setAuthFlow] = useState<AuthFlow>('welcome');
   const [phone, setPhone] = useState('');
 
-  // Try to restore session on launch
+  const restoreSession = useAuthStore((s) => s.restoreSession);
+
+  // Restore session from secure storage on launch
   useEffect(() => {
     const restore = async () => {
-      try {
-        const token = useAuthStore.getState().token;
-        if (token) {
+      await restoreSession();
+
+      // If we got a token from storage, validate it with the server
+      const { token } = useAuthStore.getState();
+      if (token) {
+        try {
           const res = await authAPI.getMe();
           if (res.data?.user) {
             login(token, res.data.user);
             return;
           }
+        } catch {
+          // Token expired — user will need to re-authenticate
+          useAuthStore.getState().logout();
         }
-      } catch {
-        // Token expired or invalid
       }
-      setLoading(false);
     };
     restore();
-  }, [login, setLoading]);
+  }, [login, restoreSession]);
 
   // Loading splash
   if (isLoading) {

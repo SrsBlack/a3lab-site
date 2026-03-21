@@ -8,6 +8,7 @@ import postRoutes from './routes/posts';
 import userRoutes from './routes/users';
 import verificationRoutes from './routes/verification';
 import mediaRoutes from './routes/media';
+import notificationRoutes from './routes/notifications';
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
 app.use('/verification', verificationRoutes);
 app.use('/media', mediaRoutes);
+app.use('/notifications', notificationRoutes);
 
 // ─── 404 Handler ─────────────────────────────────────────────────────
 

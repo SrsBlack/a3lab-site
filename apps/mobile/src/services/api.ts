@@ -131,4 +131,19 @@ export const socialAPI = {
     client.post(`/posts/${postId}/flag`, { reason }),
 };
 
+// ─── Notifications ───────────────────────────────────
+
+export const notificationsAPI = {
+  registerToken: (token: string) =>
+    client.post('/notifications/register', { token }),
+
+  getPreferences: () =>
+    client.get<{ reactions: boolean; vouches: boolean; moderation: boolean }>(
+      '/notifications/preferences'
+    ),
+
+  updatePreferences: (prefs: { reactions?: boolean; vouches?: boolean; moderation?: boolean }) =>
+    client.put('/notifications/preferences', prefs),
+};
+
 export default client;

@@ -26,14 +26,17 @@ export default function ProfileScreen() {
   const [posts, setPosts] = useState<ProfilePost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [error, setError] = useState(false);
+
   const loadPosts = useCallback(async () => {
     if (!user) return;
     try {
       setIsLoading(true);
+      setError(false);
       const res = await postsAPI.getUserPosts(user.id);
       setPosts(res.data.posts ?? []);
     } catch {
-      // Keep empty
+      setError(true);
     } finally {
       setIsLoading(false);
     }
@@ -109,6 +112,16 @@ export default function ProfileScreen() {
       {isLoading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator color={colors.textMuted} />
+        </View>
+      ) : error ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyTitle}>couldn't load posts</Text>
+          <Text style={styles.emptyBody}>
+            check your connection and try again.
+          </Text>
+          <Pressable style={styles.retryButton} onPress={loadPosts}>
+            <Text style={styles.retryText}>RETRY</Text>
+          </Pressable>
         </View>
       ) : posts.length === 0 ? (
         <View style={styles.emptyContainer}>
@@ -234,5 +247,18 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
     fontSize: typography.fontSize.sm,
     textAlign: 'center',
+  },
+  retryButton: {
+    marginTop: spacing.lg,
+    backgroundColor: colors.white,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.sm,
+  },
+  retryText: {
+    color: colors.black,
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
   },
 });

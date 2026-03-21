@@ -1,16 +1,18 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   View,
   Text,
   FlatList,
   RefreshControl,
+  Pressable,
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
-import { colors, typography, spacing } from '../theme';
+import { colors, typography, spacing, borderRadius } from '../theme';
 import { useFeedStore, Post } from '../stores/feedStore';
 import { feedAPI } from '../services/api';
 import PostCard from '../components/PostCard';
+import { SkeletonPostCard } from '../components/Skeleton';
 
 export default function FeedScreen() {
   const {
@@ -25,25 +27,31 @@ export default function FeedScreen() {
     setRefreshing,
   } = useFeedStore();
 
+  const [error, setError] = useState<string | null>(null);
+
   const loadFeed = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const res = await feedAPI.getFeed(undefined, 20);
       setPosts(res.data.posts ?? []);
     } catch {
-      // Network error — keep existing posts
+      if (posts.length === 0) {
+        setError('could not load feed. check your connection.');
+      }
     } finally {
       setLoading(false);
     }
-  }, [setPosts, setLoading]);
+  }, [setPosts, setLoading, posts.length]);
 
   const refreshFeed = useCallback(async () => {
     try {
       setRefreshing(true);
+      setError(null);
       const res = await feedAPI.getFeed(undefined, 20);
       setPosts(res.data.posts ?? []);
     } catch {
-      // Silently fail
+      // Keep existing posts on refresh failure
     } finally {
       setRefreshing(false);
     }
@@ -55,7 +63,7 @@ export default function FeedScreen() {
       const res = await feedAPI.getFeed(cursor, 20);
       appendPosts(res.data.posts ?? [], res.data.cursor ?? null);
     } catch {
-      // Silently fail
+      // Silently fail on pagination
     }
   }, [hasMore, isLoading, cursor, appendPosts]);
 
@@ -71,7 +79,28 @@ export default function FeedScreen() {
   const keyExtractor = useCallback((item: Post) => item.id, []);
 
   const renderEmpty = () => {
-    if (isLoading) return null;
+    if (isLoading) {
+      return (
+        <View>
+          {[1, 2, 3].map((i) => (
+            <SkeletonPostCard key={i} />
+          ))}
+        </View>
+      );
+    }
+
+    if (error) {
+      return (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyTitle}>offline</Text>
+          <Text style={styles.emptyBody}>{error}</Text>
+          <Pressable style={styles.retryButton} onPress={loadFeed}>
+            <Text style={styles.retryText}>TRY AGAIN</Text>
+          </Pressable>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.emptyContainer}>
         <Text style={styles.emptyTitle}>nothing here yet</Text>
@@ -162,5 +191,18 @@ const styles = StyleSheet.create({
   footer: {
     paddingVertical: spacing.lg,
     alignItems: 'center',
+  },
+  retryButton: {
+    marginTop: spacing.lg,
+    backgroundColor: colors.white,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.sm,
+  },
+  retryText: {
+    color: colors.black,
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
   },
 });
