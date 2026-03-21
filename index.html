@@ -255,7 +255,7 @@
       <h2 class="section-title fade-in">See exactly what manual work is costing you</h2>
       <p class="section-desc fade-in">Adjust the sliders below. We'll show you your monthly loss and how fast automation pays for itself.</p>
 
-      <div class="roi-calc-wrap fade-in">
+      <div class="roi-calc-wrap">
         <div class="roi-inputs">
 
           <div class="roi-field">
@@ -1657,7 +1657,7 @@
       <h2 class="section-title fade-in">Find out exactly what to automate first</h2>
       <p class="section-desc fade-in">Answer 5 quick questions. We'll instantly score your business on automation readiness and surface your top 3 highest-ROI opportunities — no call required.</p>
 
-      <div class="audit-wrap fade-in">
+      <div class="audit-wrap">
 
         <!-- Step indicators -->
         <div class="audit-steps" id="audit-steps">
@@ -1780,7 +1780,7 @@
       <div class="section-label fade-in">Ready to Automate?</div>
       <h2 class="section-title fade-in">Get a free automation roadmap</h2>
       <p class="section-desc fade-in">Tell us what's eating your time, and we'll map out the 3 highest-ROI automations you could implement in the next 30 days.</p>
-      <div class="hero-actions fade-in cta-actions">
+      <div class="hero-actions cta-actions">
         <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Schedule a Free Call
@@ -1788,7 +1788,7 @@
       </div>
 
       <!-- Contact Form -->
-      <div class="contact-form-wrap fade-in">
+      <div class="contact-form-wrap">
         <h3 class="contact-form-heading">Or tell us what you need</h3>
         <p class="contact-form-subheading">We'll only use this to understand your business and suggest automations. No spam, ever.</p>
         <form name="contact" method="POST" action="https://formsubmit.co/hello@a3lab.ca" class="contact-form" id="contact-form">
@@ -2496,6 +2496,18 @@ window.addEventListener('load', function () {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
       opacity: 0, y: 22, duration: 0.6, ease: 'power2.out'
+    });
+  });
+
+  // Catch-all: animate remaining .fade-in elements (skip interactive containers)
+  var handled = '.service-card, .pricing-card, .stack-item, .process-step, .story-card, .automate-card, .section-label, .section-title, .section-desc, .hero-text, .hero-robot';
+  gsap.utils.toArray('.fade-in').forEach(function(el) {
+    if (el.matches(handled) || el.closest(handled)) return;
+    // Skip elements containing forms, sliders, or other interactive content
+    if (el.querySelector('input, form, button, textarea, [type="range"]')) return;
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%' },
+      opacity: 0, y: 24, duration: 0.6, ease: 'power2.out'
     });
   });
 

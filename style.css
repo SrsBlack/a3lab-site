@@ -1083,15 +1083,13 @@
 }
 
 /* ---------- SCROLL REVEALS ---------- */
+/*
+   GSAP ScrollTrigger handles all fade-in animations.
+   Default: visible. GSAP sets opacity:0 on init, then animates in.
+   This prevents invisible-element bugs when CSS scroll animations
+   conflict with GSAP or aren't supported by the browser.
+*/
 .fade-in { opacity: 1; }
-@supports (animation-timeline: scroll()) {
-  .fade-in {
-    opacity: 0;
-    animation: reveal-fade linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 100%;
-  }
-}
 @keyframes reveal-fade { to { opacity: 1; } }
 
 /* ---------- GRAIN OVERLAY ---------- */
@@ -2395,10 +2393,20 @@ input[type="range"] {
   color: var(--color-text-faint);
   margin-top: 4px;
 }
+.roi-inputs {
+  display: flex;
+  flex-direction: column;
+}
 .roi-results {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+.roi-loss .roi-result-value {
+  color: var(--color-error);
+}
+.roi-payback .roi-result-value {
+  color: var(--color-accent);
 }
 .roi-result-card {
   background: var(--color-bg);
@@ -2526,6 +2534,12 @@ input[type="range"] {
   background: rgba(34,211,238,0.06);
   color: var(--color-primary);
   transform: translateX(4px);
+}
+.audit-email-step {
+  text-align: center;
+}
+.audit-result {
+  margin-top: var(--space-8);
 }
 .audit-email-form {
   display: flex;
@@ -3094,6 +3108,13 @@ input[type="range"] {
 }
 .nav-dropdown-menu a.active {
   color: var(--color-primary);
+}
+.nav-dropdown-all {
+  font-weight: 600;
+  color: var(--color-primary) !important;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-1);
+  padding-top: var(--space-3) !important;
 }
 /* Desktop hover interaction */
 @media (min-width: 1180px) {
