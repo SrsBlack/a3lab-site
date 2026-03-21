@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build
+dist/
+build/
+.expo/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+
+# Database
+*.db
+*.sqlite
+
+# Mobile
+ios/Pods/
+android/.gradle/
+android/app/build/
+*.apk
+*.ipa
+*.jks
+*.keystore
+
+# Logs
+*.log
+npm-debug.log*

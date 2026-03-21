@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "PROOF",
+    "slug": "proof",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.proof.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "PROOF needs camera access to capture real moments.",
+        "NSMicrophoneUsageDescription": "PROOF needs microphone access to record authentic audio.",
+        "NSLocationWhenInUseUsageDescription": "PROOF uses location to verify capture authenticity.",
+        "NSFaceIDUsageDescription": "PROOF uses biometrics to verify your identity."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.proof.app",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "PROOF needs camera access to capture real moments."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "PROOF uses location to verify capture authenticity."
+        }
+      ]
+    ]
+  }
+}

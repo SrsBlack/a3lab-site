@@ -1,0 +1,19 @@
+{
+  "name": "proof-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PROOF — A social platform where every post is verified as human-created, unedited, and authentic.",
+  "scripts": {
+    "dev:api": "pnpm --filter @proof/api dev",
+    "dev:mobile": "pnpm --filter @proof/mobile start",
+    "build:api": "pnpm --filter @proof/api build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "db:migrate": "pnpm --filter @proof/api db:migrate",
+    "db:seed": "pnpm --filter @proof/api db:seed"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

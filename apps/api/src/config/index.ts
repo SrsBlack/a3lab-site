@@ -1,0 +1,17 @@
+export const config = {
+  port: parseInt(process.env.PORT || '3001', 10),
+  databaseUrl: process.env.DATABASE_URL || 'postgresql://localhost:5432/proof',
+  jwtSecret: process.env.JWT_SECRET || 'proof-dev-secret-change-in-production',
+  jwtExpiresIn: process.env.JWT_EXPIRES_IN || '30d',
+  s3Bucket: process.env.S3_BUCKET || 'proof-media-dev',
+  s3Region: process.env.S3_REGION || 'us-east-1',
+  smsProvider: process.env.SMS_PROVIDER || 'stub',
+  maxFollows: 150,
+  maxVouchesGiven: 3,
+  verifiedThreshold: 35,
+  moderatorTrustThreshold: 75,
+  maxPostTextLength: 500,
+  feedPageSize: 20,
+  rateLimitWindowMs: 60 * 1000,
+  rateLimitMaxRequests: 60,
+} as const;

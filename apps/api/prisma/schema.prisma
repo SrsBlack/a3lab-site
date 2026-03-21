@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───────────────────────────────────────────────────────────
+
+enum CheckType {
+  PHONE
+  SELFIE
+  VOUCH
+  CONSISTENCY
+  DEVICE
+  BEHAVIORAL
+}
+
+enum CheckStatus {
+  PENDING
+  PASSED
+  FAILED
+}
+
+enum ContentType {
+  PHOTO
+  VIDEO
+  TEXT
+}
+
+enum ReactionType {
+  FELT_THAT
+  RESPECT
+  REAL_ONE
+}
+
+enum FlagReason {
+  AI_CONTENT
+  EDITED
+  FAKE
+  SPAM
+  COMMERCIAL
+}
+
+enum FlagStatus {
+  PENDING
+  REVIEWED
+  DISMISSED
+}
+
+// ─── Models ──────────────────────────────────────────────────────────
+
+model User {
+  id                String   @id @default(uuid()) @db.Uuid
+  username          String   @unique @db.VarChar(30)
+  phoneHash         String
+  trustScore        Float    @default(0)
+  isVerified        Boolean  @default(false)
+  deviceFingerprint String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  identityChecks IdentityCheck[]
+  posts          Post[]
+  reactions      Reaction[]
+  flagsReported  Flag[]          @relation("FlagReporter")
+  flagsReviewed  Flag[]          @relation("FlagReviewer")
+  followers      Follow[]        @relation("Following")
+  following      Follow[]        @relation("Follower")
+  vouchesGiven   Vouch[]         @relation("Voucher")
+  vouchesReceived Vouch[]        @relation("Vouchee")
+
+  @@map("users")
+}
+
+model IdentityCheck {
+  id           String      @id @default(uuid()) @db.Uuid
+  userId       String      @db.Uuid
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  checkType    CheckType
+  status       CheckStatus @default(PENDING)
+  scoreAwarded Float       @default(0)
+  checkedAt    DateTime    @default(now())
+
+  @@map("identity_checks")
+}
+
+model Post {
+  id            String      @id @default(uuid()) @db.Uuid
+  authorId      String      @db.Uuid
+  author        User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  contentType   ContentType
+  textBody      String?
+  mediaUrl      String?
+  integrityHash String
+  captureMeta   Json        @default("{}")
+  aiScore       Float       @default(0)
+  isAuthentic   Boolean     @default(true)
+  createdAt     DateTime    @default(now())
+
+  reactions Reaction[]
+  flags     Flag[]
+
+  @@map("posts")
+}
+
+model Follow {
+  followerId  String   @db.Uuid
+  follower    User     @relation("Follower", fields: [followerId], references: [id], onDelete: Cascade)
+  followingId String   @db.Uuid
+  following   User     @relation("Following", fields: [followingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@id([followerId, followingId])
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+model Vouch {
+  voucherId String   @db.Uuid
+  voucher   User     @relation("Voucher", fields: [voucherId], references: [id], onDelete: Cascade)
+  voucheeId String   @db.Uuid
+  vouchee   User     @relation("Vouchee", fields: [voucheeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([voucherId, voucheeId])
+  @@unique([voucherId, voucheeId])
+  @@map("vouches")
+}
+
+model Reaction {
+  id           String       @id @default(uuid()) @db.Uuid
+  postId       String       @db.Uuid
+  post         Post         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId       String       @db.Uuid
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reactionType ReactionType
+  createdAt    DateTime     @default(now())
+
+  @@unique([postId, userId])
+  @@map("reactions")
+}
+
+model Flag {
+  id         String     @id @default(uuid()) @db.Uuid
+  postId     String     @db.Uuid
+  post       Post       @relation(fields: [postId], references: [id], onDelete: Cascade)
+  reporterId String     @db.Uuid
+  reporter   User       @relation("FlagReporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  reason     FlagReason
+  status     FlagStatus @default(PENDING)
+  reviewedBy String?    @db.Uuid
+  reviewer   User?      @relation("FlagReviewer", fields: [reviewedBy], references: [id])
+  createdAt  DateTime   @default(now())
+
+  @@map("flags")
+}
