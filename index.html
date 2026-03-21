@@ -2038,10 +2038,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // ==================== AUTOMATION COPILOT CHATBOT ====================
 (function(){
   const toggle = document.getElementById('chat-toggle');
+  if (!toggle) return;
   const win = document.getElementById('chat-window');
   const closeBtn = document.getElementById('chat-close');
   const body = document.getElementById('chat-body');
   const inputArea = document.getElementById('chat-input-area');
+  if (!win || !closeBtn || !body || !inputArea) return;
   const iconOpen = toggle.querySelector('.chat-icon-open');
   const iconClose = toggle.querySelector('.chat-icon-close');
   let isOpen = false;
@@ -2268,42 +2270,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }
 })();
 
-// ==================== ROI CALCULATOR ====================
-(function() {
-  const fields = {
-    team: { el: document.getElementById('roi-team'), out: document.getElementById('roi-team-val'), fmt: v => v },
-    hours: { el: document.getElementById('roi-hours'), out: document.getElementById('roi-hours-val'), fmt: v => v },
-    rate: { el: document.getElementById('roi-rate'), out: document.getElementById('roi-rate-val'), fmt: v => '$' + v },
-    auto: { el: document.getElementById('roi-automatable'), out: document.getElementById('roi-automatable-val'), fmt: v => v + '%' }
-  };
-  if (!fields.team.el) return;
-
-  function calc() {
-    const team = +fields.team.el.value;
-    const hours = +fields.hours.el.value;
-    const rate = +fields.rate.el.value;
-    const autoPct = +fields.auto.el.value / 100;
-
-    const monthlyWaste = team * hours * 4.33 * rate;
-    const monthlySave = monthlyWaste * autoPct * 0.8;
-    const hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
-    const weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : '—';
-
-    document.getElementById('roi-monthly-loss').textContent = '$' + Math.round(monthlyWaste).toLocaleString();
-    document.getElementById('roi-monthly-save').textContent = '$' + Math.round(monthlySave).toLocaleString();
-    document.getElementById('roi-hours-freed').textContent = hoursFree + ' hrs/month freed';
-    document.getElementById('roi-payback').textContent = typeof weeksPayback === 'number' ? weeksPayback + ' weeks' : '—';
-
-    fields.team.out.textContent = fields.team.fmt(team);
-    fields.hours.out.textContent = fields.hours.fmt(hours);
-    fields.rate.out.textContent = fields.rate.fmt(rate);
-    fields.auto.out.textContent = fields.auto.fmt(+fields.auto.el.value);
-  }
-
-  Object.values(fields).forEach(f => f.el && f.el.addEventListener('input', calc));
-  calc();
-})();
-
 // ==================== AUTOMATION AUDIT ====================
 (function() {
   const answers = {};
@@ -2418,6 +2384,54 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       `).join('');
     }
   }
+})();
+</script>
+
+<!-- ROI CALCULATOR (isolated script to prevent other errors from breaking it) -->
+<script>
+(function() {
+  var teamEl = document.getElementById('roi-team');
+  var hoursEl = document.getElementById('roi-hours');
+  var rateEl = document.getElementById('roi-rate');
+  var autoEl = document.getElementById('roi-automatable');
+  if (!teamEl || !hoursEl || !rateEl || !autoEl) return;
+
+  var teamVal = document.getElementById('roi-team-val');
+  var hoursVal = document.getElementById('roi-hours-val');
+  var rateVal = document.getElementById('roi-rate-val');
+  var autoVal = document.getElementById('roi-automatable-val');
+  var lossEl = document.getElementById('roi-monthly-loss');
+  var saveEl = document.getElementById('roi-monthly-save');
+  var freedEl = document.getElementById('roi-hours-freed');
+  var paybackEl = document.getElementById('roi-payback');
+
+  function calc() {
+    var team = +teamEl.value;
+    var hours = +hoursEl.value;
+    var rate = +rateEl.value;
+    var autoPct = +autoEl.value / 100;
+
+    var monthlyWaste = team * hours * 4.33 * rate;
+    var monthlySave = monthlyWaste * autoPct * 0.8;
+    var hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
+    var weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : 0;
+
+    if (lossEl) lossEl.textContent = '$' + Math.round(monthlyWaste).toLocaleString();
+    if (saveEl) saveEl.textContent = '$' + Math.round(monthlySave).toLocaleString();
+    if (freedEl) freedEl.textContent = hoursFree + ' hrs/month freed';
+    if (paybackEl) paybackEl.textContent = weeksPayback > 0 ? weeksPayback + ' weeks' : '\u2014';
+
+    if (teamVal) teamVal.textContent = team;
+    if (hoursVal) hoursVal.textContent = hours;
+    if (rateVal) rateVal.textContent = '$' + rate;
+    if (autoVal) autoVal.textContent = autoEl.value + '%';
+  }
+
+  teamEl.addEventListener('input', calc);
+  hoursEl.addEventListener('input', calc);
+  rateEl.addEventListener('input', calc);
+  autoEl.addEventListener('input', calc);
+  calc();
 })();
 </script>
 
