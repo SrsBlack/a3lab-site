@@ -2499,6 +2499,16 @@ window.addEventListener('load', function () {
     });
   });
 
+  // Catch-all: animate any remaining .fade-in elements not already handled above
+  var handled = '.service-card, .pricing-card, .stack-item, .process-step, .story-card, .automate-card, .section-label, .section-title, .section-desc, .hero-text, .hero-robot';
+  gsap.utils.toArray('.fade-in').forEach(function(el) {
+    if (el.matches(handled) || el.closest(handled)) return;
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%' },
+      opacity: 0, y: 24, duration: 0.6, ease: 'power2.out'
+    });
+  });
+
   // Service card hover scale
   document.querySelectorAll('.service-card').forEach(function(card) {
     card.addEventListener('mouseenter', function() {
