@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { CameraView, useCameraPermissions } from 'expo-camera';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { authAPI } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
@@ -28,6 +29,8 @@ export default function VerifyScreen({ phone, onBack }: VerifyScreenProps) {
 
   const login = useAuthStore((s) => s.login);
   const inputRefs = useRef<(TextInput | null)[]>([]);
+  const livenessCameraRef = useRef<CameraView>(null);
+  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
 
   const handleCodeChange = useCallback(
     (text: string, index: number) => {
@@ -84,12 +87,26 @@ export default function VerifyScreen({ phone, onBack }: VerifyScreenProps) {
   };
 
   const handleLivenessCapture = useCallback(async () => {
-    // In production: capture live selfie via expo-camera and submit
+    if (!livenessCameraRef.current) return;
+
     setIsLivenessReady(true);
 
     try {
-      await authAPI.submitLiveness('liveness_placeholder');
-      // Auth store already has token — just update user verification
+      // Capture a real selfie from the front camera
+      const photo = await livenessCameraRef.current.takePictureAsync({
+        quality: 0.8,
+        base64: true,
+        exif: false,
+      });
+
+      if (!photo?.base64) {
+        throw new Error('Failed to capture selfie');
+      }
+
+      // Submit the base64-encoded selfie to the server
+      await authAPI.submitLiveness(photo.base64);
+
+      // Auth store already has token — update user verification status
       const res = await authAPI.getMe();
       if (res.data?.user) {
         login(useAuthStore.getState().token!, res.data.user);
@@ -118,14 +135,28 @@ export default function VerifyScreen({ phone, onBack }: VerifyScreenProps) {
             </Text>
           </View>
 
-          {/* Camera placeholder */}
+          {/* Live front camera for selfie */}
           <View style={styles.livenessCamera}>
-            <View style={styles.livenessViewfinder}>
-              <View style={styles.faceOutline} />
-              <Text style={styles.livenessHint}>
-                position your face in the circle
-              </Text>
-            </View>
+            {cameraPermission?.granted ? (
+              <View style={styles.livenessViewfinder}>
+                <CameraView
+                  ref={livenessCameraRef}
+                  style={StyleSheet.absoluteFill}
+                  facing="front"
+                  mode="picture"
+                />
+                <View style={styles.faceOutline} />
+                <Text style={styles.livenessHint}>
+                  position your face in the circle
+                </Text>
+              </View>
+            ) : (
+              <Pressable style={styles.livenessViewfinder} onPress={requestCameraPermission}>
+                <Text style={styles.livenessHint}>
+                  tap to enable camera
+                </Text>
+              </Pressable>
+            )}
           </View>
 
           <Pressable

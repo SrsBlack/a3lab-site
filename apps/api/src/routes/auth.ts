@@ -4,6 +4,7 @@ import { prisma } from '../db';
 import { AuthenticatedRequest, authMiddleware, generateToken } from '../middleware/auth';
 import { rateLimit } from '../middleware/rateLimit';
 import { recalculateTrustScore } from '../services/trustEngine';
+import { sendVerificationCode } from '../services/sms';
 
 const router = Router();
 
@@ -38,9 +39,12 @@ router.post(
         expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes
       });
 
-      // TODO: Send actual SMS via Twilio/Vonage
-      // For development, log the code
-      console.log(`[DEV] Verification code for ${phoneNumber}: ${code}`);
+      // Send SMS via Twilio (or log in dev mode)
+      const smsResult = await sendVerificationCode(phoneNumber, code);
+      if (!smsResult.success) {
+        console.error('SMS delivery failed for', phoneNumber);
+        // Still proceed in development — code was logged by stub
+      }
 
       res.json({
         message: 'Verification code sent',

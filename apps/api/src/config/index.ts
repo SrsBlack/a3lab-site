@@ -3,9 +3,20 @@ export const config = {
   databaseUrl: process.env.DATABASE_URL || 'postgresql://localhost:5432/proof',
   jwtSecret: process.env.JWT_SECRET || 'proof-dev-secret-change-in-production',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '30d',
+
+  // Storage (S3 / Cloudflare R2)
   s3Bucket: process.env.S3_BUCKET || 'proof-media-dev',
   s3Region: process.env.S3_REGION || 'us-east-1',
-  smsProvider: process.env.SMS_PROVIDER || 'stub',
+  s3Endpoint: process.env.S3_ENDPOINT || '', // Set for R2: https://<account>.r2.cloudflarestorage.com
+  cdnUrl: process.env.CDN_URL || '', // e.g. https://media.proof.social
+
+  // SMS (Twilio)
+  smsProvider: process.env.SMS_PROVIDER || 'stub', // 'stub' | 'twilio'
+  twilioAccountSid: process.env.TWILIO_ACCOUNT_SID || '',
+  twilioAuthToken: process.env.TWILIO_AUTH_TOKEN || '',
+  twilioFromNumber: process.env.TWILIO_FROM_NUMBER || '',
+
+  // App rules
   maxFollows: 150,
   maxVouchesGiven: 3,
   verifiedThreshold: 35,

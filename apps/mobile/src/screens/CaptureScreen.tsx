@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,10 +10,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
+import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import { Video, ResizeMode } from 'expo-av';
 import { colors, typography, spacing, borderRadius } from '../theme';
 import { createIntegrityPayload, startCaptureSession } from '../services/integrity';
 import { postsAPI } from '../services/api';
+import { uploadMedia } from '../services/media';
 import { useFeedStore } from '../stores/feedStore';
 
 type CaptureMode = 'photo' | 'video' | 'text';
@@ -23,14 +27,24 @@ export default function CaptureScreen() {
   const [mode, setMode] = useState<CaptureMode>('photo');
   const [captureState, setCaptureState] = useState<CaptureState>('ready');
   const [isRecording, setIsRecording] = useState(false);
-  const [capturedData, setCapturedData] = useState<string | null>(null);
+  const [capturedUri, setCapturedUri] = useState<string | null>(null);
   const [textContent, setTextContent] = useState('');
   const [caption, setCaption] = useState('');
   const [isPosting, setIsPosting] = useState(false);
   const [typingStarted, setTypingStarted] = useState(false);
+  const [facing, setFacing] = useState<CameraType>('back');
 
+  const cameraRef = useRef<CameraView>(null);
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const prependPost = useFeedStore((s) => s.prependPost);
+
+  const [permission, requestPermission] = useCameraPermissions();
+
+  useEffect(() => {
+    if (!permission?.granted) {
+      requestPermission();
+    }
+  }, [permission]);
 
   // Start recording pulse animation
   const startPulse = useCallback(() => {
@@ -55,23 +69,37 @@ export default function CaptureScreen() {
     pulseAnim.setValue(1);
   }, [pulseAnim]);
 
-  const handleCapture = useCallback(() => {
+  const handleCapture = useCallback(async () => {
+    if (!cameraRef.current) return;
+
     if (mode === 'photo') {
-      // In production: trigger expo-camera capture
       startCaptureSession();
-      setCapturedData('photo_placeholder');
-      setCaptureState('preview');
+      const photo = await cameraRef.current.takePictureAsync({
+        quality: 0.85,
+        exif: false, // No EXIF leaks
+      });
+      if (photo) {
+        setCapturedUri(photo.uri);
+        setCaptureState('preview');
+      }
     } else if (mode === 'video') {
       if (!isRecording) {
         startCaptureSession();
         setIsRecording(true);
         setCaptureState('recording');
         startPulse();
+        const video = await cameraRef.current.recordAsync({
+          maxDuration: 30, // 30 second max
+        });
+        if (video) {
+          setCapturedUri(video.uri);
+          setCaptureState('preview');
+          setIsRecording(false);
+          stopPulse();
+        }
       } else {
-        setIsRecording(false);
-        setCaptureState('preview');
-        setCapturedData('video_placeholder');
-        stopPulse();
+        cameraRef.current.stopRecording();
+        // recordAsync promise resolves above with the video uri
       }
     }
   }, [mode, isRecording, startPulse, stopPulse]);
@@ -79,20 +107,30 @@ export default function CaptureScreen() {
   const handleTextSubmit = useCallback(() => {
     if (textContent.trim().length === 0) return;
     startCaptureSession();
-    setCapturedData(textContent);
+    setCapturedUri(textContent);
     setCaptureState('preview');
   }, [textContent]);
 
   const handlePostRaw = useCallback(async () => {
-    if (!capturedData) return;
+    if (!capturedUri) return;
 
     setIsPosting(true);
     try {
-      const integrity = await createIntegrityPayload(capturedData);
+      const integrity = await createIntegrityPayload(
+        mode === 'text' ? capturedUri : `file://${capturedUri}`
+      );
+
+      let mediaUrl: string | undefined;
+
+      // Upload media to cloud storage for photo/video
+      if (mode !== 'text') {
+        mediaUrl = await uploadMedia(capturedUri, mode === 'photo' ? 'image' : 'video');
+      }
 
       const payload = {
         contentType: mode,
-        textContent: mode === 'text' ? capturedData : undefined,
+        textContent: mode === 'text' ? capturedUri : undefined,
+        media: mediaUrl,
         caption: caption.trim() || undefined,
         integrityHash: integrity.hash,
         captureMeta: integrity.meta,
@@ -106,7 +144,7 @@ export default function CaptureScreen() {
 
       // Reset
       setCaptureState('ready');
-      setCapturedData(null);
+      setCapturedUri(null);
       setCaption('');
       setTextContent('');
       setTypingStarted(false);
@@ -115,11 +153,11 @@ export default function CaptureScreen() {
     } finally {
       setIsPosting(false);
     }
-  }, [capturedData, mode, caption, prependPost]);
+  }, [capturedUri, mode, caption, prependPost]);
 
   const handleDiscard = useCallback(() => {
     setCaptureState('ready');
-    setCapturedData(null);
+    setCapturedUri(null);
     setCaption('');
     setTextContent('');
     setTypingStarted(false);
@@ -143,19 +181,31 @@ export default function CaptureScreen() {
 
           {mode === 'text' ? (
             <View style={styles.textPreview}>
-              <Text style={styles.textPreviewBody}>{capturedData}</Text>
+              <Text style={styles.textPreviewBody}>{capturedUri}</Text>
               <Text style={styles.typedLiveLabel}>typed live · unedited</Text>
             </View>
-          ) : (
+          ) : mode === 'photo' && capturedUri ? (
             <View style={styles.mediaPreview}>
-              <View style={styles.mediaPreviewPlaceholder}>
-                <Text style={styles.mediaPreviewIcon}>
-                  {mode === 'photo' ? '◻' : '▶'}
-                </Text>
-              </View>
+              <Image
+                source={{ uri: capturedUri }}
+                style={styles.mediaPreviewImage}
+                resizeMode="cover"
+              />
               <Text style={styles.capturedLabel}>captured on device</Text>
             </View>
-          )}
+          ) : mode === 'video' && capturedUri ? (
+            <View style={styles.mediaPreview}>
+              <Video
+                source={{ uri: capturedUri }}
+                style={styles.mediaPreviewImage}
+                resizeMode={ResizeMode.COVER}
+                shouldPlay
+                isLooping
+                isMuted={false}
+              />
+              <Text style={styles.capturedLabel}>captured on device</Text>
+            </View>
+          ) : null}
 
           {/* Optional caption */}
           <TextInput
@@ -237,16 +287,41 @@ export default function CaptureScreen() {
 
   // ─── Camera mode (photo / video) ───────────────────
 
+  // Flip camera
+  const toggleFacing = useCallback(() => {
+    setFacing((f) => (f === 'back' ? 'front' : 'back'));
+  }, []);
+
+  if (!permission?.granted) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.viewfinder}>
+          <Text style={styles.viewfinderText}>camera access needed</Text>
+          <Text style={styles.viewfinderSub}>
+            PROOF requires your camera to capture real moments.
+          </Text>
+          <Pressable style={styles.permissionButton} onPress={requestPermission}>
+            <Text style={styles.permissionButtonText}>GRANT ACCESS</Text>
+          </Pressable>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      {/* Camera viewfinder area */}
+      {/* Live camera viewfinder */}
       <View style={styles.viewfinder}>
-        <Text style={styles.viewfinderText}>
-          {mode === 'photo' ? 'point & shoot' : 'point & record'}
-        </Text>
-        <Text style={styles.viewfinderSub}>
-          no filters. no edits. what you see is what they get.
-        </Text>
+        <CameraView
+          ref={cameraRef}
+          style={StyleSheet.absoluteFill}
+          facing={facing}
+          mode={mode === 'video' ? 'video' : 'picture'}
+        />
+        {/* Flip camera button */}
+        <Pressable style={styles.flipButton} onPress={toggleFacing}>
+          <Text style={styles.flipButtonText}>FLIP</Text>
+        </Pressable>
       </View>
 
       {/* Controls */}
@@ -319,10 +394,8 @@ const styles = StyleSheet.create({
   viewfinder: {
     flex: 1,
     backgroundColor: colors.gray700,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    overflow: 'hidden',
+    position: 'relative',
   },
   viewfinderText: {
     color: colors.textSecondary,
@@ -336,6 +409,34 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
     textAlign: 'center',
     paddingHorizontal: spacing.xl,
+  },
+  flipButton: {
+    position: 'absolute',
+    top: spacing.xl,
+    right: spacing.md,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: borderRadius.sm,
+  },
+  flipButtonText: {
+    color: colors.white,
+    fontSize: typography.fontSize.xs,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
+  },
+  permissionButton: {
+    marginTop: spacing.lg,
+    backgroundColor: colors.white,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.sm,
+  },
+  permissionButtonText: {
+    color: colors.black,
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
   },
 
   // ─── Controls ─────────────────────────────────────
@@ -522,17 +623,11 @@ const styles = StyleSheet.create({
   mediaPreview: {
     marginBottom: spacing.md,
   },
-  mediaPreviewPlaceholder: {
+  mediaPreviewImage: {
     width: '100%',
     aspectRatio: 1,
-    backgroundColor: colors.gray700,
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: borderRadius.sm,
-  },
-  mediaPreviewIcon: {
-    color: colors.textMuted,
-    fontSize: 64,
+    backgroundColor: colors.gray700,
   },
   capturedLabel: {
     color: colors.textMuted,

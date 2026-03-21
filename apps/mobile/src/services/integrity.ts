@@ -12,6 +12,7 @@
 import * as Crypto from 'expo-crypto';
 import * as Location from 'expo-location';
 import * as Device from 'expo-device';
+import { Accelerometer, type AccelerometerMeasurement } from 'expo-sensors';
 
 // ─── Types ────────────────────────────────────────────
 
@@ -43,10 +44,29 @@ export interface IntegrityPayload {
 // ─── Session tracking ─────────────────────────────────
 
 let currentSessionId: string | null = null;
+let latestAcceleration: AccelerometerMeasurement | null = null;
+let accelerometerSubscription: ReturnType<typeof Accelerometer.addListener> | null = null;
 
+/**
+ * Start a capture session. Begins collecting accelerometer data
+ * to prove the device was physically held during capture.
+ */
 export function startCaptureSession(): string {
   currentSessionId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+
+  // Start listening to accelerometer
+  Accelerometer.setUpdateInterval(100); // 10 samples/sec
+  accelerometerSubscription?.remove();
+  accelerometerSubscription = Accelerometer.addListener((data) => {
+    latestAcceleration = data;
+  });
+
   return currentSessionId;
+}
+
+function stopAccelerometer() {
+  accelerometerSubscription?.remove();
+  accelerometerSubscription = null;
 }
 
 // ─── Metadata collection ──────────────────────────────
@@ -70,9 +90,13 @@ export async function getCaptureMeta(): Promise<CaptureMeta> {
     // Location unavailable — continue without it
   }
 
-  // Accelerometer data would come from expo-sensors subscription
-  // In a real implementation this reads the latest sample from a running listener
-  const accelerometer: CaptureMeta['accelerometer'] = null;
+  // Read the latest accelerometer sample collected during this capture session
+  const accelerometer: CaptureMeta['accelerometer'] = latestAcceleration
+    ? { x: latestAcceleration.x, y: latestAcceleration.y, z: latestAcceleration.z }
+    : null;
+
+  // Stop the listener now that we've captured the data
+  stopAccelerometer();
 
   // Ambient light sensor — not universally available
   const ambientLight: number | null = null;
