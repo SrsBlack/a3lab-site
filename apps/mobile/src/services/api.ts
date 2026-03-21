@@ -144,6 +144,77 @@ export const notificationsAPI = {
 
   updatePreferences: (prefs: { reactions?: boolean; vouches?: boolean; moderation?: boolean }) =>
     client.put('/notifications/preferences', prefs),
+
+  list: (cursor?: string) =>
+    client.get('/notifications', { params: { cursor } }),
+
+  markRead: (id: string) =>
+    client.post(`/notifications/${id}/read`),
+
+  markAllRead: () =>
+    client.post('/notifications/read-all'),
+};
+
+// ─── Comments ────────────────────────────────────────
+
+export const commentsAPI = {
+  getComments: (postId: string, cursor?: string) =>
+    client.get(`/posts/${postId}/comments`, { params: { cursor } }),
+
+  addComment: (postId: string, body: string) =>
+    client.post(`/posts/${postId}/comments`, { body }),
+
+  deleteComment: (commentId: string) =>
+    client.delete(`/comments/${commentId}`),
+};
+
+// ─── Bookmarks ───────────────────────────────────────
+
+export const bookmarksAPI = {
+  list: (cursor?: string) =>
+    client.get('/bookmarks', { params: { cursor } }),
+
+  add: (postId: string) =>
+    client.post(`/posts/${postId}/bookmark`),
+
+  remove: (postId: string) =>
+    client.delete(`/posts/${postId}/bookmark`),
+};
+
+// ─── Search ──────────────────────────────────────────
+
+export const searchAPI = {
+  users: (q: string) =>
+    client.get('/users/search', { params: { q } }),
+};
+
+// ─── Profile ─────────────────────────────────────────
+
+export const profileAPI = {
+  update: (data: { displayName?: string; bio?: string; avatarUrl?: string }) =>
+    client.put('/users/me', data),
+
+  getFollowers: (userId: string, cursor?: string) =>
+    client.get(`/users/${userId}/followers`, { params: { cursor } }),
+
+  getFollowing: (userId: string, cursor?: string) =>
+    client.get(`/users/${userId}/following`, { params: { cursor } }),
+
+  block: (userId: string) =>
+    client.post(`/users/${userId}/block`),
+
+  unblock: (userId: string) =>
+    client.delete(`/users/${userId}/block`),
+};
+
+// ─── Moderation ──────────────────────────────────────
+
+export const moderationAPI = {
+  getQueue: () =>
+    client.get('/moderation/queue'),
+
+  review: (flagId: string, decision: 'uphold' | 'dismiss') =>
+    client.post(`/moderation/${flagId}`, { decision }),
 };
 
 export default client;

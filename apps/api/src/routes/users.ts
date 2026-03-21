@@ -7,6 +7,118 @@ import { recalculateTrustScore } from '../services/trustEngine';
 const router = Router();
 
 /**
+ * PUT /users/me
+ * Edit own profile (displayName, bio, avatarUrl).
+ */
+router.put(
+  '/me',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+      const { displayName, bio, avatarUrl } = req.body;
+
+      const update: Record<string, any> = {};
+
+      if (displayName !== undefined) {
+        if (displayName !== null && typeof displayName !== 'string') {
+          res.status(400).json({ error: 'displayName must be a string or null' });
+          return;
+        }
+        if (displayName && displayName.length > 50) {
+          res.status(400).json({ error: 'displayName must be 50 characters or fewer' });
+          return;
+        }
+        update.displayName = displayName || null;
+      }
+
+      if (bio !== undefined) {
+        if (bio !== null && typeof bio !== 'string') {
+          res.status(400).json({ error: 'bio must be a string or null' });
+          return;
+        }
+        if (bio && bio.length > 160) {
+          res.status(400).json({ error: 'bio must be 160 characters or fewer' });
+          return;
+        }
+        update.bio = bio || null;
+      }
+
+      if (avatarUrl !== undefined) {
+        if (avatarUrl !== null && typeof avatarUrl !== 'string') {
+          res.status(400).json({ error: 'avatarUrl must be a string or null' });
+          return;
+        }
+        update.avatarUrl = avatarUrl || null;
+      }
+
+      if (Object.keys(update).length === 0) {
+        res.status(400).json({ error: 'At least one field must be provided (displayName, bio, avatarUrl)' });
+        return;
+      }
+
+      const user = await prisma.user.update({
+        where: { id: userId },
+        data: update,
+        select: {
+          id: true,
+          username: true,
+          displayName: true,
+          bio: true,
+          avatarUrl: true,
+        },
+      });
+
+      res.json(user);
+    } catch (err) {
+      console.error('Error updating profile:', err);
+      res.status(500).json({ error: 'Failed to update profile' });
+    }
+  }
+);
+
+/**
+ * GET /users/search
+ * Search users by username.
+ */
+router.get(
+  '/search',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const q = req.query.q as string | undefined;
+
+      if (!q || typeof q !== 'string' || q.trim().length === 0) {
+        res.status(400).json({ error: 'Query parameter "q" is required' });
+        return;
+      }
+
+      const users = await prisma.user.findMany({
+        where: {
+          username: {
+            contains: q.trim(),
+            mode: 'insensitive',
+          },
+        },
+        select: {
+          id: true,
+          username: true,
+          displayName: true,
+          isVerified: true,
+          avatarUrl: true,
+        },
+        take: 20,
+      });
+
+      res.json({ users });
+    } catch (err) {
+      console.error('Error searching users:', err);
+      res.status(500).json({ error: 'Failed to search users' });
+    }
+  }
+);
+
+/**
  * GET /users/:id
  * Get a user's public profile.
  * DOES NOT return trust score or follower count (by design).
@@ -367,6 +479,252 @@ router.post(
     } catch (err) {
       console.error('Error vouching for user:', err);
       res.status(500).json({ error: 'Failed to vouch for user' });
+    }
+  }
+);
+
+/**
+ * GET /users/:id/followers
+ * List a user's followers (paginated, limit 50).
+ */
+router.get(
+  '/:id/followers',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const targetId = req.params.id;
+      const cursor = req.query.cursor as string | undefined;
+      const limit = Math.min(
+        parseInt(req.query.limit as string) || 50,
+        50
+      );
+
+      // Verify user exists
+      const user = await prisma.user.findUnique({
+        where: { id: targetId },
+        select: { id: true },
+      });
+
+      if (!user) {
+        res.status(404).json({ error: 'User not found' });
+        return;
+      }
+
+      const whereClause: any = {
+        followingId: targetId,
+      };
+
+      if (cursor) {
+        whereClause.createdAt = { lt: new Date(cursor) };
+      }
+
+      const follows = await prisma.follow.findMany({
+        where: whereClause,
+        orderBy: { createdAt: 'desc' },
+        take: limit + 1,
+        include: {
+          follower: {
+            select: {
+              id: true,
+              username: true,
+              isVerified: true,
+            },
+          },
+        },
+      });
+
+      const hasMore = follows.length > limit;
+      const pageFollows = hasMore ? follows.slice(0, limit) : follows;
+      const nextCursor = hasMore
+        ? pageFollows[pageFollows.length - 1].createdAt.toISOString()
+        : null;
+
+      res.json({
+        followers: pageFollows.map((f) => f.follower),
+        nextCursor,
+        hasMore,
+      });
+    } catch (err) {
+      console.error('Error fetching followers:', err);
+      res.status(500).json({ error: 'Failed to fetch followers' });
+    }
+  }
+);
+
+/**
+ * GET /users/:id/following
+ * List who a user follows (paginated, limit 50).
+ */
+router.get(
+  '/:id/following',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const targetId = req.params.id;
+      const cursor = req.query.cursor as string | undefined;
+      const limit = Math.min(
+        parseInt(req.query.limit as string) || 50,
+        50
+      );
+
+      // Verify user exists
+      const user = await prisma.user.findUnique({
+        where: { id: targetId },
+        select: { id: true },
+      });
+
+      if (!user) {
+        res.status(404).json({ error: 'User not found' });
+        return;
+      }
+
+      const whereClause: any = {
+        followerId: targetId,
+      };
+
+      if (cursor) {
+        whereClause.createdAt = { lt: new Date(cursor) };
+      }
+
+      const follows = await prisma.follow.findMany({
+        where: whereClause,
+        orderBy: { createdAt: 'desc' },
+        take: limit + 1,
+        include: {
+          following: {
+            select: {
+              id: true,
+              username: true,
+              isVerified: true,
+            },
+          },
+        },
+      });
+
+      const hasMore = follows.length > limit;
+      const pageFollows = hasMore ? follows.slice(0, limit) : follows;
+      const nextCursor = hasMore
+        ? pageFollows[pageFollows.length - 1].createdAt.toISOString()
+        : null;
+
+      res.json({
+        following: pageFollows.map((f) => f.following),
+        nextCursor,
+        hasMore,
+      });
+    } catch (err) {
+      console.error('Error fetching following:', err);
+      res.status(500).json({ error: 'Failed to fetch following' });
+    }
+  }
+);
+
+/**
+ * POST /users/:id/block
+ * Block a user. Deletes any follow/vouch relationships.
+ */
+router.post(
+  '/:id/block',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const blockerId = req.user!.userId;
+      const blockedId = req.params.id;
+
+      if (blockerId === blockedId) {
+        res.status(400).json({ error: 'You cannot block yourself' });
+        return;
+      }
+
+      // Verify target user exists
+      const targetUser = await prisma.user.findUnique({
+        where: { id: blockedId },
+        select: { id: true },
+      });
+
+      if (!targetUser) {
+        res.status(404).json({ error: 'User not found' });
+        return;
+      }
+
+      // Check if already blocked
+      const existing = await prisma.block.findUnique({
+        where: {
+          blockerId_blockedId: { blockerId, blockedId },
+        },
+      });
+
+      if (existing) {
+        res.status(409).json({ error: 'You have already blocked this user' });
+        return;
+      }
+
+      // Create block and remove follow/vouch relationships in a transaction
+      await prisma.$transaction([
+        prisma.block.create({
+          data: { blockerId, blockedId },
+        }),
+        // Remove follow relationships in both directions
+        prisma.follow.deleteMany({
+          where: {
+            OR: [
+              { followerId: blockerId, followingId: blockedId },
+              { followerId: blockedId, followingId: blockerId },
+            ],
+          },
+        }),
+        // Remove vouch relationships in both directions
+        prisma.vouch.deleteMany({
+          where: {
+            OR: [
+              { voucherId: blockerId, voucheeId: blockedId },
+              { voucherId: blockedId, voucheeId: blockerId },
+            ],
+          },
+        }),
+      ]);
+
+      res.status(201).json({ message: 'User blocked', blockedId });
+    } catch (err) {
+      console.error('Error blocking user:', err);
+      res.status(500).json({ error: 'Failed to block user' });
+    }
+  }
+);
+
+/**
+ * DELETE /users/:id/block
+ * Unblock a user.
+ */
+router.delete(
+  '/:id/block',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const blockerId = req.user!.userId;
+      const blockedId = req.params.id;
+
+      const existing = await prisma.block.findUnique({
+        where: {
+          blockerId_blockedId: { blockerId, blockedId },
+        },
+      });
+
+      if (!existing) {
+        res.status(404).json({ error: 'You have not blocked this user' });
+        return;
+      }
+
+      await prisma.block.delete({
+        where: {
+          blockerId_blockedId: { blockerId, blockedId },
+        },
+      });
+
+      res.json({ message: 'User unblocked', unblockedId: blockedId });
+    } catch (err) {
+      console.error('Error unblocking user:', err);
+      res.status(500).json({ error: 'Failed to unblock user' });
     }
   }
 );
