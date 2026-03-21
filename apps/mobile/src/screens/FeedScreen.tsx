@@ -14,7 +14,7 @@ import { feedAPI } from '../services/api';
 import PostCard from '../components/PostCard';
 import { SkeletonPostCard } from '../components/Skeleton';
 
-export default function FeedScreen() {
+export default function FeedScreen({ navigation }: any) {
   const {
     posts,
     isLoading,
@@ -72,8 +72,17 @@ export default function FeedScreen() {
   }, [loadFeed]);
 
   const renderPost = useCallback(
-    ({ item }: { item: Post }) => <PostCard post={item} />,
-    []
+    ({ item }: { item: Post }) => (
+      <Pressable onPress={() => navigation?.navigate('PostDetail', { postId: item.id })}>
+        <PostCard
+          post={item}
+          onUsernamePress={(userId) =>
+            navigation?.navigate('UserProfile', { userId })
+          }
+        />
+      </Pressable>
+    ),
+    [navigation]
   );
 
   const keyExtractor = useCallback((item: Post) => item.id, []);

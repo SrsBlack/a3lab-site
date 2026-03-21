@@ -323,28 +323,114 @@ router.delete(
 
 /**
  * POST /posts/:id/react
- * Add a reaction to a post.
+ * POST /posts/:id/reactions
+ * Add a reaction to a post. Accepts both paths for compatibility.
  */
-router.post(
-  '/:id/react',
+async function handleReact(req: AuthenticatedRequest, res: Response): Promise<void> {
+  try {
+    const userId = req.user!.userId;
+    const postId = req.params.id;
+    // Accept both "reactionType" (backend) and "type" (mobile client)
+    const rawType = req.body.reactionType || req.body.type;
+    const reactionType = typeof rawType === 'string' ? rawType.toUpperCase() : rawType;
+
+    if (!reactionType || !['FELT_THAT', 'RESPECT', 'REAL_ONE'].includes(reactionType)) {
+      res.status(400).json({
+        error: 'Invalid reaction type. Must be FELT_THAT, RESPECT, or REAL_ONE',
+      });
+      return;
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+      select: { id: true, authorId: true },
+    });
+
+    if (!post) {
+      res.status(404).json({ error: 'Post not found' });
+      return;
+    }
+
+    const reaction = await prisma.reaction.upsert({
+      where: {
+        postId_userId: { postId, userId },
+      },
+      update: {
+        reactionType: reactionType as ReactionType,
+      },
+      create: {
+        postId,
+        userId,
+        reactionType: reactionType as ReactionType,
+      },
+    });
+
+    res.json({
+      id: reaction.id,
+      reactionType: reaction.reactionType,
+      postId: reaction.postId,
+    });
+  } catch (err) {
+    console.error('Error adding reaction:', err);
+    res.status(500).json({ error: 'Failed to add reaction' });
+  }
+}
+
+router.post('/:id/react', authMiddleware, handleReact);
+router.post('/:id/reactions', authMiddleware, handleReact);
+
+/**
+ * DELETE /posts/:id/reactions/:type
+ * Remove a reaction from a post.
+ */
+router.delete(
+  '/:id/reactions/:type',
   authMiddleware,
   async (req: AuthenticatedRequest, res: Response): Promise<void> => {
     try {
       const userId = req.user!.userId;
       const postId = req.params.id;
-      const { reactionType } = req.body;
 
-      if (!reactionType || !['FELT_THAT', 'RESPECT', 'REAL_ONE'].includes(reactionType)) {
-        res.status(400).json({
-          error: 'Invalid reaction type. Must be FELT_THAT, RESPECT, or REAL_ONE',
-        });
+      const existing = await prisma.reaction.findUnique({
+        where: {
+          postId_userId: { postId, userId },
+        },
+      });
+
+      if (!existing) {
+        res.status(404).json({ error: 'Reaction not found' });
         return;
       }
 
-      // Verify post exists
+      await prisma.reaction.delete({
+        where: {
+          postId_userId: { postId, userId },
+        },
+      });
+
+      res.json({ message: 'Reaction removed' });
+    } catch (err) {
+      console.error('Error removing reaction:', err);
+      res.status(500).json({ error: 'Failed to remove reaction' });
+    }
+  }
+);
+
+/**
+ * POST /posts/:id/bookmark
+ * Bookmark a post.
+ */
+router.post(
+  '/:id/bookmark',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+      const postId = req.params.id;
+
       const post = await prisma.post.findUnique({
         where: { id: postId },
-        select: { id: true, authorId: true },
+        select: { id: true },
       });
 
       if (!post) {
@@ -352,29 +438,62 @@ router.post(
         return;
       }
 
-      // Upsert the reaction (one reaction per user per post)
-      const reaction = await prisma.reaction.upsert({
+      const existing = await prisma.bookmark.findUnique({
         where: {
-          postId_userId: { postId, userId },
-        },
-        update: {
-          reactionType: reactionType as ReactionType,
-        },
-        create: {
-          postId,
-          userId,
-          reactionType: reactionType as ReactionType,
+          userId_postId: { userId, postId },
         },
       });
 
-      res.json({
-        id: reaction.id,
-        reactionType: reaction.reactionType,
-        postId: reaction.postId,
+      if (existing) {
+        res.status(409).json({ error: 'Post already bookmarked' });
+        return;
+      }
+
+      await prisma.bookmark.create({
+        data: { userId, postId },
       });
+
+      res.status(201).json({ message: 'Post bookmarked' });
     } catch (err) {
-      console.error('Error adding reaction:', err);
-      res.status(500).json({ error: 'Failed to add reaction' });
+      console.error('Error bookmarking post:', err);
+      res.status(500).json({ error: 'Failed to bookmark post' });
+    }
+  }
+);
+
+/**
+ * DELETE /posts/:id/bookmark
+ * Remove a bookmark.
+ */
+router.delete(
+  '/:id/bookmark',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+      const postId = req.params.id;
+
+      const existing = await prisma.bookmark.findUnique({
+        where: {
+          userId_postId: { userId, postId },
+        },
+      });
+
+      if (!existing) {
+        res.status(404).json({ error: 'Bookmark not found' });
+        return;
+      }
+
+      await prisma.bookmark.delete({
+        where: {
+          userId_postId: { userId, postId },
+        },
+      });
+
+      res.json({ message: 'Bookmark removed' });
+    } catch (err) {
+      console.error('Error removing bookmark:', err);
+      res.status(500).json({ error: 'Failed to remove bookmark' });
     }
   }
 );

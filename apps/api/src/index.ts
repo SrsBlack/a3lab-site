@@ -10,6 +10,8 @@ import verificationRoutes from './routes/verification';
 import mediaRoutes from './routes/media';
 import notificationRoutes from './routes/notifications';
 import commentRoutes from './routes/comments';
+import moderationRoutes from './routes/moderation';
+import { authMiddleware } from './middleware/auth';
 
 const app = express();
 
@@ -41,7 +43,66 @@ app.use('/users', userRoutes);
 app.use('/verification', verificationRoutes);
 app.use('/media', mediaRoutes);
 app.use('/notifications', notificationRoutes);
+app.use('/moderation', moderationRoutes);
 app.use('/', commentRoutes);
+
+// ─── Aliases ────────────────────────────────────────────────────────
+
+// Mobile client calls GET /feed; backend has it under /posts/feed
+app.get('/feed', authMiddleware, (req, res, next) => {
+  req.url = '/posts/feed';
+  app.handle(req, res, next);
+});
+
+// Mobile client calls GET /bookmarks; serve bookmarked posts list
+app.get('/bookmarks', authMiddleware, async (req: any, res) => {
+  try {
+    const userId = req.user!.userId;
+    const cursor = req.query.cursor as string | undefined;
+    const { prisma } = require('./db');
+
+    const whereClause: any = { userId };
+    if (cursor) {
+      whereClause.createdAt = { lt: new Date(cursor) };
+    }
+
+    const bookmarks = await prisma.bookmark.findMany({
+      where: whereClause,
+      orderBy: { createdAt: 'desc' },
+      take: 21,
+      include: {
+        post: {
+          include: {
+            author: {
+              select: { id: true, username: true, isVerified: true },
+            },
+          },
+        },
+      },
+    });
+
+    const hasMore = bookmarks.length > 20;
+    const page = hasMore ? bookmarks.slice(0, 20) : bookmarks;
+
+    res.json({
+      bookmarks: page.map((b: any) => ({
+        id: b.post.id,
+        contentType: b.post.contentType,
+        mediaUrl: b.post.mediaUrl,
+        textBody: b.post.textBody,
+        createdAt: b.post.createdAt,
+        author: b.post.author,
+      })),
+      nextCursor: hasMore
+        ? page[page.length - 1].createdAt.toISOString()
+        : null,
+      hasMore,
+    });
+  } catch (err) {
+    console.error('Error fetching bookmarks:', err);
+    res.status(500).json({ error: 'Failed to fetch bookmarks' });
+  }
+});
 
 // ─── 404 Handler ─────────────────────────────────────────────────────
 

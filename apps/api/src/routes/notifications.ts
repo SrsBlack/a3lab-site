@@ -132,4 +132,113 @@ router.put(
   }
 );
 
+/**
+ * GET /notifications
+ * List notifications for the authenticated user (paginated, newest first).
+ */
+router.get(
+  '/',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+      const cursor = req.query.cursor as string | undefined;
+      const limit = Math.min(parseInt(req.query.limit as string) || 30, 50);
+
+      const whereClause: any = { userId };
+
+      if (cursor) {
+        whereClause.createdAt = { lt: new Date(cursor) };
+      }
+
+      const notifications = await prisma.notification.findMany({
+        where: whereClause,
+        orderBy: { createdAt: 'desc' },
+        take: limit + 1,
+      });
+
+      const hasMore = notifications.length > limit;
+      const page = hasMore ? notifications.slice(0, limit) : notifications;
+      const nextCursor = hasMore
+        ? page[page.length - 1].createdAt.toISOString()
+        : null;
+
+      res.json({
+        notifications: page.map((n) => ({
+          id: n.id,
+          type: n.type,
+          title: n.title,
+          body: n.body,
+          data: n.data,
+          read: n.read,
+          createdAt: n.createdAt,
+        })),
+        nextCursor,
+        hasMore,
+      });
+    } catch (err) {
+      console.error('Error fetching notifications:', err);
+      res.status(500).json({ error: 'Failed to fetch notifications' });
+    }
+  }
+);
+
+/**
+ * POST /notifications/:id/read
+ * Mark a single notification as read.
+ */
+router.post(
+  '/:id/read',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+      const notifId = req.params.id;
+
+      const notif = await prisma.notification.findUnique({
+        where: { id: notifId },
+      });
+
+      if (!notif || notif.userId !== userId) {
+        res.status(404).json({ error: 'Notification not found' });
+        return;
+      }
+
+      await prisma.notification.update({
+        where: { id: notifId },
+        data: { read: true },
+      });
+
+      res.json({ message: 'Notification marked as read' });
+    } catch (err) {
+      console.error('Error marking notification read:', err);
+      res.status(500).json({ error: 'Failed to mark notification as read' });
+    }
+  }
+);
+
+/**
+ * POST /notifications/read-all
+ * Mark all notifications as read for the authenticated user.
+ */
+router.post(
+  '/read-all',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+
+      await prisma.notification.updateMany({
+        where: { userId, read: false },
+        data: { read: true },
+      });
+
+      res.json({ message: 'All notifications marked as read' });
+    } catch (err) {
+      console.error('Error marking all notifications read:', err);
+      res.status(500).json({ error: 'Failed to mark all notifications as read' });
+    }
+  }
+);
+
 export default router;

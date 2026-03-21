@@ -21,7 +21,7 @@ interface ProfilePost {
   createdAt: string;
 }
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }: any) {
   const user = useAuthStore((s) => s.user);
   const [posts, setPosts] = useState<ProfilePost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -106,6 +106,27 @@ export default function ProfileScreen() {
         <Text style={styles.postCount}>
           {posts.length} moment{posts.length !== 1 ? 's' : ''} captured
         </Text>
+
+        <View style={styles.profileActions}>
+          <Pressable
+            style={styles.profileActionBtn}
+            onPress={() => navigation?.navigate('EditProfile')}
+          >
+            <Text style={styles.profileActionText}>EDIT</Text>
+          </Pressable>
+          <Pressable
+            style={styles.profileActionBtn}
+            onPress={() => navigation?.navigate('Bookmarks')}
+          >
+            <Text style={styles.profileActionText}>SAVED</Text>
+          </Pressable>
+          <Pressable
+            style={styles.profileActionBtn}
+            onPress={() => navigation?.navigate('Settings')}
+          >
+            <Text style={styles.profileActionText}>SETTINGS</Text>
+          </Pressable>
+        </View>
       </View>
 
       {/* Post grid */}
@@ -178,6 +199,25 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.fontSize.sm,
     fontWeight: typography.fontWeight.medium,
+    marginBottom: spacing.md,
+  },
+  profileActions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  profileActionBtn: {
+    flex: 1,
+    paddingVertical: spacing.sm,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: borderRadius.sm,
+  },
+  profileActionText: {
+    color: colors.textSecondary,
+    fontSize: typography.fontSize.xs,
+    fontWeight: typography.fontWeight.bold,
+    letterSpacing: 1,
   },
   grid: {
     padding: 1,

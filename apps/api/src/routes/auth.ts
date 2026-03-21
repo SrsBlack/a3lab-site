@@ -242,4 +242,258 @@ router.post(
   }
 );
 
+/**
+ * POST /auth/otp/request
+ * Alias for /auth/request-code (mobile client compatibility).
+ */
+router.post(
+  '/otp/request',
+  rateLimit(60 * 1000, 5),
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    // Normalize field name: mobile sends "phone", backend expects "phoneNumber"
+    req.body.phoneNumber = req.body.phoneNumber || req.body.phone;
+    // Forward to the request-code handler by re-dispatching
+    const { phoneNumber } = req.body;
+
+    if (!phoneNumber || typeof phoneNumber !== 'string') {
+      res.status(400).json({ error: 'Phone number is required' });
+      return;
+    }
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const phoneHash = await bcrypt.hash(phoneNumber, 10);
+
+    pendingCodes.set(phoneHash, {
+      code,
+      expiresAt: Date.now() + 10 * 60 * 1000,
+    });
+
+    const smsResult = await sendVerificationCode(phoneNumber, code);
+    if (!smsResult.success) {
+      console.error('SMS delivery failed for', phoneNumber);
+    }
+
+    res.json({
+      message: 'Verification code sent',
+      phoneHash,
+      ...(process.env.NODE_ENV === 'development' && { devCode: code }),
+    });
+  }
+);
+
+/**
+ * POST /auth/otp/verify
+ * Alias for /auth/verify-code (mobile client compatibility).
+ */
+router.post(
+  '/otp/verify',
+  rateLimit(60 * 1000, 10),
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    // Normalize field names from mobile client
+    req.body.phoneHash = req.body.phoneHash || req.body.phone;
+    const { phoneHash, code, username, deviceFingerprint } = req.body;
+
+    if (!phoneHash || !code) {
+      res.status(400).json({ error: 'Phone hash and code are required' });
+      return;
+    }
+
+    const pending = pendingCodes.get(phoneHash);
+
+    if (!pending) {
+      res.status(400).json({ error: 'No pending verification for this phone' });
+      return;
+    }
+
+    if (pending.expiresAt < Date.now()) {
+      pendingCodes.delete(phoneHash);
+      res.status(400).json({ error: 'Verification code expired' });
+      return;
+    }
+
+    if (pending.code !== code) {
+      res.status(400).json({ error: 'Invalid verification code' });
+      return;
+    }
+
+    pendingCodes.delete(phoneHash);
+
+    let user = await prisma.user.findFirst({
+      where: { phoneHash },
+    });
+
+    if (!user) {
+      if (!username || typeof username !== 'string') {
+        res.status(400).json({ error: 'Username is required for new users' });
+        return;
+      }
+
+      if (username.length > 30) {
+        res.status(400).json({ error: 'Username must be 30 characters or fewer' });
+        return;
+      }
+
+      if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+        res.status(400).json({ error: 'Username can only contain letters, numbers, and underscores' });
+        return;
+      }
+
+      const existingUsername = await prisma.user.findUnique({
+        where: { username },
+      });
+
+      if (existingUsername) {
+        res.status(409).json({ error: 'Username is already taken' });
+        return;
+      }
+
+      user = await prisma.user.create({
+        data: {
+          username,
+          phoneHash,
+          deviceFingerprint: deviceFingerprint || null,
+        },
+      });
+
+      await prisma.identityCheck.create({
+        data: {
+          userId: user.id,
+          checkType: 'PHONE',
+          status: 'PASSED',
+          scoreAwarded: 10,
+        },
+      });
+
+      await recalculateTrustScore(user.id);
+
+      if (deviceFingerprint) {
+        await prisma.identityCheck.create({
+          data: {
+            userId: user.id,
+            checkType: 'DEVICE',
+            status: 'PASSED',
+            scoreAwarded: 10,
+          },
+        });
+        await recalculateTrustScore(user.id);
+      }
+    }
+
+    const token = generateToken({
+      userId: user.id,
+      username: user.username,
+    });
+
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        isVerified: user.isVerified,
+      },
+    });
+  }
+);
+
+/**
+ * POST /auth/liveness
+ * Alias for /auth/liveness-check (mobile client compatibility).
+ */
+router.post(
+  '/liveness',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    const userId = req.user!.userId;
+    const { selfie, challengeId, selfieData } = req.body;
+    const selfiePayload = selfie || selfieData;
+
+    if (!selfiePayload) {
+      res.status(400).json({ error: 'Selfie data is required' });
+      return;
+    }
+
+    const check = await prisma.identityCheck.create({
+      data: {
+        userId,
+        checkType: 'SELFIE',
+        status: 'PENDING',
+        scoreAwarded: 0,
+      },
+    });
+
+    if (process.env.NODE_ENV === 'development') {
+      await prisma.identityCheck.update({
+        where: { id: check.id },
+        data: { status: 'PASSED', scoreAwarded: 25 },
+      });
+      await recalculateTrustScore(userId);
+    }
+
+    res.json({
+      checkId: check.id,
+      status: 'PENDING',
+      message: 'Liveness check submitted for processing',
+    });
+  }
+);
+
+/**
+ * GET /auth/me
+ * Get the authenticated user's profile.
+ */
+router.get(
+  '/me',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    try {
+      const userId = req.user!.userId;
+
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+        select: {
+          id: true,
+          username: true,
+          displayName: true,
+          bio: true,
+          avatarUrl: true,
+          isVerified: true,
+          trustScore: true,
+          createdAt: true,
+          _count: {
+            select: {
+              posts: true,
+              followers: true,
+              following: true,
+              vouchesReceived: true,
+            },
+          },
+        },
+      });
+
+      if (!user) {
+        res.status(404).json({ error: 'User not found' });
+        return;
+      }
+
+      res.json({
+        id: user.id,
+        username: user.username,
+        displayName: user.displayName,
+        bio: user.bio,
+        avatarUrl: user.avatarUrl,
+        isVerified: user.isVerified,
+        trustScore: user.trustScore,
+        createdAt: user.createdAt,
+        postCount: user._count.posts,
+        followerCount: user._count.followers,
+        followingCount: user._count.following,
+        vouchCount: user._count.vouchesReceived,
+      });
+    } catch (err) {
+      console.error('Error fetching user:', err);
+      res.status(500).json({ error: 'Failed to fetch user' });
+    }
+  }
+);
+
 export default router;

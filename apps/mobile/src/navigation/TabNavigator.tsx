@@ -1,12 +1,72 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { colors, typography, spacing } from '../theme';
 
 import FeedScreen from '../screens/FeedScreen';
 import CaptureScreen from '../screens/CaptureScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import TrustScreen from '../screens/TrustScreen';
+import PostDetailScreen from '../screens/PostDetailScreen';
+import UserProfileScreen from '../screens/UserProfileScreen';
+import SearchScreen from '../screens/SearchScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
+import BookmarksScreen from '../screens/BookmarksScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+
+// ─── Stack Navigators ────────────────────────────────────────────────
+
+const FeedStack = createNativeStackNavigator();
+
+function FeedStackScreen() {
+  return (
+    <FeedStack.Navigator screenOptions={{ headerShown: false }}>
+      <FeedStack.Screen name="FeedHome" component={FeedScreen} />
+      <FeedStack.Screen name="PostDetail" component={PostDetailScreen} />
+      <FeedStack.Screen name="UserProfile" component={UserProfileScreen} />
+    </FeedStack.Navigator>
+  );
+}
+
+const SearchStack = createNativeStackNavigator();
+
+function SearchStackScreen() {
+  return (
+    <SearchStack.Navigator screenOptions={{ headerShown: false }}>
+      <SearchStack.Screen name="SearchHome" component={SearchScreen} />
+      <SearchStack.Screen name="UserProfile" component={UserProfileScreen} />
+      <SearchStack.Screen name="PostDetail" component={PostDetailScreen} />
+    </SearchStack.Navigator>
+  );
+}
+
+const ProfileStack = createNativeStackNavigator();
+
+function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+      <ProfileStack.Screen name="ProfileHome" component={ProfileScreen} />
+      <ProfileStack.Screen name="EditProfile" component={EditProfileScreen} />
+      <ProfileStack.Screen name="Settings" component={SettingsScreen} />
+      <ProfileStack.Screen name="Bookmarks" component={BookmarksScreen} />
+      <ProfileStack.Screen name="PostDetail" component={PostDetailScreen} />
+    </ProfileStack.Navigator>
+  );
+}
+
+const TrustStack = createNativeStackNavigator();
+
+function TrustStackScreen() {
+  return (
+    <TrustStack.Navigator screenOptions={{ headerShown: false }}>
+      <TrustStack.Screen name="TrustHome" component={TrustScreen} />
+    </TrustStack.Navigator>
+  );
+}
+
+// ─── Tab Navigator ──────────────────────────────────────────────────
 
 const Tab = createBottomTabNavigator();
 
@@ -38,12 +98,24 @@ export default function TabNavigator() {
     >
       <Tab.Screen
         name="Feed"
-        component={FeedScreen}
+        component={FeedStackScreen}
         options={{
           tabBarLabel: 'feed',
           tabBarIcon: ({ focused }) => (
             <Text style={[styles.tabIcon, focused && styles.tabIconActive]}>
               {'◉'}
+            </Text>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchStackScreen}
+        options={{
+          tabBarLabel: 'search',
+          tabBarIcon: ({ focused }) => (
+            <Text style={[styles.tabIcon, focused && styles.tabIconActive]}>
+              {'⌕'}
             </Text>
           ),
         }}
@@ -59,25 +131,25 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Notifications"
+        component={NotificationsScreen}
         options={{
-          tabBarLabel: 'you',
+          tabBarLabel: 'alerts',
           tabBarIcon: ({ focused }) => (
             <Text style={[styles.tabIcon, focused && styles.tabIconActive]}>
-              {'▪'}
+              {'●'}
             </Text>
           ),
         }}
       />
       <Tab.Screen
-        name="Trust"
-        component={TrustScreen}
+        name="Profile"
+        component={ProfileStackScreen}
         options={{
-          tabBarLabel: 'trust',
+          tabBarLabel: 'you',
           tabBarIcon: ({ focused }) => (
             <Text style={[styles.tabIcon, focused && styles.tabIconActive]}>
-              {'✓'}
+              {'▪'}
             </Text>
           ),
         }}
