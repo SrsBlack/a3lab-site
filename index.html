@@ -18,6 +18,7 @@
 <link rel="author" href="https://www.perplexity.ai/computer">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://formsubmit.co; frame-src 'self' https://my.spline.design; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
 <title>A3 Lab &#8212; Done-for-You AI Automation for Lean Teams</title>
 <meta name="description" content="A3 Lab builds custom AI automation workflows using Perplexity, Claude, and Zapier. We architect agentic systems that save your team hundreds of hours monthly.">
 <meta property="og:title" content="A3 Lab &#8212; Done-for-You AI Automation for Lean Teams">
@@ -1767,6 +1768,8 @@
             <p>Want us to build these for you?</p>
             <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
             <a href="#contact" class="btn btn-outline">Or drop us a message</a>
+            <p id="audit-submit-status" aria-live="polite" style="display:none; margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);"></p>
+            <button type="button" id="audit-submit-retry" class="btn btn-outline" style="display:none; margin-top: var(--space-3);">Retry Sending Report</button>
           </div>
         </div>
 
@@ -1985,16 +1988,45 @@ document.querySelectorAll('.oc-advanced-toggle').forEach(btn => {
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    let target;
+    try {
+      target = document.querySelector(href);
+    } catch (err) {
+      return;
     }
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
 // ==================== CONTACT FORM AJAX ====================
 (function(){
+  function serializeFormData(data) {
+    const payload = {};
+    data.forEach((value, key) => {
+      if (Object.prototype.hasOwnProperty.call(payload, key)) {
+        if (Array.isArray(payload[key])) {
+          payload[key].push(value);
+        } else {
+          payload[key] = [payload[key], value];
+        }
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    Object.keys(payload).forEach((key) => {
+      if (Array.isArray(payload[key])) {
+        payload[key] = payload[key].join(', ');
+      }
+    });
+
+    return payload;
+  }
+
   const form = document.getElementById('contact-form');
   const btn = document.getElementById('form-submit-btn');
   const successEl = document.getElementById('form-success');
@@ -2012,10 +2044,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
     try {
       const data = new FormData(form);
+      const payload = serializeFormData(data);
       const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(data))
+        body: JSON.stringify(payload)
       });
       const json = await res.json();
       if (json.success === 'true' || json.success === true || res.ok) {
@@ -2050,6 +2083,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   let step = 'start';
   let userData = {};
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function toggleChat() {
     isOpen = !isOpen;
     win.style.display = isOpen ? 'flex' : 'none';
@@ -2070,7 +2112,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   function addMsg(text, sender) {
     const d = document.createElement('div');
     d.className = 'chat-msg chat-msg-' + sender;
-    d.innerHTML = text;
+    if (sender === 'bot') {
+      d.innerHTML = text;
+    } else {
+      d.textContent = text;
+    }
     body.appendChild(d);
     body.scrollTop = body.scrollHeight;
   }
@@ -2275,6 +2321,115 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const answers = {};
   let currentQ = 1;
   const totalQ = 5;
+  let auditLeadSent = false;
+  let lastScore = null;
+  let lastRecs = [];
+
+  const statusEl = document.getElementById('audit-submit-status');
+  const retryBtn = document.getElementById('audit-submit-retry');
+
+  const answerLabels = {
+    1: {
+      agency: 'Agency / Consulting',
+      ecommerce: 'E-commerce / Retail',
+      saas: 'SaaS / Tech',
+      service: 'Local / Service Business',
+      other: 'Other'
+    },
+    2: {
+      low: 'Under 5 hours',
+      med: '5-15 hours',
+      high: '15-30 hours',
+      'very-high': '30+ hours'
+    },
+    3: {
+      sales: 'Sales and lead follow-up',
+      content: 'Content and marketing',
+      support: 'Customer support',
+      ops: 'Operations and admin',
+      reporting: 'Reporting and analytics'
+    },
+    4: {
+      none: 'Never - starting from scratch',
+      basic: 'Basic tools (Zapier, IFTTT)',
+      some: 'Some AI tools (ChatGPT, etc.)',
+      advanced: 'Advanced stack already in place'
+    },
+    5: {
+      time: 'No time to set it up',
+      know: "Don't know where to start",
+      cost: "Not sure it's worth the cost",
+      trust: 'Not sure AI can handle my workflows'
+    }
+  };
+
+  function labelFor(question, value) {
+    return answerLabels[question]?.[value] || value || 'Not provided';
+  }
+
+  function setAuditStatus(message, isError, showRetry) {
+    if (!statusEl) return;
+    statusEl.style.display = message ? 'block' : 'none';
+    statusEl.textContent = message || '';
+    statusEl.style.color = isError ? 'var(--color-error)' : 'var(--color-text-muted)';
+    if (retryBtn) retryBtn.style.display = showRetry ? 'inline-flex' : 'none';
+  }
+
+  async function submitAuditLead(score, recs) {
+    if (auditLeadSent) return;
+    const name = (document.getElementById('audit-name')?.value || '').trim();
+    const email = (document.getElementById('audit-email')?.value || '').trim();
+    if (!name || !email || !email.includes('@')) {
+      setAuditStatus('Please enter a valid name and email to deliver your report.', true, false);
+      return;
+    }
+
+    auditLeadSent = true;
+    if (retryBtn) retryBtn.disabled = true;
+    setAuditStatus('Sending your report...', false, false);
+
+    const payload = {
+      _captcha: 'false',
+      _template: 'table',
+      _subject: 'New A3 Lab Automation Audit Submission',
+      source: 'Automation Audit Quiz',
+      name,
+      email,
+      automation_score: String(score),
+      business_type: labelFor(1, answers[1]),
+      manual_task_load: labelFor(2, answers[2]),
+      top_pain_area: labelFor(3, answers[3]),
+      prior_automation_tools: labelFor(4, answers[4]),
+      biggest_blocker: labelFor(5, answers[5]),
+      recommendations: recs.slice(0, 3).map(r => r.title).join(' | ')
+    };
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json().catch(() => ({}));
+      const success = (json.success === true || json.success === 'true') || res.ok;
+      if (!success) throw new Error('Audit lead submission failed');
+      setAuditStatus('Report sent successfully. Check your inbox for next steps.', false, false);
+      if (retryBtn) retryBtn.disabled = false;
+    } catch (err) {
+      auditLeadSent = false;
+      setAuditStatus('We could not send your report right now. Please retry or book a call directly.', true, true);
+      if (retryBtn) retryBtn.disabled = false;
+      console.error('Audit lead submission failed', err);
+    }
+  }
+
+  if (retryBtn) {
+    retryBtn.addEventListener('click', function() {
+      if (typeof lastScore === 'number' && lastRecs.length) {
+        submitAuditLead(lastScore, lastRecs);
+      }
+    });
+  }
 
   document.querySelectorAll('.audit-opt').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -2383,6 +2538,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         </div>
       `).join('');
     }
+
+    lastScore = score;
+    lastRecs = recs.slice(0, 3);
+    submitAuditLead(score, recs);
   }
 })();
 </script>
@@ -2436,8 +2595,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 </script>
 
 <!-- GSAP CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <script>
 // === A3 LAB GSAP ANIMATIONS ===
@@ -2499,10 +2658,16 @@ window.addEventListener('load', function () {
     opacity: 0, x: -35, duration: 0.6, stagger: 0.13, ease: 'power2.out'
   });
 
-  // Story + automate cards
-  gsap.from('.story-card, .automate-card', {
-    scrollTrigger: { trigger: '.stories-grid', start: 'top 85%' },
-    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out'
+  // Automate cards reveal when their own grid enters view.
+  gsap.from('.automate-card', {
+    scrollTrigger: { trigger: '.automate-grid', start: 'top 85%', once: true },
+    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out', immediateRender: false
+  });
+
+  // Story cards reveal when the stories section enters view.
+  gsap.from('.story-card', {
+    scrollTrigger: { trigger: '.stories-grid', start: 'top 85%', once: true },
+    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out', immediateRender: false
   });
 
   // Section labels, titles, descriptions
