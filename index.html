@@ -1660,16 +1660,45 @@ document.querySelectorAll('.oc-advanced-toggle').forEach(btn => {
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    let target;
+    try {
+      target = document.querySelector(href);
+    } catch (err) {
+      return;
     }
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
 // ==================== CONTACT FORM AJAX ====================
 (function(){
+  function serializeFormData(data) {
+    const payload = {};
+    data.forEach((value, key) => {
+      if (Object.prototype.hasOwnProperty.call(payload, key)) {
+        if (Array.isArray(payload[key])) {
+          payload[key].push(value);
+        } else {
+          payload[key] = [payload[key], value];
+        }
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    Object.keys(payload).forEach((key) => {
+      if (Array.isArray(payload[key])) {
+        payload[key] = payload[key].join(', ');
+      }
+    });
+
+    return payload;
+  }
+
   const form = document.getElementById('contact-form');
   const btn = document.getElementById('form-submit-btn');
   const successEl = document.getElementById('form-success');
@@ -1687,10 +1716,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
     try {
       const data = new FormData(form);
+      const payload = serializeFormData(data);
       const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(data))
+        body: JSON.stringify(payload)
       });
       const json = await res.json();
       if (json.success === 'true' || json.success === true || res.ok) {
@@ -1723,6 +1753,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   let step = 'start';
   let userData = {};
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function toggleChat() {
     isOpen = !isOpen;
     win.style.display = isOpen ? 'flex' : 'none';
@@ -1737,7 +1776,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   function addMsg(text, sender) {
     const d = document.createElement('div');
     d.className = 'chat-msg chat-msg-' + sender;
-    d.innerHTML = text;
+    if (sender === 'bot') {
+      d.innerHTML = text;
+    } else {
+      d.textContent = text;
+    }
     body.appendChild(d);
     body.scrollTop = body.scrollHeight;
   }
@@ -1854,7 +1897,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       showInput('e.g., Real estate, fitness, law firm...', (val) => {
         userData.business = val;
         typing(() => {
-          addMsg("Got it! For <strong>" + val + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
+          addMsg("Got it! For <strong>" + escapeHtml(val) + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
           showOptions([
             { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
             { label: '\uD83D\uDCB0 See pricing first', action: flowPricing },
@@ -1909,7 +1952,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
           showInput('Your email address', (val) => {
             userData.email = val;
             typing(() => {
-              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + val + "</strong>. Talk soon!", 'bot');
+              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + escapeHtml(val) + "</strong>. Talk soon!", 'bot');
               showOptions([
                 { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
               ]);
@@ -1974,6 +2017,82 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const answers = {};
   let currentQ = 1;
   const totalQ = 5;
+  let auditLeadSent = false;
+
+  const answerLabels = {
+    1: {
+      agency: 'Agency / Consulting',
+      ecommerce: 'E-commerce / Retail',
+      saas: 'SaaS / Tech',
+      service: 'Local / Service Business',
+      other: 'Other'
+    },
+    2: {
+      low: 'Under 5 hours',
+      med: '5-15 hours',
+      high: '15-30 hours',
+      'very-high': '30+ hours'
+    },
+    3: {
+      sales: 'Sales and lead follow-up',
+      content: 'Content and marketing',
+      support: 'Customer support',
+      ops: 'Operations and admin',
+      reporting: 'Reporting and analytics'
+    },
+    4: {
+      none: 'Never - starting from scratch',
+      basic: 'Basic tools (Zapier, IFTTT)',
+      some: 'Some AI tools (ChatGPT, etc.)',
+      advanced: 'Advanced stack already in place'
+    },
+    5: {
+      time: 'No time to set it up',
+      know: "Don't know where to start",
+      cost: "Not sure it's worth the cost",
+      trust: 'Not sure AI can handle my workflows'
+    }
+  };
+
+  function labelFor(question, value) {
+    return answerLabels[question]?.[value] || value || 'Not provided';
+  }
+
+  async function submitAuditLead(score, recs) {
+    if (auditLeadSent) return;
+    const name = (document.getElementById('audit-name')?.value || '').trim();
+    const email = (document.getElementById('audit-email')?.value || '').trim();
+    if (!name || !email || !email.includes('@')) return;
+
+    auditLeadSent = true;
+
+    const payload = {
+      _captcha: 'false',
+      _template: 'table',
+      _subject: 'New A3 Lab Automation Audit Submission',
+      source: 'Automation Audit Quiz',
+      name,
+      email,
+      automation_score: String(score),
+      business_type: labelFor(1, answers[1]),
+      manual_task_load: labelFor(2, answers[2]),
+      top_pain_area: labelFor(3, answers[3]),
+      prior_automation_tools: labelFor(4, answers[4]),
+      biggest_blocker: labelFor(5, answers[5]),
+      recommendations: recs.slice(0, 3).map(r => r.title).join(' | ')
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      auditLeadSent = false;
+      console.error('Audit lead submission failed', err);
+    }
+  }
 
   document.querySelectorAll('.audit-opt').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -2082,6 +2201,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         </div>
       `).join('');
     }
+
+    submitAuditLead(score, recs);
   }
 })();
 </script>
