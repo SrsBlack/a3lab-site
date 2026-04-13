@@ -133,7 +133,7 @@
   <section class="hero">
     <canvas id="particle-canvas"></canvas>
     <div class="hero-bg">
-      <img src="./assets/a3labs-hero.png" alt="A3 Lab AI automation command layer visualization" loading="eager" width="1792" height="1024" decoding="async">
+      <img src="./assets/a3labs-hero.png" alt="A3 Lab AI automation command layer visualization" loading="eager" fetchpriority="high" width="1792" height="1024" decoding="async">
     </div>
     <div class="hero-content">
       <div class="hero-inner">
@@ -412,7 +412,7 @@
         </div>
       </div>
       <div style="text-align: center; margin-top: var(--space-8);">
-        <a href="/services/lead-enrichment.html" class="btn btn-outline">See all services →</a>
+        <a href="/services/website-automation.html" class="btn btn-outline">Explore more services →</a>
       </div>
     </div>
   </section>
@@ -535,10 +535,12 @@
   </section>
 
 
+  <div class="work-with-us-strip">
     <div class="section-inner work-with-us-inner">
       <p class="work-with-us-text">Not sure which plan fits? We will help you pick the right scope on a free call.</p>
       <a href="#contact" class="btn btn-sm btn-outline">Book a Free Call</a>
     </div>
+  </div>
 
 
   <section id="pricing" class="section">
@@ -587,8 +589,8 @@
 
         <div class="pricing-card fade-in">
           <div class="pricing-tier">Retainer <span class="tier-label">&#x1F504; Ongoing</span></div>
-          <div class="pricing-price">$750-2,000 <span>/month</span></div>
           <h3>Ongoing Automation</h3>
+          <div class="pricing-price">$750-2,000 <span>/month</span></div>
           <p class="pricing-desc">We become your automation partner. Each month we monitor performance, fix edge cases, and ship new workflows as your business and tools evolve.</p>
           <ul class="pricing-features" role="list">
             <li>Monthly workflow audits</li>
@@ -1074,6 +1076,7 @@
       </div>
     </div>
     <div class="footer-bottom">
+      <span>&copy; 2025 A3 Lab. All rights reserved.</span>
       <a href="/privacy.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy Policy</a>
       <span>Response window: usually same business day</span>
     </div>
@@ -1278,15 +1281,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   let isOpen = false;
   let step = 'start';
   let userData = {};
-
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
 
   function toggleChat() {
     isOpen = !isOpen;

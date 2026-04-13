@@ -537,13 +537,15 @@
 
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(HOVERABLE)) {
-        ring.classList.add('cursor-hover');
+        dot.classList.add('hovering');
+        ring.classList.add('hovering');
       }
     });
 
     document.addEventListener('mouseout', (e) => {
       if (e.target.closest(HOVERABLE)) {
-        ring.classList.remove('cursor-hover');
+        dot.classList.remove('hovering');
+        ring.classList.remove('hovering');
       }
     });
 
