@@ -15,8 +15,10 @@
 <link rel="canonical" href="https://a3lab.ca/for-ecommerce">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.fontshare.com; connect-src 'self' https://formsubmit.co; frame-src 'self' https://my.spline.design; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./effects.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -39,14 +41,14 @@
 
     <nav class="nav-desktop" aria-label="Main navigation">
       <div class="nav-dropdown">
-        <a href="/index.html#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <a href="/#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
         <div class="nav-dropdown-menu">
           <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
           <a href="/services/ai-content-engines.html">AI Content Engines</a>
           <a href="/services/customer-support-bots.html">Customer Support Bots</a>
           <a href="/services/website-automation.html">Website &amp; App Automation</a>
           <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
-          <a href="/index.html#services" class="nav-dropdown-all">All Services &rarr;</a>
+          <a href="/#services" class="nav-dropdown-all">All Services &rarr;</a>
         </div>
       </div>
       <div class="nav-dropdown">
@@ -57,12 +59,12 @@
           <a href="/for-consultants.html">For Consultants</a>
         </div>
       </div>
-      <a href="/index.html#roi-calc">ROI Calc</a>
-      <a href="/index.html#audit">Free Audit</a>
+      <a href="/#roi-calc">ROI Calc</a>
+      <a href="/#audit">Free Audit</a>
       <a href="/automation-box.html">Automation Box</a>
-      <a href="/index.html#pricing">Pricing</a>
-      <a href="/index.html#faq">FAQ</a>
-      <a href="/index.html#contact" class="btn btn-primary">Book a Call</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#contact" class="btn btn-primary">Book a Call</a>
       <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
@@ -79,7 +81,7 @@
   <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
-  <a href="/index.html#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
+  <a href="/#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
   <a href="/services/lead-enrichment.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Lead Enrichment</a>
   <a href="/services/ai-content-engines.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; AI Content Engines</a>
   <a href="/services/customer-support-bots.html" onclick="this.closest('.nav-mobile').classList.remove('open')">&rarr; Support Bots</a>
@@ -89,9 +91,9 @@
   <a href="/for-ecommerce.html" class="active">For E&#8209;commerce</a>
   <a href="/for-consultants.html" onclick="this.closest('.nav-mobile').classList.remove('open')">For Consultants</a>
   <a href="/automation-box.html" onclick="this.closest('.nav-mobile').classList.remove('open')">Automation Box</a>
-  <a href="/index.html#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
-  <a href="/index.html#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
-  <a href="/index.html#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
+  <a href="/#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
+  <a href="/#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
+  <a href="/#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
 </nav>
 
 <!-- ==================== MAIN ==================== -->
@@ -104,8 +106,8 @@
       <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">Reduce cart abandonment &amp; <em>scale support without hiring.</em></h1>
       <p class="hero-sub">Shopify, WooCommerce, and DTC brands use A3 Lab to automate support tickets, recover abandoned carts, generate product content, and streamline order workflows.</p>
       <div class="hero-actions">
-        <a href="/index.html#contact" class="btn btn-primary btn-lg">Talk to Us</a>
-        <a href="/index.html#audit" class="btn btn-outline btn-lg">Free Automation Audit</a>
+        <a href="/#contact" class="btn btn-primary btn-lg">Talk to Us</a>
+        <a href="/#audit" class="btn btn-outline btn-lg">Free Automation Audit</a>
       </div>
     </div>
   </section>
@@ -216,7 +218,7 @@
           <li>Product Content Engine &mdash; $1,500&ndash;$2,500</li>
           <li>Customer Intelligence &mdash; $1,500&ndash;$3,500</li>
         </ul>
-        <a href="/index.html#contact" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">Get a Quote &rarr;</a>
+        <a href="/#contact" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">Get a Quote &rarr;</a>
       </div>
     </div>
   </section>
@@ -227,7 +229,7 @@
       <h2 class="section-title" style="margin-inline:auto;">Ready to automate your store?</h2>
       <p class="section-desc" style="margin-inline:auto;">Let&rsquo;s identify the automations that will save you the most time and money. Start with a free audit.</p>
       <div style="display:flex; flex-wrap:wrap; gap:var(--space-4); justify-content:center;">
-        <a href="/index.html#contact" class="btn btn-primary btn-lg">Talk to Us &rarr;</a>
+        <a href="/#contact" class="btn btn-primary btn-lg">Talk to Us &rarr;</a>
         <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-outline btn-lg" target="_blank" rel="noopener noreferrer">Book a Free Call</a>
       </div>
     </div>
