@@ -2846,10 +2846,17 @@ input[type="range"] {
   align-items: flex-start;
 }
 .autobox-pitch-icon {
-  font-size: 1.5rem;
   flex-shrink: 0;
   width: 2.5rem;
-  text-align: center;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+.autobox-pitch-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .autobox-pitch-item strong {
   font-size: var(--text-base);
