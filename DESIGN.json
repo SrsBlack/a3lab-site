@@ -141,9 +141,19 @@
         "purpose": "Default interactive transition speed. Buttons, links, inputs, hover states."
       },
       {
+        "name": "duration-page-transition",
+        "value": "220ms",
+        "purpose": "Page-level view transitions (theme wipe). Slightly longer than interactive to read as deliberate, not jarring."
+      },
+      {
         "name": "translate-press",
         "value": "translateY(-1px)",
         "purpose": "Primary button hover translate. The entire interaction language. No scale, no rotate, no gradient sweep."
+      },
+      {
+        "name": "typing-cursor-blink",
+        "value": "0.7s step-end infinite",
+        "purpose": "Scoped utility for purposeful 'terminal' moments only. Pure CSS step-end blink, never used for sequenced typing intros."
       }
     ],
     "breakpoints": [
@@ -209,6 +219,22 @@
       "description": "Section title + description. The two travel together as a unit — never ship one without the other. Marks the start of every page section.",
       "html": "<header class=\"ds-section-header\"><h2 class=\"ds-section-title\">Automation that actually works</h2><p class=\"ds-section-desc\">Production AI workflows for sales handoffs, support triage, reporting, and back-office execution. Real systems, not slideware.</p></header>",
       "css": ".ds-section-header { margin-bottom: 3rem; max-width: 60ch; } .ds-section-title { font-family: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif; font-size: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: #e4e6ec; margin: 0 0 1rem 0; } .ds-section-desc { font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; line-height: 1.6; color: #8b8f9e; margin: 0; max-width: 60ch; }"
+    },
+    {
+      "name": "Theme Toggle (with view transition)",
+      "kind": "button",
+      "refersTo": null,
+      "description": "Sun/moon icon button that toggles data-theme on :root. Click animates a circular clip-path reveal from cursor coordinates over 220ms with system ease-out. Falls back to instant toggle when startViewTransition is unsupported. The brand's only signature page-level transition.",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Switch theme\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42\"/></svg></button>",
+      "css": ".ds-theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: transparent; border: none; color: #e4e6ec; cursor: pointer; border-radius: 0.5rem; transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-theme-toggle:hover { color: #22d3ee; } .ds-theme-toggle:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }"
+    },
+    {
+      "name": "Typing Cursor (scoped utility)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Pure-CSS blink primitive for purposeful 'terminal' moments only. Apply after a single static phrase. Never use for sequenced typing intros, decoration, or ambient noise.",
+      "html": "<span class=\"ds-cmd-line\">command stack online<span class=\"ds-typing-cursor\"></span></span>",
+      "css": ".ds-cmd-line { font-family: 'Satoshi', 'Inter', sans-serif; font-size: 0.9375rem; color: #22d3ee; letter-spacing: 0.04em; } .ds-typing-cursor { display: inline-block; width: 2px; height: 1em; background: #22d3ee; margin-left: 2px; vertical-align: text-bottom; animation: ds-blink 0.7s step-end infinite; } @keyframes ds-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }"
     }
   ],
   "narrative": {
@@ -232,7 +258,8 @@
       { "name": "The 72ch Rule", "body": "Body copy never exceeds 72 characters per line. This is a readability floor, not a style suggestion.", "section": "typography" },
       { "name": "The Tracking-Tight Rule", "body": "Display/Headline/Title all sit at slightly negative letter-spacing. This is what keeps Cabinet Grotesk from looking sparse at large sizes.", "section": "typography" },
       { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, active, elevated above scroll), never as decoration on a static element.", "section": "elevation" },
-      { "name": "The Glow-Is-Signal Rule", "body": "The signal-cyan glow on :hover and :focus-visible is the brand's elevation signature. It carries the 'live, active, online' meaning that maps to the product. Don't dilute it with secondary glows on other accent colors.", "section": "elevation" }
+      { "name": "The Glow-Is-Signal Rule", "body": "The signal-cyan glow on :hover and :focus-visible is the brand's elevation signature. It carries the 'live, active, online' meaning that maps to the product. Don't dilute it with secondary glows on other accent colors.", "section": "elevation" },
+      { "name": "The Reduced-Motion-At-Definition Rule", "body": "Every animation must have a paired @media (prefers-reduced-motion: reduce) override declared at the same point in the source as the animation itself, not retrofitted later. The pattern in effects.css §4 is the template — animation block, then immediate paired reduced-motion override. Audit any new motion against this discipline at PR review.", "section": "elevation" }
     ],
     "dos": [
       "Do keep the 90/10 ratio: 90% tinted neutrals, 10% combined signal cyan + operator amber.",

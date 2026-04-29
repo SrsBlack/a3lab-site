@@ -223,6 +223,8 @@ Drop shadows exist (sm/md/lg defined) but are reserved for elements that genuine
 
 **The Glow-Is-Signal Rule.** The signal-cyan glow on `:hover` and `:focus-visible` is the brand's elevation signature. It carries the "live, active, online" meaning that maps to your product (live orchestration, command stack online). Don't dilute it with secondary glows on other accent colors.
 
+**The Reduced-Motion-At-Definition Rule.** Every animation must have a paired `@media (prefers-reduced-motion: reduce)` override declared at the same point in the source as the animation itself, not retrofitted later. The pattern in `effects.css` §4 is the template — animation block, then immediate paired reduced-motion override. Audit any new motion against this discipline at PR review.
+
 ## 5. Components
 
 ### Buttons
@@ -258,7 +260,7 @@ Drop shadows exist (sm/md/lg defined) but are reserved for elements that genuine
 - **Desktop nav:** Inline horizontal links in body typography, label weight (500). Default text color shifts to signal cyan on hover. Sticky to viewport top with `shadow-sm` only when scrolled past the hero.
 - **Dropdown menus:** Surface-2 background, full border, `rounded-md`, `shadow-md`. Items have 0.75rem 1rem padding. Active item gets signal cyan text, never background fill.
 - **Mobile nav:** Full-screen drawer that slides from right. Same hover/active rules. Close affordance at top-right with the same hit target floor (44×44px).
-- **Theme toggle:** Sun/moon SVG icon button, 20×20 icon inside a 44×44 hit target. Toggles `data-theme` on `:root`.
+- **Theme toggle:** Sun/moon SVG icon button, 20×20 icon inside a 44×44 hit target. Toggles `data-theme` on `:root`. **Animated via `document.startViewTransition`** — a click-origin clip-path circle expands from cursor coordinates over 220ms with the system `cubic-bezier(0.16, 1, 0.3, 1)` easing. Falls back to instant toggle when `startViewTransition` is unsupported. The expanding circle is the brand's only signature page-level transition; do not add view transitions on other surfaces without explicit reason.
 
 ### Section Title
 
@@ -269,6 +271,10 @@ Drop shadows exist (sm/md/lg defined) but are reserved for elements that genuine
 ### Hero Command Panel (signature component)
 
 The "Live orchestration" step list in the hero (Steps 01-04) is the system's signature component. It is not a generic timeline — it embodies the brand. Surface-2 background with full border, signal-cyan left-edge accent on the active step (the `is-active` class), monospace-feeling step numbers, label typography for the description. Each step is a row in a vertical stack with `space-3` gap. **Do not re-skin this as a horizontal stepper or numbered card grid.** Its shape carries meaning.
+
+### Typing-Cursor Utility (scoped)
+
+A pure-CSS blink primitive at `effects.css` §2: a 2px wide × 1em tall signal-cyan bar with `animation: blink-cursor 0.7s step-end infinite`. Apply via `<span class="typing-cursor"></span>` after a single static phrase that genuinely benefits from a "command line" register — a chatbot input, a single hero phrase, the end of a status line. **Forbidden uses:** sequenced typing-out of multi-line text (the Hero Command Panel must read as already-running and observable, not as a fake demo loading), as decoration on every CTA, as ambient noise. The cursor reads as "live terminal" only when reserved for one purposeful location.
 
 ## 6. Do's and Don'ts
 
