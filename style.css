@@ -104,7 +104,7 @@
 
   --color-text:           #111827;
   --color-text-muted:     #6b7280;
-  --color-text-faint:     #9ca3af;
+  --color-text-faint:     #737985;
   --color-text-inverse:   #f8f9fc;
 
   --color-primary:        #0891b2;
@@ -133,7 +133,7 @@
     --color-divider:        #e2e5ee;
     --color-text:           #111827;
     --color-text-muted:     #6b7280;
-    --color-text-faint:     #9ca3af;
+    --color-text-faint:     #737985;
     --color-text-inverse:   #f8f9fc;
     --color-primary:        #0891b2;
     --color-primary-hover:  #0e7490;
@@ -753,15 +753,14 @@
 .process-list::before {
   content: '';
   position: absolute;
-  left: 23px;
+  left: 24px;
   top: 24px;
   bottom: 24px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent), var(--color-primary));
-  opacity: 0.3;
+  width: 1px;
+  background: var(--color-border);
 }
 @media (min-width: 768px) {
-  .process-list::before { left: 31px; }
+  .process-list::before { left: 32px; }
 }
 
 .process-step {
@@ -3898,11 +3897,6 @@ input[type="range"] {
 [data-theme="light"] .featured-break-content {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(34, 211, 238, 0.12);
-}
-
-/* ---- Process List Gradient Line ---- */
-.process-list::before {
-  background: var(--gradient-brand);
 }
 
 /* ---- Scrolled Header Glow ---- */
