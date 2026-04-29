@@ -311,7 +311,7 @@
             <div class="card-detail-inner">
               <p class="card-detail-how"><strong>How it works:</strong> A new lead hits your CRM or form → Perplexity researches their company, role, and recent news → Claude drafts a personalized outreach email → Zapier logs everything and sends automatically.</p>
               <ul class="card-detail-bullets">
-                <li>Typical time saved: <strong>10–15 hrs/week</strong></li>
+                <li>Designed to free up: prospect-research time</li>
                 <li>Connects to: HubSpot, Salesforce, Notion, Google Sheets</li>
                 <li>Delivery: <strong>1–2 business days</strong></li>
               </ul>
@@ -336,7 +336,7 @@
             <div class="card-detail-inner">
               <p class="card-detail-how"><strong>How it works:</strong> You define your topics and brand voice → Perplexity researches trending angles → Claude drafts, formats, and optimizes the content → Zapier schedules it across LinkedIn, Twitter, your blog, and email.</p>
               <ul class="card-detail-bullets">
-                <li>Typical time saved: <strong>8–12 hrs/week</strong></li>
+                <li>Designed to free up: research, drafting, and scheduling time</li>
                 <li>Connects to: Buffer, Notion, WordPress, Mailchimp</li>
                 <li>Delivery: <strong>2–3 business days</strong></li>
               </ul>
@@ -360,7 +360,7 @@
             <div class="card-detail-inner">
               <p class="card-detail-how"><strong>How it works:</strong> Customer submits a ticket → Claude reads and categorizes it → auto-responds to common questions instantly → escalates complex cases to a human with a full context summary already written.</p>
               <ul class="card-detail-bullets">
-                <li>Typical improvement: <strong>65% tickets handled automatically</strong></li>
+                <li>Designed to handle: repeat questions, with human escalation built in</li>
                 <li>Connects to: Zendesk, Intercom, Gmail, Slack</li>
                 <li>Delivery: <strong>2–4 business days</strong></li>
               </ul>
@@ -1357,8 +1357,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   function flowBizType(type) {
     const suggestions = {
-      agency: "For agencies, our most popular builds are:<br><br><strong>1. Prospect Research Pipeline</strong><br>Perplexity researches each prospect, Claude drafts personalized outreach, Zapier sends and logs everything in your CRM. Saves 15+ hrs/week.<br><br><strong>2. Content Engine</strong><br>Auto-research trends, draft posts in your brand voice, schedule across channels.<br><br><strong>3. Client Reporting</strong><br>Weekly reports compiled and delivered automatically.",
-      ecommerce: "For e-commerce brands, our top builds are:<br><br><strong>1. Customer Support Automation</strong><br>Claude triages tickets, auto-responds to common questions, routes complex issues to humans. Cuts response time from 48hrs to under 2.<br><br><strong>2. Competitor Price Monitoring</strong><br>Track competitor pricing daily, get alerts when they change.<br><br><strong>3. Review &amp; Feedback Analysis</strong><br>Aggregate reviews, analyze sentiment, surface actionable insights.",
+      agency: "For agencies, the builds we ship most often are:<br><br><strong>1. Prospect Research Pipeline</strong><br>Perplexity researches each prospect, Claude drafts personalized outreach, Zapier sends and logs everything in your CRM.<br><br><strong>2. Content Engine</strong><br>Auto-research trends, draft posts in your brand voice, schedule across channels.<br><br><strong>3. Client Reporting</strong><br>Weekly reports compiled and delivered automatically.",
+      ecommerce: "For e-commerce brands, the builds we ship most often are:<br><br><strong>1. Customer Support Automation</strong><br>Claude triages tickets, auto-responds to common questions, routes complex issues to humans with full context.<br><br><strong>2. Competitor Price Monitoring</strong><br>Track competitor pricing daily, get alerts when they change.<br><br><strong>3. Review &amp; Feedback Analysis</strong><br>Aggregate reviews, analyze sentiment, surface actionable insights.",
       saas: "For SaaS companies, we commonly build:<br><br><strong>1. User Onboarding Sequences</strong><br>Personalized onboarding flows triggered by user behavior.<br><br><strong>2. Churn Prediction Alerts</strong><br>Monitor usage patterns, flag at-risk accounts, auto-trigger retention workflows.<br><br><strong>3. Feature Request Aggregation</strong><br>Collect and categorize feedback from support, social, and surveys automatically."
     };
     typing(() => {
@@ -1397,7 +1397,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       typing(() => {
         addMsg("<strong>Starter Build</strong> \u2014 $1,500\u20132,000 (one-time)<br>1\u20132 workflows, delivered in 1\u20132 days, 14 days support<br><br><strong>Pro System</strong> \u2014 $3,000\u20135,000 (one-time)<br>3\u20135 workflows, multi-agent architecture, 30 days support<br><br><strong>Retainer</strong> \u2014 $750\u20132,000/month<br>Ongoing optimization, new builds, dedicated support", 'bot');
         typing(() => {
-          addMsg("Most clients start with a Starter Build to see results, then upgrade. The strategy call is free \u2014 no commitment.", 'bot');
+          addMsg("The Starter Build is the recommended first step \u2014 one focused automation, fast feedback, low risk. The strategy call is free, no commitment.", 'bot');
           showOptions([
             { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
             { label: '\uD83D\uDCA1 See an example', action: flowExample },
@@ -1410,9 +1410,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   function flowExample() {
     typing(() => {
-      addMsg("Here's a real workflow we build:", 'bot');
+      addMsg("Here's a workflow we build:", 'bot');
       typing(() => {
-        addMsg("<strong>\uD83C\uDFAF Prospect Research Pipeline</strong><br><br><strong>Problem:</strong> A marketing agency spent 15+ hrs/week manually researching prospects.<br><br><strong>What we built:</strong><br>1\uFE0F\u20E3 New lead enters CRM \u2192 triggers Zapier<br>2\uFE0F\u20E3 Perplexity researches the prospect's company<br>3\uFE0F\u20E3 Claude drafts a personalized email<br>4\uFE0F\u20E3 Email sent + logged in CRM automatically<br><br><strong>Result:</strong> Outreach volume tripled. Response rates up 40%. 15 hrs/week reclaimed.", 'bot');
+        addMsg("<strong>\uD83C\uDFAF Prospect Research Pipeline</strong><br><br><strong>The problem:</strong> Manual prospect research eats hours per lead and quality drifts as fatigue sets in.<br><br><strong>What we build:</strong><br>1\uFE0F\u20E3 New lead enters CRM \u2192 triggers Zapier<br>2\uFE0F\u20E3 Perplexity researches the prospect's company, role, and recent news<br>3\uFE0F\u20E3 Claude drafts a personalized email grounded in that research<br>4\uFE0F\u20E3 Email queued for your review or sent + logged automatically<br><br><strong>The shape:</strong> Reviewable drafts on every send. Human approval where it matters. Logged context on every prospect.", 'bot');
         typing(() => {
           addMsg("Want to see how something like this could work for you?", 'bot');
           showOptions([
@@ -1658,9 +1658,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const recMap = {
       sales: { icon: '🎯', title: 'Lead Research & Outreach Pipeline', desc: 'Auto-research every prospect and draft personalized outreach before they go cold.' },
       content: { icon: '✍️', title: 'AI Content Engine', desc: 'Research, draft, and schedule content across all channels on autopilot.' },
-      support: { icon: '🤖', title: 'Customer Support Automation', desc: 'Handle 65%+ of tickets automatically, respond in under 2 hours 24/7.' },
+      support: { icon: '🤖', title: 'Customer Support Automation', desc: 'Triage tickets, auto-respond to repeat questions, and escalate the rest with full context for your team.' },
       ops: { icon: '⚙️', title: 'Operations & Onboarding Automation', desc: 'Auto-generate onboarding docs, extract data from files, and create tasks from meetings.' },
-      reporting: { icon: '📊', title: 'Automated Reporting System', desc: 'Weekly KPI reports compiled and delivered to your inbox every Monday at 7am.' },
+      reporting: { icon: '📊', title: 'Automated Reporting System', desc: 'Weekly KPI reports compiled from your tools and delivered to your inbox on a schedule you set.' },
       agency: { icon: '📋', title: 'Client Proposal Generator', desc: 'Turn a short brief into a full scoped proposal in minutes using Claude.' },
       ecommerce: { icon: '💬', title: 'Review & Sentiment Monitoring', desc: 'Aggregate reviews, surface product issues, and track sentiment across channels daily.' },
       saas: { icon: '🔔', title: 'Churn Prevention Workflow', desc: 'Monitor usage signals, flag at-risk accounts, and trigger retention sequences automatically.' }
