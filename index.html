@@ -152,9 +152,11 @@
             <span class="hero-proof-item">Private and self-hosted options</span>
             <span class="hero-proof-item">Human approval loops built in</span>
           </div>
+        </div>
+        <aside class="hero-panel" aria-labelledby="hero-panel-status">
           <div class="hero-command" aria-label="Example orchestration flow">
             <div class="hero-command-head">
-              <span class="hero-command-status">Live orchestration</span>
+              <span class="hero-command-status" id="hero-panel-status">Live orchestration</span>
               <span class="hero-command-latency">Command stack online</span>
             </div>
             <div class="hero-command-item is-active"><span class="hero-command-step">01</span><span>Lead captured and enriched</span></div>
@@ -162,33 +164,7 @@
             <div class="hero-command-item"><span class="hero-command-step">03</span><span>Proposal drafted and delivered</span></div>
             <div class="hero-command-item"><span class="hero-command-step">04</span><span>Operator notified only if needed</span></div>
           </div>
-        </div>
-        <div class="hero-robot" id="hero-robot">
-          <div class="hero-robot-glow"></div>
-          <iframe
-            src="https://my.spline.design/nexbotrobotcharacterconcept-N57Qghicj3BdlreTqkatxSv3/"
-            frameborder="0"
-            width="100%"
-            height="100%"
-            loading="lazy"
-            title="A3 Lab AI Agent"
-            allowtransparency="true"
-            style="border:none;">
-          </iframe>
-          <noscript>
-            <div class="hero-robot-fallback">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
-                <circle cx="50" cy="50" r="48" stroke="#22d3ee" stroke-width="2" stroke-opacity="0.4"/>
-                <circle cx="50" cy="50" r="30" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.2"/>
-                <circle cx="50" cy="50" r="8" fill="#22d3ee" fill-opacity="0.6"/>
-                <line x1="50" y1="2" x2="50" y2="20" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
-                <line x1="50" y1="80" x2="50" y2="98" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
-                <line x1="2" y1="50" x2="20" y2="50" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
-                <line x1="80" y1="50" x2="98" y2="50" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
-              </svg>
-            </div>
-          </noscript>
-        </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -214,7 +190,7 @@
   <section id="roi-calc" class="section roi-calc-section">
     <div class="section-inner">
       <div class="section-label fade-in">Free ROI Calculator</div>
-      <h2 class="section-title fade-in glitch-hover">See exactly what manual work is costing you</h2>
+      <h2 class="section-title fade-in">See exactly what manual work is costing you</h2>
       <p class="section-desc fade-in">Adjust the sliders below. We'll show you your monthly loss and how fast automation pays for itself.</p>
 
       <div class="roi-calc-wrap">
@@ -332,7 +308,7 @@
   <section id="services" class="section">
     <div class="section-inner">
       <div class="section-label fade-in">What We Build</div>
-      <h2 class="section-title fade-in gradient-text glitch-hover">Automation that actually works</h2>
+      <h2 class="section-title fade-in">Automation that actually works</h2>
       <p class="section-desc fade-in">From lead enrichment pipelines to AI-powered reporting and messaging assistants, we build workflows that save your team dozens of hours every month and create clear, measurable ROI.</p>
 
       <div class="services-grid">
@@ -543,7 +519,7 @@
   <section id="pricing" class="section">
     <div class="section-inner">
       <div class="section-label fade-in">Pricing</div>
-      <h2 class="section-title fade-in gradient-text glitch-hover">Transparent pricing, real results</h2>
+      <h2 class="section-title fade-in">Transparent pricing, real results</h2>
       <p class="section-desc fade-in">No hidden fees. Choose the engagement model that fits your stage.</p>
 
       <div class="pricing-grid">
@@ -743,7 +719,7 @@
     <!-- Foreground content -->
     <div class="section-inner openclaw-inner">
       <div class="section-label fade-in">OpenClaw Integration</div>
-      <h2 class="section-title fade-in gradient-text">Every company needs an OpenClaw strategy. We design and install it for you.</h2>
+      <h2 class="section-title fade-in">Every company needs an OpenClaw strategy. We design and install it for you.</h2>
       <p class="section-desc fade-in">NVIDIA’s Jensen Huang says every company now needs an agentic AI and OpenClaw strategy — a workforce of AI agents that can actually take actions, not just answer questions. We deploy and customize OpenClaw so those agents quietly run your ops in the background while your team focuses on the work humans are best at.</p>
 
       <!-- OpenClaw Intro -->
@@ -1787,11 +1763,11 @@ window.addEventListener('load', function () {
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero entrance: text slides in from left, robot from right
+  // Hero entrance: text slides in from left, command panel from right
   gsap.from('.hero-text', {
     opacity: 0, x: -50, duration: 1, ease: 'power3.out', delay: 0.2
   });
-  gsap.from('.hero-robot', {
+  gsap.from('.hero-panel', {
     opacity: 0, x: 50, duration: 1, ease: 'power3.out', delay: 0.4
   });
 
@@ -1862,7 +1838,7 @@ window.addEventListener('load', function () {
   });
 
   // Catch-all: animate remaining .fade-in elements (skip interactive containers)
-  var handled = '.service-card, .pricing-card, .stack-item, .process-step, .story-card, .automate-card, .section-label, .section-title, .section-desc, .hero-text, .hero-robot';
+  var handled = '.service-card, .pricing-card, .stack-item, .process-step, .story-card, .automate-card, .section-label, .section-title, .section-desc, .hero-text, .hero-panel';
   gsap.utils.toArray('.fade-in').forEach(function(el) {
     if (el.matches(handled) || el.closest(handled)) return;
     // Skip elements containing forms, sliders, or other interactive content
