@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-04-29T00:00:00Z",
+  "title": "Design System: A3 Lab",
+  "extensions": {
+    "colorMeta": {
+      "signal-cyan": {
+        "role": "primary",
+        "displayName": "Signal Cyan",
+        "canonical": "oklch(80% 0.13 199)",
+        "tonalRamp": [
+          "oklch(20% 0.04 199)",
+          "oklch(30% 0.06 199)",
+          "oklch(40% 0.09 199)",
+          "oklch(50% 0.11 199)",
+          "oklch(60% 0.13 199)",
+          "oklch(70% 0.13 199)",
+          "oklch(80% 0.13 199)",
+          "oklch(92% 0.06 199)"
+        ]
+      },
+      "operator-amber": {
+        "role": "secondary",
+        "displayName": "Operator Amber",
+        "canonical": "oklch(78% 0.16 70)",
+        "tonalRamp": [
+          "oklch(25% 0.05 70)",
+          "oklch(35% 0.09 70)",
+          "oklch(45% 0.12 70)",
+          "oklch(55% 0.14 70)",
+          "oklch(65% 0.16 70)",
+          "oklch(72% 0.16 70)",
+          "oklch(78% 0.16 70)",
+          "oklch(92% 0.07 70)"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Console Charcoal",
+        "canonical": "oklch(15% 0.005 260)",
+        "tonalRamp": [
+          "oklch(8% 0.005 260)",
+          "oklch(12% 0.005 260)",
+          "oklch(15% 0.005 260)",
+          "oklch(18% 0.005 260)",
+          "oklch(22% 0.005 260)",
+          "oklch(28% 0.005 260)",
+          "oklch(35% 0.005 260)",
+          "oklch(45% 0.005 260)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface (Card)",
+        "canonical": "oklch(18% 0.005 260)"
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Surface 2 (Elevated Card)",
+        "canonical": "oklch(22% 0.005 260)"
+      },
+      "surface-offset": {
+        "role": "neutral",
+        "displayName": "Surface Offset (Input)",
+        "canonical": "oklch(25% 0.008 260)"
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "oklch(32% 0.008 260)"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Primary Text",
+        "canonical": "oklch(91% 0.005 260)"
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Muted Text",
+        "canonical": "oklch(62% 0.008 260)"
+      },
+      "text-faint": {
+        "role": "neutral",
+        "displayName": "Faint Text (placeholder)",
+        "canonical": "oklch(45% 0.008 260)"
+      },
+      "success": {
+        "role": "state",
+        "displayName": "Success Mint",
+        "canonical": "oklch(78% 0.13 156)"
+      },
+      "error": {
+        "role": "state",
+        "displayName": "Error Coral",
+        "canonical": "oklch(70% 0.16 22)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Hero Display", "purpose": "Homepage hero only. The system's loudest type." },
+      "headline": { "displayName": "Section Headline", "purpose": "Dominant section titles across the site." },
+      "title": { "displayName": "Sub-section / Card Title", "purpose": "Card titles, sub-section headers." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs, descriptions, long-form copy. Capped at 72ch." },
+      "label": { "displayName": "Label / Button", "purpose": "Buttons, form labels, badge text. Never below 14px." }
+    },
+    "shadows": [
+      {
+        "name": "signal-glow",
+        "value": "0 0 24px rgba(34, 211, 238, 0.15)",
+        "purpose": "Signature elevation. Appears on primary button hover and active focus states. The brand's only decorative shadow."
+      },
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(0,0,0,0.3)",
+        "purpose": "Subtle separation for sticky headers and toolbars."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 4px 12px rgba(0,0,0,0.4)",
+        "purpose": "Cards on hover, dropdown menus, popovers."
+      },
+      {
+        "name": "shadow-lg",
+        "value": "0 12px 32px rgba(0,0,0,0.5)",
+        "purpose": "Modals, command palettes, the rare element that needs to dominate."
+      },
+      {
+        "name": "focus-ring-input",
+        "value": "0 0 0 3px rgba(34, 211, 238, 0.15)",
+        "purpose": "Form input focus state. Carries the elevation language consistent with buttons."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The entire motion vocabulary. Exponential ease-out for every transition. No bounce, no elastic."
+      },
+      {
+        "name": "duration-interactive",
+        "value": "180ms",
+        "purpose": "Default interactive transition speed. Buttons, links, inputs, hover states."
+      },
+      {
+        "name": "translate-press",
+        "value": "translateY(-1px)",
+        "purpose": "Primary button hover translate. The entire interaction language. No scale, no rotate, no gradient sweep."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile-form", "value": "600px" },
+      { "name": "content-narrow", "value": "640px" },
+      { "name": "content-default", "value": "960px" },
+      { "name": "content-wide", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The signal-cyan CTA. Used for the main action on every page (Book a Call, Start Free Audit, Get Started).",
+      "html": "<button class=\"ds-btn-primary\">Start Your Free Automation Audit</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.75rem 1.5rem; border-radius: 0.5rem; background: #22d3ee; color: #0a0b0f; border: none; cursor: pointer; transition: background 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { background: #06b6d4; transform: translateY(-1px); box-shadow: 0 0 24px rgba(34, 211, 238, 0.15); } .ds-btn-primary:active { transform: translateY(0); } .ds-btn-primary:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }"
+    },
+    {
+      "name": "Primary Button (Large)",
+      "kind": "button",
+      "refersTo": "button-primary-large",
+      "description": "Hero-scale primary CTA. Same visual language as Primary Button, larger padding and radius for hero placements.",
+      "html": "<button class=\"ds-btn-primary-lg\">Book A Strategy Call</button>",
+      "css": ".ds-btn-primary-lg { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1.125rem; font-weight: 600; letter-spacing: 0.02em; padding: 1rem 2rem; border-radius: 0.75rem; background: #22d3ee; color: #0a0b0f; border: none; cursor: pointer; transition: background 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary-lg:hover { background: #06b6d4; transform: translateY(-1px); box-shadow: 0 0 24px rgba(34, 211, 238, 0.15); } .ds-btn-primary-lg:active { transform: translateY(0); } .ds-btn-primary-lg:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The secondary CTA. Used alongside Primary Button when the page offers two paths (e.g. Hero: 'Audit' primary + 'Book a Call' outline).",
+      "html": "<button class=\"ds-btn-outline\">Book A Strategy Call</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.75rem 1.5rem; border-radius: 0.5rem; background: transparent; color: #e4e6ec; border: 1px solid #2a2d38; cursor: pointer; transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-outline:hover { border-color: #22d3ee; color: #22d3ee; transform: translateY(-1px); } .ds-btn-outline:active { transform: translateY(0); } .ds-btn-outline:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Form input for audit form, contact form, automation-box configurator. Visible labels above the field; placeholder is never the label.",
+      "html": "<label class=\"ds-input-label\">Work email<input class=\"ds-input-field\" type=\"email\" placeholder=\"you@company.com\" /></label>",
+      "css": ".ds-input-label { display: flex; flex-direction: column; gap: 0.5rem; font-family: 'Satoshi', 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #e4e6ec; } .ds-input-field { font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; padding: 0.75rem 1rem; border: 1.5px solid #2a2d38; border-radius: 0.5rem; background: #1e2028; color: #e4e6ec; transition: border-color 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-input-field::placeholder { color: #5a5e6e; } .ds-input-field:focus { outline: none; border-color: #22d3ee; box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15); }"
+    },
+    {
+      "name": "Hero Command Panel (Signature)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The 'Live orchestration' step list in the hero. The system's signature component — embodies the brand. Active step has a signal-cyan left-edge accent. Do not re-skin as a horizontal stepper.",
+      "html": "<div class=\"ds-command-panel\"><div class=\"ds-command-head\"><span class=\"ds-command-status\">Live orchestration</span><span class=\"ds-command-latency\">Command stack online</span></div><div class=\"ds-command-item ds-is-active\"><span class=\"ds-command-step\">01</span><span>Lead captured and enriched</span></div><div class=\"ds-command-item\"><span class=\"ds-command-step\">02</span><span>OpenClaw routes next action</span></div><div class=\"ds-command-item\"><span class=\"ds-command-step\">03</span><span>Proposal drafted and delivered</span></div><div class=\"ds-command-item\"><span class=\"ds-command-step\">04</span><span>Operator notified only if needed</span></div></div>",
+      "css": ".ds-command-panel { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.5rem; background: #181a21; border: 1px solid #2a2d38; border-radius: 0.75rem; font-family: 'Satoshi', 'Inter', sans-serif; color: #e4e6ec; max-width: 28rem; } .ds-command-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid #1f2230; font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; } .ds-command-status { color: #22d3ee; font-weight: 600; } .ds-command-latency { color: #8b8f9e; } .ds-command-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.9375rem; color: #8b8f9e; transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-command-item.ds-is-active { color: #e4e6ec; background: rgba(34, 211, 238, 0.06); border-left: 2px solid #22d3ee; padding-left: 0.625rem; } .ds-command-step { font-family: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.05em; color: #5a5e6e; min-width: 1.5rem; } .ds-command-item.ds-is-active .ds-command-step { color: #22d3ee; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Service offering card. Used in the 'Automation that actually works' section grid. Full borders, never side-stripes. Nested cards forbidden.",
+      "html": "<article class=\"ds-service-card\"><h3 class=\"ds-service-card-title\">Lead Enrichment Pipelines</h3><p class=\"ds-service-card-body\">Pull from Perplexity, score in Claude, drop into your CRM. We architect the whole flow.</p><a href=\"#\" class=\"ds-service-card-link\">See how it works <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12 5 19 12 12 19\"/></svg></a></article>",
+      "css": ".ds-service-card { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: #111318; border: 1px solid #2a2d38; border-radius: 0.75rem; transition: border-color 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-service-card:hover { border-color: #22d3ee; transform: translateY(-1px); } .ds-service-card-title { font-family: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: #e4e6ec; line-height: 1.15; margin: 0; } .ds-service-card-body { font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; line-height: 1.6; color: #8b8f9e; margin: 0; } .ds-service-card-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Satoshi', 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #22d3ee; text-decoration: none; transition: gap 180ms cubic-bezier(0.16, 1, 0.3, 1); margin-top: auto; } .ds-service-card-link:hover { gap: 0.75rem; }"
+    },
+    {
+      "name": "Section Title Pair",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Section title + description. The two travel together as a unit — never ship one without the other. Marks the start of every page section.",
+      "html": "<header class=\"ds-section-header\"><h2 class=\"ds-section-title\">Automation that actually works</h2><p class=\"ds-section-desc\">Production AI workflows for sales handoffs, support triage, reporting, and back-office execution. Real systems, not slideware.</p></header>",
+      "css": ".ds-section-header { margin-bottom: 3rem; max-width: 60ch; } .ds-section-title { font-family: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif; font-size: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: #e4e6ec; margin: 0 0 1rem 0; } .ds-section-desc { font-family: 'Satoshi', 'Inter', sans-serif; font-size: 1rem; line-height: 1.6; color: #8b8f9e; margin: 0; max-width: 60ch; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Command Layer",
+    "overview": "A3 Lab's site IS what A3 Lab sells: a calm, organized control surface that runs the unsexy ops layer of a business so the team can focus on higher-leverage work. Every design decision asks one question — does this feel like a senior operator's terminal, or a marketing site cosplaying as one? The system is dark by default, surfaces are flat at rest, and elevation comes from a single signature glow: signal cyan radiating around active states. Type pairs Cabinet Grotesk display over Satoshi body — confident, deliberate, slightly literary, never marketing-bro. Color is restrained: 90% neutrals + tinted surfaces, signal cyan reserved for primary action and live state, operator amber held for human-in-the-loop moments. Quiet is louder than loud here. We compete against agencies that scream by refusing to.",
+    "keyCharacteristics": [
+      "Operator-grade · confident · quietly technical",
+      "Dark by default, light as parity",
+      "90/10 color: neutrals dominate, signal cyan + operator amber are scarce by design",
+      "Flat surfaces + signal-color glow as the only elevation signature",
+      "Cabinet Grotesk display over Satoshi body",
+      "Generous spacing scale; the system breathes",
+      "Motion is exponential ease-out at 180ms — present but never showy",
+      "Every visual decision earns its place; restraint is the brand"
+    ],
+    "rules": [
+      { "name": "The 10% Rule", "body": "Signal Cyan + Operator Amber together occupy ≤10% of any given screen. Their rarity is the entire point. When you find yourself coloring three things the same accent, two of them are wrong.", "section": "colors" },
+      { "name": "The No-Gradient Rule", "body": "No background-clip gradient text, ever. The current site has gradient-text on a few headings — those are debt to be repaid, not a pattern to extend. Emphasis comes from weight, scale, and color contrast — not from a rainbow on the headline.", "section": "colors" },
+      { "name": "The Tinted-Black Rule", "body": "Every neutral is tinted toward the cyan hue, not pure greyscale. Pure #000 and pure #fff are forbidden.", "section": "colors" },
+      { "name": "The One-H1 Rule", "body": "Each page gets exactly one H1, sized at the Hero or Display step. Multiple H1s dilute the page's claim about what it's for.", "section": "typography" },
+      { "name": "The 72ch Rule", "body": "Body copy never exceeds 72 characters per line. This is a readability floor, not a style suggestion.", "section": "typography" },
+      { "name": "The Tracking-Tight Rule", "body": "Display/Headline/Title all sit at slightly negative letter-spacing. This is what keeps Cabinet Grotesk from looking sparse at large sizes.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, active, elevated above scroll), never as decoration on a static element.", "section": "elevation" },
+      { "name": "The Glow-Is-Signal Rule", "body": "The signal-cyan glow on :hover and :focus-visible is the brand's elevation signature. It carries the 'live, active, online' meaning that maps to the product. Don't dilute it with secondary glows on other accent colors.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the 90/10 ratio: 90% tinted neutrals, 10% combined signal cyan + operator amber.",
+      "Do use signal cyan for primary actions and live state only.",
+      "Do use operator amber for human-in-the-loop moments specifically — approval gates, audit indicators, friction-by-design moments.",
+      "Do lead every section with the section-title + section-description pair. They travel together.",
+      "Do keep elevation flat at rest. The signal-cyan glow on hover is the only signature lift the system has.",
+      "Do ship prefers-reduced-motion respect on every new animation.",
+      "Do keep focus-visible rings at the existing 2px signal-cyan / 3px offset minimum.",
+      "Do verify cyan + amber distinguishability across deuteranopia and protanopia.",
+      "Do keep body line length capped at 72ch and labels at 14px floor.",
+      "Do use Cabinet Grotesk display only; if you reach for a third typeface, you're patching a problem the existing pairing should solve."
+    ],
+    "donts": [
+      "Don't use background-clip: text gradients on any heading. The current site has a few — those are debt, not a pattern.",
+      "Don't use side-stripe borders (border-left or border-right >1px as a colored accent on cards, list items, callouts).",
+      "Don't use the hero-metric template (huge number + tiny label + supporting stat row). It's a SaaS landing-page cliche.",
+      "Don't ship identical 3-card grids with icon + heading + 2-line description repeated endlessly.",
+      "Don't wrap cards inside cards. Ever.",
+      "Don't use glassmorphism — backdrop-filter blur as decoration.",
+      "Don't use modals as the first thought. Exhaust inline and progressive alternatives first.",
+      "Don't drift into generic AI-agency territory: purple/cyan radial gradients on dark, neon cyber grids, robot mascots in hero, 'unleash the power of AI' copy.",
+      "Don't drift into corporate-consultancy territory: navy + grey palettes, stock photos of diverse-people-in-suits, 'thought leadership' boilerplate.",
+      "Don't drift into marketing-bro territory: orange-arrow emojis, urgency stacking, countdown timers, 'crushing it' / 'game-changer' / 'no-brainer' copy.",
+      "Don't use pure #000 or pure #fff. Every neutral tints toward the brand hue.",
+      "Don't use bounce or elastic easing. Exponential ease-out at 180ms is the entire motion vocabulary.",
+      "Don't animate CSS layout properties (width, height, margin). Animate transform and opacity only.",
+      "Don't use em dashes. Use commas, colons, semicolons, or parentheses."
+    ]
+  }
+}
