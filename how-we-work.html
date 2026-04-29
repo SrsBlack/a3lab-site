@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How we work &mdash; A3 Lab</title>
+<meta name="description" content="Four steps from problem to live system: discovery, architecture, build and test, launch and optimise.">
+<meta property="og:title" content="How we work &mdash; A3 Lab">
+<meta property="og:description" content="Four steps from problem to live system at A3 Lab.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/how-we-work">
+<meta property="og:image" content="https://a3lab.ca/assets/a3labs-hero.png">
+<link rel="canonical" href="https://a3lab.ca/how-we-work">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.fontshare.com; connect-src 'self' https://formsubmit.co; frame-src 'self' https://my.spline.design; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap">
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./effects.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <a href="/#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
+          <a href="/services/ai-content-engines.html">AI Content Engines</a>
+          <a href="/services/customer-support-bots.html">Customer Support Bots</a>
+          <a href="/services/website-automation.html">Website &amp; App Automation</a>
+          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+          <a href="/#services" class="nav-dropdown-all">All services &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/for-agencies.html">For Agencies</a>
+          <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+          <a href="/for-consultants.html">For Consultants</a>
+        </div>
+      </div>
+      <a href="/#pricing">Pricing</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#contact" class="btn btn-primary">Book a call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="/#services">Services</a>
+  <a href="/services/lead-enrichment.html">Lead Enrichment</a>
+  <a href="/services/ai-content-engines.html">AI Content Engines</a>
+  <a href="/services/customer-support-bots.html">Support Bots</a>
+  <a href="/services/website-automation.html">Website Automation</a>
+  <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+  <a href="/for-agencies.html">For Agencies</a>
+  <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+  <a href="/for-consultants.html">For Consultants</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/automation-box.html">Automation Box</a>
+  <a href="/how-we-work.html" class="active">How we work</a>
+  <a href="/roi-calc.html">ROI calculator</a>
+  <a href="/#contact" class="btn btn-primary btn-lg">Book a call</a>
+</nav>
+
+<main id="main">
+  <section class="hero hero-service">
+    <div class="section-inner section-narrow" style="position:relative; z-index:2;">
+      <div class="section-label">How we work</div>
+      <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">From problem to live system, in four steps.</h1>
+      <p class="hero-sub">Every engagement runs on the same shape. You tell us the problem. We architect the solution, ship it fast, and stay close as it goes live.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner section-narrow">
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <div>
+            <h2 class="process-step-title">Discovery call</h2>
+            <p>Free 30-minute strategy session. We map your current workflows, identify bottlenecks, and pinpoint where automation has the highest ROI for your team. No deck, no pitch, just questions and a sketch of where to start.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <div>
+            <h2 class="process-step-title">Solution architecture</h2>
+            <p>We design your custom automation blueprint: which agents handle what, how data flows between Perplexity, Claude, Zapier and your existing tools, where the human-approval boundaries sit, and the expected delivery shape.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <div>
+            <h2 class="process-step-title">Build and test</h2>
+            <p>We build, test, and iterate. Most builds ship in 24&ndash;72 hours. You get a live demo, full documentation, and a one-hour handover session to walk you through every part of the system before it's yours.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <div>
+            <h2 class="process-step-title">Launch and optimise</h2>
+            <p>Go live with confidence. On retainer plans, we monitor performance, fix edge cases, and continuously optimise your agents to handle new scenarios as your business and tools evolve.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner section-narrow" style="text-align:center;">
+      <h2 class="section-title">Ready to start at step 1?</h2>
+      <p class="section-desc">Book a discovery call. 30 minutes, no commitment.</p>
+      <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Book a discovery call</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <span>&copy; 2025 A3 Lab. All rights reserved.</span>
+      <a href="/privacy.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy Policy</a>
+      <a href="/" style="color: var(--color-text-muted); text-decoration: none;">Home</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  if (t) {
+    syncToggleState();
+    t.addEventListener('click', () => {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      syncToggleState();
+    });
+  }
+  function syncToggleState() {
+    if (!t) return;
+    t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+    t.setAttribute('aria-pressed', d === 'dark' ? 'true' : 'false');
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+</script>
+
+</body>
+</html>

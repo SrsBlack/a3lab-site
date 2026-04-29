@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Calculator &mdash; A3 Lab</title>
+<meta name="description" content="Estimate the monthly cost of manual work and the payback period of a Starter Build, using your own team size, hours, and rate.">
+<meta property="og:title" content="ROI Calculator &mdash; A3 Lab">
+<meta property="og:description" content="Estimate the monthly cost of manual work and Starter Build payback period.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/roi-calc">
+<meta property="og:image" content="https://a3lab.ca/assets/a3labs-hero.png">
+<link rel="canonical" href="https://a3lab.ca/roi-calc">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.fontshare.com; connect-src 'self' https://formsubmit.co; frame-src 'self' https://my.spline.design; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap">
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./effects.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="A3 Lab home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
+        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
+        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
+      </svg>
+      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <a href="/#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
+          <a href="/services/ai-content-engines.html">AI Content Engines</a>
+          <a href="/services/customer-support-bots.html">Customer Support Bots</a>
+          <a href="/services/website-automation.html">Website &amp; App Automation</a>
+          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+          <a href="/#services" class="nav-dropdown-all">All services &rarr;</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/for-agencies.html">For Agencies</a>
+          <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+          <a href="/for-consultants.html">For Consultants</a>
+        </div>
+      </div>
+      <a href="/#pricing">Pricing</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/#contact" class="btn btn-primary">Book a call</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-mobile" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="/#services">Services</a>
+  <a href="/services/lead-enrichment.html">Lead Enrichment</a>
+  <a href="/services/ai-content-engines.html">AI Content Engines</a>
+  <a href="/services/customer-support-bots.html">Support Bots</a>
+  <a href="/services/website-automation.html">Website Automation</a>
+  <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
+  <a href="/for-agencies.html">For Agencies</a>
+  <a href="/for-ecommerce.html">For E&#8209;commerce</a>
+  <a href="/for-consultants.html">For Consultants</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/automation-box.html">Automation Box</a>
+  <a href="/how-we-work.html">How we work</a>
+  <a href="/roi-calc.html" class="active">ROI calculator</a>
+  <a href="/#contact" class="btn btn-primary btn-lg">Book a call</a>
+</nav>
+
+<main id="main">
+  <section class="hero hero-service">
+    <div class="section-inner section-narrow" style="position:relative; z-index:2;">
+      <div class="section-label">ROI calculator</div>
+      <h1 style="font-family:var(--font-display); font-size:var(--text-hero); font-weight:800; letter-spacing:-0.03em; line-height:1.05; margin-bottom:var(--space-6); max-width:18ch;">See exactly what manual work is costing you.</h1>
+      <p class="hero-sub">Adjust the sliders to match your team. We'll show you the recoverable monthly cost and how fast a Starter Build pays itself back.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner section-narrow">
+      <div class="roi-calc-wrap">
+        <div class="roi-inputs">
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-team">Team members doing manual tasks</label>
+              <span class="roi-val" id="roi-team-val">3</span>
+            </div>
+            <input type="range" id="roi-team" min="1" max="20" value="3" step="1">
+            <div class="roi-range-labels"><span>1</span><span>20</span></div>
+          </div>
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-hours">Hours per person spent on repetitive tasks per week</label>
+              <span class="roi-val" id="roi-hours-val">10</span>
+            </div>
+            <input type="range" id="roi-hours" min="2" max="40" value="10" step="1">
+            <div class="roi-range-labels"><span>2 hrs</span><span>40 hrs</span></div>
+          </div>
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-rate">Average hourly cost per team member (CAD $)</label>
+              <span class="roi-val" id="roi-rate-val">$45</span>
+            </div>
+            <input type="range" id="roi-rate" min="20" max="200" value="45" step="5">
+            <div class="roi-range-labels"><span>$20</span><span>$200</span></div>
+          </div>
+          <div class="roi-field">
+            <div class="roi-field-header">
+              <label for="roi-automatable">Percentage of those tasks that can be automated</label>
+              <span class="roi-val" id="roi-automatable-val">70%</span>
+            </div>
+            <input type="range" id="roi-automatable" min="10" max="90" value="70" step="5">
+            <div class="roi-range-labels"><span>10%</span><span>90%</span></div>
+          </div>
+        </div>
+
+        <div class="roi-results">
+          <div class="roi-result-card roi-loss">
+            <div class="roi-result-label">You're losing every month</div>
+            <div class="roi-result-value" id="roi-monthly-loss">$0</div>
+            <div class="roi-result-sub">in recoverable labour costs</div>
+          </div>
+          <div class="roi-result-card roi-save">
+            <div class="roi-result-label">Monthly savings with automation</div>
+            <div class="roi-result-value" id="roi-monthly-save">$0</div>
+            <div class="roi-result-sub">hours freed up per month</div>
+            <div class="roi-result-hours" id="roi-hours-freed"></div>
+          </div>
+          <div class="roi-result-card roi-payback">
+            <div class="roi-result-label">Starter Build pays for itself in</div>
+            <div class="roi-result-value" id="roi-payback">0 weeks</div>
+            <div class="roi-result-sub">at $1,500 one-time cost</div>
+          </div>
+          <a href="/#contact" class="btn btn-primary roi-cta">Get this built for you</a>
+          <p class="roi-disclaimer">Based on 80% automation efficiency. Actual results vary by workflow complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <span>&copy; 2025 A3 Lab. All rights reserved.</span>
+      <a href="/privacy.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy Policy</a>
+      <a href="/" style="color: var(--color-text-muted); text-decoration: none;">Home</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  if (t) {
+    syncToggleState();
+    t.addEventListener('click', () => {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      syncToggleState();
+    });
+  }
+  function syncToggleState() {
+    if (!t) return;
+    t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+    t.setAttribute('aria-pressed', d === 'dark' ? 'true' : 'false');
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+})();
+
+(function(){
+  var teamEl = document.getElementById('roi-team');
+  var hoursEl = document.getElementById('roi-hours');
+  var rateEl = document.getElementById('roi-rate');
+  var autoEl = document.getElementById('roi-automatable');
+  if (!teamEl || !hoursEl || !rateEl || !autoEl) return;
+
+  var teamVal = document.getElementById('roi-team-val');
+  var hoursVal = document.getElementById('roi-hours-val');
+  var rateVal = document.getElementById('roi-rate-val');
+  var autoVal = document.getElementById('roi-automatable-val');
+  var lossEl = document.getElementById('roi-monthly-loss');
+  var saveEl = document.getElementById('roi-monthly-save');
+  var freedEl = document.getElementById('roi-hours-freed');
+  var paybackEl = document.getElementById('roi-payback');
+
+  function calc() {
+    var team = +teamEl.value;
+    var hours = +hoursEl.value;
+    var rate = +rateEl.value;
+    var autoPct = +autoEl.value / 100;
+
+    var monthlyWaste = team * hours * 4.33 * rate;
+    var monthlySave = monthlyWaste * autoPct * 0.8;
+    var hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
+    var weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : 0;
+
+    if (lossEl) lossEl.textContent = '$' + Math.round(monthlyWaste).toLocaleString();
+    if (saveEl) saveEl.textContent = '$' + Math.round(monthlySave).toLocaleString();
+    if (freedEl) freedEl.textContent = hoursFree + ' hrs/month freed';
+    if (paybackEl) paybackEl.textContent = weeksPayback > 0 ? weeksPayback + ' weeks' : '—';
+
+    if (teamVal) teamVal.textContent = team;
+    if (hoursVal) hoursVal.textContent = hours;
+    if (rateVal) rateVal.textContent = '$' + rate;
+    if (autoVal) autoVal.textContent = autoEl.value + '%';
+  }
+
+  teamEl.addEventListener('input', calc);
+  hoursEl.addEventListener('input', calc);
+  rateEl.addEventListener('input', calc);
+  autoEl.addEventListener('input', calc);
+  calc();
+})();
+</script>
+
+</body>
+</html>
