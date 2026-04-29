@@ -47,10 +47,12 @@ Outstanding debt:
 
 Hero copy + CTA hierarchy shipped 2026-04-29 (commit 4a0d09e): subhead dropped the "operates like it has an always-on command layer" marketing tail and replaced with operator-grade specificity (the four agent classes, plus 48h ship and human-approval facts). CTA stack collapsed — audit is now sole primary; Calendly demoted to a quiet underlined text link ("Prefer to talk first? Book a 30-minute strategy call") below the button row, with `--color-text-faint` underline brightening to Signal Cyan on hover. New `.hero-actions-aux` selector group in style.css.
 
+Founder-credibility section shipped 2026-04-29 (commit 4932057): replaced three fabricated testimonial cards (Marketing Agency Owner / E-commerce Operations Lead / Solo Consultant — fake names, fake numbers) with a "Who builds this" section. Three `.story-card` blocks reference real systems the founder ships and operates: live algorithmic trading bridge on a funded prop account, PROOF social app (70 screens / 222 backend tests / audited E2E crypto), and Agentic Trend Intelligence (LangGraph + Gemini + Printify + Shopify production pipeline). New `.founding-strip` block below carries the founding-customer programme banner with `--color-accent` left-rule (the studio's first non-cyan accent use, justified because the strip carries time-limited intent and meaning) — soft register, no "LIMITED SPOTS" urgency-stacking, links #contact. Dead CSS removed: `.testimonials-grid`, `.testimonial-card`, `.testimonial-stars`, `.testimonial-author`, `.testimonial-avatar` (73 lines). PRODUCT.md principle 1 ("show don't claim") now holds end-to-end on the homepage.
+
 Deferred (still open):
 - Pricing-card CTA labels uneven (Starter→Get Started, Pro→Book a Call, Retainer→Learn More) — all point to #contact; either unify or differentiate destinations.
 - Process-list connector line still uses `--gradient-brand` (style.css ~3899) — decorative 1px line, not under No-Gradient Rule, worth a future call.
-- Real client wins: when available, swap Patterns section back to attributed case studies with named clients + verifiable numbers. Highest-leverage proof move.
+- Real client wins: when the founding-customer cohort delivers, swap "Who builds this" credibility cards for attributed case studies with named clients + verifiable numbers. The strip becomes redundant once cases are live.
 
 ## Working with impeccable
 
