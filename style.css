@@ -552,45 +552,50 @@
   }
 }
 
+/* ---------- STATS BAR (inner pages) ----------
+   Refactored from glassmorphism (banned by DESIGN.md §6) to flat
+   surface-2 + full border. Supports 2-4 stat cards via auto-fit grid.
+   Per-card padding gives breathing room consistent with the rest
+   of the system. */
 .stats-bar {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0;
-  padding: clamp(1rem, 2vw, 1.4rem);
   max-width: var(--content-wide);
-  margin-inline: auto;
-  margin-top: calc(var(--space-12) * -1);
+  margin: calc(var(--space-12) * -1) auto 0;
   position: relative;
   z-index: 4;
-  background: linear-gradient(180deg, rgba(16, 20, 29, 0.82), rgba(11, 14, 20, 0.74));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: calc(var(--radius-xl) + 4px);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 .stat {
   text-align: left;
-  padding: var(--space-5) var(--space-6);
+  padding: var(--space-6);
+  position: relative;
 }
 .stat + .stat {
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid var(--color-divider);
 }
 .stat-value {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.35rem + 1.8vw, 3rem);
+  font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.5rem);
   font-weight: 800;
-  color: var(--color-primary);
+  color: var(--color-text);
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
 .stat-label {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
-  margin-top: var(--space-2);
-  max-width: 22ch;
+  margin-top: var(--space-3);
+  max-width: 24ch;
   line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 @media (max-width: 768px) {
   .stats-bar {
@@ -605,7 +610,7 @@
 
   .stat + .stat {
     border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--color-divider);
   }
 
   .stat-label {
@@ -3226,28 +3231,6 @@ input[type="range"] {
 }
 
 /* ========================================
-   STATS BAR (Lead Enrichment)
-   ======================================== */
-.hero-service + .stats-bar .stat,
-.hero-product + .stats-bar .stat {
-  text-align: center;
-}
-.hero-service + .stats-bar .stat-value,
-.hero-product + .stats-bar .stat-value {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
-}
-.hero-service + .stats-bar .stat-label,
-.hero-product + .stats-bar .stat-label {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-/* ========================================
    PERSONA GRID (Lead Enrichment)
    ======================================== */
 .persona-grid {
@@ -3798,15 +3781,6 @@ input[type="range"] {
 }
 
 /* ---- Glassmorphism Stats Bar ---- */
-[data-theme="light"] .stats-bar {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(34, 211, 238, 0.18);
-}
-
-.stat:nth-child(even) .stat-value {
-  color: var(--color-accent);
-}
-
 /* ---- Animated Section Divider ---- */
 @keyframes divider-shimmer {
   0%   { background-position: -200% center; }
