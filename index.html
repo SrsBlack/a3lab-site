@@ -169,20 +169,18 @@
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar fade-in" aria-label="Key metrics">
-    <div class="stat">
-      <div class="stat-value">3.7×</div>
-      <div class="stat-label">Average ROI in the first deployment cycle</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">15 hrs</div>
-      <div class="stat-label">Recovered per operator every week</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">24–72h</div>
-      <div class="stat-label">From kickoff to live handoff</div>
-    </div>
+  <!-- STACK STRIP -->
+  <div class="stack-strip fade-in" aria-label="The stack we build on">
+    <span class="stack-strip-label">Built on</span>
+    <ul class="stack-strip-list" role="list">
+      <li>Perplexity</li>
+      <li>Claude</li>
+      <li>OpenAI</li>
+      <li>Zapier</li>
+      <li>n8n</li>
+      <li>OpenClaw</li>
+      <li>Notion</li>
+    </ul>
   </div>
 
 
@@ -663,35 +661,35 @@
 
   <hr class="section-divider" aria-hidden="true">
 
-  <!-- AUTOMATION STORIES -->
+  <!-- AUTOMATION PATTERNS -->
   <section id="stories" class="section">
     <div class="section-inner">
-      <div class="section-label fade-in">Automation In Action</div>
+      <div class="section-label fade-in">Patterns We Build</div>
       <h2 class="section-title fade-in">What this looks like in practice</h2>
-      <p class="section-desc fade-in">Real workflows we build. Real time saved.</p>
+      <p class="section-desc fade-in">Three workflows we ship most often. Same pattern, adapted to your tools and inputs.</p>
       <div class="stories-grid">
         <div class="story-card fade-in">
-          <div class="story-type">Marketing Agency</div>
-          <h3>15 hours/week reclaimed from prospect research</h3>
-          <p class="story-problem"><strong>Problem:</strong> Manually researching prospects and writing outreach emails. 15+ hours a week, every week.</p>
-          <p class="story-solution"><strong>Automation:</strong> Perplexity researches each prospect. Claude drafts personalized emails. Zapier sends and logs everything in their CRM.</p>
-          <p class="story-result"><strong>Result:</strong> Outreach volume tripled. Response rates up 40%. Team reclaimed 15 hours/week for actual client work.</p>
+          <div class="story-type">Pattern · Sales</div>
+          <h3>Prospect research and outreach pipeline</h3>
+          <p class="story-problem"><strong>Trigger:</strong> A new lead lands in a CRM, form, or list.</p>
+          <p class="story-solution"><strong>Pipeline:</strong> Perplexity researches the company and role. Claude drafts a personalized first-touch email grounded in that research. Zapier logs the enriched record and sends from your domain.</p>
+          <p class="story-result"><strong>What changes:</strong> Reps stop hand-researching cold leads. The first touch reads like it was written by someone who actually read about the company.</p>
           <div class="story-tools">Perplexity + Claude + Zapier + CRM</div>
         </div>
         <div class="story-card fade-in">
-          <div class="story-type">E-commerce Brand</div>
-          <h3>Support response time cut from 48 hours to 2</h3>
-          <p class="story-problem"><strong>Problem:</strong> Support team drowning in repetitive questions. 48-hour average response time. Customers frustrated.</p>
-          <p class="story-solution"><strong>Automation:</strong> Claude analyzes incoming tickets, auto-responds to common questions, routes complex issues to humans.</p>
-          <p class="story-result"><strong>Result:</strong> First response under 2 hours. 65% of tickets handled automatically. Support team focused on high-value interactions.</p>
-          <div class="story-tools">Claude + Zapier + Zendesk + CRM</div>
+          <div class="story-type">Pattern · Support</div>
+          <h3>Ticket triage with human handoff</h3>
+          <p class="story-problem"><strong>Trigger:</strong> A support email or ticket arrives.</p>
+          <p class="story-solution"><strong>Pipeline:</strong> Claude reads the ticket, classifies it, drafts a reply for routine questions, and routes anything ambiguous or high-stakes to a human with full context attached.</p>
+          <p class="story-result"><strong>What changes:</strong> Routine replies go out in minutes, not hours. The human queue shrinks to the cases that genuinely need judgment.</p>
+          <div class="story-tools">Claude + Zapier + helpdesk + CRM</div>
         </div>
         <div class="story-card fade-in">
-          <div class="story-type">Solo Consultant</div>
-          <h3>Monday reports delivered automatically by 7am</h3>
-          <p class="story-problem"><strong>Problem:</strong> Every Monday morning spent compiling market research and client reports manually. 6+ hours gone.</p>
-          <p class="story-solution"><strong>Automation:</strong> Perplexity gathers market data. Claude analyzes trends and writes summaries. Zapier delivers to inbox and archives in Notion.</p>
-          <p class="story-result"><strong>Result:</strong> Reports arrive automatically before coffee. 6 hours/week saved. Clients impressed by consistency.</p>
+          <div class="story-type">Pattern · Reporting</div>
+          <h3>Scheduled research and report delivery</h3>
+          <p class="story-problem"><strong>Trigger:</strong> A recurring time (Monday morning, end of month, hourly).</p>
+          <p class="story-solution"><strong>Pipeline:</strong> Perplexity gathers fresh data on a defined topic set. Claude summarizes, compares against last period, and flags what changed. Zapier delivers to inbox and archives in Notion.</p>
+          <p class="story-result"><strong>What changes:</strong> Manual report assembly stops. The recurring deliverable arrives ready to read.</p>
           <div class="story-tools">Perplexity + Claude + Zapier + Notion</div>
         </div>
       </div>

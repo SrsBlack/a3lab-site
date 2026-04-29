@@ -40,8 +40,16 @@ The site must never look or feel like:
 `effects.css` (88 lines) and `effects.js` (116 lines) are the **post-distill** survivors after `/impeccable critique` ran on 2026-04-29. The original 2026-03-30 "futuristic UI effects" layer (537 + 752 lines) failed the operator-grade register at 16/23 effects and was distilled aggressively — particle canvas, scanline overlay, gradient blobs, floating orbs, glitch text, custom cursor, card 3D tilt, magnetic buttons, text scramble, counter scramble, and typing-terminal sequencer all dropped. Three patterns survived as worth-keeping primitives: scroll progress bar (no halo), view-transition theme wipe (system-aligned to 220ms exp-out), and CSS typing-cursor primitive. Pattern reasoning is captured in DESIGN.md §4-§5.
 
 Outstanding debt:
-- Hero rework shipped 2026-04-29: gradient-text + glitch-hover stripped from all H2s; both `.gradient-text` CSS rules removed (line 1042 + 3828 of pre-edit style.css). Spline 3D robot iframe replaced with the brand's own signature Hero Command Panel as the right-column anchor; `.hero-robot` block + `robotGlowPulse` keyframes + glassmorphism backdrop-blur on `.hero-command` all dropped. The OpenClaw-section retrofuturism Spline iframe remains (separate decision).
-- Process-list connector line still uses `--gradient-brand` (style.css ~3899) — gradient on a 1px line, not text-clip, so not under the No-Gradient Rule, but worth a brand call in a later pass.
+- Hero rework shipped 2026-04-29: gradient-text + glitch-hover stripped from all H2s; both `.gradient-text` CSS rules removed. Spline 3D robot iframe replaced with the brand's own signature Hero Command Panel as the right-column anchor; `.hero-robot` block + `robotGlowPulse` keyframes + glassmorphism backdrop-blur on `.hero-command` all dropped. OpenClaw-section retrofuturism Spline iframe remains.
+- A11y pass shipped 2026-04-29: `--text-xs` token raised to 14px floor (clamp 0.875rem→1rem); 13 raw sub-14px font-size declarations lifted to var(--text-xs); theme toggle now syncs aria-label + aria-pressed on init and click. Light-theme `--color-text-faint` contrast (3.4:1 borderline) and uppercase-on-body-phrases still deferred.
+- Conversion-path pass shipped 2026-04-29: removed unverifiable stats bar (3.7× ROI, 15 hrs, 24-72h with glassmorphism backing), replaced with operator-grade `.stack-strip` showing the actual tools (Perplexity, Claude, OpenAI, Zapier, n8n, OpenClaw, Notion). Reframed "Automation Stories" into "Patterns We Build" — same workflow detail, dropped the unattributed agency/e-commerce/consultant case-study framing and the 40%/65%/3× claims that read fake. PRODUCT.md principle #1 ("Show, don't claim") now holds across the homepage. Inner pages (services/, for-*) still use `.stats-bar` until Task 5 polish revisits them.
+
+Deferred from conversion-path pass:
+- Hero CTAs split attention (audit primary + call outline) — could re-rank with audit as sole primary and call as text link.
+- Hero subheadline ("operates like it has an always-on command layer") still leans marketing-template; tighten in a copy pass with user voice.
+- Pricing-card CTA labels uneven (Starter→Get Started, Pro→Book a Call, Retainer→Learn More) — all point to #contact; either unify or differentiate destinations.
+- Process-list connector line still uses `--gradient-brand` (style.css ~3899) — decorative 1px line, not under No-Gradient Rule, worth a future call.
+- Real client wins: when available, swap Patterns section back to attributed case studies with named clients + verifiable numbers. Highest-leverage proof move.
 
 ## Working with impeccable
 
