@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OG Card</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1200px;height:630px;overflow:hidden;background:#0a0b0f;font-family:'Satoshi',sans-serif}
+  .stage{position:relative;width:1200px;height:630px;background:#0a0b0f}
+  svg.graph{position:absolute;inset:0;width:1200px;height:630px}
+  .noise{position:absolute;inset:0;opacity:0.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .vignette{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%)}
+  .wordmark{position:absolute;top:56px;left:64px;display:flex;align-items:center;gap:12px}
+  .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;color:#06160f}
+  .wordmark span{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.01em;color:#e4e6ec}
+  .copy{position:absolute;left:64px;top:290px;max-width:900px}
+  h1{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:72px;line-height:1.05;letter-spacing:-0.02em;color:#e4e6ec;margin-bottom:18px}
+  .sub{font-size:24px;color:#8b8f9e;font-weight:500}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="graph" viewBox="0 0 1200 630" fill="none">
+    <line x1="620" y1="300" x2="300" y2="140" stroke="#2a2d38" stroke-width="1.5"/>
+    <line x1="620" y1="300" x2="950" y2="120" stroke="#2a2d38" stroke-width="1.5"/>
+    <line x1="620" y1="300" x2="260" y2="420" stroke="#2a2d38" stroke-width="1.5"/>
+    <line x1="620" y1="300" x2="980" y2="440" stroke="#2a2d38" stroke-width="1.5"/>
+    <line x1="620" y1="300" x2="700" y2="80" stroke="#2a2d38" stroke-width="1.5"/>
+    <circle cx="300" cy="140" r="5" fill="#2ee6a0" opacity="0.55"/>
+    <circle cx="950" cy="120" r="5" fill="#2ee6a0" opacity="0.55"/>
+    <circle cx="260" cy="420" r="5" fill="#2ee6a0" opacity="0.55"/>
+    <circle cx="980" cy="440" r="5" fill="#2ee6a0" opacity="0.55"/>
+    <circle cx="700" cy="80" r="5" fill="#2ee6a0" opacity="0.55"/>
+    <circle cx="620" cy="300" r="11" fill="#2ee6a0"/>
+    <circle cx="620" cy="300" r="26" fill="none" stroke="#2ee6a0" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="620" cy="300" r="42" fill="none" stroke="#2ee6a0" stroke-width="1" opacity="0.18"/>
+  </svg>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+  <div class="wordmark">
+    <div class="mark">A</div>
+    <span>A3&nbsp;LAB</span>
+  </div>
+  <div class="copy">
+    <h1>A second brain for your business.</h1>
+    <div class="sub">a3lab.ca</div>
+  </div>
+</div>
+</body>
+</html>

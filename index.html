@@ -4,6 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A3 Lab — A second brain for your business</title>
 <meta name="description" content="Every doc, message, call and decision across every team, wired into one connected memory anyone can ask — and that acts on the answer.">
+<link rel="canonical" href="https://a3lab.ca/">
+<meta property="og:title" content="A3 Lab — A second brain for your business">
+<meta property="og:description" content="Every doc, message, call and decision across every team, wired into one connected memory anyone can ask — and that acts on the answer.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/">
+<meta property="og:image" content="https://a3lab.ca/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A3 Lab — A second brain for your business">
+<meta name="twitter:description" content="Every doc, message, call and decision across every team, wired into one connected memory anyone can ask — and that acts on the answer.">
+<meta name="twitter:image" content="https://a3lab.ca/assets/og-card.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"A3 Lab","url":"https://a3lab.ca","logo":"https://a3lab.ca/assets/og-card.png","email":"hello@a3lab.ca"}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
 <script src="assets/index.js"></script>
 </head>
@@ -488,24 +501,32 @@
             <a href="audit.html" style="color:#8b8f9e;text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:1px solid #2a2d38;padding-bottom:2px" style-hover="color:#2ee6a0;border-color:#2ee6a0">Or take the 2-minute audit</a>
           </div>
         </div>
-        <form onsubmit="{{ onSend }}" style="padding:clamp(28px,4vw,40px);background:#111318;border:1px solid #2a2d38;border-radius:18px;display:flex;flex-direction:column;gap:16px">
+        <form name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" style="padding:clamp(28px,4vw,40px);background:#111318;border:1px solid #2a2d38;border-radius:18px;display:flex;flex-direction:column;gap:16px">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" onchange="{{ onField }}"></label>
+          </p>
           <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:2px">Or tell us what's eating your time.</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
             <div style="display:flex;flex-direction:column;gap:7px">
               <label for="fName" style="font-size:13.5px;font-weight:500;color:#8b8f9e">Name</label>
-              <input id="fName" data-k="fName" required="" value="{{ fName }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
+              <input id="fName" name="name" data-k="fName" required="" value="{{ fName }}" onchange="{{ onField }}" style="background:#111318;border:1.5px solid #2a2d38;border-radius:10px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
             </div>
             <div style="display:flex;flex-direction:column;gap:7px">
               <label for="fEmail" style="font-size:13.5px;font-weight:500;color:#8b8f9e">Work email</label>
-              <input id="fEmail" data-k="fEmail" type="email" required="" value="{{ fEmail }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
+              <input id="fEmail" name="email" data-k="fEmail" type="email" required="" value="{{ fEmail }}" onchange="{{ onField }}" style="background:#111318;border:1.5px solid #2a2d38;border-radius:10px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:7px">
-            <label for="fMsg" style="font-size:13.5px;font-weight:500;color:#8b8f9e">What should it remember, or automate?</label>
-            <textarea id="fMsg" data-k="fMsg" required="" rows="4" value="{{ fMsg }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;resize:vertical;min-height:120px;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)"></textarea>
+            <label for="fCompany" style="font-size:13.5px;font-weight:500;color:#8b8f9e">Company <span style="color:#5a5e6e;font-weight:400">(optional)</span></label>
+            <input id="fCompany" name="company" data-k="fCompany" value="{{ fCompany }}" onchange="{{ onField }}" style="background:#111318;border:1.5px solid #2a2d38;border-radius:10px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
           </div>
-          <button type="submit" style="align-self:flex-start;appearance:none;cursor:pointer;background:transparent;border:1px solid #2a2d38;color:#e4e6ec;font-family:Satoshi,sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;transition:border-color .18s,color .18s" style-hover="border-color:#2ee6a0;color:#2ee6a0">Send it over</button>
-          <p style="font-size:12.5px;line-height:1.5;color:#5a5e6e">Opens your email app, addressed to hello@a3lab.ca. No lists, no spam.</p>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <label for="fMsg" style="font-size:13.5px;font-weight:500;color:#8b8f9e">What should it remember, or automate?</label>
+            <textarea id="fMsg" name="message" data-k="fMsg" required="" rows="4" value="{{ fMsg }}" onchange="{{ onField }}" style="background:#111318;border:1.5px solid #2a2d38;border-radius:10px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;resize:vertical;min-height:120px;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)"></textarea>
+          </div>
+          <button type="submit" style="align-self:flex-start;appearance:none;cursor:pointer;background:#2ee6a0;border:none;color:#0a0b0f;font-family:Satoshi,sans-serif;font-weight:700;font-size:15px;padding:13px 26px;border-radius:11px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 24px rgba(46,230,160,0.35)">Send it over</button>
+          <p style="font-size:12.5px;line-height:1.5;color:#5a5e6e">Or email <a href="mailto:hello@a3lab.ca" style="color:#8b8f9e;text-decoration:none;border-bottom:1px solid #2a2d38" style-hover="color:#2ee6a0;border-color:#2ee6a0">hello@a3lab.ca</a> directly, or <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="color:#8b8f9e;text-decoration:none;border-bottom:1px solid #2a2d38" style-hover="color:#2ee6a0;border-color:#2ee6a0">book a call</a>.</p>
         </form>
       </div>
     </div>
@@ -842,13 +863,8 @@ class Component extends DCLogic {
       roiHrsDisp: s.roiHrs + ' hrs', roiRateDisp: '$' + s.roiRate + '/hr', roiPctDisp: s.roiPct + '%',
       roiMonthly: fmt(monthly), roiRecover: fmt(recover), roiFreed: freed.toLocaleString('en-CA'), roiPayback: payback,
       onRoi: (ev) => { const k = ev.currentTarget.dataset.k, v = +ev.currentTarget.value; this.setState({ [k]: v }); },
-      fName: s.fName, fEmail: s.fEmail, fMsg: s.fMsg,
-      onField: (ev) => { const k = ev.currentTarget.dataset.k, v = ev.currentTarget.value; this.setState({ [k]: v }); },
-      onSend: (ev) => {
-        ev.preventDefault();
-        const body = 'Name: ' + s.fName + '\nEmail: ' + s.fEmail + '\n\nWhat to remember or automate:\n' + s.fMsg;
-        window.location.href = 'mailto:hello@a3lab.ca?subject=' + encodeURIComponent('Second brain inquiry from ' + (s.fName || 'the website')) + '&body=' + encodeURIComponent(body);
-      }
+      fName: s.fName, fEmail: s.fEmail, fCompany: s.fCompany, fMsg: s.fMsg,
+      onField: (ev) => { const k = ev.currentTarget.dataset.k, v = ev.currentTarget.value; this.setState({ [k]: v }); }
     };
   }
 }

@@ -4,6 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Automation audit — A3 Lab</title>
 <meta name="description" content="Five questions, two minutes — find out what to automate first. Scored instantly in your browser.">
+<link rel="canonical" href="https://a3lab.ca/audit.html">
+<meta property="og:title" content="Automation audit — A3 Lab">
+<meta property="og:description" content="Five questions, two minutes — find out what to automate first. Scored instantly in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a3lab.ca/audit.html">
+<meta property="og:image" content="https://a3lab.ca/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automation audit — A3 Lab">
+<meta name="twitter:description" content="Five questions, two minutes — find out what to automate first. Scored instantly in your browser.">
+<meta name="twitter:image" content="https://a3lab.ca/assets/og-card.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
 <script src="assets/audit.js"></script>
 </head>
@@ -91,6 +103,24 @@
               <a href="{{ mailtoHref }}" style="color:#e4e6ec;text-decoration:none;font-weight:600;font-size:14.5px;border:1px solid #2a2d38;padding:13px 22px;border-radius:10px;transition:border-color .18s,color .18s" style-hover="border-color:#2ee6a0;color:#2ee6a0">Email us these results</a>
               <button onclick="{{ onRestart }}" style="appearance:none;background:none;border:none;cursor:pointer;font-family:Satoshi,sans-serif;font-size:14px;font-weight:500;color:#8b8f9e;padding:0" style-hover="color:#2ee6a0">Start over</button>
             </div>
+
+            <div style="height:1px;background:#1f2230;margin:30px 0"></div>
+
+            <p style="font-size:15.5px;line-height:1.55;color:#e4e6ec;margin-bottom:16px;max-width:520px">Want this as a concrete plan? I'll send you the first build I'd do, within a day.</p>
+
+            <sc-if value="{{ leadSent }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:15px;font-weight:600;color:#2ee6a0">Sent — check your inbox within a day.</p>
+            </sc-if>
+            <sc-if value="{{ leadError }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:15px;font-weight:600;color:#f59e0b">Didn't go through — email me instead: <a href="mailto:hello@a3lab.ca" style="color:#f59e0b">hello@a3lab.ca</a></p>
+            </sc-if>
+            <sc-if value="{{ leadIdle }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                <input type="email" placeholder="you@company.com" value="{{ leadEmail }}" onchange="{{ onLeadEmail }}" style="flex:1;min-width:220px;background:#1e2028;border:1.5px solid #2a2d38;border-radius:9px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
+                <button onclick="{{ onSendPlan }}" style="appearance:none;cursor:pointer;background:#2ee6a0;border:none;color:#0a0b0f;font-family:Satoshi,sans-serif;font-weight:700;font-size:15px;padding:13px 22px;border-radius:10px;transition:transform .18s,box-shadow .18s;white-space:nowrap" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Send me my plan</button>
+              </div>
+              <a href="{{ calendly }}" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;font-size:13.5px;color:#8b8f9e;text-decoration:none;border-bottom:1px solid #2a2d38" style-hover="color:#2ee6a0;border-color:#2ee6a0">Or book a call about your results</a>
+            </sc-if>
           </div>
         </sc-if>
 
@@ -113,6 +143,15 @@
 
 </div>
 </x-dc>
+<form name="audit-results" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="audit-results">
+  <input type="text" name="email">
+  <input type="text" name="score">
+  <input type="text" name="answers">
+  <input type="text" name="recommendation">
+  <input type="text" name="utm">
+  <input type="text" name="bot-field">
+</form>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:880},&quot;calendly&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://calendly.com/goyalpriyanshu1996/30min&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;previewResults&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   questions = [
@@ -144,7 +183,7 @@ class Component extends DCLogic {
     { title: 'Highest-volume workflow build', why: 'We map your single most repetitive task and automate that one first.' }
   ];
 
-  state = { step: 0, answers: [] };
+  state = { step: 0, answers: [], leadEmail: '', leadStatus: 'idle' };
 
   componentDidMount() {
     if (this.props.previewResults) this.setState({ step: 5, answers: [0, 2, 0, 1, 1] });
@@ -190,7 +229,29 @@ class Component extends DCLogic {
       onBack: () => this.setState(st => ({ step: Math.max(0, st.step - 1) })),
       onRestart: () => this.setState({ step: 0, answers: [] }),
       score, scoreLabel, scoreNote, recs,
-      mailtoHref: 'mailto:hello@a3lab.ca?subject=' + encodeURIComponent('Automation audit results') + '&body=' + encodeURIComponent(body)
+      mailtoHref: 'mailto:hello@a3lab.ca?subject=' + encodeURIComponent('Automation audit results') + '&body=' + encodeURIComponent(body),
+      leadEmail: s.leadEmail,
+      leadIdle: s.leadStatus === 'idle' || s.leadStatus === 'sending',
+      leadSent: s.leadStatus === 'sent',
+      leadError: s.leadStatus === 'error',
+      onLeadEmail: (ev) => this.setState({ leadEmail: ev.currentTarget.value }),
+      onSendPlan: () => {
+        this.setState({ leadStatus: 'sending' });
+        const encode = (data) => Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({
+            'form-name': 'audit-results',
+            email: s.leadEmail,
+            score: String(score),
+            answers: JSON.stringify(s.answers),
+            recommendation: recs[0].title,
+            utm: window.location.search
+          })
+        }).then(() => this.setState({ leadStatus: 'sent' }))
+          .catch(() => this.setState({ leadStatus: 'error' }));
+      }
     };
   }
 }
