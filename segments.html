@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who it's for — A3 Lab</title>
+<meta name="description" content="How agencies, e-commerce operators and consultants use A3 Lab's second-brain automation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
+<script src="assets/segments.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700&amp;f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#0a0b0f;color:#e4e6ec;font-family:'Satoshi','Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(46,230,160,0.25);color:#fff}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;width:100%;min-height:100vh;background:#0a0b0f;overflow:hidden">
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(20px,4vw,48px);backdrop-filter:saturate(140%) blur(9px);background:rgba(10,11,15,0.66);border-bottom:1px solid rgba(42,45,56,0.55)">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#e4e6ec">
+      <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:14px;color:#06160f">A</div>
+      <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em">A3&nbsp;LAB</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:6px;background:rgba(17,19,24,0.72);border:1px solid #2a2d38;border-radius:11px;padding:4px">
+      <a href="#agencies" data-seg="agencies" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For Agencies</a>
+      <a href="#ecommerce" data-seg="ecommerce" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For E-commerce</a>
+      <a href="#consultants" data-seg="consultants" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For Consultants</a>
+    </div>
+    <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:9px;white-space:nowrap;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Book a call</a>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,5vw,48px) clamp(50px,8vh,80px);overflow:hidden">
+    <div style="position:absolute;top:-10%;right:-5%;width:60%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 70% 40%, rgba(46,230,160,0.14), rgba(10,11,15,0) 70%)"></div>
+    <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto">
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#8b8f9e;text-decoration:none;margin-bottom:28px" style-hover="color:#2ee6a0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Home
+      </a>
+      <div style="max-width:780px;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) both">
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border:1px solid #2a2d38;border-radius:9999px;margin-bottom:22px;background:rgba(13,15,20,0.5)">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 10px #2ee6a0"></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:0.04em;color:#8b8f9e;text-transform:uppercase">{{ seg.eyebrow }}</span>
+        </div>
+        <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2.2rem,1.4rem+2.6vw,3.8rem);line-height:1.04;letter-spacing:-0.025em;margin-bottom:22px">{{ seg.title }}</h1>
+        <p style="font-size:clamp(1.15rem,1rem+0.6vw,1.4rem);line-height:1.55;color:#8b8f9e;margin-bottom:34px">{{ seg.lede }}</p>
+        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:16px;padding:14px 28px;border-radius:11px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 26px rgba(46,230,160,0.4)">Book a free audit</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAINS -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">What slows you down</p>
+      <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.7rem,1.2rem+1.6vw,2.6rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:44px;max-width:640px">{{ seg.painTitle }}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+        <sc-for list="{{ seg.pains }}" as="p" hint-placeholder-count="3">
+          <div style="padding:28px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+            <p style="font-size:16px;line-height:1.55;color:#cdd0da">{{ p }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT THE BRAIN DOES -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">What a second brain changes</p>
+      <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.7rem,1.2rem+1.6vw,2.6rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:44px;max-width:640px">{{ seg.winsTitle }}</h2>
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:880px">
+        <sc-for list="{{ seg.wins }}" as="w" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:30px 1fr;gap:18px;align-items:start;padding:22px 24px;background:#111318;border:1px solid #2a2d38;border-radius:13px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px"><path d="M20 6 9 17l-5-5"></path></svg>
+            <p style="font-size:16px;line-height:1.5;color:#cdd0da">{{ w }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMMENDED SERVICES -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:24px">Where teams like yours start</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <sc-for list="{{ seg.services }}" as="s" hint-placeholder-count="3">
+          <a href="services.html#{{ s.id }}" style="display:block;padding:26px;background:#111318;border:1px solid #2a2d38;border-radius:14px;text-decoration:none;transition:border-color .18s,transform .18s" style-hover="border-color:#2ee6a0;transform:translateY(-2px)">
+            <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec;margin-bottom:8px">{{ s.title }}</h3>
+            <span style="font-size:13.5px;font-weight:600;color:#2ee6a0">Learn more →</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f;text-align:center">
+    <div style="max-width:680px;margin:0 auto">
+      <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.3rem+2vw,3rem);line-height:1.06;letter-spacing:-0.025em;margin-bottom:20px">{{ seg.ctaTitle }}</h2>
+      <p style="font-size:1.15rem;line-height:1.6;color:#8b8f9e;margin-bottom:34px">A free 30-minute call. We map your workflows and show you exactly what we'd build first.</p>
+      <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:17px;padding:16px 34px;border-radius:12px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 30px rgba(46,230,160,0.4)">Book your free audit</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:40px clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#e4e6ec">
+        <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:12px;color:#06160f">A</div>
+        <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px">A3&nbsp;LAB</span>
+      </a>
+      <span style="font-size:13px;color:#5a5e6e">a3lab.ca · © 2026</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;segment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;agencies&quot;,&quot;ecommerce&quot;,&quot;consultants&quot;],&quot;default&quot;:&quot;agencies&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+
+  segments = [
+    { id: 'agencies', eyebrow: 'For agencies',
+      title: 'Your agency runs on knowledge. Stop losing it.',
+      lede: 'Client context, briefs, approvals and decisions live across a dozen tools and three people\u2019s heads. A3 Lab wires it into one brain, then automates the busywork around it.',
+      painTitle: 'The work that eats your margin isn\u2019t the creative. It\u2019s everything around it.',
+      pains: [
+        'Onboarding a new account manager means re-explaining every client from scratch.',
+        'Proposals and SOWs get rebuilt from blank pages instead of your own best work.',
+        'Status updates, recaps and follow-ups quietly burn billable hours every week.'
+      ],
+      winsTitle: 'A brain that remembers every client, and agents that handle the admin.',
+      wins: [
+        'Ask anything about any account and get the answer with sources, instantly.',
+        'Draft proposals and SOWs from your real history, pricing and tone.',
+        'Auto-generate status recaps and follow-ups from calls and threads.',
+        'New hires get productive in days, not months.'
+      ],
+      services: [
+        { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines' },
+        { id: 'ai-content-engines', title: 'AI Content Engines' },
+        { id: 'customer-support-bots', title: 'Customer Support Bots' }
+      ],
+      ctaTitle: 'Give your agency a memory.' },
+    { id: 'ecommerce', eyebrow: 'For e-commerce',
+      title: 'Every order, ticket and SKU, in one brain that acts.',
+      lede: 'Support, inventory, suppliers and marketing all hold pieces of the picture. A3 Lab connects them into one brain, then deploys agents to handle the volume.',
+      painTitle: 'Volume is the problem. Manual handling doesn\u2019t scale with it.',
+      pains: [
+        'Support drowns in repeat \u201Cwhere\u2019s my order?\u201D tickets that all have the same answer.',
+        'Stockouts and reorders depend on someone remembering to check.',
+        'Customer history is scattered across the store, helpdesk and email.'
+      ],
+      winsTitle: 'A brain that knows every order, and agents that clear the queue.',
+      wins: [
+        'Auto-resolve common support tickets with accurate, on-brand answers.',
+        'Surface the reorder, the refund pattern and the at-risk customer before it costs you.',
+        'Draft lifecycle and win-back emails from real purchase history.',
+        'Escalate to a human only when it genuinely needs one.'
+      ],
+      services: [
+        { id: 'customer-support-bots', title: 'Customer Support Bots' },
+        { id: 'ai-content-engines', title: 'AI Content Engines' },
+        { id: 'website-automation', title: 'Website & App Automation' }
+      ],
+      ctaTitle: 'Give your store a memory.' },
+    { id: 'consultants', eyebrow: 'For consultants',
+      title: 'Your expertise is the product. Give it a memory.',
+      lede: 'Frameworks, research, engagements and rates live in decks, docs and your head. A3 Lab wires them into one brain, then automates the delivery work around it.',
+      painTitle: 'You sell judgment, but spend the week on assembly.',
+      pains: [
+        'Every proposal starts from a blank page instead of the last ten you won.',
+        'Research and interview notes vanish into folders nobody reopens.',
+        'Billable hours leak into meeting prep, recaps and status decks.'
+      ],
+      winsTitle: 'A brain that holds every engagement, and agents that prep the work.',
+      wins: [
+        'Draft proposals and SOWs from your real frameworks, rates and past wins.',
+        'Ask what you learned on any engagement and get the answer with sources.',
+        'Walk into every meeting with an auto-prepared brief on the client.',
+        'Turn finished engagements into reusable playbooks, automatically.'
+      ],
+      services: [
+        { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines' },
+        { id: 'ai-content-engines', title: 'AI Content Engines' },
+        { id: 'openclaw-setup', title: 'OpenClaw Setup' }
+      ],
+      ctaTitle: 'Give your practice a memory.' }
+  ];
+
+  state = { id: 'agencies' };
+
+  componentDidMount() {
+    this.applyHash();
+    this.syncNav();
+    this._onHash = () => { this.applyHash(); this.syncNav(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    window.addEventListener('hashchange', this._onHash);
+  }
+  componentDidUpdate() { this.syncNav(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+
+  applyHash() {
+    const h = (location.hash || '').replace('#', '').trim();
+    const found = this.segments.find(s => s.id === h);
+    const startId = this.props.segment && this.segments.find(s => s.id === this.props.segment) ? this.props.segment : 'agencies';
+    this.setState({ id: found ? h : startId });
+  }
+
+  syncNav() {
+    const root = this.rootRef.current; if (!root) return;
+    root.querySelectorAll('[data-seg]').forEach(a => {
+      const on = a.dataset.seg === this.state.id;
+      a.style.color = on ? '#0a0b0f' : '#8b8f9e';
+      a.style.background = on ? '#2ee6a0' : 'transparent';
+    });
+  }
+
+  renderVals() {
+    const seg = this.segments.find(s => s.id === this.state.id) || this.segments[0];
+    return { rootRef: this.rootRef, seg };
+  }
+}
+</script>
+
+
+</body></html>

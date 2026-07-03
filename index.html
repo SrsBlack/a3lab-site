@@ -1,1900 +1,858 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.fontshare.com; connect-src 'self' https://formsubmit.co; frame-src 'self' https://my.spline.design; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
-<title>A3 Lab &#8212; Done-for-You AI Automation for Lean Teams</title>
-<meta name="description" content="A3 Lab builds custom AI automation workflows using Perplexity, Claude, and Zapier. We architect agentic systems that save your team hundreds of hours monthly.">
-<meta property="og:title" content="A3 Lab &#8212; Done-for-You AI Automation for Lean Teams">
-<meta property="og:description" content="Custom AI automation builds and monthly retainers. We architect agentic workflows that run your business on autopilot.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://a3lab.ca">
-<meta property="og:image" content="https://a3lab.ca/assets/a3labs-hero.png">
-<meta property="og:image:width" content="1792">
-<meta property="og:image:height" content="1024">
-<link rel="canonical" href="https://a3lab.ca">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "A3 Lab — Agentic Automation Architects Lab",
-  "description": "Custom AI automation workflows using Perplexity, Claude, and Zapier.",
-  "url": "https://a3lab.ca",
-  "areaServed": "Worldwide",
-  "priceRange": "$$",
-  "creator": {
-    "@type": "Organization",
-    "name": "A3 Lab",
-    "url": "https://a3lab.ca"
-  }
-}
-</script>
-
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap">
-<link rel="stylesheet" href="./base.css">
-<link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="./effects.css">
-
-<!-- Favicon (inline SVG as data URI) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%2322d3ee'%3EA3%3C/text%3E%3C/svg%3E">
-
-<!-- Analytics: Uncomment below after creating a free Plausible account at https://plausible.io
-     Also add https://plausible.io to script-src in the CSP meta tag above. -->
-<!-- <script defer data-domain="a3lab.ca" src="https://plausible.io/js/script.js"></script> -->
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A3 Lab — A second brain for your business</title>
+<meta name="description" content="Every doc, message, call and decision across every team, wired into one connected memory anyone can ask — and that acts on the answer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
+<script src="assets/index.js"></script>
 </head>
 <body>
-<div id="scroll-progress"></div>
+<x-dc>
+<helmet>
 
-<!-- Skip Link -->
-<a href="#main" class="skip-link">Skip to content</a>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700&amp;f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#0a0b0f;color:#e4e6ec;font-family:'Satoshi','Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(46,230,160,0.25);color:#fff}
+  @keyframes blinkc{0%,100%{opacity:1}50%{opacity:0}}
+  input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:#2a2d38}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#2ee6a0;margin-top:-7px;box-shadow:0 0 12px rgba(46,230,160,0.55)}
+  input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:#2a2d38}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#2ee6a0;border:none;box-shadow:0 0 12px rgba(46,230,160,0.55)}
+  input[type=range]:focus-visible{outline:2px solid #2ee6a0;outline-offset:3px}
+  summary::-webkit-details-marker{display:none}
+  details[open] summary svg{transform:rotate(45deg)}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important}}
+</style>
+</helmet>
 
-<!-- ==================== HEADER ==================== -->
-<header class="site-header" role="banner">
-  <div class="header-inner">
-    <a href="/" class="logo" aria-label="A3 Lab home">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
-        <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
-        <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
-      </svg>
-      <span class="logo-text">A3&nbsp;<span>Lab</span></span>
-    </a>
+<div ref="{{ rootRef }}" style="position:relative;width:100%;background:#0a0b0f">
 
-    <nav class="nav-desktop" aria-label="Main navigation">
-      <div class="nav-dropdown">
-        <a href="#services" class="nav-dropdown-trigger">Services <span class="dropdown-arrow">&#9662;</span></a>
-        <div class="nav-dropdown-menu">
-          <a href="/services/lead-enrichment.html">Lead Enrichment Pipelines</a>
-          <a href="/services/ai-content-engines.html">AI Content Engines</a>
-          <a href="/services/customer-support-bots.html">Customer Support Bots</a>
-          <a href="/services/website-automation.html">Website &amp; App Automation</a>
-          <a href="/services/openclaw-setup.html">OpenClaw Setup</a>
-          <a href="#services" class="nav-dropdown-all">All Services &rarr;</a>
-        </div>
-      </div>
-      <div class="nav-dropdown">
-        <a href="/for-agencies.html" class="nav-dropdown-trigger">Industries <span class="dropdown-arrow">&#9662;</span></a>
-        <div class="nav-dropdown-menu">
-          <a href="/for-agencies.html">For Agencies</a>
-          <a href="/for-ecommerce.html">For E&#8209;commerce</a>
-          <a href="/for-consultants.html">For Consultants</a>
-        </div>
-      </div>
-      <a href="#roi-calc">ROI Calc</a>
-      <a href="#audit">Free Audit</a>
-      <a href="/automation-box.html">Automation Box</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="btn btn-primary">Book a Call</a>
-      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode" aria-pressed="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      </button>
-    </nav>
-
-    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-mobile').classList.add('open')">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-</header>
-
-<!-- Mobile Nav -->
-<nav class="nav-mobile" aria-label="Mobile navigation">
-  <button class="nav-mobile-close" aria-label="Close menu" onclick="this.closest('.nav-mobile').classList.remove('open')">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <a href="#services" onclick="this.closest('.nav-mobile').classList.remove('open')">Services</a>
-  <a href="/services/lead-enrichment.html">&rarr; Lead Enrichment</a>
-  <a href="/services/ai-content-engines.html">&rarr; AI Content Engines</a>
-  <a href="/services/customer-support-bots.html">&rarr; Support Bots</a>
-  <a href="/services/website-automation.html">&rarr; Website Automation</a>
-  <a href="/services/openclaw-setup.html">&rarr; OpenClaw Setup</a>
-  <a href="/for-agencies.html">For Agencies</a>
-  <a href="/for-ecommerce.html">For E&#8209;commerce</a>
-  <a href="/for-consultants.html">For Consultants</a>
-  <a href="#roi-calc" onclick="this.closest('.nav-mobile').classList.remove('open')">ROI Calc</a>
-  <a href="#audit" onclick="this.closest('.nav-mobile').classList.remove('open')">Free Audit</a>
-  <a href="/automation-box.html">Automation Box</a>
-  <a href="#pricing" onclick="this.closest('.nav-mobile').classList.remove('open')">Pricing</a>
-  <a href="#faq" onclick="this.closest('.nav-mobile').classList.remove('open')">FAQ</a>
-  <a href="#contact" class="btn btn-primary btn-lg" onclick="this.closest('.nav-mobile').classList.remove('open')">Book a Call</a>
-</nav>
-
-<!-- ==================== MAIN ==================== -->
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg">
-      <img src="./assets/a3labs-hero.png" alt="A3 Lab AI automation command layer visualization" loading="eager" fetchpriority="high" width="1792" height="1024" decoding="async">
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(20px,4vw,48px);backdrop-filter:saturate(140%) blur(9px);background:rgba(10,11,15,0.66);border-bottom:1px solid rgba(42,45,56,0.55)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:14px;color:#06160f">A</div>
+      <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em">A3&nbsp;LAB</span>
     </div>
-    <div class="hero-content">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <div class="hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-            AI Operating Layer For Lean Teams
-          </div>
-          <h1>Your business keeps moving while your team focuses on <em>higher-leverage work</em></h1>
-          <p class="hero-sub">AI agents for sales handoffs, support triage, reporting, and back-office execution. Shipped in 48 hours, with human approval where it matters.</p>
-          <div class="hero-actions">
-            <a href="#audit" class="btn btn-primary btn-lg">Start Your Free Automation Audit</a>
-          </div>
-          <p class="hero-actions-aux">Prefer to talk first? <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a 30-minute strategy call</a>.</p>
-          <div class="hero-proof" aria-label="Key deployment facts">
-            <span class="hero-proof-item">48h first deployment</span>
-            <span class="hero-proof-item">Private and self-hosted options</span>
-            <span class="hero-proof-item">Human approval loops built in</span>
-          </div>
-        </div>
-        <aside class="hero-panel" aria-labelledby="hero-panel-status">
-          <div class="hero-command" aria-label="Example orchestration flow">
-            <div class="hero-command-head">
-              <span class="hero-command-status" id="hero-panel-status">Live orchestration</span>
-              <span class="hero-command-latency">Command stack online</span>
-            </div>
-            <div class="hero-command-item is-active"><span class="hero-command-step">01</span><span>Lead captured and enriched</span></div>
-            <div class="hero-command-item"><span class="hero-command-step">02</span><span>OpenClaw routes next action</span></div>
-            <div class="hero-command-item"><span class="hero-command-step">03</span><span>Proposal drafted and delivered</span></div>
-            <div class="hero-command-item"><span class="hero-command-step">04</span><span>Operator notified only if needed</span></div>
-          </div>
-        </aside>
+    <div style="display:flex;align-items:center;gap:28px">
+      <div style="display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:500">
+        <a href="#services" style="color:#8b8f9e;text-decoration:none" style-hover="color:#2ee6a0">Services</a>
+        <a href="#how" style="color:#8b8f9e;text-decoration:none" style-hover="color:#2ee6a0">How it works</a>
+        <a href="#capabilities" style="color:#8b8f9e;text-decoration:none" style-hover="color:#2ee6a0">What it does</a>
+        <a href="#pricing" style="color:#8b8f9e;text-decoration:none" style-hover="color:#2ee6a0">Pricing</a>
+        <a href="#faq" style="color:#8b8f9e;text-decoration:none" style-hover="color:#2ee6a0">FAQ</a>
+      </div>
+      <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:9px;white-space:nowrap;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Book a call</a>
+    </div>
+  </nav>
+
+  <!-- HERO: BRAIN MAP -->
+  <header style="position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:#0a0b0f">
+    <canvas ref="{{ graphRef }}" style="position:absolute;inset:0;width:100%;height:100%;z-index:0"></canvas>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(75% 100% at 12% 42%, rgba(10,11,15,0.92) 0%, rgba(10,11,15,0.55) 34%, rgba(10,11,15,0) 62%)"></div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg, rgba(10,11,15,0.85) 0%, rgba(10,11,15,0) 26%)"></div>
+    <div style="position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 54%, rgba(0,0,0,0.55) 100%)"></div>
+    <div style="position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0.04;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+
+    <!-- WORK SELECTOR -->
+    <div style="position:absolute;top:84px;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:4px;background:rgba(17,19,24,0.72);border:1px solid #2a2d38;border-radius:11px;padding:4px;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 40px)">
+      <sc-for list="{{ workOptions }}" as="o" hint-placeholder-count="4">
+        <button data-work="{{ o.id }}" onclick="{{ onWork }}" style="appearance:none;border:none;cursor:pointer;font-family:Satoshi,sans-serif;font-size:13.5px;font-weight:600;white-space:nowrap;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">{{ o.label }}</button>
+      </sc-for>
+    </div>
+
+    <!-- TITLE -->
+    <div style="position:absolute;left:clamp(20px,4vw,56px);top:clamp(140px,21vh,196px);z-index:4;max-width:min(440px,calc(100vw - 40px));pointer-events:none">
+      <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border:1px solid #2a2d38;border-radius:9999px;margin-bottom:20px;background:rgba(13,15,20,0.5)">
+        <span style="width:7px;height:7px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 10px #2ee6a0"></span>
+        <span style="font-size:12px;font-weight:500;letter-spacing:0.04em;color:#8b8f9e;text-transform:uppercase">A second brain for your business</span>
+      </div>
+      <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,1.3rem+1.8vw,3.2rem);line-height:1.07;letter-spacing:-0.02em;margin-bottom:20px">Everything your company knows. One connected memory.</h1>
+      <p style="font-size:clamp(1rem,0.95rem+0.4vw,1.2rem);line-height:1.55;color:#8b8f9e;margin-bottom:26px">Every doc, message, call and decision across every team, wired into one brain anyone can ask, and that acts on the answer.</p>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;pointer-events:auto">
+        <a href="#contact" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:15.5px;padding:13px 26px;border-radius:11px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 26px rgba(46,230,160,0.4)">Build my second brain</a>
+        <a href="#how" style="color:#e4e6ec;text-decoration:none;font-weight:500;font-size:15px;border-bottom:1px solid #2a2d38;padding-bottom:2px" style-hover="color:#2ee6a0;border-color:#2ee6a0">See how it works</a>
       </div>
     </div>
-  </section>
 
-  <!-- STACK STRIP -->
-  <div class="stack-strip fade-in" aria-label="The stack we build on">
-    <span class="stack-strip-label">Built on</span>
-    <ul class="stack-strip-list" role="list">
-      <li>Perplexity</li>
-      <li>Claude</li>
-      <li>OpenAI</li>
-      <li>Zapier</li>
-      <li>n8n</li>
-      <li>OpenClaw</li>
-      <li>Notion</li>
-    </ul>
-  </div>
+    <!-- LEGEND -->
+    <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:54px;z-index:4;display:flex;flex-wrap:wrap;gap:7px 9px;max-width:min(560px,calc(100vw - 40px));pointer-events:none">
+      <sc-for list="{{ domains }}" as="d" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#8b8f9e;background:rgba(17,19,24,0.55);border:1px solid #1f2230;border-radius:7px;padding:4px 9px"><span style="width:6px;height:6px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 6px rgba(46,230,160,0.7)"></span>{{ d.label }}<span style="color:#5a5e6e">{{ d.count }}</span></span>
+      </sc-for>
+    </div>
 
+    <!-- SCROLL CUE -->
+    <div style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:#5a5e6e;pointer-events:none">
+      <span>Scroll</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5a5e6e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+    </div>
+  </header>
 
-  <!-- ==================== ROI CALCULATOR ==================== -->
-  <section id="roi-calc" class="section roi-calc-section">
-    <div class="section-inner">
-      <div class="section-label fade-in">Free ROI Calculator</div>
-      <h2 class="section-title fade-in">See exactly what manual work is costing you</h2>
-      <p class="section-desc fade-in">Adjust the sliders below. We'll show you your monthly loss and how fast automation pays for itself.</p>
-
-      <div class="roi-calc-wrap">
-        <div class="roi-inputs">
-
-          <div class="roi-field">
-            <div class="roi-field-header">
-              <label for="roi-team">Team members doing manual tasks</label>
-              <span class="roi-val" id="roi-team-val">3</span>
-            </div>
-            <input type="range" id="roi-team" min="1" max="20" value="3" step="1">
-            <div class="roi-range-labels"><span>1</span><span>20</span></div>
-          </div>
-
-          <div class="roi-field">
-            <div class="roi-field-header">
-              <label for="roi-hours">Hours per person spent on repetitive tasks/week</label>
-              <span class="roi-val" id="roi-hours-val">10</span>
-            </div>
-            <input type="range" id="roi-hours" min="2" max="40" value="10" step="1">
-            <div class="roi-range-labels"><span>2 hrs</span><span>40 hrs</span></div>
-          </div>
-
-          <div class="roi-field">
-            <div class="roi-field-header">
-              <label for="roi-rate">Average hourly cost per team member (CAD $)</label>
-              <span class="roi-val" id="roi-rate-val">$45</span>
-            </div>
-            <input type="range" id="roi-rate" min="20" max="200" value="45" step="5">
-            <div class="roi-range-labels"><span>$20</span><span>$200</span></div>
-          </div>
-
-          <div class="roi-field">
-            <div class="roi-field-header">
-              <label for="roi-automatable">% of those tasks that can be automated</label>
-              <span class="roi-val" id="roi-automatable-val">70%</span>
-            </div>
-            <input type="range" id="roi-automatable" min="10" max="90" value="70" step="5">
-            <div class="roi-range-labels"><span>10%</span><span>90%</span></div>
-          </div>
-
+  <!-- PROBLEM -->
+  <section data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:660px;margin-bottom:60px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">The memory problem</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px">Your business already knows the answer. It just can't remember where.</h2>
+        <p style="font-size:clamp(1.05rem,1rem+0.4vw,1.25rem);line-height:1.6;color:#8b8f9e">Every decision, promise and lesson lives somewhere, a Slack thread, a Drive folder, a call nobody recorded, someone's head. None of it talks to each other. So the same questions get re-answered, the same mistakes get re-made, and when someone leaves, the knowledge walks out the door.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#1f2230;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+        <div style="padding:32px;background:#0a0b0f">
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#e4e6ec;margin-bottom:8px">9+</div>
+          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">disconnected tools the average lean team stores knowledge in</p>
         </div>
-
-        <div class="roi-results">
-          <div class="roi-result-card roi-loss">
-            <div class="roi-result-label">You're losing every month</div>
-            <div class="roi-result-value" id="roi-monthly-loss">$0</div>
-            <div class="roi-result-sub">in recoverable labour costs</div>
-          </div>
-          <div class="roi-result-card roi-save">
-            <div class="roi-result-label">Monthly savings with automation</div>
-            <div class="roi-result-value" id="roi-monthly-save">$0</div>
-            <div class="roi-result-sub">hours freed up per month</div>
-            <div class="roi-result-hours" id="roi-hours-freed"></div>
-          </div>
-          <div class="roi-result-card roi-payback">
-            <div class="roi-result-label">Starter Build pays for itself in</div>
-            <div class="roi-result-value" id="roi-payback">0 weeks</div>
-            <div class="roi-result-sub">at $1,500 one-time cost</div>
-          </div>
-          <a href="#contact" class="btn btn-primary roi-cta">Get This Built For You →</a>
-          <p class="roi-disclaimer">Based on 80% automation efficiency. Actual results vary by workflow complexity.</p>
+        <div style="padding:32px;background:#0a0b0f">
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#e4e6ec;margin-bottom:8px">1</div>
+          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">place anyone should have to ask "what did we decide, and why?"</p>
+        </div>
+        <div style="padding:32px;background:#0a0b0f">
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#f59e0b;margin-bottom:8px">0</div>
+          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">of that memory should leave when a person does</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== WHO BUILDS THIS ==================== -->
-  <section id="who-builds" class="section section-alt">
-    <div class="section-inner">
-      <div class="section-label fade-in">Who builds this</div>
-      <h2 class="section-title fade-in">A3 Lab is led by an operator who ships production AI on his own money</h2>
-      <p class="section-desc fade-in">A3 Lab is a Vancouver-based studio founded by Priyanshu Goyal. Before building automations for other companies, the same stack was used to ship and operate the work below. The point isn&rsquo;t hype — it&rsquo;s that the systems we deploy for you have already survived our own production environments.</p>
-
-      <div class="stories-grid">
-        <div class="story-card fade-in">
-          <div class="story-type">Live system</div>
-          <h3>Algorithmic trading bridge</h3>
-          <p>Multi-symbol, multi-timeframe AI trading system running live on a funded prop account. <strong>Claude as the decision layer</strong>, MT5 as execution, with hard safety gates, human approval boundaries, and a full ledger reconciled against the broker. Built and operated end-to-end.</p>
-          <div class="story-tools">Claude + MT5 + Python + reconciliation pipeline</div>
+  <!-- HOW IT WORKS -->
+  <section id="how" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:58px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">How the brain works</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em">Four moves, from scattered to second nature.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:880px">
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;padding:26px 28px;background:#111318;border:1px solid #2a2d38;border-radius:14px;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.12)">
+          <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:22px;color:#2ee6a0">01</span>
+          <div><h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:8px">Ingest</h3><p style="font-size:16px;line-height:1.55;color:#8b8f9e">We connect your sources, Drive, Notion, Slack, Gmail, your CRM, call transcripts, into one private store. Read-only, encrypted, yours.</p></div>
         </div>
-        <div class="story-card fade-in">
-          <div class="story-type">Shipped product</div>
-          <h3>PROOF — authenticity-first social app</h3>
-          <p>Full mobile + API product: <strong>70 mobile screens, 59 API routes, 222 backend tests</strong>, audited X25519 + XSalsa20-Poly1305 end-to-end crypto, deployed on Railway / Neon / Expo. Same engineering bar applied to client builds.</p>
-          <div class="story-tools">React Native + Expo + Express + Prisma + Neon</div>
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;padding:26px 28px;background:#111318;border:1px solid #2a2d38;border-radius:14px;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.12)">
+          <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:22px;color:#2ee6a0">02</span>
+          <div><h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:8px">Connect</h3><p style="font-size:16px;line-height:1.55;color:#8b8f9e">The brain maps how everything relates, which decision led to which outcome, who owns what, what's current versus stale. Not a search box, a model of how your business thinks.</p></div>
         </div>
-        <div class="story-card fade-in">
-          <div class="story-type">Production pipeline</div>
-          <h3>Agentic Trend Intelligence</h3>
-          <p>End-to-end agent pipeline: trend discovery &rarr; AI design generation &rarr; product creation &rarr; storefront publishing. <strong>LangGraph orchestration</strong>, Slack approval gates, hardened with SQLite state, Docker, CI/CD, and Grafana monitoring.</p>
-          <div class="story-tools">LangGraph + Gemini + Imagen + Printify + Shopify</div>
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;padding:26px 28px;background:#111318;border:1px solid #2a2d38;border-radius:14px;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.12)">
+          <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:22px;color:#2ee6a0">03</span>
+          <div><h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:8px">Recall</h3><p style="font-size:16px;line-height:1.55;color:#8b8f9e">Anyone asks in plain language and gets an answer with its sources attached, every time. No more "ask Sarah", no more digging through three years of threads.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;padding:26px 28px;background:#111318;border:1px solid #f59e0b;border-radius:14px;transition:box-shadow .18s" style-hover="box-shadow:0 0 24px rgba(245,158,11,0.14)">
+          <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:22px;color:#f59e0b">04</span>
+          <div><h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:8px">Act <span style="font-size:12px;font-weight:500;color:#f59e0b;border:1px solid #f59e0b;border-radius:6px;padding:2px 8px;margin-left:8px;vertical-align:middle">human approves</span></h3><p style="font-size:16px;line-height:1.55;color:#8b8f9e">Once it knows everything, it does the work: drafts the SOW, updates the CRM, writes the follow-up, flags the risk. You stay in the loop, it just stops being slow.</p></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="founding-strip fade-in" role="note" aria-label="Founding-customer programme">
-        <div class="founding-strip-label">Founding-customer programme</div>
-        <p class="founding-strip-text">We&rsquo;re onboarding our first cohort of named clients at a reduced rate, in exchange for a published case study and a reference call once we&rsquo;ve delivered. Capped so each build gets the engineering standard above. <a href="#contact">Apply for a slot &rarr;</a></p>
+  <!-- CAPABILITIES -->
+  <section id="capabilities" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:56px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">What it does once it knows everything</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em">A memory that recalls, and agents that act on it.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px">Instant institutional memory</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e">Ask anything about a client, project or decision and get the answer with receipts. Onboard new hires in days, not months.</p>
+        </div>
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px">Drafts that already know the context</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e">Proposals, SOWs, follow-ups and reports, written against your real history, pricing and tone. You edit, not start from blank.</p>
+        </div>
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px">Watches for what you'd miss</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e">Surfaces the renewal you forgot, the promise you made, the pattern behind your churn, before it costs you.</p>
+        </div>
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:12px"><span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,0.7)"></span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#f59e0b">Done with you</span></div>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px">AI agents, built into your business</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e">We design and deploy agents that live inside your tools and run real workflows, triage, outreach, reporting, onboarding, on top of the brain that knows your context. You approve; they do the rest.</p>
+        </div>
+        <div style="grid-column:1/-1;padding:32px;background:linear-gradient(120deg,#111318,#0b1611);border:1px solid #2a2d38;border-radius:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+          <div style="max-width:560px">
+            <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:10px">It runs on the tools you already pay for.</h3>
+            <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e">No rip-and-replace. The brain plugs into your existing stack and the leading AI models, so it gets smarter as they do.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px;max-width:420px">
+            <sc-for list="{{ tools }}" as="t" hint-placeholder-count="8">
+              <span style="font-size:13px;font-weight:500;color:#cdd0da;background:#181a21;border:1px solid #2a2d38;border-radius:8px;padding:8px 13px">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="section-inner">
-      <div class="section-label fade-in">What We Build</div>
-      <h2 class="section-title fade-in">Automation that actually works</h2>
-      <p class="section-desc fade-in">From lead enrichment pipelines to AI-powered reporting and messaging assistants, we build workflows that save your team dozens of hours every month and create clear, measurable ROI.</p>
-
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
-          <h3>Lead Enrichment Pipelines</h3>
-          <p>Automatically research prospects, enrich CRM data with AI-gathered insights, and deliver qualified lead profiles straight to your inbox or Sheets.</p>
-          <div class="card-detail">
-            <div class="card-detail-inner">
-              <p class="card-detail-how"><strong>How it works:</strong> A new lead hits your CRM or form → Perplexity researches their company, role, and recent news → Claude drafts a personalized outreach email → Zapier logs everything and sends automatically.</p>
-              <ul class="card-detail-bullets">
-                <li>Designed to free up: prospect-research time</li>
-                <li>Connects to: HubSpot, Salesforce, Notion, Google Sheets</li>
-                <li>Delivery: <strong>1–2 business days</strong></li>
-              </ul>
-              <a href="#contact" class="card-detail-cta">Get this built →</a>
-            </div>
-          </div>
-          <a class="service-learn-more" href="/services/lead-enrichment.html">Learn More →</a>
-          <span class="service-tag">Perplexity + Zapier</span>
-        </div>
-
-        <div class="service-card fade-in">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          <h3>AI Content Engines</h3>
-          <p>Multi-step content pipelines that research topics, draft posts, format for your brand voice, and schedule across channels, all on autopilot.</p>
-          <div class="card-detail">
-            <div class="card-detail-inner">
-              <p class="card-detail-how"><strong>How it works:</strong> You define your topics and brand voice → Perplexity researches trending angles → Claude drafts, formats, and optimizes the content → Zapier schedules it across LinkedIn, Twitter, your blog, and email.</p>
-              <ul class="card-detail-bullets">
-                <li>Designed to free up: research, drafting, and scheduling time</li>
-                <li>Connects to: Buffer, Notion, WordPress, Mailchimp</li>
-                <li>Delivery: <strong>2–3 business days</strong></li>
-              </ul>
-              <a href="#contact" class="card-detail-cta">Get this built →</a>
-            </div>
-          </div>
-          <a class="service-learn-more" href="/services/ai-content-engines.html">Learn More →</a>
-          <span class="service-tag">Claude + Zapier</span>
-        </div>
-
-        <div class="service-card fade-in">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-          <h3>Customer Support Bots</h3>
-          <p>Intelligent AI agents that handle customer inquiries, route tickets, generate responses, and escalate only when a human touch is needed.</p>
-          <div class="card-detail">
-            <div class="card-detail-inner">
-              <p class="card-detail-how"><strong>How it works:</strong> Customer submits a ticket → Claude reads and categorizes it → auto-responds to common questions instantly → escalates complex cases to a human with a full context summary already written.</p>
-              <ul class="card-detail-bullets">
-                <li>Designed to handle: repeat questions, with human escalation built in</li>
-                <li>Connects to: Zendesk, Intercom, Gmail, Slack</li>
-                <li>Delivery: <strong>2–4 business days</strong></li>
-              </ul>
-              <a href="#contact" class="card-detail-cta">Get this built →</a>
-            </div>
-          </div>
-          <a class="service-learn-more" href="/services/customer-support-bots.html">Learn More →</a>
-          <span class="service-tag">Claude + Zapier</span>
-        </div>
+  <section id="services" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:660px;margin-bottom:56px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">What we build</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px">Done-for-you automations, shipped in days.</h2>
+        <p style="font-size:clamp(1.05rem,1rem+0.4vw,1.2rem);line-height:1.6;color:#8b8f9e">The second brain is the memory. These are the workflows we build on top of it, each scoped to your stack and live in days, not months.</p>
       </div>
-      <div style="text-align: center; margin-top: var(--space-8);">
-        <a href="/services/website-automation.html" class="btn btn-outline">Explore more services →</a>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.1)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Lead Enrichment Pipelines</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Research prospects, enrich CRM data with AI-gathered insights, and deliver qualified lead profiles straight to your inbox or Sheets, automatically.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px"><span style="font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Perplexity + Zapier</span><a href="services.html#lead-enrichment" style="font-size:13.5px;font-weight:600;color:#2ee6a0;text-decoration:none">Learn more →</a></div>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.1)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">AI Content Engines</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Multi-step pipelines that research topics, draft in your brand voice, format, and schedule across channels, all on autopilot.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px"><span style="font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Claude + Zapier</span><a href="services.html#ai-content-engines" style="font-size:13.5px;font-weight:600;color:#2ee6a0;text-decoration:none">Learn more →</a></div>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.1)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Customer Support Bots</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">AI agents that handle inquiries, route tickets, and draft responses, escalating to a human with full context only when it matters.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px"><span style="font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Claude + Zapier</span><a href="services.html#customer-support-bots" style="font-size:13.5px;font-weight:600;color:#2ee6a0;text-decoration:none">Learn more →</a></div>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.1)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Website &amp; App Automation</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Connect your site and apps to the brain, auto-updating content, syncing data, and triggering actions across your tools without manual work.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px"><span style="font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Custom build</span><a href="services.html#website-automation" style="font-size:13.5px;font-weight:600;color:#2ee6a0;text-decoration:none">Learn more →</a></div>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#2ee6a0;box-shadow:0 0 24px rgba(46,230,160,0.1)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">OpenClaw Setup</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">A private, always-on AI agent that runs on your own machine and actually takes actions. We design and install it for your workflows.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px"><span style="font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Self-hosted</span><a href="services.html#openclaw-setup" style="font-size:13.5px;font-weight:600;color:#2ee6a0;text-decoration:none">Learn more →</a></div>
+        </div>
+        <div style="padding:30px;background:linear-gradient(135deg,#0f1813,#0b1611);border:1px solid #2ee6a0;border-radius:16px;display:flex;flex-direction:column;justify-content:center">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Not sure where to start?</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;margin-bottom:18px">We map your workflows on a free call and point you at the highest-ROI automation first.</p>
+          <a href="audit.html" style="align-self:flex-start;background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:14px;padding:11px 20px;border-radius:9px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Get a free automation audit</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- OPENCLAW -->
+  <section id="openclaw" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center">
+      <div>
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">OpenClaw integration</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.8rem,1.2rem+2vw,2.9rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:18px">An AI agent with hands, that runs on your own machine.</h2>
+        <p style="font-size:16.5px;line-height:1.6;color:#8b8f9e;margin-bottom:18px">OpenClaw is an open-source AI assistant that runs on your computer or server, not someone else's cloud. You message it from WhatsApp, Slack or Telegram, and it actually does the work: opens tabs, sends emails, organizes files, fills forms, runs commands.</p>
+        <p style="font-size:16.5px;line-height:1.6;color:#8b8f9e">We design and install your OpenClaw strategy end to end, so your data stays exactly where you put it.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="padding:24px;background:#111318;border:1px solid #2a2d38;border-radius:14px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:18px;margin-bottom:8px">Does things, not just says things</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">Not a chatbot that waits. It takes real actions across your apps, with your approval where it counts.</p>
+        </div>
+        <div style="padding:24px;background:#111318;border:1px solid #2a2d38;border-radius:14px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:18px;margin-bottom:8px">Private by default</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">Runs on your machine or server. Your data and business logic never touch a platform you don't control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOMATION BOX -->
+  <section data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(32px,5vw,56px);background:linear-gradient(120deg,#0f1813,#0b1611);border:1px solid #2a2d38;border-radius:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <div style="max-width:600px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:14px">The A3 Lab Automation Box</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.7rem,1.2rem+1.6vw,2.6rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px">Your whole automation system. Plug it in. Turn it on.</h2>
+        <p style="font-size:16px;line-height:1.6;color:#8b8f9e">A pre-configured mini PC with your AI workflows already installed, tested and ready to run 24/7 from your home or office. 32&nbsp;GB RAM, 512&nbsp;GB NVMe, AMD Ryzen&nbsp;7.</p>
+      </div>
+      <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:15.5px;padding:14px 28px;border-radius:11px;white-space:nowrap;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 26px rgba(46,230,160,0.4)">Ask about the Box</a>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:680px;margin-bottom:52px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">Who builds this</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px">Built by an operator who ships production AI on his own money.</h2>
+        <p style="font-size:clamp(1.05rem,1rem+0.4vw,1.2rem);line-height:1.6;color:#8b8f9e">A3 Lab is a Vancouver studio led by Priyanshu Goyal. Before building brains for clients, the same stack shipped and ran the systems below, in production, with real stakes.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column">
+          <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:14px"><span style="width:7px;height:7px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 8px rgba(46,230,160,0.7)"></span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#2ee6a0">Live system</span></div>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Algorithmic trading bridge</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Multi-symbol AI trading system running live on a funded account. Claude makes the calls, MT5 executes, with hard safety gates and a human approval boundary in between.</p>
+          <span style="margin-top:16px;align-self:flex-start;font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">Claude + MT5 + Python</span>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column">
+          <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:14px"><span style="width:7px;height:7px;border-radius:50%;background:#8b8f9e"></span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e">Shipped product</span></div>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">PROOF, a privacy-first social app</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Full mobile and API product: 70 screens, 59 API routes, 222 backend tests and audited end-to-end encryption. The same engineering bar applies to client builds.</p>
+          <span style="margin-top:16px;align-self:flex-start;font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">React Native + Expo + Express</span>
+        </div>
+        <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column">
+          <div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:14px"><span style="width:7px;height:7px;border-radius:50%;background:#8b8f9e"></span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e">Production pipeline</span></div>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px">Agentic trend intelligence</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e;flex:1">Trend discovery to storefront publishing, end to end: agent orchestration with approval gates in Slack, hardened with CI/CD and live monitoring.</p>
+          <span style="margin-top:16px;align-self:flex-start;font-size:12px;font-weight:500;color:#8b8f9e;background:#181a21;border:1px solid #2a2d38;border-radius:7px;padding:5px 10px">LangGraph + Gemini + Shopify</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- PROCESS -->
-  <section id="process" class="section">
-    <div class="section-inner">
-      <div class="section-label fade-in">How We Work</div>
-      <h2 class="section-title fade-in">From chaos to clarity in 4 steps</h2>
-      <p class="section-desc fade-in">Every engagement follows a proven framework. You tell us the problem, we architect the solution.</p>
-
-      <div class="process-list">
-        <div class="process-step fade-in">
-          <div class="process-number">1</div>
-          <div>
-            <h3>Discovery Call</h3>
-            <p>Free 30-minute strategy session. We map your current workflows, identify bottlenecks, and pinpoint where AI automation delivers the highest ROI for your team.</p>
-          </div>
+  <section id="process" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:56px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">How an engagement runs</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em">First call to live system, in four steps.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+        <div style="padding:28px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <span style="display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:20px;color:#2ee6a0;margin-bottom:14px">01</span>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px">Discovery call</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">Free, 30 minutes. We map where your knowledge lives, where the hours leak, and what to build first.</p>
         </div>
-        <div class="process-step fade-in">
-          <div class="process-number">2</div>
-          <div>
-            <h3>Solution Architecture</h3>
-            <p>We design your custom automation blueprint. Which agents handle what, how data flows between Perplexity, Claude, and Zapier, and the expected time savings.</p>
-          </div>
+        <div style="padding:28px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <span style="display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:20px;color:#2ee6a0;margin-bottom:14px">02</span>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px">Blueprint</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">Before you commit, you see the architecture: which sources connect, which agents act, what it should save you.</p>
         </div>
-        <div class="process-step fade-in">
-          <div class="process-number">3</div>
-          <div>
-            <h3>Build and Test</h3>
-            <p>We build, test, and iterate. Most builds ship in 24-72 hours. You get a live demo, documentation, and a 1-hour handover session to walk you through everything.</p>
-          </div>
+        <div style="padding:28px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <span style="display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:20px;color:#2ee6a0;margin-bottom:14px">03</span>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px">Build and test</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">We build on your real data and iterate with you. You get a live demo, documentation and a handover walkthrough.</p>
         </div>
-        <div class="process-step fade-in">
-          <div class="process-number">4</div>
-          <div>
-            <h3>Launch and Optimize</h3>
-            <p>Go live with confidence. On retainer plans, we monitor performance, fix edge cases, and continuously optimize your agents to handle new scenarios.</p>
-          </div>
+        <div style="padding:28px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+          <span style="display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:20px;color:#f59e0b;margin-bottom:14px">04</span>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px">Launch and tune</h3>
+          <p style="font-size:15px;line-height:1.55;color:#8b8f9e">It goes live, with you in the approval loop. We monitor, fix edge cases and keep tuning as your tools evolve.</p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <section id="stack" class="section section-alt">
-    <div class="section-inner">
-      <div class="section-label fade-in">Our Stack</div>
-      <h2 class="section-title fade-in">Built on a modern agentic AI stack</h2>
-      <p class="section-desc fade-in">We combine research, reasoning, orchestration, and messaging tools so your automations are fast, reliable, and easy to extend as you grow.</p>
-
-      <div class="stack-grid fade-in">
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <span>Perplexity</span>
+  <!-- ROI -->
+  <section id="roi" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:660px;margin-bottom:48px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">The math</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px">What manual work costs, and how fast a brain pays it back.</h2>
+        <p style="font-size:clamp(1.05rem,1rem+0.4vw,1.2rem);line-height:1.6;color:#8b8f9e">Rough numbers on purpose. Drag the sliders to match your team; we scope the real ones on the call.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;align-items:stretch">
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;gap:28px">
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+              <label for="roiPeople" style="font-size:14.5px;color:#8b8f9e">People doing manual tasks</label>
+              <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:19px;color:#e4e6ec">{{ roiPeople }}</span>
+            </div>
+            <input id="roiPeople" type="range" min="1" max="50" step="1" data-k="roiPeople" value="{{ roiPeople }}" onchange="{{ onRoi }}" style="width:100%;height:18px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+              <label for="roiHrs" style="font-size:14.5px;color:#8b8f9e">Repetitive hours per person, per week</label>
+              <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:19px;color:#e4e6ec">{{ roiHrsDisp }}</span>
+            </div>
+            <input id="roiHrs" type="range" min="2" max="40" step="1" data-k="roiHrs" value="{{ roiHrs }}" onchange="{{ onRoi }}" style="width:100%;height:18px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+              <label for="roiRate" style="font-size:14.5px;color:#8b8f9e">Average hourly cost (CAD)</label>
+              <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:19px;color:#e4e6ec">{{ roiRateDisp }}</span>
+            </div>
+            <input id="roiRate" type="range" min="20" max="200" step="5" data-k="roiRate" value="{{ roiRate }}" onchange="{{ onRoi }}" style="width:100%;height:18px">
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
+              <label for="roiPct" style="font-size:14.5px;color:#8b8f9e">Share of those tasks that can be automated</label>
+              <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:19px;color:#e4e6ec">{{ roiPctDisp }}</span>
+            </div>
+            <input id="roiPct" type="range" min="10" max="90" step="5" data-k="roiPct" value="{{ roiPct }}" onchange="{{ onRoi }}" style="width:100%;height:18px">
+          </div>
         </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-          <span>Claude</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-          <span>Zapier</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-          <span>Make</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-          </svg>
-          <span>OpenClaw</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          <span>APIs</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-          </svg>
-          <span>Databases</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          <span>Slack / Teams</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-          </svg>
-          <span>Notion</span>
-        </div>
-        <div class="stack-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
-            <path d="M12 8v4l3 3"/>
-            <circle cx="12" cy="12" r="3" fill="currentColor" fill-opacity="0.15"/>
-          </svg>
-          <span>Google Workspace</span>
+        <div style="padding:32px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;gap:24px">
+          <div>
+            <p style="font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e;margin-bottom:8px">Cost of manual work</p>
+            <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;color:#e4e6ec">{{ roiMonthly }}<span style="font-size:17px;font-weight:500;color:#8b8f9e"> /month</span></div>
+          </div>
+          <div style="height:1px;background:#1f2230"></div>
+          <div>
+            <p style="font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#2ee6a0;margin-bottom:8px">Recoverable with automation</p>
+            <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;color:#2ee6a0">{{ roiRecover }}<span style="font-size:17px;font-weight:500;color:#8b8f9e"> /month</span></div>
+            <p style="font-size:14.5px;color:#8b8f9e;margin-top:10px">{{ roiFreed }} hours handed back to your team every month</p>
+          </div>
+          <div style="height:1px;background:#1f2230"></div>
+          <div>
+            <p style="font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#f59e0b;margin-bottom:8px">A $4k Pilot Brain pays for itself in</p>
+            <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1;color:#e4e6ec">{{ roiPayback }}</div>
+          </div>
+          <p style="font-size:12.5px;line-height:1.5;color:#5a5e6e">Assumes 80% of targeted tasks automate cleanly. Conservative on purpose; real numbers get scoped on the call.</p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <div class="work-with-us-strip">
-    <div class="section-inner work-with-us-inner">
-      <p class="work-with-us-text">Not sure which plan fits? We will help you pick the right scope on a free call.</p>
-      <a href="#contact" class="btn btn-sm btn-outline">Book a Free Call</a>
-    </div>
-  </div>
-
-
-  <section id="pricing" class="section">
-    <div class="section-inner">
-      <div class="section-label fade-in">Pricing</div>
-      <h2 class="section-title fade-in">Transparent pricing, real results</h2>
-      <p class="section-desc fade-in">No hidden fees. Choose the engagement model that fits your stage.</p>
-
-      <div class="pricing-grid">
-        <div class="pricing-card fade-in">
-          <div class="pricing-tier">Starter</div>
-          <h3>Agentic Starter Build</h3>
-          <div class="pricing-price">$1,500-2,000 <span>one-time</span></div>
-          <p class="pricing-desc">One focused AI automation that eliminates a painful manual workflow. Perfect first step to prove ROI before scaling.</p>
-          <ul class="pricing-features" role="list">
-            <li>1-2 connected workflows</li>
-            <li>Perplexity or Claude powered</li>
-            <li>Zapier integration</li>
-            <li>Delivered in 1-2 business days</li>
-            <li>Documentation + handover call</li>
-            <li>14 days of post-launch support</li>
-            <li>Designed to free up 5-10 hours per month</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline">Start a build</a>
+  <section id="pricing" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:16px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">Pricing</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em">Start with a pilot. Grow into a brain that runs the place.</h2>
+      </div>
+      <p style="font-size:14px;color:#8b8f9e;margin-bottom:42px;max-width:580px;line-height:1.55">Most teams start with a pilot on their real data, then grow into the full operating brain. Every build is scoped to your stack on the call.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+        <div style="padding:34px;background:#111318;border:1px solid #2a2d38;border-radius:18px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:6px">Pilot Brain</h3>
+          <p style="font-size:15px;color:#8b8f9e;line-height:1.5;margin-bottom:22px">Prove it on your real data in weeks.</p>
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;margin-bottom:4px">$4k<span style="font-size:16px;font-weight:500;color:#8b8f9e"> one-time</span></div>
+          <div style="height:1px;background:#2a2d38;margin:22px 0"></div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;color:#cdd0da;flex:1">
+            <span>Connect up to 3 core sources</span><span>Ask-anything recall with sources</span><span>Live in 2–3 weeks</span>
+          </div>
+          <a href="#contact" style="margin-top:26px;text-align:center;border:1px solid #2a2d38;color:#e4e6ec;text-decoration:none;font-weight:600;font-size:15px;padding:13px;border-radius:10px;transition:border-color .18s,color .18s" style-hover="border-color:#2ee6a0;color:#2ee6a0">Start a pilot</a>
         </div>
-
-        <div class="pricing-card featured fade-in">
-          <div class="pricing-tier">Pro <span class="tier-label">Most Popular</span></div>
-          <h3>Agentic Pro System</h3>
-          <div class="pricing-price">$3,000-5,000 <span>one-time</span></div>
-          <p class="pricing-desc">A multi-agent system that ties together research, reasoning, and execution across your tools. Built for teams ready to scale beyond one-off automation.</p>
-          <ul class="pricing-features" role="list">
-            <li>3-5 interconnected workflows</li>
-            <li>Multi-agent architecture</li>
-            <li>Custom Claude logic + prompts</li>
-            <li>Full Perplexity research pipelines</li>
-            <li>Delivered in 3-5 business days</li>
-            <li>Notion dashboard + full docs</li>
-            <li>30 days of post-launch support</li>
-            <li>Designed to free up 15-30 hours per month</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Plan your build</a>
+        <div style="padding:34px;background:#0f1813;border:1.5px solid #2ee6a0;border-radius:18px;display:flex;flex-direction:column;position:relative;box-shadow:0 0 40px rgba(46,230,160,0.1)">
+          <span style="position:absolute;top:-12px;left:34px;background:#2ee6a0;color:#0a0b0f;font-size:12px;font-weight:700;letter-spacing:0.03em;padding:4px 11px;border-radius:7px">MOST TEAMS START HERE</span>
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:6px">Operating Brain</h3>
+          <p style="font-size:15px;color:#8b8f9e;line-height:1.5;margin-bottom:22px">The full brain, plus agents that act.</p>
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;margin-bottom:4px">$9k<span style="font-size:16px;font-weight:500;color:#8b8f9e"> + $2k/mo</span></div>
+          <div style="height:1px;background:#2a2d38;margin:22px 0"></div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;color:#cdd0da;flex:1">
+            <span>Unlimited sources, always in sync</span><span>Agents that draft &amp; act, with approval</span><span>Proactive alerts on what you'd miss</span><span>Tuning &amp; support included</span>
+          </div>
+          <a href="#contact" style="margin-top:26px;text-align:center;background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:15px;padding:13px;border-radius:10px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 24px rgba(46,230,160,0.35)">Plan your build</a>
         </div>
-
-        <div class="pricing-card fade-in">
-          <div class="pricing-tier">Retainer <span class="tier-label">Ongoing</span></div>
-          <h3>Ongoing Automation</h3>
-          <div class="pricing-price">$750-2,000 <span>/month</span></div>
-          <p class="pricing-desc">We become your automation partner. Each month we monitor performance, fix edge cases, and ship new workflows as your business and tools evolve.</p>
-          <ul class="pricing-features" role="list">
-            <li>Monthly workflow audits</li>
-            <li>Priority agent updates</li>
-            <li>New automation builds each month</li>
-            <li>Performance monitoring</li>
-            <li>Dedicated Slack channel</li>
-            <li>Quarterly strategy reviews</li>
-            <li>Best if you want continuous compound gains from automation</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline">Discuss a retainer</a>
+        <div style="padding:34px;background:#111318;border:1px solid #2a2d38;border-radius:18px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:6px">Embedded</h3>
+          <p style="font-size:15px;color:#8b8f9e;line-height:1.5;margin-bottom:22px">We run the ops layer with you.</p>
+          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;margin-bottom:4px">$6k<span style="font-size:16px;font-weight:500;color:#8b8f9e">/mo</span></div>
+          <div style="height:1px;background:#2a2d38;margin:22px 0"></div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;color:#cdd0da;flex:1">
+            <span>Everything in Operating Brain</span><span>New workflows built monthly</span><span>Direct line to the people who built it</span>
+          </div>
+          <a href="#contact" style="margin-top:26px;text-align:center;border:1px solid #2a2d38;color:#e4e6ec;text-decoration:none;font-weight:600;font-size:15px;padding:13px;border-radius:10px;transition:border-color .18s,color .18s" style-hover="border-color:#2ee6a0;color:#2ee6a0">Discuss a retainer</a>
         </div>
       </div>
-      <p class="pricing-note">To keep your automations running smoothly, you'll need an active subscription to at least one major AI provider (such as Claude, OpenAI, or Perplexity). We design your system around the tools you already use or are happy to adopt.</p>
+      <div style="margin-top:18px;padding:26px 30px;background:#111318;border:1px solid #2a2d38;border-radius:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+        <p style="font-size:15.5px;line-height:1.55;color:#8b8f9e;max-width:640px"><span style="color:#e4e6ec;font-weight:700">Just need one workflow?</span> One-off builds, a lead pipeline, support bot or OpenClaw setup, start at $1.5k and ship in days. No brain required.</p>
+        <a href="#services" style="font-size:14px;font-weight:600;color:#2ee6a0;text-decoration:none;white-space:nowrap">See the services →</a>
+      </div>
     </div>
   </section>
-
 
   <!-- FAQ -->
-  <section id="faq" class="section section-alt">
-    <div class="section-inner">
-      <div class="section-label fade-in">FAQ</div>
-      <h2 class="section-title fade-in">Common questions</h2>
-
-      <div class="faq-list">
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            What types of automation can you build?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Virtually any workflow that can be broken into structured steps. Common builds include lead research and enrichment, content generation pipelines, customer support automation, reporting dashboards, meeting prep systems, data entry workflows, and competitive intelligence monitoring. If it involves repetitive knowledge work, we can likely automate it.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            How long does a typical build take?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Starter builds ship in 1-2 business days. Pro systems with complex multi-agent logic take 3-5 business days. Every build includes testing, documentation, and a handover call so you understand exactly how your system works.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            Do I need technical skills to use the automations?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            No. We build everything on no-code and low-code platforms like Zapier and Make. You get clear documentation, a walkthrough call, and ongoing support. Our systems are designed to run on autopilot with minimal oversight.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            What tools do you use?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Our core stack includes Perplexity (for AI-powered research and data gathering), Claude (for complex reasoning, content generation, and custom logic), and Zapier/Make (for connecting tools and orchestrating workflows). We also use OpenClaw to deploy chat-first agents directly inside WhatsApp, Telegram, and Slack, with human handoff built in. On top of that, we integrate with your existing tools: Notion, Slack, Google Workspace, CRMs, databases, and custom APIs.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            Do I need my own AI subscriptions?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Yes. To keep your workflows running reliably, you'll need an active account with at least one AI provider such as Claude, OpenAI, or Perplexity. We'll recommend the best option for your use case during the strategy call, and we'll design your system to minimize usage while still delivering strong results.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            What's included in the retainer?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Monthly retainers include workflow monitoring and optimization, new automation builds (scope depends on tier), priority support via a dedicated Slack channel, performance reporting, and quarterly strategy reviews to identify new automation opportunities as your business evolves.
-          </div>
-        </div>
-
-        <div class="faq-item fade-in">
-          <button class="faq-question" aria-expanded="false">
-            Can I start with one build and add a retainer later?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer">
-            Absolutely. Most clients start with a Starter or Pro build, see the results, and then move to a retainer for ongoing optimization and expansion. There's no pressure to commit to a monthly plan upfront.
-          </div>
-        </div>
+  <section id="faq" data-reveal="" style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:48px">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">FAQ</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em">Common questions, straight answers.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">What can you actually build?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">Anything that's structured knowledge work: lead research and enrichment, content pipelines, support triage, reporting, meeting prep, data entry. The second brain is the memory underneath; the workflows are what we build on top of it.</p>
+        </details>
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">How long does it take?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">One-off workflow builds ship in 1 to 5 business days. A Pilot Brain is live on your real data in 2 to 3 weeks. Every build includes testing, documentation and a handover call so you know exactly how it works.</p>
+        </details>
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">Do we need technical skills to use it?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">No. You ask questions in plain language, inside the tools you already use. We handle the setup, and you get clear documentation, a walkthrough and ongoing support.</p>
+        </details>
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">Is our data safe?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">Connections are read-only and encrypted, and the store is private and yours. For teams where privacy is non-negotiable, we deploy fully self-hosted setups (OpenClaw, the Automation Box) where nothing leaves machines you control.</p>
+        </details>
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">Do we need our own AI subscriptions?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">Yes, at least one provider account (Claude, OpenAI or Perplexity). We recommend the right one for your use case on the call and design the system to keep usage costs low.</p>
+        </details>
+        <details style="background:#111318;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
+          <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec">Can we start small?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ee6a0" stroke-width="2.2" stroke-linecap="round" style="flex:none;transition:transform .18s cubic-bezier(.16,1,.3,1)"><path d="M12 5v14M5 12h14"></path></svg></summary>
+          <p style="padding:0 24px 22px;font-size:15.5px;line-height:1.6;color:#8b8f9e">That's the recommended path. Most teams start with a single workflow build or a Pilot Brain, see the payback, then grow into the Operating Brain or a retainer. No pressure to commit upfront.</p>
+        </details>
       </div>
     </div>
   </section>
 
-
-  <hr class="section-divider" aria-hidden="true">
-
-  <!-- AUTOMATION PATTERNS -->
-  <section id="stories" class="section">
-    <div class="section-inner">
-      <div class="section-label fade-in">Patterns We Build</div>
-      <h2 class="section-title fade-in">What this looks like in practice</h2>
-      <p class="section-desc fade-in">Three workflows we ship most often. Same pattern, adapted to your tools and inputs.</p>
-      <div class="stories-grid">
-        <div class="story-card fade-in">
-          <div class="story-type">Pattern · Sales</div>
-          <h3>Prospect research and outreach pipeline</h3>
-          <p class="story-problem"><strong>Trigger:</strong> A new lead lands in a CRM, form, or list.</p>
-          <p class="story-solution"><strong>Pipeline:</strong> Perplexity researches the company and role. Claude drafts a personalized first-touch email grounded in that research. Zapier logs the enriched record and sends from your domain.</p>
-          <p class="story-result"><strong>What changes:</strong> Reps stop hand-researching cold leads. The first touch reads like it was written by someone who actually read about the company.</p>
-          <div class="story-tools">Perplexity + Claude + Zapier + CRM</div>
-        </div>
-        <div class="story-card fade-in">
-          <div class="story-type">Pattern · Support</div>
-          <h3>Ticket triage with human handoff</h3>
-          <p class="story-problem"><strong>Trigger:</strong> A support email or ticket arrives.</p>
-          <p class="story-solution"><strong>Pipeline:</strong> Claude reads the ticket, classifies it, drafts a reply for routine questions, and routes anything ambiguous or high-stakes to a human with full context attached.</p>
-          <p class="story-result"><strong>What changes:</strong> Routine replies go out in minutes, not hours. The human queue shrinks to the cases that genuinely need judgment.</p>
-          <div class="story-tools">Claude + Zapier + helpdesk + CRM</div>
-        </div>
-        <div class="story-card fade-in">
-          <div class="story-type">Pattern · Reporting</div>
-          <h3>Scheduled research and report delivery</h3>
-          <p class="story-problem"><strong>Trigger:</strong> A recurring time (Monday morning, end of month, hourly).</p>
-          <p class="story-solution"><strong>Pipeline:</strong> Perplexity gathers fresh data on a defined topic set. Claude summarizes, compares against last period, and flags what changed. Zapier delivers to inbox and archives in Notion.</p>
-          <p class="story-result"><strong>What changes:</strong> Manual report assembly stops. The recurring deliverable arrives ready to read.</p>
-          <div class="story-tools">Perplexity + Claude + Zapier + Notion</div>
-        </div>
+  <!-- CTA -->
+  <section id="contact" data-reveal="" style="padding:clamp(80px,14vh,130px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="max-width:660px;margin-bottom:48px">
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2.1rem,1.4rem+2.6vw,3.8rem);line-height:1.05;letter-spacing:-0.025em;margin-bottom:20px">Give your business a memory.</h2>
+        <p style="font-size:clamp(1.1rem,1rem+0.4vw,1.25rem);line-height:1.6;color:#8b8f9e">A 30-minute call or a two-line note. We look at where your knowledge lives today and map what a second brain would change. No deck, no pitch.</p>
       </div>
-    </div>
-  </section>
-
-
-  <hr class="section-divider" aria-hidden="true">
-
-  <!-- ==================== OPENCLAW INTEGRATION ==================== -->
-  <section id="openclaw" class="section openclaw-section">
-    <!-- Spline background -->
-    <div class="openclaw-spline-bg">
-      <iframe
-        data-src="https://my.spline.design/retrofuturismbganimation-OumDXFtQTHaPQlRu8FZ6NzKh/"
-        loading="lazy"
-        class="openclaw-spline-canvas"
-        frameborder="0"
-        aria-hidden="true"
-        tabindex="-1"
-      ></iframe>
-      <div class="openclaw-spline-overlay"></div>
-    </div>
-
-    <!-- Foreground content -->
-    <div class="section-inner openclaw-inner">
-      <div class="section-label fade-in">OpenClaw Integration</div>
-      <h2 class="section-title fade-in">Every company needs an OpenClaw strategy. We design and install it for you.</h2>
-      <p class="section-desc fade-in">NVIDIA’s Jensen Huang says every company now needs an agentic AI and OpenClaw strategy — a workforce of AI agents that can actually take actions, not just answer questions. We deploy and customize OpenClaw so those agents quietly run your ops in the background while your team focuses on the work humans are best at.</p>
-
-      <!-- OpenClaw Intro -->
-      <div class="oc-intro fade-in">
-        <p>OpenClaw is an open-source AI assistant that runs on your own computer or server — not on someone else's cloud. You message it from WhatsApp, Telegram, Slack, or any chat app you already use, and it doesn't just answer questions — it takes action. It sends emails, manages files, browses websites, runs scripts, and handles scheduled routines like morning briefings and inbox sweeps. A3 Lab handles the entire setup: we install it, connect your channels, configure custom workflows, and make the whole thing usable for non-technical people.</p>
-      </div>
-
-      <!-- 3 Feature Cards -->
-      <div class="oc-features-grid">
-        <div class="oc-feature-card fade-in">
-          <div class="oc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <h3>Lives in Your Chat Apps</h3>
-          <p>Control everything from WhatsApp, Telegram, Slack, Discord, or any messaging app you already use. No new dashboards to learn — just text your AI like you'd text a colleague.</p>
-          <span class="oc-tagline">Your entire operation, one chat thread away.</span>
-        </div>
-        <div class="oc-feature-card fade-in">
-          <div class="oc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
-            </svg>
-          </div>
-          <h3>Does Things, Not Just Says Things</h3>
-          <p>This isn't a chatbot that gives you answers and waits. OpenClaw opens browser tabs, sends emails, organizes files, fills out forms, and runs shell commands on your behalf.</p>
-          <span class="oc-tagline">An AI with hands, not just a mouth.</span>
-        </div>
-        <div class="oc-feature-card fade-in">
-          <div class="oc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3>Private by Default</h3>
-          <p>OpenClaw runs on your machine or your server. Your data, conversations, and business logic never touch a third-party platform you don't control. For industries where privacy matters, this is the only way.</p>
-          <span class="oc-tagline">Your data stays exactly where you put it.</span>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: var(--space-6);">
-        <a href="/services/openclaw-setup.html" class="btn btn-outline">Explore OpenClaw packages →</a>
-      </div>
-
-      <!-- CTA -->
-      <div class="oc-cta fade-in">
-        <p>Not sure which OpenClaw setup fits your business? Book a free 30-minute call and we'll map out your workflows, identify the highest-ROI automations, and show you what an always-on AI agent looks like for your team.</p>
-        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-          Book Your Free OpenClaw Strategy Call
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== A3 LAB AUTOMATION BOX ==================== -->
-  <section id="automation-box" class="section autobox-section">
-    <div class="section-inner">
-      <div class="section-label fade-in">The A3 Lab Automation Box</div>
-      <h2 class="section-title fade-in">Your entire automation system. <em>Plug it in. Turn it on.</em></h2>
-      <p class="section-desc fade-in">A pre-configured mini PC with your AI workflows already installed, tested, and ready to run 24/7 from your home or office. 32 GB RAM, 512 GB NVMe, AMD Ryzen 7, under 15 W idle.</p>
-      <div style="text-align: center; margin-top: var(--space-6);">
-        <a href="/automation-box.html" class="btn btn-primary btn-lg">Learn more about the Automation Box →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== AUTOMATION AUDIT ==================== -->
-  <section id="audit" class="section audit-section">
-    <div class="section-inner">
-      <div class="section-label fade-in">Free Automation Audit</div>
-      <h2 class="section-title fade-in">Find out exactly what to automate first</h2>
-      <p class="section-desc fade-in">Answer 5 quick questions. We'll instantly score your business on automation readiness and surface your top 3 highest-ROI opportunities — no call required.</p>
-
-      <div class="audit-wrap">
-
-        <!-- Step indicators -->
-        <div class="audit-steps" id="audit-steps">
-          <div class="audit-step active" data-step="1">1</div>
-          <div class="audit-step-line"></div>
-          <div class="audit-step" data-step="2">2</div>
-          <div class="audit-step-line"></div>
-          <div class="audit-step" data-step="3">3</div>
-          <div class="audit-step-line"></div>
-          <div class="audit-step" data-step="4">4</div>
-          <div class="audit-step-line"></div>
-          <div class="audit-step" data-step="5">5</div>
-        </div>
-
-        <!-- Questions -->
-        <div class="audit-questions" id="audit-questions">
-
-          <div class="audit-q active" data-q="1">
-            <p class="audit-q-text">What type of business do you run?</p>
-            <div class="audit-options">
-              <button class="audit-opt" data-val="agency">Agency / Consulting</button>
-              <button class="audit-opt" data-val="ecommerce">E-commerce / Retail</button>
-              <button class="audit-opt" data-val="saas">SaaS / Tech</button>
-              <button class="audit-opt" data-val="service">Local / Service Business</button>
-              <button class="audit-opt" data-val="other">Other</button>
-            </div>
-          </div>
-
-          <div class="audit-q" data-q="2">
-            <p class="audit-q-text">How many hours per week does your team spend on repetitive manual tasks?</p>
-            <div class="audit-options">
-              <button class="audit-opt" data-val="low">Under 5 hours</button>
-              <button class="audit-opt" data-val="med">5–15 hours</button>
-              <button class="audit-opt" data-val="high">15–30 hours</button>
-              <button class="audit-opt" data-val="very-high">30+ hours</button>
-            </div>
-          </div>
-
-          <div class="audit-q" data-q="3">
-            <p class="audit-q-text">Which area hurts most right now?</p>
-            <div class="audit-options">
-              <button class="audit-opt" data-val="sales">Sales & lead follow-up</button>
-              <button class="audit-opt" data-val="content">Content & marketing</button>
-              <button class="audit-opt" data-val="support">Customer support</button>
-              <button class="audit-opt" data-val="ops">Operations & admin</button>
-              <button class="audit-opt" data-val="reporting">Reporting & analytics</button>
-            </div>
-          </div>
-
-          <div class="audit-q" data-q="4">
-            <p class="audit-q-text">Have you tried any automation tools before?</p>
-            <div class="audit-options">
-              <button class="audit-opt" data-val="none">Never — starting from scratch</button>
-              <button class="audit-opt" data-val="basic">Basic tools (Zapier, IFTTT)</button>
-              <button class="audit-opt" data-val="some">Some AI tools (ChatGPT, etc.)</button>
-              <button class="audit-opt" data-val="advanced">Advanced stack already in place</button>
-            </div>
-          </div>
-
-          <div class="audit-q" data-q="5">
-            <p class="audit-q-text">What's your biggest blocker right now?</p>
-            <div class="audit-options">
-              <button class="audit-opt" data-val="time">No time to set it up</button>
-              <button class="audit-opt" data-val="know">Don't know where to start</button>
-              <button class="audit-opt" data-val="cost">Not sure it's worth the cost</button>
-              <button class="audit-opt" data-val="trust">Not sure AI can handle my workflows</button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Email capture + result -->
-        <div class="audit-email-step" id="audit-email-step" style="display:none;">
-          <p class="audit-q-text">Almost there — where should we send your personalized audit report?</p>
-          <form class="audit-email-form" id="audit-email-form">
-            <input type="text" placeholder="Your name" id="audit-name" required autocomplete="name">
-            <input type="email" placeholder="your@email.com" id="audit-email" required autocomplete="email">
-            <button type="submit" class="btn btn-primary btn-lg">Send My Free Audit Report →</button>
-          </form>
-        </div>
-
-        <!-- Result panel -->
-        <div class="audit-result" id="audit-result" style="display:none;">
-          <div class="audit-score-wrap">
-            <div class="audit-score-ring">
-              <svg viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(34,211,238,0.1)" stroke-width="10"/>
-                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-primary)" stroke-width="10"
-                  stroke-dasharray="327" stroke-dashoffset="327" id="audit-score-circle"
-                  stroke-linecap="round" transform="rotate(-90 60 60)"/>
-              </svg>
-              <div class="audit-score-num" id="audit-score-num">0</div>
-              <div class="audit-score-label">/ 100</div>
-            </div>
-            <div class="audit-score-text">
-              <h3 id="audit-score-title">Your Automation Readiness Score</h3>
-              <p id="audit-score-desc">Calculating...</p>
-            </div>
-          </div>
-
-          <div class="audit-recs" id="audit-recs">
-            <h4>Your Top 3 Automation Opportunities</h4>
-            <div class="audit-rec-list" id="audit-rec-list"></div>
-          </div>
-
-          <div class="audit-result-cta">
-            <p>Want us to build these for you?</p>
-            <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
-            <a href="#contact" class="btn btn-outline">Or drop us a message</a>
-            <p id="audit-submit-status" aria-live="polite" style="display:none; margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);"></p>
-            <button type="button" id="audit-submit-retry" class="btn btn-outline" style="display:none; margin-top: var(--space-3);">Retry Sending Report</button>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;align-items:stretch">
+        <div style="padding:clamp(28px,4vw,40px);background:linear-gradient(135deg,#0f1813,#0b1611);border:1px solid #2ee6a0;border-radius:18px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 0 40px rgba(46,230,160,0.08)">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px">Fastest: book the call.</h3>
+          <p style="font-size:15.5px;line-height:1.6;color:#8b8f9e;margin-bottom:8px">We map your workflows live and tell you what we'd build first, even if you never hire us.</p>
+          <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="align-self:flex-start;background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:16px;padding:14px 28px;border-radius:11px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 26px rgba(46,230,160,0.4)">Book a 30-minute call</a>
+          <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:6px">
+            <a href="mailto:hello@a3lab.ca" style="color:#8b8f9e;text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:1px solid #2a2d38;padding-bottom:2px" style-hover="color:#2ee6a0;border-color:#2ee6a0">hello@a3lab.ca</a>
+            <a href="audit.html" style="color:#8b8f9e;text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:1px solid #2a2d38;padding-bottom:2px" style-hover="color:#2ee6a0;border-color:#2ee6a0">Or take the 2-minute audit</a>
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CTA + CONTACT FORM -->
-  <section id="contact" class="cta-section">
-    <div class="section-inner">
-      <div class="section-label fade-in">Ready to Automate?</div>
-      <h2 class="section-title fade-in">Get a free automation roadmap</h2>
-      <p class="section-desc fade-in">Tell us what's eating your time, and we'll map out the 3 highest-ROI automations you could implement in the next 30 days.</p>
-      <div class="hero-actions cta-actions">
-        <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Schedule a Free Call
-        </a>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="contact-form-wrap">
-        <h3 class="contact-form-heading">Or tell us what you need</h3>
-        <p class="contact-form-subheading">We'll only use this to understand your business and suggest automations. No spam, ever.</p>
-        <form name="contact" method="POST" action="https://formsubmit.co/hello@a3lab.ca" class="contact-form" id="contact-form">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_subject" value="New A3 Lab Inquiry — Show Me What's Possible">
-          <input type="hidden" name="_next" value="https://a3lab.ca#form-thankyou">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name">
+        <form onsubmit="{{ onSend }}" style="padding:clamp(28px,4vw,40px);background:#111318;border:1px solid #2a2d38;border-radius:18px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:2px">Or tell us what's eating your time.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="fName" style="font-size:13.5px;font-weight:500;color:#8b8f9e">Name</label>
+              <input id="fName" data-k="fName" required="" value="{{ fName }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" autocomplete="email">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="fEmail" style="font-size:13.5px;font-weight:500;color:#8b8f9e">Work email</label>
+              <input id="fEmail" data-k="fEmail" type="email" required="" value="{{ fEmail }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)">
             </div>
           </div>
-          <div class="form-group">
-            <label for="business">Business type</label>
-            <input type="text" id="business" name="business" placeholder="e.g., Marketing agency, E-commerce, Consulting..." autocomplete="organization">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <label for="fMsg" style="font-size:13.5px;font-weight:500;color:#8b8f9e">What should it remember, or automate?</label>
+            <textarea id="fMsg" data-k="fMsg" required="" rows="4" value="{{ fMsg }}" onchange="{{ onField }}" style="background:#1e2028;border:1.5px solid #2a2d38;border-radius:8px;padding:12px 14px;font-size:15px;color:#e4e6ec;font-family:Satoshi,sans-serif;outline:none;resize:vertical;min-height:120px;width:100%" style-focus="border-color:#2ee6a0;box-shadow:0 0 0 3px rgba(46,230,160,0.15)"></textarea>
           </div>
-          <div class="form-group">
-            <label>What matters most right now?</label>
-            <div class="form-row">
-              <label><input type="checkbox" name="priority[]" value="save_time"> Saving time</label>
-              <label><input type="checkbox" name="priority[]" value="increase_revenue"> Increasing revenue</label>
-              <label><input type="checkbox" name="priority[]" value="improve_quality"> Improving quality</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">What would you like to automate?</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Describe a task that feels repetitive, manual, or time-consuming..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-full" id="form-submit-btn">
-            <span class="btn-text">Show Me What's Possible</span>
-            <span class="btn-loading" style="display:none;">Sending...</span>
-          </button>
+          <button type="submit" style="align-self:flex-start;appearance:none;cursor:pointer;background:transparent;border:1px solid #2a2d38;color:#e4e6ec;font-family:Satoshi,sans-serif;font-weight:600;font-size:15px;padding:13px 26px;border-radius:10px;transition:border-color .18s,color .18s" style-hover="border-color:#2ee6a0;color:#2ee6a0">Send it over</button>
+          <p style="font-size:12.5px;line-height:1.5;color:#5a5e6e">Opens your email app, addressed to hello@a3lab.ca. No lists, no spam.</p>
         </form>
-        <!-- Success state (hidden by default) -->
-        <div id="form-success" style="display:none; text-align:center; padding: var(--space-10) var(--space-6);">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-4);">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <h3 style="color: var(--color-text); margin-bottom: var(--space-2); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;">You're all set</h3>
-          <p style="color: var(--color-text-muted); font-size: var(--text-base); margin-bottom: var(--space-4);">Please check your email shortly for your personalized automation roadmap with your top 3 opportunities.</p>
-          <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6);">Our team will review your answers and send you a 30-day action plan within 24 hours.</p>
-          <a href="https://calendly.com/goyalpriyanshu1996/30min" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Skip the Wait — Book a Call Now</a>
-        </div>
-        <!-- Error state (hidden by default) -->
-        <div id="form-error" style="display:none; text-align:center; padding: var(--space-6); background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); border-radius: var(--radius-lg); margin-top: var(--space-4);">
-          <p style="color: var(--color-error); font-size: var(--text-sm);">Something went wrong. Please try again or email us directly at <a href="mailto:hello@a3lab.ca" style="color: var(--color-primary);">hello@a3lab.ca</a></p>
-        </div>
       </div>
     </div>
   </section>
 
-</main>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="logo" aria-label="A3 Lab home">
-          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="40" height="40" rx="8" fill="currentColor" fill-opacity="0.06" stroke="var(--color-primary)" stroke-width="1.5"/>
-            <path d="M11 28L17.5 12h5L29 28" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <path d="M14 23h12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="29" cy="14" r="3.5" fill="var(--color-accent)" fill-opacity="0.9"/>
-            <text x="27.5" y="16" font-family="system-ui" font-weight="700" font-size="5" fill="var(--color-bg)">3</text>
-          </svg>
-          <span class="logo-text">A3 <span>Lab</span></span>
-        </a>
-        <p>We build the command layer behind modern lean teams: AI agents that triage work, move faster than manual ops, and keep humans focused on the decisions that actually matter.</p>
-        <div class="footer-social" aria-label="Social links">
-          <a href="https://www.linkedin.com/company/a3lab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://x.com/a3lab_ca" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+  <!-- FOOTER -->
+  <footer style="padding:56px clamp(20px,5vw,48px) 40px;border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-bottom:40px">
+        <div style="max-width:280px">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+            <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:12px;color:#06160f">A</div>
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px">A3&nbsp;LAB</span>
+          </div>
+          <p style="font-size:14px;line-height:1.55;color:#5a5e6e">A second brain for your business, plus the agents to act on it. A Vancouver studio led by Priyanshu Goyal.</p>
         </div>
-        <div class="footer-console" aria-label="A3 Lab operating model">
-          <span class="footer-console-item">48h first deployment</span>
-          <span class="footer-console-item">Private and self-hosted available</span>
-          <span class="footer-console-item">Built in British Columbia</span>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <a href="#services">What we build</a>
-        <a href="#openclaw">OpenClaw system</a>
-        <a href="/services/lead-enrichment.html">Lead enrichment</a>
-        <a href="/services/customer-support-bots.html">Support bots</a>
-        <a href="/automation-box.html">Automation Box</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#stories">Automation stories</a>
-      </div>
-      <div class="footer-links">
-        <h4>Operating model</h4>
-        <a href="#audit">Free automation audit</a>
-        <a href="#process">Operator-led rollout</a>
-        <a href="#contact">Talk through your workflow</a>
-        <a href="#faq">Answers and fit checks</a>
-      </div>
-      <div class="footer-links">
-        <h4>Start here</h4>
-        <a href="mailto:hello@a3lab.ca" target="_blank" rel="noopener noreferrer">hello@a3lab.ca</a>
-        <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
-        <a href="#audit">See what we'd automate</a>
-        <a href="/services/openclaw-setup.html">View OpenClaw setup</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2025 A3 Lab. All rights reserved.</span>
-      <a href="/privacy.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy Policy</a>
-      <span>Response window: usually same business day</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ==================== CHATBOT WIDGET ==================== -->
-<div id="a3-chatbot">
-  <!-- Toggle button -->
-  <button id="chat-toggle" aria-label="Open automation assistant">
-    <svg class="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <svg class="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-
-  <!-- Chat window -->
-  <div id="chat-window" style="display:none;">
-    <div class="chat-header">
-      <div class="chat-header-info">
-        <div class="chat-avatar">A3</div>
-        <div>
-          <strong>Automation Copilot</strong>
-          <span class="chat-status">Online</span>
+        <div style="display:flex;gap:48px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e;margin-bottom:3px">Services</span>
+            <a href="services.html#lead-enrichment" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Lead Enrichment</a>
+            <a href="services.html#ai-content-engines" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">AI Content Engines</a>
+            <a href="services.html#customer-support-bots" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Support Bots</a>
+            <a href="services.html#openclaw-setup" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">OpenClaw Setup</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e;margin-bottom:3px">Who it's for</span>
+            <a href="segments.html#agencies" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Agencies</a>
+            <a href="segments.html#ecommerce" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For E-commerce</a>
+            <a href="segments.html#consultants" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Consultants</a>
+            <a href="#how" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">How it works</a>
+            <a href="#pricing" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Pricing</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e;margin-bottom:3px">Talk to us</span>
+            <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Book a call</a>
+            <a href="audit.html" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Free automation audit</a>
+            <a href="mailto:hello@a3lab.ca" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">hello@a3lab.ca</a>
+          </div>
         </div>
       </div>
-      <button id="chat-close" aria-label="Close chat">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid #1f2230">
+        <span style="font-size:13px;color:#5a5e6e">Agentic Automation Architects Lab</span>
+        <span style="font-size:13px;color:#5a5e6e">a3lab.ca · © 2026</span>
+      </div>
     </div>
-    <div class="chat-body" id="chat-body"></div>
-    <div class="chat-input-area" id="chat-input-area"></div>
-  </div>
+  </footer>
+
 </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;graphMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;autoTour&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  graphRef = React.createRef();
+  rootRef = React.createRef();
 
-<!-- ==================== SCRIPTS ==================== -->
-<script>
-// Lazy-load deferred iframes (data-src -> src) when they enter the viewport
-(function(){
-  var iframes = document.querySelectorAll('iframe[data-src]');
-  if (!iframes.length) return;
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.src = e.target.getAttribute('data-src');
-          e.target.removeAttribute('data-src');
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '200px' });
-    iframes.forEach(function(f) { io.observe(f); });
-  } else {
-    iframes.forEach(function(f) { f.src = f.getAttribute('data-src'); });
-  }
-})();
-</script>
-<script>
-// Dark/Light mode toggle
-(function(){
-  const t = document.querySelector('[data-theme-toggle]');
-  const r = document.documentElement;
-  let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
-  r.setAttribute('data-theme', d);
+  workOptions = [
+    { id: 'saas', label: 'SaaS' }, { id: 'agency', label: 'Agency' }, { id: 'ecom', label: 'E-commerce' }, { id: 'consulting', label: 'Consulting' }
+  ];
 
-  if (t) {
-    syncToggleState();
-    t.addEventListener('click', () => {
-      d = d === 'dark' ? 'light' : 'dark';
-      r.setAttribute('data-theme', d);
-      syncToggleState();
-    });
-  }
-
-  function syncToggleState() {
-    if (!t) return;
-    t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
-    t.setAttribute('aria-pressed', d === 'dark' ? 'true' : 'false');
-    t.innerHTML = d === 'dark'
-      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  }
-})();
-
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    if (!wasOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-// OpenClaw advanced toggle
-document.querySelectorAll('.oc-advanced-toggle').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const parent = btn.closest('.oc-advanced');
-    const wasOpen = parent.classList.contains('open');
-    parent.classList.toggle('open');
-    btn.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
-  });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href');
-    if (!href || href === '#') return;
-    let target;
-    try {
-      target = document.querySelector(href);
-    } catch (err) {
-      return;
-    }
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// ==================== CONTACT FORM AJAX ====================
-(function(){
-  function serializeFormData(data) {
-    const payload = {};
-    data.forEach((value, key) => {
-      if (Object.prototype.hasOwnProperty.call(payload, key)) {
-        if (Array.isArray(payload[key])) {
-          payload[key].push(value);
-        } else {
-          payload[key] = [payload[key], value];
-        }
-      } else {
-        payload[key] = value;
-      }
-    });
-
-    Object.keys(payload).forEach((key) => {
-      if (Array.isArray(payload[key])) {
-        payload[key] = payload[key].join(', ');
-      }
-    });
-
-    return payload;
-  }
-
-  const form = document.getElementById('contact-form');
-  const btn = document.getElementById('form-submit-btn');
-  const successEl = document.getElementById('form-success');
-  const errorEl = document.getElementById('form-error');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btnText = btn.querySelector('.btn-text');
-    const btnLoad = btn.querySelector('.btn-loading');
-    btnText.style.display = 'none';
-    btnLoad.style.display = 'inline';
-    btn.disabled = true;
-    errorEl.style.display = 'none';
-
-    try {
-      const data = new FormData(form);
-      const payload = serializeFormData(data);
-      const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const json = await res.json();
-      if (json.success === 'true' || json.success === true || res.ok) {
-        form.style.display = 'none';
-        form.closest('.contact-form-wrap').querySelector('h3').style.display = 'none';
-        form.closest('.contact-form-wrap').querySelector('p').style.display = 'none';
-        successEl.style.display = 'block';
-      } else {
-        throw new Error('Submit failed');
-      }
-    } catch (err) {
-      errorEl.style.display = 'block';
-      btnText.style.display = 'inline';
-      btnLoad.style.display = 'none';
-      btn.disabled = false;
-    }
-  });
-})();
-
-// ==================== AUTOMATION COPILOT CHATBOT ====================
-(function(){
-  const toggle = document.getElementById('chat-toggle');
-  if (!toggle) return;
-  const win = document.getElementById('chat-window');
-  const closeBtn = document.getElementById('chat-close');
-  const body = document.getElementById('chat-body');
-  const inputArea = document.getElementById('chat-input-area');
-  if (!win || !closeBtn || !body || !inputArea) return;
-  const iconOpen = toggle.querySelector('.chat-icon-open');
-  const iconClose = toggle.querySelector('.chat-icon-close');
-  let isOpen = false;
-  let step = 'start';
-  let userData = {};
-
-  function toggleChat() {
-    isOpen = !isOpen;
-    win.style.display = isOpen ? 'flex' : 'none';
-    iconOpen.style.display = isOpen ? 'none' : 'block';
-    iconClose.style.display = isOpen ? 'block' : 'none';
-    toggle.classList.toggle('active', isOpen);
-    if (isOpen && body.children.length === 0) startConvo();
-  }
-  toggle.addEventListener('click', toggleChat);
-  closeBtn.addEventListener('click', toggleChat);
-
-  function escapeHtml(str) {
-    const el = document.createElement('span');
-    el.textContent = str;
-    return el.innerHTML;
-  }
-
-  function addMsg(text, sender) {
-    const d = document.createElement('div');
-    d.className = 'chat-msg chat-msg-' + sender;
-    if (sender === 'bot') {
-      d.innerHTML = text;
-    } else {
-      d.textContent = text;
-    }
-    body.appendChild(d);
-    body.scrollTop = body.scrollHeight;
-  }
-
-  function typing(cb) {
-    const d = document.createElement('div');
-    d.className = 'chat-msg chat-msg-bot chat-typing';
-    d.innerHTML = '<span></span><span></span><span></span>';
-    body.appendChild(d);
-    body.scrollTop = body.scrollHeight;
-    setTimeout(() => { d.remove(); cb(); }, 800 + Math.random() * 600);
-  }
-
-  function showOptions(options) {
-    inputArea.innerHTML = '';
-    const wrap = document.createElement('div');
-    wrap.className = 'chat-options';
-    options.forEach(opt => {
-      const b = document.createElement('button');
-      b.className = 'chat-opt-btn';
-      b.textContent = opt.label;
-      b.addEventListener('click', () => {
-        addMsg(opt.label, 'user');
-        inputArea.innerHTML = '';
-        opt.action();
-      });
-      wrap.appendChild(b);
-    });
-    inputArea.appendChild(wrap);
-  }
-
-  function showInput(placeholder, onSubmit) {
-    inputArea.innerHTML = '';
-    const wrap = document.createElement('form');
-    wrap.className = 'chat-text-input';
-    const inp = document.createElement('input');
-    inp.type = 'text';
-    inp.placeholder = placeholder;
-    inp.required = true;
-    const btn = document.createElement('button');
-    btn.type = 'submit';
-    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
-    wrap.appendChild(inp);
-    wrap.appendChild(btn);
-    wrap.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const val = inp.value.trim();
-      if (val) {
-        addMsg(val, 'user');
-        inputArea.innerHTML = '';
-        onSubmit(val);
-      }
-    });
-    inputArea.appendChild(wrap);
-    inp.focus();
-  }
-
-  // Conversation flows
-  function startConvo() {
-    typing(() => {
-      addMsg("Hey there! I'm the <strong>A3 Lab Automation Copilot</strong>. I can help you figure out what to automate in your business.", 'bot');
-      typing(() => {
-        addMsg("What brings you here today?", 'bot');
-        showOptions([
-          { label: '\u2699\uFE0F What can you automate?', action: flowWhatWeAutomate },
-          { label: '\uD83D\uDCB0 Show me pricing', action: flowPricing },
-          { label: '\uD83D\uDCA1 See an example', action: flowExample },
-          { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall }
-        ]);
-      });
-    });
-  }
-
-  function flowWhatWeAutomate() {
-    typing(() => {
-      addMsg("We automate repetitive tasks across five areas:", 'bot');
-      typing(() => {
-        addMsg("<strong>\u2022 Sales</strong> \u2014 Lead research, outreach, CRM updates<br><strong>\u2022 Operations</strong> \u2014 Client onboarding, document processing<br><strong>\u2022 Content</strong> \u2014 Research, writing, scheduling<br><strong>\u2022 Finance</strong> \u2014 Invoicing, reporting, KPI dashboards<br><strong>\u2022 Support</strong> \u2014 Ticket triage, auto-responses, sentiment tracking", 'bot');
-        typing(() => {
-          addMsg("What type of business do you run? I can suggest specific automations for you.", 'bot');
-          showOptions([
-            { label: 'Agency / Consulting', action: () => flowBizType('agency') },
-            { label: 'E-commerce', action: () => flowBizType('ecommerce') },
-            { label: 'SaaS / Tech', action: () => flowBizType('saas') },
-            { label: 'Something else', action: () => flowBizTypeOther() }
-          ]);
-        });
-      });
-    });
-  }
-
-  function flowBizType(type) {
-    const suggestions = {
-      agency: "For agencies, the builds we ship most often are:<br><br><strong>1. Prospect Research Pipeline</strong><br>Perplexity researches each prospect, Claude drafts personalized outreach, Zapier sends and logs everything in your CRM.<br><br><strong>2. Content Engine</strong><br>Auto-research trends, draft posts in your brand voice, schedule across channels.<br><br><strong>3. Client Reporting</strong><br>Weekly reports compiled and delivered automatically.",
-      ecommerce: "For e-commerce brands, the builds we ship most often are:<br><br><strong>1. Customer Support Automation</strong><br>Claude triages tickets, auto-responds to common questions, routes complex issues to humans with full context.<br><br><strong>2. Competitor Price Monitoring</strong><br>Track competitor pricing daily, get alerts when they change.<br><br><strong>3. Review &amp; Feedback Analysis</strong><br>Aggregate reviews, analyze sentiment, surface actionable insights.",
-      saas: "For SaaS companies, we commonly build:<br><br><strong>1. User Onboarding Sequences</strong><br>Personalized onboarding flows triggered by user behavior.<br><br><strong>2. Churn Prediction Alerts</strong><br>Monitor usage patterns, flag at-risk accounts, auto-trigger retention workflows.<br><br><strong>3. Feature Request Aggregation</strong><br>Collect and categorize feedback from support, social, and surveys automatically."
-    };
-    typing(() => {
-      addMsg(suggestions[type], 'bot');
-      typing(() => {
-        addMsg("Want to explore how this would work for your specific situation?", 'bot');
-        showOptions([
-          { label: '\uD83D\uDCC5 Book a free strategy call', action: flowBookCall },
-          { label: '\uD83D\uDCB0 See pricing', action: flowPricing },
-          { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
-        ]);
-      });
-    });
-  }
-
-  function flowBizTypeOther() {
-    typing(() => {
-      addMsg("No problem! Tell me what kind of business you run and I'll suggest automations.", 'bot');
-      showInput('e.g., Real estate, fitness, law firm...', (val) => {
-        userData.business = val;
-        typing(() => {
-          addMsg("Got it! For <strong>" + escapeHtml(val) + "</strong>, we'd typically look at automating:<br><br><strong>\u2022 Lead capture &amp; follow-up</strong> \u2014 Auto-research and respond to inquiries<br><strong>\u2022 Reporting</strong> \u2014 Weekly summaries delivered to your inbox<br><strong>\u2022 Admin tasks</strong> \u2014 Scheduling, document processing, data entry<br><br>Every business is different though. A quick 30-min call would help us pinpoint the highest-ROI automation for you.", 'bot');
-          showOptions([
-            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
-            { label: '\uD83D\uDCB0 See pricing first', action: flowPricing },
-            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
-          ]);
-        });
-      });
-    });
-  }
-
-  function flowPricing() {
-    typing(() => {
-      addMsg("Our pricing is straightforward:", 'bot');
-      typing(() => {
-        addMsg("<strong>Starter Build</strong> \u2014 $1,500\u20132,000 (one-time)<br>1\u20132 workflows, delivered in 1\u20132 days, 14 days support<br><br><strong>Pro System</strong> \u2014 $3,000\u20135,000 (one-time)<br>3\u20135 workflows, multi-agent architecture, 30 days support<br><br><strong>Retainer</strong> \u2014 $750\u20132,000/month<br>Ongoing optimization, new builds, dedicated support", 'bot');
-        typing(() => {
-          addMsg("The Starter Build is the recommended first step \u2014 one focused automation, fast feedback, low risk. The strategy call is free, no commitment.", 'bot');
-          showOptions([
-            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
-            { label: '\uD83D\uDCA1 See an example', action: flowExample },
-            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
-          ]);
-        });
-      });
-    });
-  }
-
-  function flowExample() {
-    typing(() => {
-      addMsg("Here's a workflow we build:", 'bot');
-      typing(() => {
-        addMsg("<strong>\uD83C\uDFAF Prospect Research Pipeline</strong><br><br><strong>The problem:</strong> Manual prospect research eats hours per lead and quality drifts as fatigue sets in.<br><br><strong>What we build:</strong><br>1\uFE0F\u20E3 New lead enters CRM \u2192 triggers Zapier<br>2\uFE0F\u20E3 Perplexity researches the prospect's company, role, and recent news<br>3\uFE0F\u20E3 Claude drafts a personalized email grounded in that research<br>4\uFE0F\u20E3 Email queued for your review or sent + logged automatically<br><br><strong>The shape:</strong> Reviewable drafts on every send. Human approval where it matters. Logged context on every prospect.", 'bot');
-        typing(() => {
-          addMsg("Want to see how something like this could work for you?", 'bot');
-          showOptions([
-            { label: '\uD83D\uDCC5 Book a free call', action: flowBookCall },
-            { label: '\u2699\uFE0F What else can you automate?', action: flowWhatWeAutomate },
-            { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
-          ]);
-        });
-      });
-    });
-  }
-
-  function flowBookCall() {
-    typing(() => {
-      addMsg("Great choice! Our strategy calls are free, 30 minutes, and zero pressure. We'll map your workflows and show you where automation delivers the biggest ROI.", 'bot');
-      typing(() => {
-        addMsg('<a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener noreferrer" class="chat-cta-btn">\uD83D\uDCC5 Schedule Your Free Call</a>', 'bot');
-        typing(() => {
-          addMsg("Or if you prefer, drop your email and we'll reach out:", 'bot');
-          showInput('Your email address', (val) => {
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-              addMsg("Hmm, that doesn't look like a valid email. Could you double-check?", 'bot');
-              return;
-            }
-            userData.email = val;
-            typing(() => {
-              addMsg("Thanks! We'll be in touch within 24 hours at <strong>" + escapeHtml(val) + "</strong>. Talk soon!", 'bot');
-              showOptions([
-                { label: '\u2B05 Start over', action: () => { body.innerHTML = ''; startConvo(); } }
-              ]);
-            });
-          });
-        });
-      });
-    });
-  }
-})();
-
-// Card tap-to-expand on touch devices
-(function() {
-  if (window.matchMedia('(hover: none)').matches) {
-    document.querySelectorAll('.service-card, .automate-card').forEach(function(card) {
-      card.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') return;
-        card.classList.toggle('expanded');
-      });
-    });
-  }
-})();
-
-// ==================== AUTOMATION AUDIT ====================
-(function() {
-  const answers = {};
-  let currentQ = 1;
-  const totalQ = 5;
-  let auditLeadSent = false;
-  let lastScore = null;
-  let lastRecs = [];
-
-  const statusEl = document.getElementById('audit-submit-status');
-  const retryBtn = document.getElementById('audit-submit-retry');
-
-  const answerLabels = {
-    1: {
-      agency: 'Agency / Consulting',
-      ecommerce: 'E-commerce / Retail',
-      saas: 'SaaS / Tech',
-      service: 'Local / Service Business',
-      other: 'Other'
-    },
-    2: {
-      low: 'Under 5 hours',
-      med: '5-15 hours',
-      high: '15-30 hours',
-      'very-high': '30+ hours'
-    },
-    3: {
-      sales: 'Sales and lead follow-up',
-      content: 'Content and marketing',
-      support: 'Customer support',
-      ops: 'Operations and admin',
-      reporting: 'Reporting and analytics'
-    },
-    4: {
-      none: 'Never - starting from scratch',
-      basic: 'Basic tools (Zapier, IFTTT)',
-      some: 'Some AI tools (ChatGPT, etc.)',
-      advanced: 'Advanced stack already in place'
-    },
-    5: {
-      time: 'No time to set it up',
-      know: "Don't know where to start",
-      cost: "Not sure it's worth the cost",
-      trust: 'Not sure AI can handle my workflows'
-    }
+  presets = {
+    saas: [
+      { label: 'Product', n: 24, samples: ['Roadmap', 'Specs', 'User research'] },
+      { label: 'Engineering', n: 26, samples: ['Architecture', 'Incidents', 'PRs'] },
+      { label: 'Support', n: 19, samples: ['Top tickets', 'Bug reports', 'SLA breaches'] },
+      { label: 'Sales', n: 20, samples: ['Pipeline', 'Demos', 'Discount policy'] },
+      { label: 'Marketing', n: 15, samples: ['Campaigns', 'Content plan', 'Brand guide'] },
+      { label: 'Finance', n: 12, samples: ['Runway', 'Invoices', 'Forecast'] },
+      { label: 'People', n: 11, samples: ['Onboarding', 'Reviews', 'Policies'] },
+      { label: 'Data', n: 16, samples: ['Dashboards', 'Metrics', 'Experiments'] }
+    ],
+    agency: [
+      { label: 'Clients', n: 23, samples: ['Acme account', 'Briefs', 'Approvals'] },
+      { label: 'Creative', n: 21, samples: ['Concepts', 'Assets', 'Brand kits'] },
+      { label: 'Projects', n: 24, samples: ['Timelines', 'Scopes', 'Status'] },
+      { label: 'Sales', n: 16, samples: ['Proposals', 'Pitches', 'Pipeline'] },
+      { label: 'Marketing', n: 14, samples: ['Case studies', 'Social', 'Site'] },
+      { label: 'Finance', n: 12, samples: ['Invoices', 'Retainers', 'Margins'] },
+      { label: 'Ops', n: 14, samples: ['Tooling', 'Vendors', 'SOPs'] },
+      { label: 'People', n: 10, samples: ['Freelancers', 'Onboarding', 'Reviews'] }
+    ],
+    ecom: [
+      { label: 'Orders', n: 24, samples: ['Fulfilment', 'Shipping', 'Status'] },
+      { label: 'Support', n: 20, samples: ['Tickets', 'Refunds', 'WISMO'] },
+      { label: 'Marketing', n: 18, samples: ['Email', 'Campaigns', 'Lifecycle'] },
+      { label: 'Inventory', n: 16, samples: ['Stock', 'SKUs', 'Reorders'] },
+      { label: 'Suppliers', n: 12, samples: ['POs', 'Lead times', 'Contracts'] },
+      { label: 'Ads', n: 15, samples: ['Meta', 'Google', 'Creative'] },
+      { label: 'Finance', n: 12, samples: ['Margins', 'Payouts', 'COGS'] },
+      { label: 'Returns', n: 10, samples: ['RMAs', 'Reasons', 'Policy'] }
+    ],
+    consulting: [
+      { label: 'Clients', n: 21, samples: ['Accounts', 'Stakeholders', 'Notes'] },
+      { label: 'Engagements', n: 23, samples: ['SOWs', 'Deliverables', 'Plans'] },
+      { label: 'Research', n: 18, samples: ['Findings', 'Interviews', 'Models'] },
+      { label: 'Sales', n: 15, samples: ['Proposals', 'Pipeline', 'Rates'] },
+      { label: 'Knowledge', n: 17, samples: ['Frameworks', 'Templates', 'Playbooks'] },
+      { label: 'Finance', n: 11, samples: ['Invoices', 'Utilization', 'Forecast'] },
+      { label: 'People', n: 10, samples: ['Bench', 'Skills', 'Reviews'] },
+      { label: 'Ops', n: 12, samples: ['Tooling', 'Process', 'Vendors'] }
+    ]
   };
 
-  function labelFor(question, value) {
-    return answerLabels[question]?.[value] || value || 'Not provided';
+  tools = ["Claude", "OpenAI", "Notion", "Slack", "Google Drive", "Gmail", "HubSpot", "Zapier", "n8n", "Stripe"];
+
+  state = { work: 'saas', roiPeople: 4, roiHrs: 10, roiRate: 45, roiPct: 60, fName: '', fEmail: '', fMsg: '' };
+
+  get domains() { return this.presets[this.state.work]; }
+
+  componentDidMount() {
+    this._reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._lastWork = this.state.work;
+    this.activeHub = 0;
+    this.startGraph();
+    this.syncSel();
+    this.setupReveal();
+    this._onResize = () => this.sizeGraph();
+    window.addEventListener('resize', this._onResize);
   }
 
-  function setAuditStatus(message, isError, showRetry) {
-    if (!statusEl) return;
-    statusEl.style.display = message ? 'block' : 'none';
-    statusEl.textContent = message || '';
-    statusEl.style.color = isError ? 'var(--color-error)' : 'var(--color-text-muted)';
-    if (retryBtn) retryBtn.style.display = showRetry ? 'inline-flex' : 'none';
-  }
-
-  async function submitAuditLead(score, recs) {
-    if (auditLeadSent) return;
-    const name = (document.getElementById('audit-name')?.value || '').trim();
-    const email = (document.getElementById('audit-email')?.value || '').trim();
-    if (!name || !email || !email.includes('@')) {
-      setAuditStatus('Please enter a valid name and email to deliver your report.', true, false);
-      return;
+  componentDidUpdate() {
+    if (this._lastWork !== this.state.work) {
+      this._lastWork = this.state.work;
+      this.buildNodes();
+      this.sizeGraph();
     }
+    this.syncSel();
+  }
 
-    auditLeadSent = true;
-    if (retryBtn) retryBtn.disabled = true;
-    setAuditStatus('Sending your report...', false, false);
+  setupReveal() {
+    const root = this.rootRef.current; if (!root || this._reduce) return;
+    const els = root.querySelectorAll('[data-reveal]');
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)'; });
+    this._obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; this._obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => this._obs.observe(el));
+  }
 
-    const payload = {
-      _captcha: 'false',
-      _template: 'table',
-      _subject: 'New A3 Lab Automation Audit Submission',
-      source: 'Automation Audit Quiz',
-      name,
-      email,
-      automation_score: String(score),
-      business_type: labelFor(1, answers[1]),
-      manual_task_load: labelFor(2, answers[2]),
-      top_pain_area: labelFor(3, answers[3]),
-      prior_automation_tools: labelFor(4, answers[4]),
-      biggest_blocker: labelFor(5, answers[5]),
-      recommendations: recs.slice(0, 3).map(r => r.title).join(' | ')
-    };
+  syncSel() {
+    const root = this.rootRef.current; if (!root) return;
+    root.querySelectorAll('[data-work]').forEach(b => {
+      const on = b.dataset.work === this.state.work;
+      b.style.color = on ? '#0a0b0f' : '#8b8f9e';
+      b.style.background = on ? '#2ee6a0' : 'transparent';
+    });
+  }
 
-    try {
-      const res = await fetch('https://formsubmit.co/ajax/hello@a3lab.ca', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
+  buildNodes() {
+    const nodes = [{ type: 'brain', label: 'Second brain', phase: 0, amp: 1.5, par: 0.3, r: 18, br: 1 }];
+    const edges = [];
+    this.hubs = [];
+    this.domains.forEach((d, di) => {
+      const baseAngle = (-90 + di / this.domains.length * 360) * Math.PI / 180;
+      const hubIdx = nodes.length; this.hubs.push(hubIdx);
+      nodes.push({ type: 'hub', label: d.label, count: d.n, di, baseAngle, phase: Math.random() * 6.28, amp: 2, par: 0.5, r: 7, br: 0.5 });
+      edges.push([0, hubIdx]);
+      const leafIdx = [];
+      for (let k = 0; k < d.n; k++) {
+        const ang = Math.random() * 6.28, rad = 0.35 + Math.pow(Math.random(), 0.6) * 0.95;
+        const li = nodes.length;
+        nodes.push({ type: 'leaf', di, hub: hubIdx, ox: Math.cos(ang) * rad, oy: Math.sin(ang) * rad, label: k < d.samples.length ? d.samples[k] : null, phase: Math.random() * 6.28, amp: Math.random() * 1.6 + 0.8, par: 0.7 + Math.random() * 0.6, r: Math.random() * 1.8 + 1.7, br: 0.45 });
+        edges.push([hubIdx, li]); leafIdx.push(li);
+      }
+      const intra = Math.floor(d.n * 0.45);
+      for (let t = 0; t < intra; t++) { const a = leafIdx[(Math.random() * leafIdx.length) | 0], b = leafIdx[(Math.random() * leafIdx.length) | 0]; if (a !== b) edges.push([a, b]); }
+      d._leaf = leafIdx;
+    });
+    for (let t = 0; t < 34; t++) {
+      const d1 = this.domains[(Math.random() * this.domains.length) | 0], d2 = this.domains[(Math.random() * this.domains.length) | 0];
+      if (d1 === d2) continue;
+      const a = d1._leaf[(Math.random() * d1._leaf.length) | 0], b = d2._leaf[(Math.random() * d2._leaf.length) | 0];
+      edges.push([a, b]);
+    }
+    this.gnodes = nodes; this.gedges = edges;
+    this.adj = nodes.map(() => new Set());
+    edges.forEach(([a, b]) => { this.adj[a].add(b); this.adj[b].add(a); });
+    this.activeHub = 0;
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.graf);
+    window.removeEventListener('resize', this._onResize);
+    if (this._obs) this._obs.disconnect();
+    const gc = this.graphRef.current;
+    if (gc && this._gmove) { gc.removeEventListener('mousemove', this._gmove); gc.removeEventListener('mouseleave', this._gleave); }
+  }
+
+  sizeGraph() {
+    const c = this.graphRef.current; if (!c || !c.parentElement) return;
+    const w = c.parentElement.clientWidth, h = c.parentElement.clientHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = w * dpr; c.height = h * dpr;
+    c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+    this._gw = w; this._gh = h;
+    const min = Math.min(w, h);
+    this._cx = w < 900 ? w * 0.52 : w * 0.57; this._cy = h * 0.52;
+    this._Rhub = min * (w < 900 ? 0.32 : 0.34);
+    this._cl = min * (w < 900 ? 0.1 : 0.12);
+    if (this.bg) {
+      const pts = this.bg.map(b => ({ x: b.x * w, y: b.y * h }));
+      this.bgEdges = []; const TH = min * 0.15;
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) if (Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y) < TH) this.bgEdges.push([i, j]);
+    }
+  }
+
+  startGraph() {
+    const c = this.graphRef.current; if (!c) return;
+    this.buildNodes();
+    this.stars = [];
+    for (let i = 0; i < 110; i++) this.stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.1 + 0.2, base: Math.random() * 0.4 + 0.12, tw: Math.random() * 0.4, ph: Math.random() * 6.28, par: Math.random() * 0.6 + 0.1 });
+    this.bg = [];
+    for (let i = 0; i < 60; i++) this.bg.push({ x: Math.random(), y: Math.random(), par: Math.random() * 0.9 + 0.2 });
+    this.gpulses = [];
+    this.sizeGraph();
+    const motion = this.props.graphMotion !== false && !this._reduce;
+    const tour = this.props.autoTour !== false;
+    const ctx = c.getContext('2d');
+    let tic = 0, tourT = 0, rot = 0;
+    const cc = (na, nb, bow) => { const mx = (na.x + nb.x) / 2, my = (na.y + nb.y) / 2; const dx = nb.x - na.x, dy = nb.y - na.y, len = Math.hypot(dx, dy) || 1; return { x: mx + (-dy / len) * len * bow, y: my + (dx / len) * len * bow }; };
+    const draw = () => {
+      if (!this._gw) { this.graf = requestAnimationFrame(draw); return; }
+      const w = this._gw, h = this._gh; ctx.clearRect(0, 0, w, h);
+      const onScreen = !this._paused;
+      if (motion && onScreen) { tic += 0.01; rot += 0.0011; }
+      if (tour && motion && onScreen && this.gHover == null) { tourT += 0.0105; if (tourT > 4.6) { tourT = 0; this.activeHub = (this.activeHub + 1) % this.hubs.length; } }
+      const breathe = 1 + Math.sin(tic * 0.6) * 0.018;
+      const cx = this._cx, cy = this._cy, Rh = this._Rhub * breathe, cl = this._cl * breathe, hov = this.gHover;
+      const tpx = this._pmx != null ? (this._pmx - 0.5) * 40 : 0, tpy = this._pmy != null ? (this._pmy - 0.5) * 28 : 0;
+      this._px = (this._px || 0) + (tpx - (this._px || 0)) * 0.05; this._py = (this._py || 0) + (tpy - (this._py || 0)) * 0.05;
+      const px = this._px, py = this._py;
+      const adj = this.adj;
+      const emOf = (i) => { if (hov != null) return i === hov || adj[hov].has(i); const n = this.gnodes[i]; return n.type === 'brain' || n.di === this.activeHub; };
+      this.gnodes.forEach((n, i) => {
+        if (n.type === 'brain') { n.x = cx; n.y = cy; }
+        else if (n.type === 'hub') { const a = n.baseAngle + rot; n.x = cx + Math.cos(a) * Rh + Math.cos(tic + n.phase) * n.amp; n.y = cy + Math.sin(a) * Rh + Math.sin(tic + n.phase) * n.amp; }
+        else { const hb = this.gnodes[n.hub]; n.x = hb.x + n.ox * cl + Math.cos(tic + n.phase) * n.amp; n.y = hb.y + n.oy * cl + Math.sin(tic * 0.9 + n.phase) * n.amp; }
+        n.dx = n.x + px * n.par; n.dy = n.y + py * n.par;
+        const tb = emOf(i) ? 1 : 0.42; n.br += (tb - n.br) * 0.07;
       });
-      const json = await res.json().catch(() => ({}));
-      const success = (json.success === true || json.success === 'true') || res.ok;
-      if (!success) throw new Error('Audit lead submission failed');
-      setAuditStatus('Report sent successfully. Check your inbox for next steps.', false, false);
-      if (retryBtn) retryBtn.disabled = false;
-    } catch (err) {
-      auditLeadSent = false;
-      setAuditStatus('We could not send your report right now. Please retry or book a call directly.', true, true);
-      if (retryBtn) retryBtn.disabled = false;
-      console.error('Audit lead submission failed', err);
-    }
-  }
-
-  if (retryBtn) {
-    retryBtn.addEventListener('click', function() {
-      if (typeof lastScore === 'number' && lastRecs.length) {
-        submitAuditLead(lastScore, lastRecs);
+      const neb = ctx.createRadialGradient(cx + px, cy + py, 0, cx + px, cy + py, Math.max(w, h) * 0.55);
+      neb.addColorStop(0, 'rgba(16,54,40,0.45)'); neb.addColorStop(0.5, 'rgba(11,34,26,0.15)'); neb.addColorStop(1, 'rgba(10,11,15,0)');
+      ctx.fillStyle = neb; ctx.fillRect(0, 0, w, h);
+      const bgp = this.bg.map(b => ({ x: b.x * w + px * b.par, y: b.y * h + py * b.par }));
+      if (this.bgEdges) { ctx.strokeStyle = 'rgba(90,140,170,0.045)'; ctx.lineWidth = 0.6; this.bgEdges.forEach(([i, j]) => { ctx.beginPath(); ctx.moveTo(bgp[i].x, bgp[i].y); ctx.lineTo(bgp[j].x, bgp[j].y); ctx.stroke(); }); }
+      bgp.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, 6.283); ctx.fillStyle = 'rgba(120,160,190,0.13)'; ctx.fill(); });
+      this.stars.forEach(s => { const a = s.base + Math.sin(tic * 2 + s.ph) * s.tw; ctx.beginPath(); ctx.arc(s.x * w + px * s.par, s.y * h + py * s.par, s.r, 0, 6.283); ctx.fillStyle = 'rgba(200,225,240,' + Math.max(0, a) + ')'; ctx.fill(); });
+      const nodes = this.gnodes;
+      this.gedges.forEach(([a, b], ei) => {
+        const na = nodes[a], nb = nodes[b];
+        const active = emOf(a) || emOf(b);
+        ctx.strokeStyle = active ? 'rgba(46,230,160,' + (0.12 + 0.28 * Math.max(na.br, nb.br)) + ')' : 'rgba(46,230,160,0.05)';
+        ctx.lineWidth = active ? 1 : 0.55;
+        if (na.type === 'brain' || nb.type === 'brain') { const cp = cc({ x: na.dx, y: na.dy }, { x: nb.dx, y: nb.dy }, ((ei % 2) ? 1 : -1) * 0.08); ctx.beginPath(); ctx.moveTo(na.dx, na.dy); ctx.quadraticCurveTo(cp.x, cp.y, nb.dx, nb.dy); ctx.stroke(); }
+        else { ctx.beginPath(); ctx.moveTo(na.dx, na.dy); ctx.lineTo(nb.dx, nb.dy); ctx.stroke(); }
+      });
+      if (motion && onScreen && Math.random() < 0.4) {
+        for (let q = 0; q < 7; q++) { const e = this.gedges[(Math.random() * this.gedges.length) | 0]; if (emOf(e[0]) || emOf(e[1])) { this.gpulses.push({ a: e[0], b: e[1], t: 0, dir: Math.random() < 0.5 }); break; } }
       }
-    });
-  }
-
-  document.querySelectorAll('.audit-opt').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const qEl = this.closest('.audit-q');
-      const qNum = parseInt(qEl.dataset.q);
-      answers[qNum] = this.dataset.val;
-
-      // Mark step done
-      const stepEl = document.querySelector('.audit-step[data-step="' + qNum + '"]');
-      if (stepEl) { stepEl.classList.add('done'); stepEl.classList.remove('active'); }
-
-      // Move to next or show email step
-      qEl.classList.remove('active');
-      if (qNum < totalQ) {
-        currentQ = qNum + 1;
-        const nextQ = document.querySelector('.audit-q[data-q="' + currentQ + '"]');
-        if (nextQ) nextQ.classList.add('active');
-        const nextStep = document.querySelector('.audit-step[data-step="' + currentQ + '"]');
-        if (nextStep) nextStep.classList.add('active');
-      } else {
-        document.getElementById('audit-questions').style.display = 'none';
-        document.getElementById('audit-steps').style.display = 'none';
-        document.getElementById('audit-email-step').style.display = 'block';
-      }
-    });
-  });
-
-  const emailForm = document.getElementById('audit-email-form');
-  if (emailForm) {
-    emailForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('audit-email-step').style.display = 'none';
-      showAuditResult();
-    });
-  }
-
-  function showAuditResult() {
-    document.getElementById('audit-result').style.display = 'block';
-
-    // Score logic
-    let score = 50;
-    if (answers[2] === 'high') score += 15;
-    if (answers[2] === 'very-high') score += 25;
-    if (answers[2] === 'med') score += 8;
-    if (answers[4] === 'none' || answers[4] === 'basic') score += 10;
-    if (answers[3]) score += 5;
-
-    score = Math.min(score, 98);
-
-    // Animate score ring
-    const circle = document.getElementById('audit-score-circle');
-    const numEl = document.getElementById('audit-score-num');
-    const circumference = 327;
-    let current = 0;
-    const target = score;
-    const interval = setInterval(() => {
-      current = Math.min(current + 2, target);
-      const offset = circumference - (current / 100) * circumference;
-      if (circle) circle.style.strokeDashoffset = offset;
-      if (numEl) numEl.textContent = current;
-      if (current >= target) clearInterval(interval);
-    }, 18);
-
-    // Score label
-    const titleEl = document.getElementById('audit-score-title');
-    const descEl = document.getElementById('audit-score-desc');
-    if (score >= 75) {
-      titleEl.textContent = 'High Automation Potential 🚀';
-      descEl.textContent = ‘Your business is losing significant time and money on tasks that AI can handle today. The ROI on automation would be immediate.’;
-    } else if (score >= 50) {
-      titleEl.textContent = 'Strong Automation Opportunity 💡';
-      descEl.textContent = ‘You have clear, actionable workflows to automate. A focused build would save your team hours every week within days.’;
-    } else {
-      titleEl.textContent = 'Good Starting Point ✅';
-      descEl.textContent = 'Even with lighter manual work, automation can free up time for higher-value tasks and prepare your business to scale.';
-    }
-
-    // Recommendations based on answers
-    const recMap = {
-      sales: { icon: '🎯', title: 'Lead Research & Outreach Pipeline', desc: 'Auto-research every prospect and draft personalized outreach before they go cold.' },
-      content: { icon: '✍️', title: 'AI Content Engine', desc: 'Research, draft, and schedule content across all channels on autopilot.' },
-      support: { icon: '🤖', title: 'Customer Support Automation', desc: 'Triage tickets, auto-respond to repeat questions, and escalate the rest with full context for your team.' },
-      ops: { icon: '⚙️', title: 'Operations & Onboarding Automation', desc: 'Auto-generate onboarding docs, extract data from files, and create tasks from meetings.' },
-      reporting: { icon: '📊', title: 'Automated Reporting System', desc: 'Weekly KPI reports compiled from your tools and delivered to your inbox on a schedule you set.' },
-      agency: { icon: '📋', title: 'Client Proposal Generator', desc: 'Turn a short brief into a full scoped proposal in minutes using Claude.' },
-      ecommerce: { icon: '💬', title: 'Review & Sentiment Monitoring', desc: 'Aggregate reviews, surface product issues, and track sentiment across channels daily.' },
-      saas: { icon: '🔔', title: 'Churn Prevention Workflow', desc: 'Monitor usage signals, flag at-risk accounts, and trigger retention sequences automatically.' }
+      this.gpulses.forEach(p => {
+        p.t += 0.024; const na = nodes[p.dir ? p.a : p.b], nb = nodes[p.dir ? p.b : p.a];
+        const x = na.dx + (nb.dx - na.dx) * p.t, y = na.dy + (nb.dy - na.dy) * p.t;
+        ctx.beginPath(); ctx.arc(x, y, 1.8, 0, 6.283); ctx.fillStyle = 'rgba(46,230,160,' + ((1 - p.t) * 0.8) + ')'; ctx.fill();
+      });
+      this.gpulses = this.gpulses.filter(p => p.t < 1);
+      const bn = nodes[0]; const BR = Math.max(15, Math.min(26, Math.min(w, h) * 0.034)); bn.r = BR;
+      const bx = bn.dx, by = bn.dy;
+      const aura = ctx.createRadialGradient(bx, by, 0, bx, by, BR * 5);
+      aura.addColorStop(0, 'rgba(46,230,160,0.22)'); aura.addColorStop(0.5, 'rgba(46,230,160,0.07)'); aura.addColorStop(1, 'rgba(46,230,160,0)');
+      ctx.fillStyle = aura; ctx.beginPath(); ctx.arc(bx, by, BR * 5, 0, 6.283); ctx.fill();
+      ctx.save(); ctx.translate(bx, by);
+      ctx.rotate(rot * 3); ctx.beginPath(); ctx.arc(0, 0, BR * 1.7, -0.5, 2.2); ctx.strokeStyle = 'rgba(46,230,160,0.4)'; ctx.lineWidth = 1.4; ctx.stroke();
+      ctx.rotate(-rot * 7); ctx.beginPath(); ctx.arc(0, 0, BR * 2.3, 1.5, 4.6); ctx.strokeStyle = 'rgba(46,230,160,0.22)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.restore();
+      nodes.forEach((n, i) => {
+        if (i === 0) return;
+        const isH = hov === i, isHub = n.type === 'hub';
+        const a = isHub ? (0.5 + n.br * 0.5) : (0.25 + n.br * 0.65);
+        const rad = (n.r) * (isH ? 1.7 : 1);
+        ctx.beginPath(); ctx.arc(n.dx, n.dy, rad, 0, 6.283);
+        ctx.fillStyle = 'rgba(46,230,160,' + a + ')';
+        if (isHub || isH || n.br > 0.75) { ctx.shadowBlur = isH ? 16 : (isHub ? 12 : 6); ctx.shadowColor = 'rgba(46,230,160,0.6)'; }
+        ctx.fill(); ctx.shadowBlur = 0;
+        if (isHub) {
+          ctx.beginPath(); ctx.arc(n.dx, n.dy, rad * 1.9, 0, 6.283); ctx.strokeStyle = 'rgba(46,230,160,' + (0.15 + n.br * 0.2) + ')'; ctx.lineWidth = 1; ctx.stroke();
+          ctx.font = "700 13px 'Cabinet Grotesk', sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillStyle = 'rgba(214,224,235,' + (0.6 + n.br * 0.4) + ')'; ctx.fillText(n.label, n.dx, n.dy - rad - 7);
+        } else if (isH && n.label) {
+          ctx.font = "500 12px Satoshi, sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillStyle = 'rgba(228,230,236,1)'; ctx.fillText(n.label, n.dx, n.dy - rad - 6);
+        }
+      });
+      ctx.beginPath(); ctx.arc(bx, by, BR, 0, 6.283); ctx.fillStyle = 'rgba(46,230,160,0.95)'; ctx.shadowBlur = 30; ctx.shadowColor = 'rgba(46,230,160,0.85)'; ctx.fill(); ctx.shadowBlur = 0;
+      ctx.beginPath(); ctx.arc(bx - BR * 0.18, by - BR * 0.18, BR * 0.5, 0, 6.283); ctx.fillStyle = 'rgba(214,255,240,0.95)'; ctx.fill();
+      ctx.font = "700 15px 'Cabinet Grotesk', sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = 'rgba(228,230,236,1)'; ctx.fillText('Second brain', bx, by + BR + 9);
+      this.graf = requestAnimationFrame(draw);
     };
-
-    const recs = [];
-    if (answers[3] && recMap[answers[3]]) recs.push(recMap[answers[3]]);
-    if (answers[1] && recMap[answers[1]] && recs.length < 3) recs.push(recMap[answers[1]]);
-    const fallbacks = ['sales','content','support'].filter(k => !recs.find(r => r.title === recMap[k]?.title));
-    while (recs.length < 3 && fallbacks.length) recs.push(recMap[fallbacks.shift()]);
-
-    const listEl = document.getElementById('audit-rec-list');
-    if (listEl) {
-      listEl.innerHTML = recs.slice(0, 3).map((r, i) => `
-        <div class="audit-rec-item">
-          <div class="audit-rec-num">${i + 1}</div>
-          <div class="audit-rec-icon">${r.icon}</div>
-          <div>
-            <strong>${r.title}</strong>
-            <p>${r.desc}</p>
-          </div>
-        </div>
-      `).join('');
+    draw();
+    // pause the canvas when hero is scrolled away
+    if ('IntersectionObserver' in window) {
+      this._heroObs = new IntersectionObserver((es) => { this._paused = !es[0].isIntersecting; }, { threshold: 0.01 });
+      if (c.parentElement) this._heroObs.observe(c.parentElement);
     }
-
-    lastScore = score;
-    lastRecs = recs.slice(0, 3);
-    submitAuditLead(score, recs);
-  }
-})();
-</script>
-
-<!-- ROI CALCULATOR (isolated script to prevent other errors from breaking it) -->
-<script>
-(function() {
-  var teamEl = document.getElementById('roi-team');
-  var hoursEl = document.getElementById('roi-hours');
-  var rateEl = document.getElementById('roi-rate');
-  var autoEl = document.getElementById('roi-automatable');
-  if (!teamEl || !hoursEl || !rateEl || !autoEl) return;
-
-  var teamVal = document.getElementById('roi-team-val');
-  var hoursVal = document.getElementById('roi-hours-val');
-  var rateVal = document.getElementById('roi-rate-val');
-  var autoVal = document.getElementById('roi-automatable-val');
-  var lossEl = document.getElementById('roi-monthly-loss');
-  var saveEl = document.getElementById('roi-monthly-save');
-  var freedEl = document.getElementById('roi-hours-freed');
-  var paybackEl = document.getElementById('roi-payback');
-
-  function calc() {
-    var team = +teamEl.value;
-    var hours = +hoursEl.value;
-    var rate = +rateEl.value;
-    var autoPct = +autoEl.value / 100;
-
-    var monthlyWaste = team * hours * 4.33 * rate;
-    var monthlySave = monthlyWaste * autoPct * 0.8;
-    var hoursFree = Math.round(team * hours * 4.33 * autoPct * 0.8);
-    var weeksPayback = monthlySave > 0 ? Math.ceil(1500 / (monthlySave / 4.33)) : 0;
-
-    if (lossEl) lossEl.textContent = '$' + Math.round(monthlyWaste).toLocaleString();
-    if (saveEl) saveEl.textContent = '$' + Math.round(monthlySave).toLocaleString();
-    if (freedEl) freedEl.textContent = hoursFree + ' hrs/month freed';
-    if (paybackEl) paybackEl.textContent = weeksPayback > 0 ? weeksPayback + ' weeks' : '\u2014';
-
-    if (teamVal) teamVal.textContent = team;
-    if (hoursVal) hoursVal.textContent = hours;
-    if (rateVal) rateVal.textContent = '$' + rate;
-    if (autoVal) autoVal.textContent = autoEl.value + '%';
+    this._gmove = (ev) => {
+      const r = c.getBoundingClientRect(), mx = ev.clientX - r.left, my = ev.clientY - r.top;
+      this._pmx = mx / (r.width || 1); this._pmy = my / (r.height || 1);
+      let best = null, bd = 1e9;
+      this.gnodes.forEach((n, i) => { const nx = n.dx != null ? n.dx : n.x, ny = n.dy != null ? n.dy : n.y; const d = Math.hypot(nx - mx, ny - my); if (d < (n.r || 4) + 12 && d < bd) { bd = d; best = i; } });
+      this.gHover = best; c.style.cursor = best != null ? 'pointer' : 'default';
+    };
+    this._gleave = () => { this.gHover = null; this._pmx = null; this._pmy = null; };
+    c.addEventListener('mousemove', this._gmove);
+    c.addEventListener('mouseleave', this._gleave);
   }
 
-  teamEl.addEventListener('input', calc);
-  hoursEl.addEventListener('input', calc);
-  rateEl.addEventListener('input', calc);
-  autoEl.addEventListener('input', calc);
-  calc();
-})();
-</script>
-
-<!-- GSAP CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-
-<script>
-// === A3 LAB GSAP ANIMATIONS ===
-window.addEventListener('load', function () {
-  if (typeof gsap === 'undefined') return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Hero entrance: text slides in from left, command panel from right
-  gsap.from('.hero-text', {
-    opacity: 0, x: -50, duration: 1, ease: 'power3.out', delay: 0.2
-  });
-  gsap.from('.hero-panel', {
-    opacity: 0, x: 50, duration: 1, ease: 'power3.out', delay: 0.4
-  });
-
-  // Stats count-up on scroll
-  document.querySelectorAll('.stat-value').forEach(function(el) {
-    var raw = el.textContent.trim();
-    var match = raw.match(/[\d.]+/);
-    if (!match) return;
-    var num = parseFloat(match[0]);
-    var pre = raw.split(match[0])[0];
-    var suf = raw.split(match[0])[1] || '';
-    var obj = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el, start: 'top 85%', once: true,
-      onEnter: function() {
-        gsap.to(obj, {
-          v: num, duration: 1.8, ease: 'power2.out',
-          onUpdate: function() {
-            el.textContent = pre + (Number.isInteger(num) ? Math.round(obj.v) : obj.v.toFixed(1)) + suf;
-          }
-        });
+  renderVals() {
+    const atoms = this.domains.reduce((s, d) => s + d.n, 0);
+    const s = this.state;
+    const monthly = s.roiPeople * s.roiHrs * 4.33 * s.roiRate;
+    const recover = monthly * (s.roiPct / 100) * 0.8;
+    const freed = Math.round(s.roiPeople * s.roiHrs * 4.33 * (s.roiPct / 100) * 0.8);
+    const weekly = recover / 4.33;
+    let payback;
+    if (weekly < 35) payback = '6+ months';
+    else {
+      const wk = Math.ceil(4000 / weekly);
+      payback = wk <= 1 ? 'about a week' : (wk > 26 ? '6+ months' : 'about ' + wk + ' weeks');
+    }
+    const fmt = (n) => '$' + Math.round(n).toLocaleString('en-CA');
+    return {
+      rootRef: this.rootRef, graphRef: this.graphRef,
+      domains: this.domains.map(d => ({ label: d.label, count: d.n })),
+      teams: this.domains.length, atoms, tools: this.tools, workOptions: this.workOptions,
+      onWork: (ev) => this.setState({ work: ev.currentTarget.dataset.work }),
+      roiPeople: s.roiPeople, roiHrs: s.roiHrs, roiRate: s.roiRate, roiPct: s.roiPct,
+      roiHrsDisp: s.roiHrs + ' hrs', roiRateDisp: '$' + s.roiRate + '/hr', roiPctDisp: s.roiPct + '%',
+      roiMonthly: fmt(monthly), roiRecover: fmt(recover), roiFreed: freed.toLocaleString('en-CA'), roiPayback: payback,
+      onRoi: (ev) => { const k = ev.currentTarget.dataset.k, v = +ev.currentTarget.value; this.setState({ [k]: v }); },
+      fName: s.fName, fEmail: s.fEmail, fMsg: s.fMsg,
+      onField: (ev) => { const k = ev.currentTarget.dataset.k, v = ev.currentTarget.value; this.setState({ [k]: v }); },
+      onSend: (ev) => {
+        ev.preventDefault();
+        const body = 'Name: ' + s.fName + '\nEmail: ' + s.fEmail + '\n\nWhat to remember or automate:\n' + s.fMsg;
+        window.location.href = 'mailto:hello@a3lab.ca?subject=' + encodeURIComponent('Second brain inquiry from ' + (s.fName || 'the website')) + '&body=' + encodeURIComponent(body);
       }
-    });
-  });
-
-  // Service cards stagger in
-  gsap.from('.service-card', {
-    scrollTrigger: { trigger: '.services-grid', start: 'top 82%' },
-    opacity: 0, y: 40, duration: 0.65, stagger: 0.1, ease: 'power2.out'
-  });
-
-  // Pricing cards stagger in
-  gsap.from('.pricing-card', {
-    scrollTrigger: { trigger: '.pricing-grid', start: 'top 82%' },
-    opacity: 0, y: 40, duration: 0.65, stagger: 0.12, ease: 'power2.out'
-  });
-
-  // Stack items pop in
-  gsap.from('.stack-item', {
-    scrollTrigger: { trigger: '.stack-grid', start: 'top 85%' },
-    opacity: 0, scale: 0.85, duration: 0.4, stagger: 0.07, ease: 'back.out(1.5)'
-  });
-
-  // Process steps slide in from left
-  gsap.from('.process-step', {
-    scrollTrigger: { trigger: '.process-list', start: 'top 82%' },
-    opacity: 0, x: -35, duration: 0.6, stagger: 0.13, ease: 'power2.out'
-  });
-
-  // Automate cards reveal when their own grid enters view.
-  gsap.from('.automate-card', {
-    scrollTrigger: { trigger: '.automate-grid', start: 'top 85%', once: true },
-    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out', immediateRender: false
-  });
-
-  // Story cards reveal when the stories section enters view.
-  gsap.from('.story-card', {
-    scrollTrigger: { trigger: '.stories-grid', start: 'top 85%', once: true },
-    opacity: 0, y: 30, duration: 0.55, stagger: 0.1, ease: 'power2.out', immediateRender: false
-  });
-
-  // Section labels, titles, descriptions
-  gsap.utils.toArray('.section-label, .section-title, .section-desc').forEach(function(el) {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%' },
-      opacity: 0, y: 22, duration: 0.6, ease: 'power2.out'
-    });
-  });
-
-  // Catch-all: animate remaining .fade-in elements (skip interactive containers)
-  var handled = '.service-card, .pricing-card, .stack-item, .process-step, .story-card, .automate-card, .section-label, .section-title, .section-desc, .hero-text, .hero-panel';
-  gsap.utils.toArray('.fade-in').forEach(function(el) {
-    if (el.matches(handled) || el.closest(handled)) return;
-    // Skip elements containing forms, sliders, or other interactive content
-    if (el.querySelector('input, form, button, textarea, [type="range"]')) return;
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 90%' },
-      opacity: 0, y: 24, duration: 0.6, ease: 'power2.out'
-    });
-  });
-
-  // Service card hover scale
-  document.querySelectorAll('.service-card').forEach(function(card) {
-    card.addEventListener('mouseenter', function() {
-      gsap.to(card, { scale: 1.03, duration: 0.22, ease: 'power1.out' });
-    });
-    card.addEventListener('mouseleave', function() {
-      gsap.to(card, { scale: 1, duration: 0.22, ease: 'power1.out' });
-    });
-  });
-
-  // Frosted nav on scroll
-  var header = document.querySelector('.site-header');
-  if (header) {
-    window.addEventListener('scroll', function() {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    });
+    };
   }
-
-  // Hero cursor glow follow
-  var heroContent = document.querySelector('.hero-content');
-  if (heroContent) {
-    heroContent.addEventListener('mousemove', function(e) {
-      var rect = e.currentTarget.getBoundingClientRect();
-      e.currentTarget.style.setProperty('--hero-glow-x', (e.clientX - rect.left) + 'px');
-      e.currentTarget.style.setProperty('--hero-glow-y', (e.clientY - rect.top) + 'px');
-    });
-  }
-
-});
+}
 </script>
 
 
-<!-- Nav Dropdown Mobile Fallback -->
-<script>
-(function(){
-  document.querySelectorAll('.nav-dropdown-trigger').forEach(function(trigger){
-    trigger.addEventListener('click', function(e){
-      var menu = this.parentElement.querySelector('.nav-dropdown-menu');
-      if (!menu) return;
-      // Only intercept on mobile (below desktop breakpoint)
-      if (window.innerWidth >= 1180) return;
-      e.preventDefault();
-      var isOpen = menu.style.display === 'block';
-      // Close all other open dropdowns
-      document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = ''; });
-      menu.style.display = isOpen ? '' : 'block';
-    });
-  });
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(e){
-    if (!e.target.closest('.nav-dropdown')) {
-      document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = ''; });
-    }
-  });
-})();
-</script>
-
-<!-- Futuristic Effects -->
-<script src="./effects.js"></script>
-</body>
-</html>
+</body></html>

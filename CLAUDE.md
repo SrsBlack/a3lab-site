@@ -1,6 +1,8 @@
 # A3 Lab Website
 
-Static marketing site for [a3lab.ca](https://a3lab.ca). Plain HTML/CSS/JS, no build step. Deployed via the SrsBlack/a3lab-site GitHub repo.
+Static marketing site for [a3lab.ca](https://a3lab.ca). Plain HTML/CSS/JS, no build step. Deployed via the SrsBlack/a3lab-site GitHub repo (Netlify auto-deploys `main`).
+
+> **2026-07-02 — site replaced with the "revival" design.** The live site is now four self-contained pages: `index.html` (brain-map hero, services, process, ROI calculator, pricing, FAQ, contact), `services.html` (hash-routed service details), `segments.html` (hash-routed audience pages), `audit.html` (in-browser automation audit), plus `404.html`. Each page carries its interactivity as a `dc-runtime` script in `assets/<page>.js` (loads React 18 from unpkg, hydrates the static `<x-dc>` template — content renders without JS). Old pages (`services/*`, `for-*.html`, `automation-box.html`) were deleted; `_redirects` maps their URLs to the new hash anchors. Everything below this banner describes the PRE-revival site — `PRODUCT.md`/`DESIGN.md` and the design-system notes are historical context only. `privacy.html` (+ `base.css`/`style.css`/`effects.*`) survives from the old site.
 
 ## Design Context
 

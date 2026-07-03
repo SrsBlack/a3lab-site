@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — A3 Lab</title>
+<meta name="description" content="Lead enrichment, AI content engines, customer support bots, website automation and OpenClaw setup — scoped builds with clear delivery timelines.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
+<script src="assets/services.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700&amp;f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#0a0b0f;color:#e4e6ec;font-family:'Satoshi','Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(46,230,160,0.25);color:#fff}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;width:100%;min-height:100vh;background:#0a0b0f;overflow:hidden">
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(20px,4vw,48px);backdrop-filter:saturate(140%) blur(9px);background:rgba(10,11,15,0.66);border-bottom:1px solid rgba(42,45,56,0.55)">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#e4e6ec">
+      <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:14px;color:#06160f">A</div>
+      <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em">A3&nbsp;LAB</span>
+    </a>
+    <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:9px;white-space:nowrap;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Book a call</a>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;padding:clamp(120px,18vh,180px) clamp(20px,5vw,48px) clamp(50px,8vh,80px);overflow:hidden">
+    <div style="position:absolute;top:-10%;right:-5%;width:60%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 70% 40%, rgba(46,230,160,0.14), rgba(10,11,15,0) 70%)"></div>
+    <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto">
+      <a href="index.html#services" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#8b8f9e;text-decoration:none;margin-bottom:28px" style-hover="color:#2ee6a0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>All services
+      </a>
+      <div style="max-width:760px;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) both">
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border:1px solid #2a2d38;border-radius:9999px;margin-bottom:22px;background:rgba(13,15,20,0.5)">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 10px #2ee6a0"></span>
+          <span style="font-size:12px;font-weight:500;letter-spacing:0.04em;color:#8b8f9e;text-transform:uppercase">{{ svc.tag }}</span>
+        </div>
+        <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(2.2rem,1.4rem+2.6vw,3.8rem);line-height:1.04;letter-spacing:-0.025em;margin-bottom:22px">{{ svc.title }}</h1>
+        <p style="font-size:clamp(1.15rem,1rem+0.6vw,1.4rem);line-height:1.55;color:#8b8f9e;margin-bottom:34px">{{ svc.lede }}</p>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:16px;padding:14px 28px;border-radius:11px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 26px rgba(46,230,160,0.4)">Get this built</a>
+          <span style="font-size:14px;color:#8b8f9e">Live in <strong style="color:#e4e6ec">{{ svc.delivery }}</strong></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px">
+      <div>
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:16px">How it works</p>
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.7rem,1.2rem+1.6vw,2.6rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:18px">From trigger to done, on autopilot.</h2>
+        <p style="font-size:16px;line-height:1.6;color:#8b8f9e">Built on top of your second brain, so every step runs with your real context, history and tone, not generic output.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ svc.steps }}" as="step" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:start;padding:20px 22px;background:#111318;border:1px solid #2a2d38;border-radius:13px">
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;color:#2ee6a0">{{ step.n }}</span>
+            <p style="font-size:15.5px;line-height:1.5;color:#cdd0da">{{ step.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+        <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:18px;margin-bottom:16px">Connects to</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ svc.connects }}" as="c" hint-placeholder-count="4">
+            <span style="font-size:13px;font-weight:500;color:#cdd0da;background:#181a21;border:1px solid #2a2d38;border-radius:8px;padding:7px 12px">{{ c }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+        <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px">Delivery</h3>
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:28px;color:#2ee6a0;margin-bottom:6px">{{ svc.delivery }}</div>
+        <p style="font-size:14.5px;line-height:1.5;color:#8b8f9e">Most builds ship fast. You get a live demo, docs, and a handover session.</p>
+      </div>
+      <div style="padding:30px;background:#111318;border:1px solid #2a2d38;border-radius:16px">
+        <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px">Built on</h3>
+        <p style="font-size:14.5px;line-height:1.5;color:#8b8f9e">{{ svc.tag }}, plus the leading AI models, wired into the tools you already use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section style="padding:clamp(50px,9vh,90px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0c0d12">
+    <div style="max-width:1180px;margin:0 auto">
+      <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2ee6a0;margin-bottom:24px">More services</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="4">
+          <a href="#{{ o.id }}" style="display:block;padding:24px;background:#111318;border:1px solid #2a2d38;border-radius:14px;text-decoration:none;transition:border-color .18s,transform .18s" style-hover="border-color:#2ee6a0;transform:translateY(-2px)">
+            <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:17px;color:#e4e6ec;margin-bottom:8px">{{ o.title }}</h3>
+            <span style="font-size:12px;font-weight:500;color:#8b8f9e">{{ o.tag }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:clamp(70px,12vh,120px) clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f;text-align:center">
+    <div style="max-width:680px;margin:0 auto">
+      <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.3rem+2vw,3rem);line-height:1.06;letter-spacing:-0.025em;margin-bottom:20px">Want this running in your business?</h2>
+      <p style="font-size:1.15rem;line-height:1.6;color:#8b8f9e;margin-bottom:34px">A free 30-minute call. We map your workflows and show you exactly what we'd build first.</p>
+      <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:17px;padding:16px 34px;border-radius:12px;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 30px rgba(46,230,160,0.4)">Book your free audit</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:40px clamp(20px,5vw,48px);border-top:1px solid #1f2230;background:#0a0b0f">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#e4e6ec">
+        <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#2ee6a0,#14b37d);display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:12px;color:#06160f">A</div>
+        <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px">A3&nbsp;LAB</span>
+      </a>
+      <span style="font-size:13px;color:#5a5e6e">a3lab.ca · © 2026</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;service&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;lead-enrichment&quot;,&quot;ai-content-engines&quot;,&quot;customer-support-bots&quot;,&quot;website-automation&quot;,&quot;openclaw-setup&quot;],&quot;default&quot;:&quot;lead-enrichment&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+
+  services = [
+    { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines', tag: 'Perplexity + Zapier',
+      lede: 'Automatically research prospects, enrich your CRM with AI-gathered insights, and deliver qualified lead profiles straight to your inbox.',
+      delivery: '1\u20132 days', connects: ['HubSpot', 'Salesforce', 'Notion', 'Google Sheets'],
+      steps: [
+        { n: '01', t: 'A new lead hits your CRM or form.' },
+        { n: '02', t: 'Perplexity researches their company, role and recent news.' },
+        { n: '03', t: 'Claude drafts a personalized outreach email in your voice.' },
+        { n: '04', t: 'Zapier logs everything and sends automatically.' }
+      ] },
+    { id: 'ai-content-engines', title: 'AI Content Engines', tag: 'Claude + Zapier',
+      lede: 'Multi-step content pipelines that research topics, draft in your brand voice, format, and schedule across channels, all on autopilot.',
+      delivery: '2\u20133 days', connects: ['Buffer', 'Notion', 'WordPress', 'Mailchimp'],
+      steps: [
+        { n: '01', t: 'You define your topics and brand voice once.' },
+        { n: '02', t: 'Perplexity researches trending angles worth writing about.' },
+        { n: '03', t: 'Claude drafts, formats and optimizes each piece.' },
+        { n: '04', t: 'Zapier schedules it across LinkedIn, X, your blog and email.' }
+      ] },
+    { id: 'customer-support-bots', title: 'Customer Support Bots', tag: 'Claude + Zapier',
+      lede: 'Intelligent AI agents that handle inquiries, route tickets and draft responses, escalating to a human with full context only when needed.',
+      delivery: '2\u20134 days', connects: ['Zendesk', 'Intercom', 'Gmail', 'Slack'],
+      steps: [
+        { n: '01', t: 'A customer submits a ticket.' },
+        { n: '02', t: 'Claude reads and categorizes it instantly.' },
+        { n: '03', t: 'Common questions get accurate answers right away.' },
+        { n: '04', t: 'Complex cases escalate to a human, summary already written.' }
+      ] },
+    { id: 'website-automation', title: 'Website & App Automation', tag: 'Custom build',
+      lede: 'Connect your site and apps to the brain, auto-updating content, syncing data, and triggering actions across your tools without manual work.',
+      delivery: 'scoped per build', connects: ['Webflow', 'WordPress', 'Airtable', 'Your APIs'],
+      steps: [
+        { n: '01', t: 'We map the manual steps your site and apps depend on.' },
+        { n: '02', t: 'The brain connects to your CMS, database and tools.' },
+        { n: '03', t: 'Content updates, data syncs and actions fire automatically.' },
+        { n: '04', t: 'You watch it run, and approve anything that matters.' }
+      ] },
+    { id: 'openclaw-setup', title: 'OpenClaw Setup', tag: 'Self-hosted',
+      lede: 'A private, always-on AI agent that runs on your own machine and actually takes actions. We design and install it for your workflows.',
+      delivery: '3\u20135 days', connects: ['WhatsApp', 'Slack', 'Telegram', 'Your file system'],
+      steps: [
+        { n: '01', t: 'We install OpenClaw on your own computer or server.' },
+        { n: '02', t: 'You connect the chat app you already use day to day.' },
+        { n: '03', t: 'We configure your workflows, tools and guardrails.' },
+        { n: '04', t: 'It takes real actions on your behalf, privately.' }
+      ] }
+  ];
+
+  state = { id: 'lead-enrichment' };
+
+  componentDidMount() {
+    this.applyHash();
+    this._onHash = () => { this.applyHash(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    window.addEventListener('hashchange', this._onHash);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+
+  applyHash() {
+    const h = (location.hash || '').replace('#', '').trim();
+    const found = this.services.find(s => s.id === h);
+    const startId = this.props.service && this.services.find(s => s.id === this.props.service) ? this.props.service : 'lead-enrichment';
+    this.setState({ id: found ? h : startId });
+  }
+
+  renderVals() {
+    const svc = this.services.find(s => s.id === this.state.id) || this.services[0];
+    const others = this.services.filter(s => s.id !== svc.id).map(s => ({ id: s.id, title: s.title, tag: s.tag }));
+    return { rootRef: this.rootRef, svc, others };
+  }
+}
+</script>
+
+
+</body></html>
