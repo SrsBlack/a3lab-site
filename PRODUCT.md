@@ -6,7 +6,9 @@ brand
 
 ## Users
 
-Founders, ops leads, and small-team operators at lean companies (5-50 people) — agencies, e-commerce brands, consultancies. They run the business themselves, feel the cost of manual work daily, and are time-poor. They arrive via search ("AI automation consultant", "agentic workflows for X") or referral, already half-convinced they need help but skeptical of hype. They're shopping for a partner, not a tool.
+Founders, ops leads, and small-team operators at lean companies (5-50 people) — recruiting and staffing firms, boutique law and accounting practices, property management companies, insurance brokerages. They run the business themselves, feel the cost of manual work daily, and are time-poor. They arrive via search ("AI automation consultant", "agentic workflows for X") or referral, already half-convinced they need help but skeptical of hype. They're shopping for a partner, not a tool.
+
+Retargeted 2026-07-19 to match the active outbound campaigns.
 
 Their context when they land: 3 minutes between meetings, scanning on a laptop or phone, evaluating credibility. The job to be done is **decide whether A3 Lab is credible enough to book a 30-minute discovery call**. Education comes later — on the site itself, the only outcome that matters is trust + clarity → CTA.
 

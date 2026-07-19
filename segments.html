@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Who it's for — A3 Lab</title>
-<meta name="description" content="How agencies, e-commerce operators and consultants use A3 Lab's second-brain automation.">
+<meta name="description" content="How recruiting desks, law and accounting firms, property managers and insurance brokerages use A3 Lab's second-brain automation.">
 <link rel="canonical" href="https://a3lab.ca/segments.html">
 <meta property="og:title" content="Who it's for — A3 Lab">
-<meta property="og:description" content="How agencies, e-commerce operators and consultants use A3 Lab's second-brain automation.">
+<meta property="og:description" content="How recruiting desks, law and accounting firms, property managers and insurance brokerages use A3 Lab's second-brain automation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://a3lab.ca/segments.html">
 <meta property="og:image" content="https://a3lab.ca/assets/og-card.png">
@@ -14,9 +14,10 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Who it's for — A3 Lab">
-<meta name="twitter:description" content="How agencies, e-commerce operators and consultants use A3 Lab's second-brain automation.">
+<meta name="twitter:description" content="How recruiting desks, law and accounting firms, property managers and insurance brokerages use A3 Lab's second-brain automation.">
 <meta name="twitter:image" content="https://a3lab.ca/assets/og-card.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/scroll.css">
 <script src="assets/segments.js"></script>
 </head>
 <body>
@@ -43,9 +44,10 @@
       <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em">A3&nbsp;LAB</span>
     </a>
     <div style="display:flex;align-items:center;gap:6px;background:rgba(17,19,24,0.72);border:1px solid #2a2d38;border-radius:11px;padding:4px">
-      <a href="#agencies" data-seg="agencies" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For Agencies</a>
-      <a href="#ecommerce" data-seg="ecommerce" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For E-commerce</a>
-      <a href="#consultants" data-seg="consultants" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">For Consultants</a>
+      <a href="#recruiting" data-seg="recruiting" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">Recruiting</a>
+      <a href="#legal" data-seg="legal" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">Law & Accounting</a>
+      <a href="#property" data-seg="property" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">Property Mgmt</a>
+      <a href="#insurance" data-seg="insurance" style="text-decoration:none;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:8px;transition:color .18s,background .18s">Insurance</a>
     </div>
     <a href="https://calendly.com/goyalpriyanshu1996/30min" target="_blank" rel="noopener" style="background:#2ee6a0;color:#0a0b0f;text-decoration:none;font-weight:700;font-size:14px;padding:9px 18px;border-radius:9px;white-space:nowrap;transition:transform .18s,box-shadow .18s" style-hover="transform:translateY(-1px);box-shadow:0 0 22px rgba(46,230,160,0.35)">Book a call</a>
   </nav>
@@ -137,80 +139,98 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;segment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;agencies&quot;,&quot;ecommerce&quot;,&quot;consultants&quot;],&quot;default&quot;:&quot;agencies&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:820},&quot;segment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;recruiting&quot;,&quot;legal&quot;,&quot;property&quot;,&quot;insurance&quot;],&quot;default&quot;:&quot;recruiting&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   rootRef = React.createRef();
 
   segments = [
-    { id: 'agencies', eyebrow: 'For agencies',
-      title: 'Your agency runs on knowledge. Stop losing it.',
-      lede: 'Client context, briefs, approvals and decisions live across a dozen tools and three people\u2019s heads. A3 Lab wires it into one brain, then automates the busywork around it.',
-      painTitle: 'The work that eats your margin isn\u2019t the creative. It\u2019s everything around it.',
+    { id: 'recruiting', eyebrow: 'For recruiting & staffing',
+      title: 'Every candidate touchpoint, one memory.',
+      lede: 'Candidate notes live in the ATS, client feedback in inboxes, intake calls in each recruiter\u2019s head. The desk re-learns what it already knows, every week.',
+      painTitle: 'The work that eats your desk\u2019s time isn\u2019t sourcing. It\u2019s re-finding what you already know.',
       pains: [
-        'Onboarding a new account manager means re-explaining every client from scratch.',
-        'Proposals and SOWs get rebuilt from blank pages instead of your own best work.',
-        'Status updates, recaps and follow-ups quietly burn billable hours every week.'
+        'A client calls about a role and only the owning recruiter can answer.',
+        'The same candidate gets re-researched because last year\u2019s notes are unfindable.',
+        'A recruiter leaves and their pipeline knowledge walks out the door.'
       ],
-      winsTitle: 'A brain that remembers every client, and agents that handle the admin.',
+      winsTitle: 'A brain that remembers every candidate and client, and agents that handle the admin.',
       wins: [
-        'Ask anything about any account and get the answer with sources, instantly.',
-        'Draft proposals and SOWs from your real history, pricing and tone.',
-        'Auto-generate status recaps and follow-ups from calls and threads.',
-        'New hires get productive in days, not months.'
+        'Ask the desk anything, with receipts: every touchpoint for any candidate or client, in seconds.',
+        'Submittals and follow-ups drafted from real history, in your voice. You edit, not start from blank.',
+        'Watchers that flag the placement anniversary, the quiet client, the candidate about to lapse.'
       ],
       services: [
         { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines' },
         { id: 'ai-content-engines', title: 'AI Content Engines' },
         { id: 'customer-support-bots', title: 'Customer Support Bots' }
       ],
-      ctaTitle: 'Give your agency a memory.' },
-    { id: 'ecommerce', eyebrow: 'For e-commerce',
-      title: 'Every order, ticket and SKU, in one brain that acts.',
-      lede: 'Support, inventory, suppliers and marketing all hold pieces of the picture. A3 Lab connects them into one brain, then deploys agents to handle the volume.',
-      painTitle: 'Volume is the problem. Manual handling doesn\u2019t scale with it.',
+      ctaTitle: 'Give your desk a memory.' },
+    { id: 'legal', eyebrow: 'For law & accounting firms',
+      title: 'Your precedents already exist. Find them in seconds.',
+      lede: 'The firm\u2019s best work is buried in matter files, old emails and partners\u2019 heads. So associates rebuild what the firm already wrote, on billable time.',
+      painTitle: 'You sell judgment, but the week goes to re-finding what the firm already knows.',
       pains: [
-        'Support drowns in repeat \u201Cwhere\u2019s my order?\u201D tickets that all have the same answer.',
-        'Stockouts and reorders depend on someone remembering to check.',
-        'Customer history is scattered across the store, helpdesk and email.'
+        'Hours burned hunting for a precedent someone wrote three years ago.',
+        'New associates take months to learn where anything lives.',
+        'A partner retires and their judgment leaves with them.'
       ],
-      winsTitle: 'A brain that knows every order, and agents that clear the queue.',
+      winsTitle: 'A brain that holds every matter, and agents that prep the work.',
       wins: [
-        'Auto-resolve common support tickets with accurate, on-brand answers.',
-        'Surface the reorder, the refund pattern and the at-risk customer before it costs you.',
-        'Draft lifecycle and win-back emails from real purchase history.',
-        'Escalate to a human only when it genuinely needs one.'
-      ],
-      services: [
-        { id: 'customer-support-bots', title: 'Customer Support Bots' },
-        { id: 'ai-content-engines', title: 'AI Content Engines' },
-        { id: 'website-automation', title: 'Website & App Automation' }
-      ],
-      ctaTitle: 'Give your store a memory.' },
-    { id: 'consultants', eyebrow: 'For consultants',
-      title: 'Your expertise is the product. Give it a memory.',
-      lede: 'Frameworks, research, engagements and rates live in decks, docs and your head. A3 Lab wires them into one brain, then automates the delivery work around it.',
-      painTitle: 'You sell judgment, but spend the week on assembly.',
-      pains: [
-        'Every proposal starts from a blank page instead of the last ten you won.',
-        'Research and interview notes vanish into folders nobody reopens.',
-        'Billable hours leak into meeting prep, recaps and status decks.'
-      ],
-      winsTitle: 'A brain that holds every engagement, and agents that prep the work.',
-      wins: [
-        'Draft proposals and SOWs from your real frameworks, rates and past wins.',
-        'Ask what you learned on any engagement and get the answer with sources.',
-        'Walk into every meeting with an auto-prepared brief on the client.',
-        'Turn finished engagements into reusable playbooks, automatically.'
+        'Precedent recall with citations to your own files: ask for the closest past matter and get it, with sources.',
+        'First drafts built from firm history: engagement letters, memos, working papers that start 80% done.',
+        'Deadline and renewal watchers across matters, filings and engagements. Read-only, encrypted, yours.'
       ],
       services: [
         { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines' },
         { id: 'ai-content-engines', title: 'AI Content Engines' },
         { id: 'openclaw-setup', title: 'OpenClaw Setup' }
       ],
-      ctaTitle: 'Give your practice a memory.' }
+      ctaTitle: 'Give the firm a memory.' },
+    { id: 'property', eyebrow: 'For property managers',
+      title: 'Answer every tenant question once.',
+      lede: 'The answers live in leases, SOPs and one coordinator\u2019s head. So the same thirty questions get answered by hand, every single week.',
+      painTitle: 'Volume is the problem. Manual handling doesn\u2019t scale with it.',
+      pains: [
+        'Tenant emails asking things the lease already answers.',
+        'Owner reports rebuilt manually from scattered systems every month.',
+        'One coordinator is the only person who knows how anything works.'
+      ],
+      winsTitle: 'A brain that knows every building, and agents that clear the queue.',
+      wins: [
+        'Routine tenant questions answered from your leases and SOPs, a human approves before anything sends.',
+        'Owner reports drafted automatically from the systems you already run.',
+        'Watchers on renewals, inspections and maintenance follow-ups, so nothing slips.'
+      ],
+      services: [
+        { id: 'customer-support-bots', title: 'Customer Support Bots' },
+        { id: 'ai-content-engines', title: 'AI Content Engines' },
+        { id: 'website-automation', title: 'Website & App Automation' }
+      ],
+      ctaTitle: 'Give the portfolio a memory.' },
+    { id: 'insurance', eyebrow: 'For insurance brokerages',
+      title: 'Policy knowledge out of heads, into one brain.',
+      lede: 'The real knowledge lives in veteran brokers\u2019 heads and carrier PDFs nobody wants to dig through. So every coverage question routes to the same few people.',
+      painTitle: 'The work that eats your week isn\u2019t the quote. It\u2019s tracking down what you already know.',
+      pains: [
+        'Coverage questions that only a 20-year broker can answer.',
+        'Renewals prepared by digging through last year\u2019s emails and PDFs.',
+        'Carrier appetite knowledge that exists nowhere but experience.'
+      ],
+      winsTitle: 'A brain that holds every policy, and agents that prep the renewal.',
+      wins: [
+        'Coverage answers with citations to the actual policy wording, in seconds.',
+        'Renewal packages drafted from client history: last year\u2019s terms, claims, comparisons.',
+        'Watchers that flag the renewal window, the unanswered claim, the client gone quiet.'
+      ],
+      services: [
+        { id: 'lead-enrichment', title: 'Lead Enrichment Pipelines' },
+        { id: 'customer-support-bots', title: 'Customer Support Bots' },
+        { id: 'openclaw-setup', title: 'OpenClaw Setup' }
+      ],
+      ctaTitle: 'Give the brokerage a memory.' }
   ];
 
-  state = { id: 'agencies' };
+  state = { id: 'recruiting' };
 
   componentDidMount() {
     this.applyHash();
@@ -224,7 +244,7 @@ class Component extends DCLogic {
   applyHash() {
     const h = (location.hash || '').replace('#', '').trim();
     const found = this.segments.find(s => s.id === h);
-    const startId = this.props.segment && this.segments.find(s => s.id === this.props.segment) ? this.props.segment : 'agencies';
+    const startId = this.props.segment && this.segments.find(s => s.id === this.props.segment) ? this.props.segment : 'recruiting';
     this.setState({ id: found ? h : startId });
   }
 
@@ -245,4 +265,5 @@ class Component extends DCLogic {
 </script>
 
 
+<script src="assets/scroll.js" defer></script>
 </body></html>

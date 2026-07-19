@@ -2,6 +2,8 @@
 
 Static marketing site for [a3lab.ca](https://a3lab.ca). Plain HTML/CSS/JS, no build step. Deployed via the SrsBlack/a3lab-site GitHub repo (Netlify auto-deploys `main`).
 
+> **2026-07-19 — scroll-animation layer + ICP retarget.** `assets/scroll.css`/`assets/scroll.js` (vanilla, hydration-aware via MutationObserver rescan) drive section reveals, the hero drift, the `#sa-converge` chip-cloud moment on index, the Four-moves progressive activation, and the top progress bar; all motion has reduced-motion overrides. Audiences retargeted sitewide to Recruiting / Law & Accounting / Property Mgmt / Insurance (matches the active outbound campaigns; PRODUCT.md Users updated, old segment URLs remapped in `_redirects`).
+>
 > **2026-07-02 — site replaced with the "revival" design.** The live site is now four self-contained pages: `index.html` (brain-map hero, services, process, ROI calculator, pricing, FAQ, contact), `services.html` (hash-routed service details), `segments.html` (hash-routed audience pages), `audit.html` (in-browser automation audit), plus `404.html`. Each page carries its interactivity as a `dc-runtime` script in `assets/<page>.js` (loads React 18 from unpkg, hydrates the static `<x-dc>` template — content renders without JS). Old pages (`services/*`, `for-*.html`, `automation-box.html`) were deleted; `_redirects` maps their URLs to the new hash anchors. Everything below this banner describes the PRE-revival site — `PRODUCT.md`/`DESIGN.md` and the design-system notes are historical context only. `privacy.html` (+ `base.css`/`style.css`/`effects.*`) survives from the old site.
 
 ## Design Context

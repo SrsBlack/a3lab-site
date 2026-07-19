@@ -18,6 +18,7 @@
 <meta name="twitter:image" content="https://a3lab.ca/assets/og-card.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"A3 Lab","url":"https://a3lab.ca","logo":"https://a3lab.ca/assets/og-card.png","email":"hello@a3lab.ca"}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0b0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%232ee6a0'%3EA3%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/scroll.css">
 <script src="assets/index.js"></script>
 </head>
 <body>
@@ -66,7 +67,7 @@
 
   <!-- HERO: BRAIN MAP -->
   <header style="position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:#0a0b0f">
-    <canvas ref="{{ graphRef }}" style="position:absolute;inset:0;width:100%;height:100%;z-index:0"></canvas>
+    <canvas ref="{{ graphRef }}" class="sa-hero-drift" style="position:absolute;inset:0;width:100%;height:100%;z-index:0"></canvas>
     <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(75% 100% at 12% 42%, rgba(10,11,15,0.92) 0%, rgba(10,11,15,0.55) 34%, rgba(10,11,15,0) 62%)"></div>
     <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg, rgba(10,11,15,0.85) 0%, rgba(10,11,15,0) 26%)"></div>
     <div style="position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 54%, rgba(0,0,0,0.55) 100%)"></div>
@@ -80,7 +81,7 @@
     </div>
 
     <!-- TITLE -->
-    <div style="position:absolute;left:clamp(20px,4vw,56px);top:clamp(140px,21vh,196px);z-index:4;max-width:min(440px,calc(100vw - 40px));pointer-events:none">
+    <div class="sa-hero-text" style="position:absolute;left:clamp(20px,4vw,56px);top:clamp(140px,21vh,196px);z-index:4;max-width:min(440px,calc(100vw - 40px));pointer-events:none">
       <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border:1px solid #2a2d38;border-radius:9999px;margin-bottom:20px;background:rgba(13,15,20,0.5)">
         <span style="width:7px;height:7px;border-radius:50%;background:#2ee6a0;box-shadow:0 0 10px #2ee6a0"></span>
         <span style="font-size:12px;font-weight:500;letter-spacing:0.04em;color:#8b8f9e;text-transform:uppercase">A second brain for your business</span>
@@ -115,20 +116,19 @@
         <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,1.2rem+2.2vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px">Your business already knows the answer. It just can't remember where.</h2>
         <p style="font-size:clamp(1.05rem,1rem+0.4vw,1.25rem);line-height:1.6;color:#8b8f9e">Every decision, promise and lesson lives somewhere, a Slack thread, a Drive folder, a call nobody recorded, someone's head. None of it talks to each other. So the same questions get re-answered, the same mistakes get re-made, and when someone leaves, the knowledge walks out the door.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#1f2230;border:1px solid #2a2d38;border-radius:14px;overflow:hidden">
-        <div style="padding:32px;background:#0a0b0f">
-          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#e4e6ec;margin-bottom:8px">9+</div>
-          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">disconnected tools the average lean team stores knowledge in</p>
-        </div>
-        <div style="padding:32px;background:#0a0b0f">
-          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#e4e6ec;margin-bottom:8px">1</div>
-          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">place anyone should have to ask "what did we decide, and why?"</p>
-        </div>
-        <div style="padding:32px;background:#0a0b0f">
-          <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:40px;color:#f59e0b;margin-bottom:8px">0</div>
-          <p style="font-size:15px;line-height:1.5;color:#8b8f9e">of that memory should leave when a person does</p>
-        </div>
+      <div id="sa-converge" style="position:relative; min-height:180px; display:flex; align-items:center; justify-content:center;">
+        <span class="sa-chip" style="position:absolute; --sa-x:-420px; --sa-y:-60px; --sa-i:0">Gmail</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:-320px; --sa-y:40px; --sa-i:1">Drive</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:-180px; --sa-y:-80px; --sa-i:2">Slack</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:-80px; --sa-y:60px; --sa-i:3">your ATS</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:0px; --sa-y:-40px; --sa-i:4">Case files</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:80px; --sa-y:70px; --sa-i:5">Leases</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:180px; --sa-y:-70px; --sa-i:6">Policy PDFs</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:320px; --sa-y:50px; --sa-i:7">Spreadsheets</span>
+        <span class="sa-chip" style="position:absolute; --sa-x:420px; --sa-y:-50px; --sa-i:8">Someone's head</span>
+        <span class="sa-core" style="position:absolute;"></span>
       </div>
+      <p class="sa-converge-caption">Nine places your business keeps what it knows. One memory that holds it all.</p>
     </div>
   </section>
 
@@ -553,9 +553,10 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:11px">
             <span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8b8f9e;margin-bottom:3px">Who it's for</span>
-            <a href="segments.html#agencies" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Agencies</a>
-            <a href="segments.html#ecommerce" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For E-commerce</a>
-            <a href="segments.html#consultants" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Consultants</a>
+            <a href="segments.html#recruiting" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Recruiting</a>
+            <a href="segments.html#legal" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Law & Accounting</a>
+            <a href="segments.html#property" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Property Mgmt</a>
+            <a href="segments.html#insurance" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">For Insurance</a>
             <a href="#how" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">How it works</a>
             <a href="#pricing" style="font-size:14px;color:#cdd0da;text-decoration:none" style-hover="color:#2ee6a0">Pricing</a>
           </div>
@@ -582,55 +583,51 @@ class Component extends DCLogic {
   rootRef = React.createRef();
 
   workOptions = [
-    { id: 'saas', label: 'SaaS' }, { id: 'agency', label: 'Agency' }, { id: 'ecom', label: 'E-commerce' }, { id: 'consulting', label: 'Consulting' }
+    { id: 'recruiting', label: 'Recruiting' }, { id: 'legal', label: 'Law & Accounting' }, { id: 'property', label: 'Property Mgmt' }, { id: 'insurance', label: 'Insurance' }
   ];
 
   presets = {
-    saas: [
-      { label: 'Product', n: 24, samples: ['Roadmap', 'Specs', 'User research'] },
-      { label: 'Engineering', n: 26, samples: ['Architecture', 'Incidents', 'PRs'] },
-      { label: 'Support', n: 19, samples: ['Top tickets', 'Bug reports', 'SLA breaches'] },
-      { label: 'Sales', n: 20, samples: ['Pipeline', 'Demos', 'Discount policy'] },
-      { label: 'Marketing', n: 15, samples: ['Campaigns', 'Content plan', 'Brand guide'] },
-      { label: 'Finance', n: 12, samples: ['Runway', 'Invoices', 'Forecast'] },
-      { label: 'People', n: 11, samples: ['Onboarding', 'Reviews', 'Policies'] },
-      { label: 'Data', n: 16, samples: ['Dashboards', 'Metrics', 'Experiments'] }
+    recruiting: [
+      { label: 'Candidates', n: 24, samples: ['Resumes', 'Interview notes', 'Scorecards'] },
+      { label: 'Clients', n: 26, samples: ['Intake calls', 'Role specs', 'Feedback'] },
+      { label: 'Placements', n: 19, samples: ['Offers', 'Terms', 'Start dates'] },
+      { label: 'Pipeline', n: 20, samples: ['Stages', 'Submittals', 'Follow-ups'] },
+      { label: 'Email', n: 15, samples: ['Threads', 'Outreach', 'Replies'] },
+      { label: 'ATS', n: 12, samples: ['Records', 'Tags', 'History'] },
+      { label: 'Calls', n: 11, samples: ['Transcripts', 'Debriefs', 'Notes'] }
     ],
-    agency: [
-      { label: 'Clients', n: 23, samples: ['Acme account', 'Briefs', 'Approvals'] },
-      { label: 'Creative', n: 21, samples: ['Concepts', 'Assets', 'Brand kits'] },
-      { label: 'Projects', n: 24, samples: ['Timelines', 'Scopes', 'Status'] },
-      { label: 'Sales', n: 16, samples: ['Proposals', 'Pitches', 'Pipeline'] },
-      { label: 'Marketing', n: 14, samples: ['Case studies', 'Social', 'Site'] },
-      { label: 'Finance', n: 12, samples: ['Invoices', 'Retainers', 'Margins'] },
-      { label: 'Ops', n: 14, samples: ['Tooling', 'Vendors', 'SOPs'] },
-      { label: 'People', n: 10, samples: ['Freelancers', 'Onboarding', 'Reviews'] }
+    legal: [
+      { label: 'Matters', n: 23, samples: ['Files', 'Deadlines', 'Status'] },
+      { label: 'Precedents', n: 21, samples: ['Past work', 'Templates', 'Opinions'] },
+      { label: 'Clients', n: 24, samples: ['Engagements', 'Notes', 'Billing'] },
+      { label: 'Documents', n: 16, samples: ['Contracts', 'Working papers', 'Filings'] },
+      { label: 'Email', n: 14, samples: ['Threads', 'Instructions', 'Approvals'] },
+      { label: 'Research', n: 12, samples: ['Memos', 'Citations', 'Findings'] },
+      { label: 'Calendar', n: 14, samples: ['Court dates', 'Filings due', 'Reviews'] }
     ],
-    ecom: [
-      { label: 'Orders', n: 24, samples: ['Fulfilment', 'Shipping', 'Status'] },
-      { label: 'Support', n: 20, samples: ['Tickets', 'Refunds', 'WISMO'] },
-      { label: 'Marketing', n: 18, samples: ['Email', 'Campaigns', 'Lifecycle'] },
-      { label: 'Inventory', n: 16, samples: ['Stock', 'SKUs', 'Reorders'] },
-      { label: 'Suppliers', n: 12, samples: ['POs', 'Lead times', 'Contracts'] },
-      { label: 'Ads', n: 15, samples: ['Meta', 'Google', 'Creative'] },
-      { label: 'Finance', n: 12, samples: ['Margins', 'Payouts', 'COGS'] },
-      { label: 'Returns', n: 10, samples: ['RMAs', 'Reasons', 'Policy'] }
+    property: [
+      { label: 'Tenants', n: 24, samples: ['Requests', 'Leases', 'History'] },
+      { label: 'Owners', n: 20, samples: ['Reports', 'Statements', 'Approvals'] },
+      { label: 'Buildings', n: 18, samples: ['Units', 'Systems', 'Inspections'] },
+      { label: 'Vendors', n: 16, samples: ['Contracts', 'Quotes', 'Schedules'] },
+      { label: 'Maintenance', n: 12, samples: ['Tickets', 'Work orders', 'Follow-ups'] },
+      { label: 'Email', n: 15, samples: ['Inquiries', 'Notices', 'Replies'] },
+      { label: 'SOPs', n: 12, samples: ['Procedures', 'Policies', 'Checklists'] }
     ],
-    consulting: [
-      { label: 'Clients', n: 21, samples: ['Accounts', 'Stakeholders', 'Notes'] },
-      { label: 'Engagements', n: 23, samples: ['SOWs', 'Deliverables', 'Plans'] },
-      { label: 'Research', n: 18, samples: ['Findings', 'Interviews', 'Models'] },
-      { label: 'Sales', n: 15, samples: ['Proposals', 'Pipeline', 'Rates'] },
-      { label: 'Knowledge', n: 17, samples: ['Frameworks', 'Templates', 'Playbooks'] },
-      { label: 'Finance', n: 11, samples: ['Invoices', 'Utilization', 'Forecast'] },
-      { label: 'People', n: 10, samples: ['Bench', 'Skills', 'Reviews'] },
-      { label: 'Ops', n: 12, samples: ['Tooling', 'Process', 'Vendors'] }
+    insurance: [
+      { label: 'Policies', n: 21, samples: ['Coverage', 'Limits', 'Endorsements'] },
+      { label: 'Clients', n: 23, samples: ['Renewals', 'Claims history', 'Notes'] },
+      { label: 'Carriers', n: 18, samples: ['Products', 'Appetites', 'Contacts'] },
+      { label: 'Renewals', n: 15, samples: ['Dates', 'Quotes', 'Comparisons'] },
+      { label: 'Claims', n: 17, samples: ['Status', 'Documents', 'Outcomes'] },
+      { label: 'Email', n: 11, samples: ['Threads', 'Submissions', 'Confirmations'] },
+      { label: 'Knowledge', n: 12, samples: ['Wordings', 'Precedents', 'Guides'] }
     ]
   };
 
   tools = ["Claude", "OpenAI", "Notion", "Slack", "Google Drive", "Gmail", "HubSpot", "Zapier", "n8n", "Stripe"];
 
-  state = { work: 'saas', roiPeople: 4, roiHrs: 10, roiRate: 45, roiPct: 60, fName: '', fEmail: '', fMsg: '' };
+  state = { work: 'recruiting', roiPeople: 4, roiHrs: 10, roiRate: 45, roiPct: 60, fName: '', fEmail: '', fMsg: '' };
 
   get domains() { return this.presets[this.state.work]; }
 
@@ -871,4 +868,5 @@ class Component extends DCLogic {
 </script>
 
 
+<script src="assets/scroll.js" defer></script>
 </body></html>
